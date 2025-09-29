@@ -10,15 +10,13 @@ const EventTimeline = () => {
   return (
     <div id="#timeline" className="flex flex-col w-full gap-y-9" >
       <TitleComponent titleData="Kodikon 4.0 Timeline" id="timeline" />
-      <VerticalTimeline lineColor='#fff'>
+      {/* <VerticalTimeline lineColor='#fff'>
         {
           kodikon4Events?.map((event, index) => (
-            // console.log("hello")
             <EventTimelineComponent key={index} index = {index} eventTitle={event.eventTitle} eventTimings={event.eventTimings} eventDescription={event.eventDescription} miscellaneous={event.miscellaneous} />
-
           ))
         }
-      </VerticalTimeline>
+      </VerticalTimeline> */}
     </div>
   )
 }
