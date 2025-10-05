@@ -73,19 +73,14 @@ export const domainDetails = [
     domainName: "Club Head",
     headsAndPhotos: [
       {
-        domainHead: "Arushi Katta",
-        domainHeadPhoto: "/current-domain-heads/Arushi Katta.jpg",
-        linkedInURL: "https://www.linkedin.com/in/arushi-katta",  
+        domainHead: "Kunjal Patwari",
+        domainHeadPhoto: "/domainHeadPhotos2025/Kunjal_notthere.jpg",
+        linkedInURL: "",  
       },
-    ],
-  },
-  {
-    domainName: "Mentor",
-    headsAndPhotos: [
       {
-        domainHead: "Gagan H R",
-        domainHeadPhoto: "/current-domain-heads/Gagan H R.jpg",
-        linkedInURL: "https://www.linkedin.com/in/gaganhr",  
+        domainHead: "Preksha M",
+        domainHeadPhoto: "/domainHeadPhotos2025/Preksha.jpg",
+        linkedInURL: "",  
       },
     ],
   },
@@ -93,14 +88,19 @@ export const domainDetails = [
     domainName: "Logistics",
     headsAndPhotos: [
       {
-        domainHead: "Lakshay Bhutani",
-        domainHeadPhoto: "/current-domain-heads/Lakshay Bhutani_.webp",
-        linkedInURL: "https://www.linkedin.com/in/lakshay-bhutani-software/",
+        domainHead: "Ankith Khaitan",
+        domainHeadPhoto: "/domainHeadPhotos2025/Ankith.jpg",
+        linkedInURL: "",
       },
       {
-        domainHead: "Mayank Sharma",
-        domainHeadPhoto: "/current-domain-heads/Mayank Sharma.jpg",
-        linkedInURL: "www.linkedin.com/in/mayank-sharma-pes",
+        domainHead: "Nishant",
+        domainHeadPhoto: "/domainHeadPhotos2025/Nishant_notthere.jpg",
+        linkedInURL: "",
+      },
+      {
+        domainHead: "Dibyadyuti Mohanty",
+        domainHeadPhoto: "/domainHeadPhotos2025/Dibyadyuti.jpg",
+        linkedInURL: "",
       },
     ],
   },
@@ -108,15 +108,20 @@ export const domainDetails = [
     domainName: "Event Management",
     headsAndPhotos: [
       {
-        domainHead: "Kunjal Patwari",
-        domainHeadPhoto: "/current-domain-heads/Kunjal Patwari_.jpg",
-        linkedInURL: "https://www.linkedin.com/in/kunjal-patwari-967085291?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4XrmfMcaQbadXpJ7TPOmwQ%3D%3D",
+        domainHead: "Dhruv Jain",
+        domainHeadPhoto: "/domainHeadPhotos2025/Dhruv.jpg",
+        linkedInURL: "",
       },
       {
-        domainHead: "Shailja Shaktawat",
-        domainHeadPhoto: "/current-domain-heads/Shailja Shaktawat.jpeg",
-        linkedInURL: "https://www.linkedin.com/in/shailja-shaktawat-380b2922a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        domainHead: "Saanvi Kakkar",
+        domainHeadPhoto: "/domainHeadPhotos2025/saanvi.jpeg",
+        linkedInURL: "",
       },
+      {
+        domainHead: "Shrest Kumar",
+        domainHeadPhoto: "/domainHeadPhotos2025/shrest.jpeg",
+        linkedInURL: "",
+      }
     ],
   },
   {
@@ -124,9 +129,23 @@ export const domainDetails = [
     headsAndPhotos: [
       {
         domainHead: "Shashwat Jha",
-        domainHeadPhoto: "/current-domain-heads/Shashwat.png",
-        linkedInURL:
-          "www.linkedin.com/in/shashwat-jha-7a726b296",
+        domainHeadPhoto: "/domainHeadPhotos2025/shashwat.jpg",
+        linkedInURL:"https://www.linkedin.com/in/shashwat-jha-7a726b296",
+      },
+      {
+        domainHead: "Sara Girdhar",
+        domainHeadPhoto: "/domainHeadPhotos2025/Sara.jpg",
+        linkedInURL: "",
+      },
+      {
+        domainHead: "Neerav",
+        domainHeadPhoto: "/domainHeadPhotos2025/neerav.jpg",
+        linkedInURL: "",
+      },
+      {
+        domainHead: "Achintya N",
+        domainHeadPhoto: "/domainHeadPhotos2025/achintya.JPG",
+        linkedInURL: "",
       },
     ],
   },
@@ -134,23 +153,29 @@ export const domainDetails = [
     domainName: "Web Development",
     headsAndPhotos: [
       {
-        domainHead: "Rahul Baradol",
-        domainHeadPhoto: "/current-domain-heads/Rahul Baradol.jpg",
-        linkedInURL: "https://www.linkedin.com/in/rahul-baradol/",
+        domainHead: "Nikhitha sriram ",
+        domainHeadPhoto: "/domainHeadPhotos2025/Nikhitha.jpg",
+        linkedInURL: "",
       },
+      {
+        domainHead: "Vishal P",
+        domainHeadPhoto: "/domainHeadPhotos2025/Vishal.jpg",
+        linkedInURL: "",
+      },
+    
     ],
   },
   {
     domainName: "Social Media",
     headsAndPhotos: [
       {
-        domainHead: "Rhea Gangamma",
-        domainHeadPhoto: "/current-domain-heads/Rhea Gangamma.png",
+        domainHead: "Chetan H S",
+        domainHeadPhoto: "/domainHeadPhotos2025/Chetan.png",
         linkedInURL: "",
       },
       {
         domainHead: "Deeksha Kashyap",
-        domainHeadPhoto: "/current-domain-heads/Deeksha Kashyap.jpg",
+        domainHeadPhoto: "/domainHeadPhotos2025/Deeksha.jpg",
         linkedInURL: "https://www.linkedin.com/in/deeksha-kashyap-02546a185",
       },
     ],
@@ -159,15 +184,19 @@ export const domainDetails = [
     domainName: "Hospitality",
     headsAndPhotos: [
       {
-        domainHead: "Manya Gaonkar",
-        domainHeadPhoto: "/current-domain-heads/Manya Gaonkar.jpeg",
-        linkedInURL: "http://linkedin.com/in/manya-gaonkar-4a9607288",
+        domainHead: "Shrisha Katti",
+        domainHeadPhoto: "/domainHeadPhotos2025/Shrisha.jpeg",
+        linkedInURL: "",
       },
       {
-        domainHead: "Kanika Kuchinad",
-        domainHeadPhoto: "/current-domain-heads/Kanika.jpg",
-        linkedInURL:
-          "",
+        domainHead: "Saanvi Manjunath",
+        domainHeadPhoto: "/domainHeadPhotos2025/Saanvi Manjunath.jpg",
+        linkedInURL: "",
+      },
+      {
+        domainHead: "Dhanya Bhat",
+        domainHeadPhoto: "/domainHeadPhotos2025/Dhanya.jpg",
+        linkedInURL: "",
       },
     ],
   },
@@ -175,9 +204,9 @@ export const domainDetails = [
     domainName: "Campaigning",
     headsAndPhotos: [
       {
-        domainHead: "Sravanthi",
-        domainHeadPhoto: "/current-domain-heads/Sravanthi N.jpg",
-        linkedInURL: "https://www.linkedin.com/in/sravanthi-n-5b89a22b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        domainHead: "Pranav Lokesh",
+        domainHeadPhoto: "/domainHeadPhotos2025/Pranav_notthere.jpg",
+        linkedInURL: "",
       },
     ],
   },
@@ -185,10 +214,20 @@ export const domainDetails = [
   {
     domainName: "Operations",
     headsAndPhotos: [
+       {
+        domainHead: "Shreya Patil",
+        domainHeadPhoto: "/domainHeadPhotos2025/Shreya.jpg",        
+        linkedInURL: "",
+      },
       {
-        domainHead: "Preksha M",
-        domainHeadPhoto: "/current-domain-heads/Preksha M.jpg",        
-        linkedInURL: "https://www.linkedin.com/in/preksha-m-90b309329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        domainHead: "Taha",
+        domainHeadPhoto: "/domainHeadPhotos2025/Taha.jpg",        
+        linkedInURL: "",
+      },
+      {
+        domainHead: "Anshita Sharma",
+        domainHeadPhoto: "/domainHeadPhotos2025/anshita.jpg",        
+        linkedInURL: "",
       },
     ],
   },
@@ -197,10 +236,20 @@ export const domainDetails = [
     domainName: "Design",
     headsAndPhotos: [
       {
-        domainHead: "Sadhana Hegde",
-        domainHeadPhoto: "/current-domain-heads/sadhanaAT.jpg",
-        linkedInURL: "https://www.linkedin.com/in/sadhana-hegde-ba9424265/",
+        domainHead: "Rachana R",
+        domainHeadPhoto: "/domainHeadPhotos2025/Rachana.jpg",
+        linkedInURL: "",
       },
+      {
+        domainHead: "Charitha S Jain",
+        domainHeadPhoto: "/domainHeadPhotos2025/Charitha.jpg",
+        linkedInURL: "",
+      },
+      {
+        domainHead: "Meghana G",
+        domainHeadPhoto: "/domainHeadPhotos2025/Meghana_notthere.jpg",
+        linkedInURL: "",
+      }
     ],
   },
 ];
