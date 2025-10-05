@@ -71,7 +71,9 @@
 "use client"
 import React from 'react';
 import Image from 'next/image';
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 // Helper Components & Assets
 import TitleComponent from '../HelperComponents/TitleComponent';

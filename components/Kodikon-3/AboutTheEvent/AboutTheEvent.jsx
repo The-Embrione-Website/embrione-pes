@@ -1,6 +1,8 @@
 "use client"
 import TitleComponent from '../HelperComponents/TitleComponent'
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import about from '../../../assets/about-kodikon.json'
 import Image from 'next/image';
 import React from 'react'
