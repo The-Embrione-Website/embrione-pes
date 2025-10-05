@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import NavbarKodikon4 from "@/components/Kodikon-4/NavbarKodikon4";
 import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressComponent";
@@ -11,6 +13,7 @@ import SponsorsComponent from "@/components/Kodikon-4/Sponsors/SponsorsComponent
 import PrizesComponent from "@/components/Kodikon-4/Prizes/PrizesComponent";
 import Footer from "@/components/Footer/Footer";
 import EventCountdown  from "@/components/Kodikon-4/Countdown/EventCountdown";
+
 import FAQ from "@/components/Kodikon-4/FAQComponent";
 import Map from "@/components/Kodikon-4/MapComponent";
 export default function LandingPage() {

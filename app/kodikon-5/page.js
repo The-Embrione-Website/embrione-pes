@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import NavbarKodikon4 from "@/components/Kodikon-5/NavbarKodikon4";
 import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressComponent";
