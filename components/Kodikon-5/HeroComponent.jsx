@@ -1,55 +1,65 @@
 'use client'
 
 import React from 'react'
-import { leftguy, rightguy, fourteen, fifteen } from "@/public/Kodikon4";
-import Image from 'next/image';
-import Kodikon41 from '/public/Kodikon4/Kodikon41.png';
+import Image from 'next/image'
 
+// Event visuals
+import background from '/public/Kodikon5/bg1.png'
+import Kodikon5Logo from '/public/Kodikon5/kodikon5_logo.png'
+import TitleSponsorLogo from '/public/Kodikon5/kodikon5_title_sponsor.png'
 
 const HeroComponent = () => {
   return (
-    <div className='h-90'>
-    <h1 className='text-white'>Kodikon 5.0</h1>
-    </div>
-  )
-  return (
-    <>
-      <div className='relative md:top-24 md:h-[100vh]  md:w-[100vw]  mt-9 flex flex-row items-center justify-between'>
-        <div className='relative top-[2px]'>
-          <Image
-            src={leftguy}
-            alt=""
-            data-aos="fade-in-left"
-            data-aos-duration="2500"
-            className='h-[100%]'
-          />
+    // 1. We removed the top margin/padding.
+    // 2. We use `items-stretch` instead of `items-center`. This is the key change.
+    //    It forces all three columns to be the same height (the full height of the container).
+    <div className='h-screen w-screen flex flex-row items-stretch justify-between'>
 
-        </div>
-        <div className='flex flex-col items-center'>
-          <div className='absolute md:relative my-auto bottom-32 md:bottom-0 px-2 z-200'>
-            <Image
-              src={Kodikon41}
-              alt="Kodikon 4.0"
-              className='h-150 w-300 '
-            />
-          </div>
-        </div>
-        <div className='relative -z-300'>
+      {/* Left Column */}
+      <div>
+        <Image
+          src={background}
+          alt="Left decoration"
+          data-aos="fade-in-left"
+          data-aos-duration="2500"
+          // 3. `h-full` and `object-cover` ensure the image fills the stretched column without distortion.
+          className='h-full object-cover'
+        />
+      </div>
+
+      {/* Center Column */}
+      {/* 4. We add `justify-center` here to vertically center the logos within their now full-height column. */}
+      <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center px-2'>
           <Image
-            src={rightguy}
-            alt=""
-            className='h-[100%]'
-            data-aos="fade-in-right"
-        data-aos-duration="2500"
+            src={TitleSponsorLogo}
+            alt="Title Sponsor Logo"
+            width={200}
+            height={100}
+            className="hover:scale-105 transition-transform duration-300 ease-out"
+            priority
+          />
+          <Image
+            src={Kodikon5Logo}
+            alt="Kodikon 5.0 Logo"
+            className='h-auto w-[1500px] md:w-[1500px] hover:scale-105 transition-transform duration-300 ease-out'
+            priority
           />
         </div>
       </div>
-    </>
+
+      {/* Right Column */}
+      <div>
+        <Image
+          src={background}
+          alt="Right decoration"
+          data-aos="fade-in-right"
+          data-aos-duration="2500"
+          className='h-full object-cover'
+        />
+      </div>
+    </div>
   )
 }
 
 export default HeroComponent
-
-
-
-
