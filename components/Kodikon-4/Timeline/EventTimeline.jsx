@@ -5,13 +5,13 @@ import { VerticalTimeline } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import EventTimelineComponent from "./EventTimelineComponent";
 import { kodikon4Events } from "@/constants";
-import Timeline from "./Timeline.jsx";
+
 
 const EventTimeline = () => {
   return (
     <div id="#timeline" className="flex flex-col w-full gap-y-9">
       {/* <TitleComponent titleData="Kodikon 5.0 Timeline" id="timeline" /> */}
-      <Timeline />
+      {/* <Timeline /> */}
       {/* <VerticalTimeline lineColor='#fff'>
         {
           kodikon4Events?.map((event, index) => (
