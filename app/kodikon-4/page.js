@@ -1,4 +1,3 @@
-"use client";
 
 import Navbar from "@/components/Navbar";
 import NavbarKodikon4 from "@/components/Kodikon-4/NavbarKodikon4";
