@@ -109,9 +109,6 @@ const customStyles = `
 }
 `;
 
-/*
-const iconStyles =
-  "hover:text-blue-400 transition ease-in hover:-translate-y-1 duration-100 cursor-pointer mx-2 mt-2";*/
 const iconStyles =
   "hover:text-[#00ffff] transition ease-in hover:-translate-y-1 duration-100 cursor-pointer flex-shrink-0";
 
@@ -200,13 +197,14 @@ const DomainComponent = ({
                 translateY: -8, // Makes it look like it's lifting
                 // COMBINED SHADOW: Dark Lift Shadow + CYBERCORE CYAN GLOW
                 boxShadow: "0 15px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 255, 255, 0.6)", 
-                // Dark Blue (#14213B) to Mid Blue (#4C72B8) gradient (Unchanged)
-                background: "linear-gradient(135deg, rgba(20, 33, 59, 0.5) 0%, rgba(76, 114, 184, 0.5) 100%)" 
+                // Increased opacity from 0.5 to 0.7 for a darker look
+                background: "linear-gradient(135deg, rgba(20, 33, 59, 0.7) 0%, rgba(76, 114, 184, 0.7) 100%)" 
             }}
             transition={{ duration: 0.15, ease: "easeOut" }}
             
-            // Fixed height h-[400px] required for the 15/65/20 split to work
-            className={`group h-[400px] w-[250px] md:w-[300px] bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 text-gray-200 m-4 relative overflow-hidden flex flex-col`}
+            // Changed base background to a darker slate blue (bg-slate-900) with higher opacity (50%)
+            // to make the base color darker and more blue-toned.
+            className={`group h-[400px] w-[250px] md:w-[300px] bg-slate-900/50 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm text-gray-200 m-4 relative overflow-hidden flex flex-col`}
         >
             {/* 2. Diagonal Flashing Animation Element (Full overlay) 
                 It MUST be the first element inside the motion.div to cover everything. 
