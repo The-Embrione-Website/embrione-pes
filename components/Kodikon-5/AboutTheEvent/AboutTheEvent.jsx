@@ -86,15 +86,18 @@ import prizeImage from '../../../assets/prize.png';
 const aboutData = {
   title: "About The Event",
   paragraphs: [
-    "Kodikon 4.0, the fourth edition of our 24-hour highly successful flagship national level hackathon, aims at developing creative solutions to real-world problems while also promoting friendly, healthy competition amongst peers. Open to all engineering undergraduates across the nation, this event ignites innovation, camaraderie, and healthy competition. 160+ participants will battle it out for the coveted prizes.",
-    "As a hackathon catered towards aspiring students, Kodikon 4.0 aims to offer a platform for them to showcase their existing skills while fostering growth through collaborative learning. With comprehensive mentoring and continuous guidance from renowned experts, attendees gain valuable industry exposure, resulting in the development of vital soft skills, expanded networks, and enhanced technical acumen.",
+    "Kodikon 5.0, the fifth edition of our 24-hour national-level flagship hackathon, continues to inspire innovation and collaboration among engineering undergraduates across the nation. After an overwhelming 322+ team registrations last year, this edition brings a new dimension — a research driven edge. Each problem statement is grounded in emerging research themes, encouraging participants to explore academic insights and develop solutions that blend creativity with real-world relevance.",
+
+    "Guided by experienced mentors from both industry and academia, participants gain valuable exposure to practical and research oriented problem solving. Kodikon 5.0 aims to go beyond coding — fostering innovation, critical thinking, and teamwork, while helping students transform ideas into impactful, research backed solutions."
   ],
+
+
   stats: [
     // Using more specific, enticing stats
-    { name: 'Registrations', value: '1XXX+' }, 
+    { name: 'Registrations', value: '322+ Teams' }, 
     { name: 'Hours of Hacking', value: '24' },
-    { name: 'Prize Pool', value: '₹20,000' },
-    { name: 'Industry Sponsors', value: '5+' },
+    { name: 'Prize Pool', value: '₹ 1 Lakh +' },
+    { name: 'Industry Sponsors', value: '3+' },
   ]
 };
 
