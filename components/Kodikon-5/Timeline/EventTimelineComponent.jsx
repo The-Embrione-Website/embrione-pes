@@ -1,41 +1,50 @@
 "use client";
 
-import { Monitor, Calendar, Trophy, Rocket } from "lucide-react";
+import { Monitor, Calendar, Trophy, Rocket, Star } from "lucide-react";
 
 const timelineEvents = [
   {
     id: 1,
     title: "Registrations Begin",
-    date: "30th September 2024",
+    date: "8th October 2025",
     description:
-      "Kodikon 4.0, the fourth edition of our 24-hour highly successful flagship national-level hackathon, is opening its registration from 30th September. Hurry up! Slots are open. Log yourself in.",
+      "Registrations for Kodikon 5.0, the fifth edition of our 24-hour flagship national-level hackathon, officially open on 8th October 2025. Don’t miss your chance to be part of this innovation-packed event!",
     icon: Monitor,
   },
   {
     id: 2,
     title: "Registrations and Submissions Close",
-    date: "19th October 2024",
+    date: "28th October 2025",
     description:
-      "The registrations and submissions are going to be closed on 19th October. Register and submit if you have not already!",
+      "The registration and idea submission window closes on 28th October 2025. Make sure to finalize your team and submit your proposal before the deadline!",
     icon: Calendar,
   },
   {
     id: 3,
-    title: "Hackathon Begins",
-    date: "26th October 2024",
+    title: "Top 40 Announcement",
+    date: "2nd November 2025",
     description:
-      "The 24-hour coding marathon begins! Teams will work on their innovative projects with mentorship and support throughout.",
-    icon: Rocket,
+      "The top 40 shortlisted teams will be announced on 2nd November 2025. These teams will move forward to compete in the final round of Kodikon 5.0!",
+    icon: Star,
   },
   {
     id: 4,
-    title: "Final Presentations",
-    date: "27th October 2024",
+    title: "Hackathon Begins",
+    date: "15th November 2025",
     description:
-      "Teams present their projects to our panel of expert judges. The best innovations will be recognized and awarded.",
+      "The 24-hour hackathon kicks off! Teams will dive into building, innovating, and solving real-world problems with guidance from mentors and experts.",
+    icon: Rocket,
+  },
+  {
+    id: 5,
+    title: "Final Presentations",
+    date: "16th November 2025",
+    description:
+      "Teams showcase their final prototypes and present their research-backed solutions to a panel of judges. The best innovations will earn recognition and prizes!",
     icon: Trophy,
   },
 ];
+
 
 export function KodikonTimeline() {
   return (
