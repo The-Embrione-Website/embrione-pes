@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import pixellenceLogo from "../../../assets/pixellence-logo.png"; 
-import BlurText from "./BlurText"; 
+import pixellenceLogo from "../../../assets/pixellence-logo.png";
+import BlurText from "./BlurText";
 
-const Particle = ({ delay, color }) => (
+const Particle = ({ delay }) => (
   <div
-    className="absolute w-1 h-1 bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] rounded-full opacity-20 animate-float"
+    className="absolute w-1 h-1 bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] rounded-full opacity-30 animate-float"
     style={{
       animationDelay: `${delay}s`,
       left: `${Math.random() * 100}%`,
@@ -20,67 +20,75 @@ const SponsorsComponent = () => {
     console.log("Animation completed!");
   };
 
-  const particles = Array.from({ length: 30 }).map((_, i) => (
-    <Particle key={i} delay={i * 0.15} color="#1ec6fa" />
+  const particles = Array.from({ length: 40 }).map((_, i) => (
+    <Particle key={i} delay={i * 0.2} />
   ));
 
   return (
-    <div className="relative flex flex-col items-center w-full h-fit gap-12 py-16 px-4 sm:px-6 md:px-12 min-h-screen bg-gradient-to-br from-black via-[#0a0b1a]/30 to-[#1a1b3a]/30 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22rgba(255,255,255,0.05)%22/%3E%3Ccircle cx=%2280%22 cy=%2230%22 r=%221%22 fill=%22rgba(255,255,255,0.03)%22/%3E%3Ccircle cx=%2250%22 cy=%2270%22 r=%221%22 fill=%22rgba(255,255,255,0.04)%22/%3E%3C/svg%3E')] bg-repeat bg-[length:500px_500px] opacity-10"></div>
+    <section className="relative flex flex-col items-center justify-center min-h-screen w-full px-6 py-20 overflow-hidden bg-gradient-to-br from-[#020617] via-[#0b1121] to-[#111827]">
+      {/* Floating background texture */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22rgba(255,255,255,0.05)%22/%3E%3C/svg%3E')] opacity-10"></div>
 
-      <BlurText
-        text="Our Esteemed Sponsor"
-        delay={150}
-        animateBy="words"
-        direction="top"
-        onAnimationComplete={handleAnimationComplete}
-        className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-white drop-shadow-[0_0_10px_rgba(30,198,250,0.4)] z-10 relative"
-      />
+      {/* Animated Particles */}
+      <div className="absolute inset-0 overflow-hidden">{particles}</div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl">
-        <a
-          href="https://pixcellencetech.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="relative mb-6 animate-bob-slow inline-block z-10"
-        >
-          <div>
-            <img
-              src={typeof pixellenceLogo === "string" ? pixellenceLogo : pixellenceLogo.src || "/assets/pixellence-logo.png"}
-              alt="Pixellence logo"
-              className="w-48 sm:w-64 md:w-80 h-auto object-contain drop-shadow-[0_0_15px_rgba(30,198,250,0.3)] cursor-pointer"
-              onError={(e) => {
-                e.target.src = "/assets/pixellence-logo.png"; // Fallback
-                console.error("Image load failed, using fallback");
-              }}
-            />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#1ec6fa]/20 to-[#5ce1e6]/20 opacity-20 blur-md pointer-events-none"></div>
-          </div>
-        </a>
+      {/* Main Content */}
+      <div className="relative z-10 flex flex-col items-center gap-8 text-center">
+        {/* Title Section */}
+        <BlurText
+          text="Know Our Sponsors"
+          delay={100}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 drop-shadow-[0_0_12px_rgba(30,198,250,0.4)]"
+        />
 
-        <h3>
+        <BlurText
+          text="Our Esteemed Sponsor"
+          delay={250}
+          animateBy="words"
+          direction="top"
+          className="text-xl sm:text-2xl md:text-3xl text-[#5ce1e6]/90 font-medium tracking-wide"
+        />
+
+        {/* Sponsor Logo + Name */}
+        <div className="relative flex flex-col items-center justify-center mt-8">
           <a
             href="https://pixcellencetech.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] bg-clip-text text-transparent tracking-wide drop-shadow-[0_0_5px_rgba(30,198,250,0.3)] inline-block"
+            className="relative group"
+          >
+            <img
+              src={
+                typeof pixellenceLogo === "string"
+                  ? pixellenceLogo
+                  : pixellenceLogo.src || "/assets/pixellence-logo.png"
+              }
+              alt="Pixellence logo"
+              className="w-40 sm:w-56 md:w-72 h-auto object-contain drop-shadow-[0_0_20px_rgba(30,198,250,0.4)] transition-all duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(30,198,250,0.6)]"
+            />
+            <div className="absolute inset-0 blur-2xl bg-gradient-to-r from-[#1ec6fa]/30 to-[#5ce1e6]/30 opacity-0 group-hover:opacity-100 transition duration-700"></div>
+          </a>
+
+          <a
+            href="https://pixcellencetech.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-3xl sm:text-4xl md:text-5xl font-semibold bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] bg-clip-text text-transparent mt-6 drop-shadow-[0_0_8px_rgba(30,198,250,0.4)] hover:scale-105 transition-all duration-300"
           >
             Pixellence
           </a>
-        </h3>
 
-        <div
-          className="absolute inset-0 w-[400px] h-[400px] -translate-x-1/2 -translate-y-1/2"
-          style={{ left: "50%", top: "50%" }}
-        >
-          {particles}
+          <p className="mt-6 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed bg-gradient-to-r from-[#1ec6fa] via-[#33bbcf] to-[#5ce1e6] bg-clip-text text-transparent px-3 animate-radiant">
+            We are thrilled to partner with <span className="font-semibold">Pixellence</span>, 
+            a visionary leader in innovation and creativity — 
+            bringing brilliance to our event! 🌟
+          </p>
         </div>
       </div>
-
-      <p className="text-center text-sm sm:text-base md:text-lg bg-gradient-to-r from-[#1ec6fa] via-[#33bbcf] to-[#5ce1e6] bg-clip-text text-transparent max-w-3xl leading-relaxed px-4 z-10 relative animate-radiant">
-        We are thrilled to partner with Pixellence, a visionary leader in innovation and creativity, bringing brilliance to our event!
-      </p>
-    </div>
+    </section>
   );
 };
 
