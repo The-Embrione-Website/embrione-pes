@@ -8,7 +8,7 @@ const timelineEvents = [
     title: "Registrations Begin",
     date: "8th October 2025",
     description:
-      "Registrations for Kodikon 5.0, the fifth edition of our 24-hour flagship national-level hackathon, officially open on 8th October 2025. Don’t miss your chance to be part of this innovation-packed event!",
+      "Registrations for Kodikon 5.0 officially open on 8th October 2025. Don’t miss your chance to be part of this innovation-packed event!",
     icon: Monitor,
   },
   {

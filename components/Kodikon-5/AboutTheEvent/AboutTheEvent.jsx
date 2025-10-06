@@ -94,7 +94,7 @@ const aboutData = {
 
   stats: [
     // Using more specific, enticing stats
-    { name: 'Registrations', value: '322+ Teams' }, 
+    { name: 'Registrations', value: '322+ Team' }, 
     { name: 'Hours of Hacking', value: '24' },
     { name: 'Prize Pool', value: '₹ 1 Lakh +' },
     { name: 'Industry Sponsors', value: '3+' },
