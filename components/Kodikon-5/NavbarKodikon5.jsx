@@ -28,7 +28,7 @@ const NavbarKodikon5 = () => {
                     : "bg-zinc-900/500  border-zinc-800 "
                     }`} ref={ref}
             >
-                <div className="justify-between mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+                <div className="justify-between mx-auto my-2 lg:max-w-7xl md:items-center md:flex md:px-8">
                     <div>
                         <div className="flex items-center justify-between md:py-5 md:block">
                             {/* {D:\Embrione PES\Kodikon 3.0\embrionepes.com\public\Kodikon3} */}
@@ -53,7 +53,7 @@ const NavbarKodikon5 = () => {
                             <div className="md:hidden flex flex-row items-center justify-center w-fit space-x-5">
                                 //TODO
                                 <Link href='https://docs.google.com/forms/d/e/1FAIpQLSeyjgoqhUQ_aXviHkznEPLaucm7z9EZ5csbHMzZviozr1skFw/viewform' target='_blank'>
-                                    <button className="text-white bg-white p-2 rounded-lg bg-opacity-25 h-fit w-fit  text-sm md:text-xl" >
+                                    <button className="text-white border border-white p-2 rounded-lg bg-opacity-25 h-fit w-fit  text-sm md:text-xl" >
                                         Register!
                                     </button>
                                 </Link>

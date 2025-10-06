@@ -18,7 +18,7 @@ const Navbar = () => {
   const constraintsRef = useRef(null);
 
   return (
-    <motion.div className="h-fit w-screen flex flex-1 flex-col md:flex-row items-center justify-center md:justify-end relative">
+    <motion.div className="h-fit w-screen flex flex-1 flex-col md:flex-row items-center  justify-center md:justify-end relative">
       <div className="self-center w-fit relative md:right-9 flex items-center justify-center">
         <NavbarAnnouncementComponent />
       </div>
