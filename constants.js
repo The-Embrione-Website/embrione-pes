@@ -26,7 +26,7 @@ export const oldDomainDetails = [
     ],
   },
   {
-    domainName: "Marketing and Sponsorship",
+    domainName: "Sponsorship",
     headsAndPhotos: [
       {
         domainHead: "Swikrit Laxmishekhar",
