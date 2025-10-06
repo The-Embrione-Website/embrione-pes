@@ -93,7 +93,7 @@ const aboutData = {
     // Using more specific, enticing stats
     { name: 'Registrations', value: '1XXX+' }, 
     { name: 'Hours of Hacking', value: '24' },
-    { name: 'Prize Pool', value: '₹30,000' },
+    { name: 'Prize Pool', value: '₹20,000' },
     { name: 'Industry Sponsors', value: '5+' },
   ]
 };
