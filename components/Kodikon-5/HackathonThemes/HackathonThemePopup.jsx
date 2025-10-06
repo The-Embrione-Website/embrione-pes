@@ -114,21 +114,7 @@ export const HackathonThemePopup = ({ isOpen, onClose, themeData }) => {
                       </ul>
                     </div>
 
-                    {/* --- THIS IS THE UPDATED SECTION --- */}
-                    <div>
-                      <h3 className="font-semibold text-pink-400 mb-2">Note from the mentors</h3>
-                      <div className="pl-4 border-l-2 border-slate-700/50 space-y-4 mt-3">
-                        {/* The 'Expectations' block has been removed */}
-                        <div>
-                          <h4 className="font-semibold text-slate-300">Expected research/pre-hackathon work</h4>
-                          <p className="text-sm text-slate-400 italic mt-1">{details.mentorNotes.research.note}</p>
-                          <ul className="list-disc pl-5 mt-2 space-y-1">
-                            {details.mentorNotes.research.points.map((point, index) => <li key={index}>{point}</li>)}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    {/* --- END OF UPDATED SECTION --- */}
+                    {/* The entire 'mentorNotes' div has been removed from here */}
 
                   </div>
                 </motion.div>
