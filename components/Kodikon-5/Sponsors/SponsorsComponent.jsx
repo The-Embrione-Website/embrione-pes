@@ -38,21 +38,35 @@ const SponsorsComponent = () => {
       />
 
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl">
-        <div className="relative mb-6 animate-bob-slow">
-          <img
-            src={typeof pixellenceLogo === "string" ? pixellenceLogo : pixellenceLogo.src || "/assets/pixellence-logo.png"}
-            alt="Pixellence logo"
-            className="w-48 sm:w-64 md:w-80 h-auto object-contain drop-shadow-[0_0_15px_rgba(30,198,250,0.3)]"
-            onError={(e) => {
-              e.target.src = "/assets/pixellence-logo.png"; // Fallback
-              console.error("Image load failed, using fallback");
-            }}
-          />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#1ec6fa]/20 to-[#5ce1e6]/20 opacity-20 blur-md"></div>
-        </div>
+        <a
+          href="https://pixcellencetech.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative mb-6 animate-bob-slow inline-block z-10"
+        >
+          <div>
+            <img
+              src={typeof pixellenceLogo === "string" ? pixellenceLogo : pixellenceLogo.src || "/assets/pixellence-logo.png"}
+              alt="Pixellence logo"
+              className="w-48 sm:w-64 md:w-80 h-auto object-contain drop-shadow-[0_0_15px_rgba(30,198,250,0.3)] cursor-pointer"
+              onError={(e) => {
+                e.target.src = "/assets/pixellence-logo.png"; // Fallback
+                console.error("Image load failed, using fallback");
+              }}
+            />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#1ec6fa]/20 to-[#5ce1e6]/20 opacity-20 blur-md pointer-events-none"></div>
+          </div>
+        </a>
 
-        <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] bg-clip-text text-transparent tracking-wide drop-shadow-[0_0_5px_rgba(30,198,250,0.3)]">
-          Pixellence
+        <h3>
+          <a
+            href="https://pixcellencetech.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] bg-clip-text text-transparent tracking-wide drop-shadow-[0_0_5px_rgba(30,198,250,0.3)] inline-block"
+          >
+            Pixellence
+          </a>
         </h3>
 
         <div
