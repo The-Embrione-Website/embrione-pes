@@ -32,7 +32,7 @@ const MatrixBackground = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0 overflow-hidden">
+    <div className="absolute inset-0 z-0 overflow-hidden opacity-70">
       <div className="absolute inset-0 flex justify-between">
         {columns.map(col => (
           <div
@@ -73,7 +73,7 @@ const HeroComponent = () => {
           <Image
             src={Kodikon5Logo}
             alt="Kodikon 5.0 Logo"
-            className='h-[25vh] p-2 w-auto md:max-w-2xl lg:max-w-3xl drop-shadow-[0_0_20px_rgba(76,114,184,0.6)]'
+            className='h-[12vh] sm:h-[18vh] md:h-[22vh] lg:h-[25vh] w-auto sm:max-w-xs md:max-w-2xl lg:max-w-3xl p-2 drop-shadow-[0_0_20px_rgba(76,114,184,0.6)]'
             priority
           />
         </div>
