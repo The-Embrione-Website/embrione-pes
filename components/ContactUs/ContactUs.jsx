@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import contact from "../../assets/contact.json";
 import { useForm } from "react-hook-form";
 import axios from "axios";
