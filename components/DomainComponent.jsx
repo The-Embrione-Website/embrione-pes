@@ -160,7 +160,8 @@ const DomainComponent = ({
     domainName = "Domain Name", 
     domainHead = "Unknown Member", 
     linkedInURL = "#", 
-    domainHeadPhoto 
+    domainHeadPhoto,
+    isDomainHead = false // <-- PROP ACCEPTED
 }) => {
 
     // Helper for formatting the member name (Title Case)
@@ -176,6 +177,9 @@ const DomainComponent = ({
         const parts = name.toLowerCase().split(' ');
         return parts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
     };
+    
+    // Determine the role label based on the new prop
+    const roleLabel = isDomainHead ? "Domain Head" : "Core Member";
 
 
     const initialAnimation = { opacity: 0, x: -50 };
@@ -214,7 +218,7 @@ const DomainComponent = ({
             {/* Content Container (Z-index ensures content is above the flash) */}
             <div className="relative z-20 w-full h-full flex flex-col">
                 
-                {/* 1. TOP SECTION (15%): DOMAIN HEAD - REVERTED: NO BG COLOR */}
+                {/* 1. TOP SECTION (15%): DOMAIN HEAD */}
                 <div className="h-[15%] w-full flex flex-col items-center justify-center px-4">
                     
                     {/* Domain Name: Modern font, no tracking */}
@@ -228,6 +232,8 @@ const DomainComponent = ({
                 <div 
                     className="h-[65%] w-full bg-cover bg-center relative" 
                     style={{ 
+                        // Note: If running this outside an environment with the images, these URLs will fail.
+                        // The PLACEHOLDER_PHOTO_URL fallback is not used here because the data contains paths.
                         backgroundImage: `url(${domainHeadPhoto || PLACEHOLDER_PHOTO_URL})`
                     }}
                 >
@@ -235,12 +241,12 @@ const DomainComponent = ({
                 </div>
 
 
-                {/* 3. BOTTOM SECTION (20%): MEMBER NAME & LINKEDIN - REVERTED: bg-black/15 */}
+                {/* 3. BOTTOM SECTION (20%): MEMBER NAME & LINKEDIN */}
                 <div className="h-[20%] w-full flex items-center justify-between px-5 py-3 bg-black/15">
                     <div className="flex flex-col items-start justify-center overflow-hidden">
-                        {/* Subtly mention Domain Head */}
+                        {/* Subtly mention Role (Dynamic based on isDomainHead) */}
                         <span className="text-xs text-[#00ffff] opacity-60 uppercase tracking-widest leading-none mb-1">
-                            Domain Head
+                            {roleLabel} 
                         </span>
                         {/* Member Name */}
                         <span className="text-2xl text-white font-normal tracking-wide leading-tight">
@@ -264,5 +270,6 @@ const DomainComponent = ({
     </>
   );
 };
+
 
 export default DomainComponent;
