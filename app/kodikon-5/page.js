@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import NavbarKodikon4 from "@/components/Kodikon-5/NavbarKodikon4";
+import NavbarKodikon5 from "@/components/Kodikon-5/NavbarKodikon5";
 import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressComponent";
 import BottomNavigationComponent from "@/components/BottomNavigation/BottomNavigationComponent";
 import HeroComponent from "@/components/Kodikon-5/HeroComponent";
@@ -18,7 +18,7 @@ export default function LandingPage() {
     <>
       
       <div className="relative flex justify-center items-center">
-        <NavbarKodikon4/>
+        <NavbarKodikon5/>
       </div>
       <ScrollProgressComponent />
       <div className=" relative flex justify-center items-center flex-col md:px-32 gap-y-9">
