@@ -208,6 +208,20 @@ export const domainDetails = [
 ];
 */
 
+const getFlattenedTeamData = (domainDetails) => {
+    return domainDetails.flatMap(domain => 
+        domain.headsAndPhotos.map(head => ({
+            // Pass the domainName to each card
+            domainName: domain.domainName,
+            // Pass the individual member details directly to match the DomainComponent props
+            domainHead: head.domainHead,
+            linkedInURL: head.linkedInURL,
+            domainHeadPhoto: head.domainHeadPhoto,
+            isDomainHead: head.isDomainHead || false,
+        }))
+    );
+};
+
 export const domainDetails = [
 
   {
