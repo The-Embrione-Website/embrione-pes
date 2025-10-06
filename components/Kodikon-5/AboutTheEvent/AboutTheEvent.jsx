@@ -118,7 +118,7 @@ const AboutTheEvent = () => {
         
         {/* Left Column (Content) */}
         <div className="flex flex-col gap-8 lg:col-span-3">
-          <div className="transform transition-transform duration-500 hover:scale-105">
+          {/* <div className="transform transition-transform duration-500 hover:scale-105">
             <Image
               src={prizeImage}
               alt="Build, Win, Earn Prize Money of ₹30,000"
@@ -126,7 +126,7 @@ const AboutTheEvent = () => {
               height={120}
               className="object-contain rounded-3xl shadow-2xl shadow-cyan-500/10"
             />
-          </div>
+          </div> */}
 
           {/* Justified text on larger screens for a cleaner look, left-aligned on mobile for readability */}
           <div className="space-y-5 text-gray-300 text-left lg:text-justify text-lg md:text-xl leading-relaxed">
