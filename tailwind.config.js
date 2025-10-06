@@ -7,8 +7,27 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)'],
+        display: ['var(--font-orbitron)'],
+      },
+      keyframes: {
+        'matrix-rain': {
+          '0%': { transform: 'translateY(-100%)', opacity: '0' },
+          '10%, 90%': { opacity: '1' },
+          '100%': { transform: 'translateY(100%)', opacity: '0' },
+        },
+      },
       animation: {
-        'spin-slow': 'bounce 3s linear infinite',
+        'matrix-rain': 'matrix-rain 15s linear infinite',
+      },
+      colors: {
+        // --- NEW COLOR ADDED ---
+        'dark-navy': '#000514',
+        'aabcdd-lightest': '#AABCDD',
+        'mid-blue': '#4C72B8',
+        'dark-blue': '#14213B',
+        'darkest-blue': '#0D1320',
       },
       boxShadow: {
         "footer": "10px 5px 6px -15px rgba(0, 0, 0, 0.3)",
@@ -21,18 +40,10 @@ module.exports = {
     },
     screens: {
       sm: "640px",
-      // => @media (min-width: 640px) { ... }
-
       md: "768px",
-      // => @media (min-width: 768px) { ... }
-
       lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
       xl: "1480px",
-      // => @media (min-width: 1280px) { ... }
-
       "2xl": "1536px",
-      // => @media (min-width: 1536px) { ... }
     },
   },
   plugins: [],
