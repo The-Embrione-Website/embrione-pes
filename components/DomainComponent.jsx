@@ -14,6 +14,7 @@ import {
 } from "framer-motion";*/
 
 import {motion} from "framer-motion";
+import { domainDetails } from "./components.jsx";
 
 const PLACEHOLDER_PHOTO_URL = "https://placehold.co/110x110/334155/ffffff?text=Head";
 const LinkedInIcon = ({ size = 25 }) => (
@@ -152,7 +153,22 @@ const DomainComponent = ({ index, domainName, headsAndPhotos }) => {
     </Tilt>
   );
 };*/
-const DomainComponent = ({ 
+
+const getFlattenedTeamData = (domainDetails) => {
+    return domainDetails.flatMap(domain => 
+        domain.headsAndPhotos.map(head => ({
+            // Pass the domainName to each card
+            domainName: domain.domainName,
+            // Pass the individual member details directly to match the DomainComponent props
+            domainHead: head.domainHead,
+            linkedInURL: head.linkedInURL,
+            domainHeadPhoto: head.domainHeadPhoto,
+            isDomainHead: head.isDomainHead || false,
+        }))
+    );
+};
+
+const DomainGrid = ({ 
     index = 0, 
     domainName = "Domain Name", 
     domainHead = "Unknown Member", 
@@ -269,5 +285,28 @@ const DomainComponent = ({
   );
 };
 
+const DomainComponent = () => {
+    // 1. Process the nested data structure into a flat list using the utility function.
+    const flattenedData = getFlattenedTeamData(domainDetails);
 
+    return (
+        <div className="min-h-screen bg-gray-900 flex flex-wrap justify-center items-center p-8 font-sans">
+            {/* 2. Map over the single, flat array */}
+            {flattenedData.map((member, index) => (
+                <DomainGrid
+                    key={`${member.domainName}-${member.domainHead}`} 
+                    index={index} // Use the index from the flat array for staggered animation
+                    domainName={member.domainName}
+                    domainHead={member.domainHead}
+                    linkedInURL={member.linkedInURL}
+                    domainHeadPhoto={member.domainHeadPhoto}
+                    isDomainHead={member.isDomainHead}
+                />
+            ))}
+        </div>
+    );
+};
+
+// Export the wrapper component that manages the grid layout and data
 export default DomainComponent;
+
