@@ -4,14 +4,16 @@ import React, { useEffect } from "react";
 import { slideIn, fadeIn, zoomIn } from "@/utils/framermotion";
 import { planetVariants } from "@/utils/framermotion";
 import { AiFillLinkedin } from "react-icons/ai";
-import { Tilt } from "react-tilt";*/
+import { Tilt } from "react-tilt";
 
 import {
   motion,
   useScroll,
   useTransform,
   useMotionValueEvent,
-} from "framer-motion";
+} from "framer-motion";*/
+
+import {motion} from "framer-motion";
 
 const PLACEHOLDER_PHOTO_URL = "https://placehold.co/110x110/334155/ffffff?text=Head";
 const LinkedInIcon = ({ size = 25 }) => (
@@ -80,10 +82,9 @@ const customStyles = `
   position: absolute;
   top: 0;
   left: 0;
-  width: 200%; /* Long enough for sweep */
-  height: 200%; /* Tall enough for diagonal coverage */
+  width: 200%; 
+  height: 200%; 
   
-  /* Initial state: Rotated to -45deg (Top-Left to Bottom-Right line angle) */
   /* Initial position is set by the 0% keyframe for smooth start */
   transform: rotate(-45deg) translateX(-100%);
   transform-origin: top left;
@@ -103,8 +104,8 @@ const customStyles = `
 
 /* Hover effects */
 .group:hover .flash-sweep {
-  /* Run the animation once (forwards ensures it holds the final 100% keyframe state) */
-  animation: sweep 0.7s ease-out forwards; /* Slower (0.7s) */
+  /* Run the animation once */
+  animation: sweep 0.7s ease-out forwards; 
 }
 `;
 
@@ -154,28 +155,32 @@ const DomainComponent = ({ index, domainName, headsAndPhotos }) => {
     </Tilt>
   );
 };*/
-const DomainComponent = ({ index = 0, domainName = "Domain Name", headsAndPhotos = [] }) => {
-    // Destructure the first head for the single-card layout
-    const head = headsAndPhotos[0] || {};
-    const { domainHead = "Unknown Member", linkedInURL = "#", domainHeadPhoto } = head;
+const DomainComponent = ({ 
+    index = 0, 
+    domainName = "Domain Name", 
+    domainHead = "Unknown Member", 
+    linkedInURL = "#", 
+    domainHeadPhoto 
+}) => {
 
-    // Helper for formatting name: "First letter caps, unbold" (as requested for member name)
+    // Helper for formatting the member name (Title Case)
     const formatName = (name) => {
         if (!name) return "";
         const parts = name.toLowerCase().split(' ');
         return parts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
     };
 
-    // Helper for formatting domain name: "First letter caps, unbold" (as requested for domain name)
+    // Helper for formatting the DOMAIN NAME (Title Case)
     const formatDomainName = (name) => {
         if (!name) return "";
-        // No letter spacing needed, just ensure title case.
-        return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        const parts = name.toLowerCase().split(' ');
+        return parts.map(part => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
     };
 
 
     const initialAnimation = { opacity: 0, x: -50 };
-    const animateAnimation = { opacity: 1, x: 0, transition: { duration: 0.5, delay: (index % 3) * 0.2 } };
+    // Animation delay uses the overall index from the flattened list for staggered entry
+    const animateAnimation = { opacity: 1, x: 0, transition: { duration: 0.5, delay: (index % 6) * 0.1 } }; 
 
   return (
     <>
@@ -191,7 +196,7 @@ const DomainComponent = ({ index = 0, domainName = "Domain Name", headsAndPhotos
                 translateY: -8, // Makes it look like it's lifting
                 // COMBINED SHADOW: Dark Lift Shadow + CYBERCORE CYAN GLOW
                 boxShadow: "0 15px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 255, 255, 0.6)", 
-                // Dark Blue (#14213B) to Mid Blue (#4C72B8) gradient
+                // Dark Blue (#14213B) to Mid Blue (#4C72B8) gradient (Unchanged)
                 background: "linear-gradient(135deg, rgba(20, 33, 59, 0.5) 0%, rgba(76, 114, 184, 0.5) 100%)" 
             }}
             transition={{ duration: 0.15, ease: "easeOut" }}
@@ -199,7 +204,9 @@ const DomainComponent = ({ index = 0, domainName = "Domain Name", headsAndPhotos
             // Fixed height h-[400px] required for the 15/65/20 split to work
             className={`group h-[400px] w-[250px] md:w-[300px] bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 text-gray-200 m-4 relative overflow-hidden flex flex-col`}
         >
-            {/* 2. Diagonal Flashing Animation Element (Full overlay) */}
+            {/* 2. Diagonal Flashing Animation Element (Full overlay) 
+                It MUST be the first element inside the motion.div to cover everything. 
+            */}
             <div className="flash-overlay">
                 <div className="flash-sweep"></div>
             </div>
@@ -207,7 +214,7 @@ const DomainComponent = ({ index = 0, domainName = "Domain Name", headsAndPhotos
             {/* Content Container (Z-index ensures content is above the flash) */}
             <div className="relative z-20 w-full h-full flex flex-col">
                 
-                {/* 1. TOP SECTION (15%): DOMAIN HEAD */}
+                {/* 1. TOP SECTION (15%): DOMAIN HEAD - REVERTED: NO BG COLOR */}
                 <div className="h-[15%] w-full flex flex-col items-center justify-center px-4">
                     
                     {/* Domain Name: Modern font, no tracking */}
@@ -224,12 +231,11 @@ const DomainComponent = ({ index = 0, domainName = "Domain Name", headsAndPhotos
                         backgroundImage: `url(${domainHeadPhoto || PLACEHOLDER_PHOTO_URL})`
                     }}
                 >
-                    {/* Subtle Futuristic Tint Overlay */}
-                    <div className="absolute inset-0 bg-black/40 backdrop-brightness-75 transition duration-300"></div>
+                    {/* Image section */}
                 </div>
 
 
-                {/* 3. BOTTOM SECTION (20%): MEMBER NAME & LINKEDIN */}
+                {/* 3. BOTTOM SECTION (20%): MEMBER NAME & LINKEDIN - REVERTED: bg-black/15 */}
                 <div className="h-[20%] w-full flex items-center justify-between px-5 py-3 bg-black/15">
                     <div className="flex flex-col items-start justify-center overflow-hidden">
                         {/* Subtly mention Domain Head */}
@@ -258,6 +264,5 @@ const DomainComponent = ({ index = 0, domainName = "Domain Name", headsAndPhotos
     </>
   );
 };
-
 
 export default DomainComponent;
