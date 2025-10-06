@@ -21,7 +21,7 @@ const MatrixBackground = () => {
         newColumns.push({
           id: i,
           content: binaryString,
-          animationDuration: `${Math.random() * 15 + 5}s`,
+          animationDuration: `${Math.random() * 30 + 5}s`,
           animationDelay: `${Math.random() * 5}s`,
         });
       }
@@ -75,12 +75,12 @@ const HeroComponent = () => {
             alt="Kodikon 5.0 Logo"
             className='h-[25vh] p-2 w-auto md:max-w-2xl lg:max-w-3xl drop-shadow-[0_0_20px_rgba(76,114,184,0.6)]'
             priority
-          />  
+          />
         </div>
 
-        <p className="font-sans text-lg md:text-2xl font-light text-aabcdd-lightest max-w-3xl mt-2">
+        {/* <p className="font-sans text-lg md:text-2xl font-light text-aabcdd-lightest max-w-3xl mt-2">
           The ultimate coding marathon returns. Build, innovate, and compete with the best minds in tech.
-        </p>
+        </p> */}
       </div>
 
       <div className="absolute bottom-8 z-30">
@@ -90,7 +90,7 @@ const HeroComponent = () => {
               className="w-1 h-2 md:w-1.5 md:h-3 bg-aabcdd-lightest rounded-full"
               animate={{ y: [0, 12, 0] }}
               transition={{
-                duration: 1.5,
+                duration: 30,
                 repeat: Infinity,
                 repeatType: "loop",
               }}

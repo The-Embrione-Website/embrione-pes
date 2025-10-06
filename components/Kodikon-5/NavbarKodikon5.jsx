@@ -53,7 +53,7 @@ const NavbarKodikon5 = () => {
                             <div className="md:hidden flex flex-row items-center justify-center w-fit space-x-5">
                                 //TODO
                                 <Link href='https://docs.google.com/forms/d/e/1FAIpQLSeyjgoqhUQ_aXviHkznEPLaucm7z9EZ5csbHMzZviozr1skFw/viewform' target='_blank'>
-                                    <button className="text-white bg-white p-3 rounded-lg bg-opacity-25 h-fit w-fit  text-sm md:text-xl" >
+                                    <button className="text-white bg-white p-2 rounded-lg bg-opacity-25 h-fit w-fit  text-sm md:text-xl" >
                                         Register!
                                     </button>
                                 </Link>
