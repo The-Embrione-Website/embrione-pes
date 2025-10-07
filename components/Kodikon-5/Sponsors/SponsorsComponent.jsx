@@ -26,7 +26,7 @@ const SponsorsComponent = () => {
 
   return (
     <>
-    <TitleComponent titleData={"Sponsers"} />
+    <TitleComponent titleData={"Sponsors"} />
     <section className="relative flex items-center justify-center min-h-screen w-full px-4 sm:px-6 py-10 overflow-hidden bg-gradient-to-br from-[#020617] via-[#0b1121] to-[#111827]">
       {/* Floating background texture */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22rgba(255,255,255,0.05)%22/%3E%3C/svg%3E')] opacity-10"></div>
