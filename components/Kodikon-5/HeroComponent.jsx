@@ -80,7 +80,7 @@ const HeroComponent = () => {
         <p
           className="font-sans text-lg md:text-3xl font-light text-aabcdd-lightest max-w-3xl mt-2"
           style={{
-            textShadow: "0 0 3px #00f0ff, 0 0 6px #00f0ff",
+            textShadow: "0 0 2px #00f0ff, 0 0 4px #00f0ff",
           }}
         >
           POWERED BY
