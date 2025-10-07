@@ -75,11 +75,11 @@ const SponsorsComponent = () => {
             Pixcellence
           </a>
 
-          <p className="mt-4 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed bg-gradient-to-r from-[#1ec6fa] via-[#33bbcf] to-[#5ce1e6] bg-clip-text text-transparent px-3 animate-radiant">
-            We are thrilled to partner with <span className="font-semibold">Pixellence</span>, 
-            a visionary leader in innovation and creativity — 
-            bringing brilliance to our event! 🌟
-          </p>
+         <p className="mt-4 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed bg-gradient-to-r from-[#1ec6fa] via-[#33bbcf] to-[#5ce1e6] bg-clip-text text-transparent px-3 animate-radiant">
+          We are thrilled to partner with <span className="font-semibold">Pixcellence</span>, 
+          pioneers in smart security technology who bring cutting-edge innovation to everyday living! 🌟
+        </p>
+
         </div>
       </div>
     </section>
