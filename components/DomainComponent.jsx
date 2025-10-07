@@ -14,7 +14,7 @@ import {
 } from "framer-motion";*/
 
 import {motion} from "framer-motion";
-import { domainDetails } from "./components.jsx";
+import { domainDetails } from '../constants.js';
 
 const PLACEHOLDER_PHOTO_URL = "https://placehold.co/110x110/334155/ffffff?text=Head";
 const LinkedInIcon = ({ size = 25 }) => (
