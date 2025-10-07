@@ -37,17 +37,9 @@ const SponsorsComponent = () => {
       {/* Centered Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-3xl w-full gap-8">
         {/* Title Section */}
-        <BlurText
-          text="Know Our Sponsors"
-          delay={100}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white mb-2 drop-shadow-[0_0_12px_rgba(30,198,250,0.4)]"
-        />
 
         <BlurText
-          text="Our Esteemed Sponsor"
+          text="Our Esteemed Title Sponsor"
           delay={250}
           animateBy="words"
           direction="top"
@@ -80,7 +72,7 @@ const SponsorsComponent = () => {
             rel="noopener noreferrer"
             className="text-2xl sm:text-4xl md:text-5xl font-semibold bg-gradient-to-r from-[#1ec6fa] to-[#5ce1e6] bg-clip-text text-transparent mt-6 drop-shadow-[0_0_8px_rgba(30,198,250,0.4)] hover:scale-105 transition-all duration-300"
           >
-            Pixellence
+            Pixcellence
           </a>
 
           <p className="mt-4 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed bg-gradient-to-r from-[#1ec6fa] via-[#33bbcf] to-[#5ce1e6] bg-clip-text text-transparent px-3 animate-radiant">

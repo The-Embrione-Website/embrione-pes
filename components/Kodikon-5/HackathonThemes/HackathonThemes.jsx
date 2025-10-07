@@ -5,11 +5,12 @@ import { HackathonThemePopup } from "./HackathonThemePopup";
 import TitleComponent from "../HelperComponents/TitleComponent";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-// Data with the correct structure
+// In HackathonThemes.js
+
 const themes = [
   {
     title: "GenAI",
-    image: "/Kodikon5/themes-thumbnail/ai.jpg",
+    image: "/Kodikon5/themes-thumbnail/developer-tools.jpg",
     cardDescription:
       "Lightweight, user-controlled GenAI co-pilots that simplify information, scaffold planning, and support clear expression.",
     details: {
@@ -47,20 +48,7 @@ const themes = [
         { text: "Bhushan, S., et al. (2024). AI-Enhanced Dyscalculia Screening: A Survey of Methods and Applications for Children. Diagnostics, 14(13), 1441. DOI:10.3390/diagnostics14131441", url: "https://doi.org/10.3390/diagnostics14131441" },
         { text: "Zdravkova, K., et al. (2022). Cutting-edge communication and learning assistive technologies for disabled children: An artificial intelligence perspective. Frontiers in Artificial Intelligence, 5. DOI:10.3389/frai.2022.970430", url: "https://doi.org/10.3389/frai.2022.970430" },
       ],
-      mentorNotes: {
-        // expectations: {
-        //   note: "Note: This is for the organizing team and mentors’ reference only to understand what different parts of the pipeline the teams can possibly deliver at the end of the 24 hours hackathon",
-        // },
-        research: {
-          note: "Note: This will be the headers in the slide deck that the participating teams submit (for the selection of the top 40 teams that will participate on the actual days of the hackathon)",
-          points: [
-            "Interpretation of the Problem: Their own articulation of what the problem means, and the key challenges they identify.",
-            "Background Research: Awareness of related work, state-of-the-art techniques, or gaps in existing approaches.",
-            "Articulation of Approach: A structured outline of their proposed solution — methods, data sources, tech stack, or novel angle.",
-            "Feasibility & Innovation: Why their approach is realistic for 24 hours, and what makes it unique/impactful.",
-          ],
-        },
-      },
+      // mentorNotes object has been removed
     },
   },
 ];
@@ -97,9 +85,10 @@ const HackathonThemes = () => {
   return (
     <>
       <div className="flex justify-center flex-col w-full h-fit gap-8 py-8">
-        <div>
-        <TitleComponent titleData="Hackathon Themes" id="theme" className="mx-auto text-center"/>
+        <div className="flex justify-center items-center text-center">
+          <TitleComponent titleData="Hackathon Themes" id="theme" />
         </div>
+
 
         <motion.div
           ref={themeGrid}
