@@ -3,6 +3,8 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { whitepeslogo, whitelogo } from "@/public/Kodikon3";
+import pes from "@/public/Kodikon5/pes.png";
+import cse from "@/public/Kodikon5/cse.png";
 import Image from "next/image";
 
 const NavbarKodikon5 = () => {
@@ -36,7 +38,15 @@ const NavbarKodikon5 = () => {
                                 <a href="/" className="flex items-center h-10">
                                     {/* <img src={whitepeslogo} className="h-8 mr-3 text-white" alt="PES" /> */}
                                     <Image
-                                        src={whitepeslogo}
+                                        src={pes}
+                                        className="w-[100px]"
+                                        alt=""
+                                    />
+                                </a>
+                                <a href="/" className="flex items-center h-10">
+                                    {/* <img src={whitepeslogo} className="h-8 mr-3 text-white" alt="PES" /> */}
+                                    <Image
+                                        src={cse}
                                         className="w-[100px]"
                                         alt=""
                                     />
