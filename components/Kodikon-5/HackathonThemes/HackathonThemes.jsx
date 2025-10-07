@@ -85,9 +85,10 @@ const HackathonThemes = () => {
   return (
     <>
       <div className="flex justify-center flex-col w-full h-fit gap-8 py-8">
-        <div>
-        <TitleComponent titleData="Hackathon Themes" id="theme" className="mx-auto text-center"/>
+        <div className="flex justify-center items-center text-center">
+          <TitleComponent titleData="Hackathon Themes" id="theme" />
         </div>
+
 
         <motion.div
           ref={themeGrid}

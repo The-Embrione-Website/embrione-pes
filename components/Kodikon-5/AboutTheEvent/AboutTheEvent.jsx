@@ -33,7 +33,11 @@ const AboutTheEvent = () => {
       id="about" 
       className="relative py-16 sm:py-20 px-6 sm:px-8 lg:px-16 overflow-hidden"
     >
-      <TitleComponent titleData={aboutData.title} />
+<div className="flex justify-center items-center ">
+  <TitleComponent titleData={aboutData.title} />
+</div>
+
+
 
       {/* Decorative Gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vh] max-w-[600px] max-h-[600px] blue__gradient z-[-1] opacity-50 blur-xl" />
@@ -66,12 +70,14 @@ const AboutTheEvent = () => {
         {/* Top Row - 3 Equal Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 text-center">
           {aboutData.stats.slice(0, 3).map((stat) => (
-            <div
-              key={stat.name}
-              className="bg-slate-800/40 p-6 rounded-2xl backdrop-blur-sm border border-slate-700/60 
-                         transition-all duration-300 hover:scale-105 hover:bg-slate-700/50 
-                         hover:shadow-lg hover:shadow-cyan-500/20"
-            >
+           <div
+            key={stat.name}
+            className="flex flex-col items-center justify-center bg-slate-800/40 p-6 rounded-2xl 
+                      backdrop-blur-sm border border-slate-700/60 text-center
+                      transition-all duration-300 hover:scale-105 hover:bg-slate-700/50 
+                      hover:shadow-lg hover:shadow-cyan-500/20"
+          >
+
               <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-cyan-400">{stat.value}</p>
               <p className="text-base sm:text-lg text-gray-400 mt-2">{stat.name}</p>
             </div>

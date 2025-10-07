@@ -54,7 +54,11 @@ const PrizesComponent = () => {
 
   return (
     <div className="flex flex-col w-full h-fit gap-6">
+    <div className="flex justify-center items-center ">
       <TitleComponent titleData="Prizes in Store!" />
+    </div>
+
+
       <div className="w-full h-fit grid grid-cols-1 md:grid-cols-3 place-items-center my-16 gap-9 md:gap-0 ">
         <PrizeCard index={1} source={images.first} amount={prizeAmounts.first} showConfetti />
         <PrizeCard index={2} source={images.second} amount={prizeAmounts.second} showConfetti/>
