@@ -51,11 +51,11 @@ const NavbarKodikon5 = () => {
                                         alt=""
                                     />
                                 </a>
-                                <a href="/" className="hidden md:flex items-center h-10 ">
+                                <a href="/" className="flex items-center h-10 ">
                                     {/* <img src={whitepeslogo} className="h-8 mr-3 text-white" alt="PES" /> */}
                                     <Image
                                         src={whitelogo}
-                                        className="md:w-[100px] w-[100px]"
+                                        className=" w-[100px]"
                                         alt=""
                                     />
                                 </a>
