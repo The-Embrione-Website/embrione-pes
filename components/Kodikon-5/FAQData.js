@@ -9,7 +9,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Who are the organisers of this event?",
-    answer: "Kodikon 3.0 is being organised by Team Embrione, the official technical vertical under the Department of Computer Science and Engineering at PES University, Ring Road Campus, Bangalore, Karnataka. PES University is one of the country’s leading teaching and research universities. We are the number one university under the category of New Universities, under 5 years, in Karnataka State Universities Rating Framework (KSURF) 2019 published recently."
+    answer: "Kodikon 5.0 is being organised by Team Embrione, the official technical vertical under the Department of Computer Science and Engineering at PES University, Ring Road Campus, Bangalore, Karnataka. PES University is one of the country’s leading teaching and research universities. We are the number one university under the category of New Universities, under 5 years, in Karnataka State Universities Rating Framework (KSURF) 2019 published recently."
   },
   {
     id: uuidv4(),
@@ -19,7 +19,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Who all can participate?",
-    answer: "All students actively enrolled at any engineering institute across India are allowed to participate in Kodikon 3.0."
+    answer: "All students actively enrolled at any engineering institute across India are allowed to participate in Kodikon 5.0."
   },
   {
     id: uuidv4(),
