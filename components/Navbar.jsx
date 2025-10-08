@@ -27,7 +27,7 @@ const Navbar = () => {
           src="/embrionelogo.png"
           height={200}
           width={200}
-          className="md:pr-10 flicker-logo h-[100px] w-[100px] md:h-[200px] md:w-[200px] cursor-pointer "
+          className="md:pr-10 flicker-logo h-[100px] w-[100px] md:h-[200px] md:w-[200px] mt-3 cursor-pointer "
         />
       </motion.div>
     </motion.div>
