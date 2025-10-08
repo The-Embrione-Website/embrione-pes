@@ -17,15 +17,36 @@ const NavbarAnnouncementComponent = () => {
         //     </div>
         // </div>
 
-        <div className="flex flex-row items-center justify-center gap-x-3 mt-8">
-            <Link href={'/kodikon-5'}>
-                <BsFillArrowUpRightCircleFill className='text-xl md:text-2xl text-gray-300' />
-            <div className="flex flex-col items-center ">
-                <p className='gradient-text-animation text-2xl md:text-2xl lg:text-3xl font-bold'>KODIKON 5.0 ✨</p>
-                <p className="text-gray-300 relative right-2 text-xs md:text-[15px]"></p>
-            </div>
-            </Link>
-        </div>
+        // <div className="flex flex-row items-center justify-center gap-x-3 mt-8">
+        //     <Link href={'/kodikon-5'}>
+        //         <BsFillArrowUpRightCircleFill className='text-xl md:text-2xl text-gray-300' />
+        //     <div className="flex flex-col items-center ">
+        //         <p className='gradient-text-animation text-2xl md:text-2xl lg:text-3xl font-bold'>KODIKON 5.0 ✨</p>
+        //         <p className="text-gray-300 relative right-2 text-xs md:text-[15px]"></p>
+        //     </div>
+        //     </Link>
+        // </div>
+
+<div className="flex flex-row items-center justify-center mt-6 px-4">
+  <Link
+    href="/kodikon-5"
+    className="group relative flex items-center gap-x-2 sm:gap-x-3 px-4 sm:px-8 py-3 sm:py-4 rounded-full text-white font-bold text-lg sm:text-2xl transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/40"
+  >
+    {/* Gradient border */}
+    <span className="absolute inset-0 rounded-full p-[2px] bg-gradient-to-r from-cyan-400 to-blue-600 animate-gradient-border"></span>
+
+    {/* Inner background (transparent with dark tone) */}
+    <span className="absolute inset-[2px] rounded-full bg-[#0a0f1c]"></span>
+
+    {/* Icon and text */}
+    <BsFillArrowUpRightCircleFill className="relative z-10 text-xl sm:text-2xl text-white transition-transform duration-300 " />
+    <span className="relative z-10 gradient-text-animation text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold">
+      KODIKON 5.0
+    </span>
+  </Link>
+</div>
+
+
 
 
     )
