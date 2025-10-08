@@ -20,11 +20,11 @@ const NavbarAnnouncementComponent = () => {
         <div className="flex flex-row items-center justify-center gap-x-3 mt-8">
             <Link href={'/kodikon-5'}>
                 <BsFillArrowUpRightCircleFill className='text-xl md:text-2xl text-gray-300' />
-            </Link>
             <div className="flex flex-col items-center ">
                 <p className='gradient-text-animation text-2xl md:text-2xl lg:text-3xl font-bold'>KODIKON 5.0 ✨</p>
                 <p className="text-gray-300 relative right-2 text-xs md:text-[15px]"></p>
             </div>
+            </Link>
         </div>
 
 
