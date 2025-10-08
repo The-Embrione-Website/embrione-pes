@@ -32,14 +32,11 @@ const AboutUs = () => {
           data-aos-duration="500"
           data-aos-delay="200"
         >
-          The <span className="gradient-text-animation">Embrione</span> is a
-          peer-to-peer based tech community, under the CSE vertical of PES
-          University, Bangalore. The club mainly focuses on Providing a platform
-          and opportunities for students to grow and develop their skill sets.
-          The club focuses at students in the first and second years by
-          organising beginner-friendly hackathons and other such technical
-          events. We bring together fresh minds and give them a stage the
-          freedom to unleash their full potential.
+          The <span className="gradient-text-animation">Embrione </span> 
+          is the official technical vertical  under the Department of Computer Science and Engineering at PES University, Bangalore.We’re a student-led collective driven by curiosity, collaboration, and the pursuit of meaningful innovation.
+          At Embrione, we move beyond building projects - we question ideas, explore possibilities, and push the boundaries of technology itself. Through initiatives like Kodikon, our flagship national hackathon, we create spaces for students to think deeply, experiment boldly, and bring research-inspired ideas to life.
+          We aim to bridge the gap between learning and doing - fostering a culture where students don’t just work with technology, but shape its future.
+
         </p>
       </div>
     </div>

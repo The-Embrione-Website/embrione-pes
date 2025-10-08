@@ -239,6 +239,16 @@ export const ClubEvents = [
       "Kodikon 2.0, a highly successful hackathon, was designed to encourage engineering students from the 2021-2025 batch to develop innovative solutions for real-world problems. With over 160 participants, the event promoted friendly competition while providing a beginner-friendly environment for students new to the tech world. Through peer-to-peer interaction, extensive mentoring, and feedback from tech professors, participants had the opportunity to enhance their skills, gain industry exposure, improve their soft skills, networking abilities, and technical expertise. The winners of this engaging hackathon received exciting prizes.",
   },
   {
+    eventName: "Kodikon 3.0",
+    eventDescription:
+    "The third edition of our highly anticipated 24-hour hackathon, KODIKON 3.0, was successfully held on November 4th and 5th, 2023. This year’s event exceeded expectations, attracting over 1200 registrations and featuring a select group of 170+ participants, carefully chosen through a competitive selection process. With prizes worth more than ₹4 lakh, participants not only gained cutting-edge insights into the tech world but also walked away with exciting rewards and exclusive giveaways. The event was a true celebration of innovation and collaboration, making it an unforgettable experience for all involved."
+  },
+  {
+    eventName: "Kodikon 4.0",
+    eventDescription:
+    "Kodikon 4.0, the fourth edition of our highly successful annual hackathon, was aimed at developing cutting-edge solutions to real-world problems. With 322 teams registering and 40 teams battling it out for the coveted prizes, the event was open to all undergraduate engineering students across colleges in India. The hackathon revolved around five central themes—developer tools, edtech, smart cities, next-generation technologies such as blockchain and AR/VR, and assistive tech and accessibility with the vision of empowering all and enabling everyone. Kodikon 4.0 provided a platform for the next generation of engineers to showcase their skills while also learning through collaboration, and with guidance from mentors and industry experts, participants gained valuable exposure, built connections, and strengthened both their technical and interpersonal abilities."
+  },
+  {
     eventName: "Cipher",
     eventImagesArray: [
       "/Cipher/image1.jpeg",
@@ -262,12 +272,24 @@ export const ClubEvents = [
 ];
 
 export const announcements = [
+  // //todo
+  // {
+  //   announcementName: "Kodikon 5.0 Registrations open!",
+  //   announcementDescription:
+  //     "Registrations for Kodikon 5.0, the fifth edition of our 24-hour highly successful flagship national-level hackathon, are open now to all engineering undergraduates across the nation.",
+  //   formLink: "",
+  //   formLinkStatus: "Open",
+  //   //todo
+  //   dateOfEntry: 1759940720837,
+  //   postedBy: "Vishal",
+  //   postedByDomain: "WebDev Domain",
+  // },
   {
     announcementName: "Kodikon 3.0 Registrations open!",
     announcementDescription:
       "Registrations for Kodikon 3.0, the third edition of our 24-hour highly successful flagship national-level hackathon, are open now to all engineering undergraduates across the nation.",
     formLink: "https://hack2skill.com/hack/kodikon3",
-    formLinkStatus: "Open",
+    formLinkStatus: "Closed",
     dateOfEntry: 1697800443939,
     postedBy: "Karthik Namboori",
     postedByDomain: "WebDev Domain",
@@ -277,7 +299,7 @@ export const announcements = [
     announcementDescription:
       "The most awaited hackathon of PES University is here, only this time, BIGGER! The 24 hour National Hackathon, Kodikon 3.0,  is coming. Stay Tuned, for more!!",
     formLink: "",
-    formLinkStatus: "Soon",
+    formLinkStatus: "Closed",
     dateOfEntry: 1690869081967,
     postedBy: "Karthik Namboori",
     postedByDomain: "WebDev Domain",

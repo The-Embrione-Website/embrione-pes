@@ -65,7 +65,7 @@ const Hero = () => {
           ref={ref}
         />
         <span className="text-white  text-1xl md:text-2xl pl-1 text-focus-in xl:text-3xl">
-          CSE Vertical, PES University
+          Tech vertical under CSE department, PES University
         </span>
       </motion.div>
       <motion.div

@@ -63,9 +63,6 @@ const Footer = () => {
           <a href={socialLinks[2]?.url} target="_blank">
             <BsWhatsapp size={26} className={iconStyles} />
           </a>
-          <a href={socialLinks[3]?.url} target="_blank">
-            <BsDiscord size={26} className={iconStyles} />
-          </a>
         </div>
         <p className="text-center w-fit">© All Rights Reserved 2023</p>
         <p className="text-center">
@@ -75,8 +72,8 @@ const Footer = () => {
       </div>
 
       <div className=" flex-col items-center justify-center self-center m-0 md:flex hidden w-fit">
-        <p className="text-center"> Vijit Kumar: vijitviku@gmail.com </p>
-        <p className="text-center">Vishal Lodha: vishal@gmail.com </p>
+        <p className="text-center">Kunjal Patwari: patwarikunjal@gmail.com </p>
+        <p className="text-center">Preksha M: preksham2004@gmail.com</p>
       </div>
       <div className="blue__gradient absolute md:top-[-300px] md:left-[-100px] h-[350px] w-[350px] md:h-[400px] md:w-[450px] z-[-60] " />
     </div>
