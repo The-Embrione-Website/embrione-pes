@@ -64,9 +64,9 @@ const Hero = () => {
           className=" text-white w-fit md:text-9xl text-[70px]  text xl:text-[190px] md:tracking-in-expand md:py-0 py-9"
           ref={ref}
         />
-        <span className="text-white  text-1xl md:text-2xl pl-1 text-focus-in xl:text-3xl">
-          Tech vertical under CSE department, PES University
-        </span>
+        <span className="text-white text-lg md:text-2xl xl:text-3xl text-center md:text-left text-focus-in">
+    Tech vertical under CSE department, PES University
+  </span>
       </motion.div>
       <motion.div
         className="-z-10 w-screen items-center justify-center md:hidden flex relative -top-9   "
