@@ -1,211 +1,267 @@
-export const oldDomainDetails = [
-
+export const teamMembersDetails = [
   {
-    domainName: "Logistics",
-    headsAndPhotos: [
-      {
-        domainHead: "Naresh Srinivas",
-        domainHeadPhoto: "/domiainHeadPhotos/naresh.jpg",
-        linkedInURL: "https://www.linkedin.com/in/naresh-srinivas-28a608215/",
-      },
-      {
-        domainHead: "Chaitra Upadhya",
-        domainHeadPhoto: "/domiainHeadPhotos/chaitra.jpeg",
-        linkedInURL: "https://www.linkedin.com/in/chaitra-upadhya-922426211/",
-      },
-    ],
+    name: "Kunjal Patwari",
+    domain: "Club Head",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/kunjal.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/kunjal-patwari-967085291",
+    srn: "PES1UG23CS317",
+    email: "patwarikunjal@gmail.com",
   },
   {
-    domainName: "Event Management",
-    headsAndPhotos: [
-      {
-        domainHead: "Punarv Dinakar",
-        domainHeadPhoto: "/domiainHeadPhotos/punarv.jpeg",
-        linkedInURL: "goto-linkedin",
-      },
-    ],
+    name: "Preksha M",
+    domain: "Club Head",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/preksha.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/preksha-m-90b309329/",
+    srn: "PES1UG23CS450",
+    email: "preksham2004@gmail.com",
   },
   {
-    domainName: "Marketing and Sponsorship",
-    headsAndPhotos: [
-      {
-        domainHead: "Swikrit Laxmishekhar",
-        domainHeadPhoto: "/domiainHeadPhotos/swikrit.jpg",
-        linkedInURL:
-          "https://www.linkedin.com/in/swikrit-laxmishekhar-546878225/",
-      },
-    ],
+    name: "Vishal P",
+    domain: "Web Development",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/vishal.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/vishal-p-269045280/",
+    srn: "PES1UG23CS696",
+    email: "vishal04p74@gmail.com",
   },
   {
-    domainName: "Hospitality",
-    headsAndPhotos: [
-      {
-        domainHead: "Rhea Sudheer",
-        domainHeadPhoto: "/domiainHeadPhotos/rhea.jpg",
-        linkedInURL: "https://www.linkedin.com/in/rhea-sudheer/",
-      },
-    ],
+    name: "Nikhitha Sriram",
+    domain: "Web Development",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/nikhitha.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/nikhitha-sriram-068108270/",
+    srn: "PES1UG23CS394",
+    email: "nikhithasriram.552@gmail.com",
   },
   {
-    domainName: "Design",
-    headsAndPhotos: [
-      {
-        domainHead: "Yogitha H K",
-        domainHeadPhoto: "/domiainHeadPhotos/yogitha.jpg",
-        linkedInURL: "https://www.linkedin.com/in/yogitha-h-k-63bb74222/",
-      },
-    ],
+    name: "Dhruv Jain",
+    domain: "Event Management",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/dhruv.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/d16r7v-17a8n",
+    srn: "PES1UG23CS189",
+    email: "dhruvjeng@gmail.com",
   },
   {
-    domainName: "Operations",
-    headsAndPhotos: [
-      {
-        domainHead: "Harsh Verma",
-        domainHeadPhoto: "/domiainHeadPhotos/harsh.jpg",
-        linkedInURL: "https://www.linkedin.com/in/harsh-verma-857b801b9/",
-      },
-    ],
+    name: "Saanvi Kakkar",
+    domain: "Event Management",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/saanvi.jpg",
+    linkedinUrl: "http://www.linkedin.com/in/saanvi-kakkar-483669325",
+    srn: "PES1UG23CS495",
+    email: "saanvikakkar05@gmail.com",
+  },
+  {
+    name: "Shrest Kumar",
+    domain: "Event Management",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/shrest.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/shrestkumar00963?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23CS557",
+    email: "shrest.kumar03@gmail.com",
+  },
+  {
+    name: "Shashwat Jha",
+    domain: "Sponsorship",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/shashwat.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/shashwat-jha-7a726b296?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23EC283",
+    email: "shashwatjha384@gmail.com",
+  },
+  {
+    name: "Sara Girdhar",
+    domain: "Sponsorship",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/sara.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/sara-girdhar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23AM273",
+    email: "saragirdhar13@gmail.com",
+  },
+  {
+    name: "Neerav Aiyappa",
+    domain: "Sponsorship",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/neerav.jpg",
+    linkedinUrl: "www", // No URL provided
+    srn: "PES1UG23CS388",
+    email: "neerav.aiyappa@gmail.com",
+  },
+  {
+    name: "Achintya N",
+    domain: "Sponsorship",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/achintya.jpg",
+    linkedinUrl: "www", // No URL provided
+    srn: "PES1UG23CS916",
+    email: "achintyan24680@gmail.com",
+  },
+  {
+    name: "Rachana R",
+    domain: "Design",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/rachana.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/rachana-ramchandar/",
+    srn: "PES1UG23CS459",
+    email: "rachram2810@gmail.com",
+  },
+  {
+    name: "Meghana G",
+    domain: "Design",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/meghana.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/meghana-gururaj?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23CS356",
+    email: "meghanag450@gmail.com",
+  },
+  {
+    name: "Charitha S Jain",
+    domain: "Design",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/charitha.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/charitha-s-jain-43a933283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23EC076",
+    email: "charithasukumar07@gmail.com",
+  },
+  {
+    name: "Taha Hussain",
+    domain: "Operations",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/taha.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/tahahussain1692502?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23AM333",
+    email: "tahamb05@gmail.com",
+  },
+  {
+    name: "Shreya Patil",
+    domain: "Operations",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/shreya.jpg",
+    linkedinUrl: "www.linkedin.com/in/shreya-patil-26b903331",
+    srn: "PES1UG23AM293",
+    email: "shreyaapatil18@gmail.com",
+  },
+  {
+    name: "Anshita Sharma",
+    domain: "Operations",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/anshita.jpg",
+    linkedinUrl: "www", // No URL provided
+    srn: "PES1UG23EC049",
+    email: "anshita325@gmail.com",
+  },
+  {
+    name: "Ankith Khaitan",
+    domain: "Logistics",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/ankith.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/ankithkhaitan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23CS082",
+    email: "ankithkhaitan11@gmail.com",
+  },
+  {
+    name: "Nishant Hegde",
+    domain: "Logistics",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/nishant.jpg",
+    linkedinUrl: "www", // No URL provided
+    srn: "PES1UG23CS402",
+    email: "nishanthegde2005@gmail.com",
+  },
+  {
+    name: "Dibyadyuti Mohanty",
+    domain: "Logistics",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/dibyadyuti.jpg",
+    linkedinUrl: "www.linkedin.com/in/dibyadyuti-mohanty",
+    srn: "PES1UG23EC096",
+    email: "mohanty.dibyadyuti@gmail.com",
+  },
+  {
+    name: "Saanvi Manjunath",
+    domain: "Hospitality",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/saanvim.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/saanvi-manjunath-803310295/",
+    srn: "PES1UG23AM251",
+    email: "saanvimanjunath04@gmail.com",
+  },
+  {
+    name: "Shrisha Katti",
+    domain: "Hospitality",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/shrisha.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/shrisha-katti-b67440348/",
+    srn: "PES1UG23EC295",
+    email: "shrishakatti2025@gmail.com",
+  },
+  {
+    name: "Dhanya Bhat",
+    domain: "Hospitality",
+    role: "Core",
+    photoUrl: "/2025-domain-heads/dhanya.jpg",
+    linkedinUrl: "www.linkedin.com/in/dhanya-bhat",
+    srn: "PES1UG23CS183",
+    email: "dhanyabhat2005@gmail.com",
+  },
+  {
+    name: "Deeksha Kashyap",
+    domain: "Social Media",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/deeksha.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/deeksha-kashyap-02546a185/",
+    srn: "PES1UG23CS177",
+    email: "deekshakashyap05@gmail.com",
+  },
+  {
+    name: "Chetan H S",
+    domain: "Social Media",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/chetan.jpg",
+    linkedinUrl: "www", // No URL provided
+    srn: "PES1UG23CS161",
+    email: "chetanhs123@gmail.com",
+  },
+  {
+    name: "Pranav Lokesh",
+    domain: "Campaigning",
+    role: "Head",
+    photoUrl: "/2025-domain-heads/pranav.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/pranav-lokesh-a02983291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    srn: "PES1UG23EC222",
+    email: "pranavlokesh1@gmail.com",
   },
 ];
-export const domainDetails = [
-
-  {
-    domainName: "Club Head",
-    headsAndPhotos: [
-      {
-        domainHead: "Arushi Katta",
-        domainHeadPhoto: "/current-domain-heads/Arushi Katta.jpg",
-        linkedInURL: "https://www.linkedin.com/in/arushi-katta",  
-      },
-    ],
-  },
-  {
-    domainName: "Mentor",
-    headsAndPhotos: [
-      {
-        domainHead: "Gagan H R",
-        domainHeadPhoto: "/current-domain-heads/Gagan H R.jpg",
-        linkedInURL: "https://www.linkedin.com/in/gaganhr",  
-      },
-    ],
-  },
-  {
-    domainName: "Logistics",
-    headsAndPhotos: [
-      {
-        domainHead: "Lakshay Bhutani",
-        domainHeadPhoto: "/current-domain-heads/Lakshay Bhutani_.webp",
-        linkedInURL: "https://www.linkedin.com/in/lakshay-bhutani-software/",
-      },
-      {
-        domainHead: "Mayank Sharma",
-        domainHeadPhoto: "/current-domain-heads/Mayank Sharma.jpg",
-        linkedInURL: "www.linkedin.com/in/mayank-sharma-pes",
-      },
-    ],
-  },
-  {
-    domainName: "Event Management",
-    headsAndPhotos: [
-      {
-        domainHead: "Kunjal Patwari",
-        domainHeadPhoto: "/current-domain-heads/Kunjal Patwari_.jpg",
-        linkedInURL: "https://www.linkedin.com/in/kunjal-patwari-967085291?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B4XrmfMcaQbadXpJ7TPOmwQ%3D%3D",
-      },
-      {
-        domainHead: "Shailja Shaktawat",
-        domainHeadPhoto: "/current-domain-heads/Shailja Shaktawat.jpeg",
-        linkedInURL: "https://www.linkedin.com/in/shailja-shaktawat-380b2922a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      },
-    ],
-  },
-  {
-    domainName: "Marketing and Sponsorship",
-    headsAndPhotos: [
-      {
-        domainHead: "Shashwat Jha",
-        domainHeadPhoto: "/current-domain-heads/Shashwat.png",
-        linkedInURL:
-          "www.linkedin.com/in/shashwat-jha-7a726b296",
-      },
-    ],
-  },
-  {
-    domainName: "Web Development",
-    headsAndPhotos: [
-      {
-        domainHead: "Rahul Baradol",
-        domainHeadPhoto: "/current-domain-heads/Rahul Baradol.jpg",
-        linkedInURL: "https://www.linkedin.com/in/rahul-baradol/",
-      },
-    ],
-  },
-  {
-    domainName: "Social Media",
-    headsAndPhotos: [
-      {
-        domainHead: "Rhea Gangamma",
-        domainHeadPhoto: "/current-domain-heads/Rhea Gangamma.png",
-        linkedInURL: "",
-      },
-      {
-        domainHead: "Deeksha Kashyap",
-        domainHeadPhoto: "/current-domain-heads/Deeksha Kashyap.jpg",
-        linkedInURL: "https://www.linkedin.com/in/deeksha-kashyap-02546a185",
-      },
-    ],
-  },
-  {
-    domainName: "Hospitality",
-    headsAndPhotos: [
-      {
-        domainHead: "Manya Gaonkar",
-        domainHeadPhoto: "/current-domain-heads/Manya Gaonkar.jpeg",
-        linkedInURL: "http://linkedin.com/in/manya-gaonkar-4a9607288",
-      },
-      {
-        domainHead: "Kanika Kuchinad",
-        domainHeadPhoto: "/current-domain-heads/Kanika.jpg",
-        linkedInURL:
-          "",
-      },
-    ],
-  },
-  {
-    domainName: "Campaigning",
-    headsAndPhotos: [
-      {
-        domainHead: "Sravanthi",
-        domainHeadPhoto: "/current-domain-heads/Sravanthi N.jpg",
-        linkedInURL: "https://www.linkedin.com/in/sravanthi-n-5b89a22b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      },
-    ],
-  },
-  
-  {
-    domainName: "Operations",
-    headsAndPhotos: [
-      {
-        domainHead: "Preksha M",
-        domainHeadPhoto: "/current-domain-heads/Preksha M.jpg",        
-        linkedInURL: "https://www.linkedin.com/in/preksha-m-90b309329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
-      },
-    ],
-  },
-  
-  {
-    domainName: "Design",
-    headsAndPhotos: [
-      {
-        domainHead: "Sadhana Hegde",
-        domainHeadPhoto: "/current-domain-heads/sadhanaAT.jpg",
-        linkedInURL: "https://www.linkedin.com/in/sadhana-hegde-ba9424265/",
-      },
-    ],
-  },
-];
-
 export const ClubEvents = [
+    {
+    eventName: "Kodikon 4.0",
+    eventDescription:
+    "Kodikon 4.0, the fourth edition of our highly successful annual hackathon, was aimed at developing cutting-edge solutions to real-world problems. With 322 teams registering and 40 teams battling it out for the coveted prizes, the event was open to all undergraduate engineering students across colleges in India. The hackathon revolved around five central themes—developer tools, edtech, smart cities, next-generation technologies such as blockchain and AR/VR, and assistive tech and accessibility with the vision of empowering all and enabling everyone. Kodikon 4.0 provided a platform for the next generation of engineers to showcase their skills while also learning through collaboration, and with guidance from mentors and industry experts, participants gained valuable exposure, built connections, and strengthened both their technical and interpersonal abilities."
+  },
+    {
+    eventName: "Kodikon 3.0",
+    eventDescription:
+    "The third edition of our highly anticipated 24-hour hackathon, KODIKON 3.0, was successfully held on November 4th and 5th, 2023. This year’s event exceeded expectations, attracting over 1200 registrations and featuring a select group of 170+ participants, carefully chosen through a competitive selection process. With prizes worth more than ₹4 lakh, participants not only gained cutting-edge insights into the tech world but also walked away with exciting rewards and exclusive giveaways. The event was a true celebration of innovation and collaboration, making it an unforgettable experience for all involved."
+  },
+    {
+    eventName: "Kodikon 2.0",
+    eventImagesArray: [
+      "/Kodikon2/image4.jpeg",
+      "/Kodikon2/image5.jpeg",
+      "/Kodikon2/image6.jpeg",
+      "/Kodikon2/image7.jpeg",
+      "/Kodikon2/image8.jpeg",
+      "/Kodikon2/image9.jpeg",
+      "/Kodikon2/image10.jpeg",
+      "/Kodikon2/image11.jpeg",
+      "/Kodikon2/image12.jpeg",
+    ],
+    eventDescription:
+      "Kodikon 2.0, a highly successful hackathon, was designed to encourage engineering students from the 2021-2025 batch to develop innovative solutions for real-world problems. With over 160 participants, the event promoted friendly competition while providing a beginner-friendly environment for students new to the tech world. Through peer-to-peer interaction, extensive mentoring, and feedback from tech professors, participants had the opportunity to enhance their skills, gain industry exposure, improve their soft skills, networking abilities, and technical expertise. The winners of this engaging hackathon received exciting prizes.",
+  },
+
   {
     eventName: "Kodikon 1.0",
     eventImagesArray: [
@@ -222,32 +278,7 @@ export const ClubEvents = [
     eventDescription:
       "Kodikon 1.0, the first edition of our flagship 24-hour beginner-friendly hackathon, was conducted on the 10th and 11th of September 2022. The event was a roaring success with 800+ registrations, with 160+ participants, who were selected after a thorough vetting process. With prizes worth above 2.5 lakh, the students not only gained more experience and understanding of the technological world but also went home with exciting goodies.",
   },
-  {
-    eventName: "Kodikon 2.0",
-    eventImagesArray: [
-      "/Kodikon2/image4.jpeg",
-      "/Kodikon2/image5.jpeg",
-      "/Kodikon2/image6.jpeg",
-      "/Kodikon2/image7.jpeg",
-      "/Kodikon2/image8.jpeg",
-      "/Kodikon2/image9.jpeg",
-      "/Kodikon2/image10.jpeg",
-      "/Kodikon2/image11.jpeg",
-      "/Kodikon2/image12.jpeg",
-    ],
-    eventDescription:
-      "Kodikon 2.0, a highly successful hackathon, was designed to encourage engineering students from the 2021-2025 batch to develop innovative solutions for real-world problems. With over 160 participants, the event promoted friendly competition while providing a beginner-friendly environment for students new to the tech world. Through peer-to-peer interaction, extensive mentoring, and feedback from tech professors, participants had the opportunity to enhance their skills, gain industry exposure, improve their soft skills, networking abilities, and technical expertise. The winners of this engaging hackathon received exciting prizes.",
-  },
-  {
-    eventName: "Kodikon 3.0",
-    eventDescription:
-    "The third edition of our highly anticipated 24-hour hackathon, KODIKON 3.0, was successfully held on November 4th and 5th, 2023. This year’s event exceeded expectations, attracting over 1200 registrations and featuring a select group of 170+ participants, carefully chosen through a competitive selection process. With prizes worth more than ₹4 lakh, participants not only gained cutting-edge insights into the tech world but also walked away with exciting rewards and exclusive giveaways. The event was a true celebration of innovation and collaboration, making it an unforgettable experience for all involved."
-  },
-  {
-    eventName: "Kodikon 4.0",
-    eventDescription:
-    "Kodikon 4.0, the fourth edition of our highly successful annual hackathon, was aimed at developing cutting-edge solutions to real-world problems. With 322 teams registering and 40 teams battling it out for the coveted prizes, the event was open to all undergraduate engineering students across colleges in India. The hackathon revolved around five central themes—developer tools, edtech, smart cities, next-generation technologies such as blockchain and AR/VR, and assistive tech and accessibility with the vision of empowering all and enabling everyone. Kodikon 4.0 provided a platform for the next generation of engineers to showcase their skills while also learning through collaboration, and with guidance from mentors and industry experts, participants gained valuable exposure, built connections, and strengthened both their technical and interpersonal abilities."
-  },
+
   {
     eventName: "Cipher",
     eventImagesArray: [

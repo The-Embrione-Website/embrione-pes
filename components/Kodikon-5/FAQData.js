@@ -9,7 +9,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Who are the organisers of this event?",
-    answer: "Kodikon 5.0 is being organised by Team Embrione, the official technical vertical under the Department of Computer Science and Engineering at PES University, Ring Road Campus, Bangalore, Karnataka. PES University is one of the country’s leading teaching and research universities. We are the number one university under the category of New Universities, under 5 years, in Karnataka State Universities Rating Framework (KSURF) 2019 published recently."
+    answer: "Kodikon 5.0 is being organised by Team Embrione, the official technical vertical under the Department of Computer Science and Engineering at PES University, Ring Road Campus, Bangalore, Karnataka. PES University is one of the country’s leading teaching and research universities. We are the number one university under the category of New Universities, under 5 years, in Karnataka State Universities Rating Framework (KSURF) 2019."
   },
   {
     id: uuidv4(),
@@ -44,7 +44,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Can I start working on my hack before the event?",
-    answer: "NO. In the interest of fairness, students should not be working on their projects before Kodikon 5.0 begins and we do not allow participants to work on pre-existing projects. There are strict protocols in place to ensure the same. However, you can familiarize yourself with all the tools and technologies you intend to use beforehand."
+    answer: "You’re welcome to ideate and collaborate with your team before the event. However, projects or code developed before hackathon registrations opened will not be accepted. To keep Kodikon 5.0 fair and a true problem-solving + learning experience, we expect all participants to build fresh solutions during the hackathon timeline."
   },
   {
     id: uuidv4(),

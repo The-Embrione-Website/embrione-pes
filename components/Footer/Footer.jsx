@@ -64,7 +64,7 @@ const Footer = () => {
             <BsWhatsapp size={26} className={iconStyles} />
           </a>
         </div>
-        <p className="text-center w-fit">© All Rights Reserved 2023</p>
+        <p className="text-center w-fit">© All Rights Reserved 2025</p>
         <p className="text-center">
           Made with ❣️ By the{" "}
           <span className="gradient-text-animation" ref={ref} /> WebDev Team
