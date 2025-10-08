@@ -14,7 +14,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "How many participants are allowed per team?",
-    answer: "Each team needs to have 3 participants at least, and 4 participants at max."
+    answer: "Each team must have 4 participants"
   },
   {
     id: uuidv4(),
@@ -34,7 +34,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Do I need to be present at the venue for the hackathon? Can I attend it online if the rest of my team members are attending it online?",
-    answer: "All the members of the team need to be present at PES University, RR Campus, Bangalore for the entire duration of the hackathon on 4th and 5th November, 2023. It is a 24-hour overnight hackathon and the teams shall stay within the permissible limits of the college campus, during the course of the event."
+    answer: "All the members of the team need to be present at PES University, RR Campus, Bangalore for the entire duration of the hackathon on 15th and 16th November, 2025. It is a 24-hour overnight hackathon and the teams shall stay within the permissible limits of the college campus, during the course of the event."
   },
   {
     id: uuidv4(),
@@ -44,7 +44,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Can I start working on my hack before the event?",
-    answer: "NO. In the interest of fairness, students should not be working on their projects before Kodikon 3.0 begins and we do not allow participants to work on pre-existing projects. There are strict protocols in place to ensure the same. However, you can familiarize yourself with all the tools and technologies you intend to use beforehand."
+    answer: "NO. In the interest of fairness, students should not be working on their projects before Kodikon 5.0 begins and we do not allow participants to work on pre-existing projects. There are strict protocols in place to ensure the same. However, you can familiarize yourself with all the tools and technologies you intend to use beforehand."
   },
   {
     id: uuidv4(),
@@ -54,7 +54,7 @@ const faqData = [
   {
     id: uuidv4(),
     question: "Will the organisers provide us with basic requirements like food, refreshments, internet, etc. for both the days?",
-    answer: "Yes, the organisers of Kodikon 3.0 will make all the suitable arrangements for breakfast, lunch, snacks and dinner on Day 1, as well as breakfast and lunch on Day 2. We will also be providing high speed Wi-Fi connectivity to all the participants. However, you are free to carry your own broadband/hotspot devices, for your convenience."
+    answer: "Yes, the organisers of Kodikon 5.0 will make all the suitable arrangements for breakfast, lunch, snacks and dinner on Day 1, as well as breakfast and lunch on Day 2. We will also be providing high speed Wi-Fi connectivity to all the participants. However, you are free to carry your own broadband/hotspot devices, for your convenience."
   },
   {
     id: uuidv4(),

@@ -6,7 +6,7 @@ const timelineEvents = [
   {
     id: 1,
     title: "Registrations Begin",
-    date: "8th October 2025",
+    date: "9th October 2025",
     description:
       "Registrations for Kodikon 5.0 officially open on 8th October 2025. Don’t miss your chance to be part of this innovation-packed event!",
     icon: Monitor,
@@ -52,7 +52,7 @@ export function KodikonTimeline() {
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-20 text-center">
         <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight">
-          Kodikon 4.0 Timeline
+          Kodikon 5.0 Timeline
         </h1>
         <div className="h-1 w-32 bg-gradient-to-r from-cyan-500 to-purple-500 mx-auto rounded-full" />
       </div>
