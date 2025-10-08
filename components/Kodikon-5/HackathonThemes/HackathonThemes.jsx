@@ -86,7 +86,7 @@ Title Sponsor, Kodikon 5.0`,
   {
     title: "Assistive GenAI Tools",
     subtitle: "Empowering Neurodivergent Minds",
-    image: "/Kodikon5/themes-thumbnail/gen-ai.jpg",
+    image: "/Kodikon5/themes-thumbnail/genai.jpg",
     cardDescription:
       "Generative AI to reduce cognitive load and improve communication, learning, and participation for neurodivergent people across education, work, and daily life.",
     details: {
@@ -214,7 +214,7 @@ Title Sponsor, Kodikon 5.0`,
   {
     title: "Privacy-Preserving Distributed Systems",
     subtitle: "Federated Learning",
-    image: "/Kodikon5/themes-thumbnail/distributed-systems.png",
+    image: "/Kodikon5/themes-thumbnail/db.jpg",
     cardDescription:
       "Build distributed computing systems for collaborative machine learning on sensitive data without centralization, using federated learning.",
     details: {
