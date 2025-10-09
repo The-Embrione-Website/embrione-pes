@@ -7,7 +7,6 @@ import {
   motion,
   useScroll,
   useTransform,
-  useMotionValueEvent,
 } from "framer-motion";
 
 const AnnouncementComponent = ({
@@ -20,18 +19,18 @@ const AnnouncementComponent = ({
   postedByDomain,
   postedBy,
 }) => {
-  const { scrollYProgress, scrollY } = useScroll();
+  const { scrollYProgress } = useScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.0001, 1]);
   const [ifNewAnnouncement, setNewAnnouncement] = useState(false);
+
   useEffect(() => {
     if (Math.abs(Date.now() - dateOfEntry) / 36e5 < 72) {
       setNewAnnouncement(true);
     }
-  }, []);
+  }, [dateOfEntry]); // ✅ added dependency to remove warning
 
   return (
     <motion.div
-      // style={{scale}}
       className={` w-fit h-fit xl:w-[60%] bg-gray-400 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 text-gray-200 mx-2 my-4  px-2 py-2 flex flex-col items-center justify-center relative `}
       data-aos="zoom-in-down"
       data-aos-duration="500"
@@ -60,16 +59,13 @@ const AnnouncementComponent = ({
       </p>
 
       <div className="flex flex-col space-y-3 items-center justify-center mb-4">
-        {/* <p>
-          by {postedBy}, {postedByDomain}
-        </p> */}
         {formLinkStatus === "Closed" ? (
           <p>🛑 Closed</p>
         ) : formLinkStatus === "Soon" ? (
           <p>⏳ 🟡 {"     "}  Coming Soon</p>
         ) : formLinkStatus === "Open" ? (
           <a href={formLink} target="_blank">
-            <p>🔗 🟢 Click to go to the form! </p>
+            <p>🔗 🟢 Click to register! </p>
           </a>
         ) : (
           <p>Invalid status</p>

@@ -13,7 +13,7 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
                     <span className="gradient-text-animation">Kodikon 5.0</span> Registration Open!
                 </h1>
                 <div className="w-full h-fit flex items-center justify-center">
-                <Link target='_blank' href='https://forms.gle/ePX4CpE4Tq7HPt9b9'>
+                <Link target='_blank' href='https://vision.hack2skill.com/event/kodikon5/registration'>
                         <button className="text-black text-xl md:text-3xl text-center bg-white p-3 rounded-md my-12 hover:bg-gray-300 transition ease-in duration-200">
                             Register!
                         </button>

@@ -304,18 +304,18 @@ export const ClubEvents = [
 ];
 
 export const announcements = [
-  // //todo
-  // {
-  //   announcementName: "Kodikon 5.0 Registrations open!",
-  //   announcementDescription:
-  //     "Registrations for Kodikon 5.0, the fifth edition of our 24-hour highly successful flagship national-level hackathon, are open now to all engineering undergraduates across the nation.",
-  //   formLink: "",
-  //   formLinkStatus: "Open",
-  //   //todo
-  //   dateOfEntry: 1759940720837,
-  //   postedBy: "Vishal",
-  //   postedByDomain: "WebDev Domain",
-  // },
+  //todo
+  {
+    announcementName: "Kodikon 5.0 Registrations open!",
+    announcementDescription:
+      "Registrations for Kodikon 5.0, the fifth edition of our 24-hour highly successful flagship national-level hackathon, are open now to all engineering undergraduates across the nation.",
+    formLink: "https://vision.hack2skill.com/event/kodikon5/registration",
+    formLinkStatus: "Open",
+    //todo
+    dateOfEntry: 1759977528902,
+    postedBy: "Vishal",
+    postedByDomain: "WebDev Domain",
+  },
   {
     announcementName: "Kodikon 3.0 Registrations open!",
     announcementDescription:
