@@ -10,32 +10,33 @@ import EventTimeline from "@/components/Kodikon-5/Timeline/EventTimeline";
 import SponsorsComponent from "@/components/Kodikon-5/Sponsors/SponsorsComponent";
 import PrizesComponent from "@/components/Kodikon-5/Prizes/PrizesComponent";
 import Footer from "@/components/Footer/Footer";
-import EventCountdown  from "@/components/Kodikon-5/Countdown/EventCountdown";
+import EventCountdown from "@/components/Kodikon-5/Countdown/EventCountdown";
 import FAQ from "@/components/Kodikon-5/FAQComponent";
 import Map from "@/components/Kodikon-5/MapComponent";
+import PartnersComponent from "@/components/Kodikon-5/Partners/PartnersComponent"; 
+
 export default function LandingPage() {
   return (
     <>
-      
       <div className="relative flex justify-center items-center">
-        <NavbarKodikon5/>
+        <NavbarKodikon5 />
       </div>
       <ScrollProgressComponent />
-      <div className=" relative flex justify-center items-center flex-col md:px-32 gap-y-9">
+      <div className="relative flex justify-center items-center flex-col md:px-32 gap-y-9">
         <HeroComponent />
         <AboutTheEvent />
-        {<EventCountdown/>}
+        {<EventCountdown />}
         {/* <PreviousEditionComponent /> */}
-        <HackathonThemes/>
-        <EventTimeline/>
-        <SponsorsComponent/>
-        <PrizesComponent/>
+        <HackathonThemes />
+        <EventTimeline />
+        <SponsorsComponent />
+        <br/><br/>
+        <PartnersComponent />
+        <PrizesComponent />
         <FAQ />
         <Map />
-        <Footer/>
-
+        <Footer />
       </div>
-
     </>
   );
 }
