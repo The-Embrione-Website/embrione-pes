@@ -57,7 +57,7 @@ const FAQ = () => {
                 `}
               >
                 <div className="bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 flex w-[100%] items-center md:text-xl px-12 p-3 text-justify">
-                  <span className="pr-2">{">>"}</span>
+                  {/* <span className="pr-2">{">>"}</span> */}
                   {ele.answer}
                 </div>
               </div>
