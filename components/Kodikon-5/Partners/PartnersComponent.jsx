@@ -21,7 +21,7 @@ const PartnersComponent = () => {
   ));
 
   return (
-    <>
+    <section id="partners">
       {/* Heading similar to Sponsors */}
       <TitleComponent titleData={"Partners"} />
 
@@ -77,7 +77,7 @@ const PartnersComponent = () => {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 };
 

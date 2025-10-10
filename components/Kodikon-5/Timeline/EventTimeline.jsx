@@ -8,7 +8,7 @@ import { kodikon4Events } from "@/constants";
 
 const EventTimeline = () => {
   return (
-    <div id="#timeline" className="flex flex-col w-full gap-y-9">
+    <div id="timeline" className="flex flex-col w-full gap-y-9">
       {/* <TitleComponent titleData="Kodikon 5.0 Timeline" id="timeline" /> */}
       <EventTimelineComponent />
       {/* <VerticalTimeline lineColor='#fff'>

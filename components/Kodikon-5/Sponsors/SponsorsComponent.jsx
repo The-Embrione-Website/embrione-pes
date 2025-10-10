@@ -25,7 +25,7 @@ const SponsorsComponent = () => {
   ));
 
   return (
-    <>
+    <section id="sponsor">
     <TitleComponent titleData={"Sponsors"} />
     <section className="relative flex items-center justify-center min-h-screen w-full px-4 sm:px-6 py-10 overflow-hidden bg-gradient-to-br from-[#020617] via-[#0b1121] to-[#111827]">
       {/* Floating background texture */}
@@ -83,7 +83,7 @@ const SponsorsComponent = () => {
         </div>
       </div>
     </section>
-    </>
+    </section>
   );
 };
 
