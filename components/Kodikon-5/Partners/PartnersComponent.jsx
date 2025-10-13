@@ -21,11 +21,14 @@ const PartnersComponent = () => {
   ));
 
   return (
-    <section id="partners">
-      {/* Heading similar to Sponsors */}
-      <TitleComponent titleData={"Partners"} />
+    <section id="partners" className="w-full flex flex-col items-center justify-center">
+      {/* ✅ Center-aligned title outside the gradient section */}
+      <div className="w-full flex justify-center mt-16 mb-8 text-center">
+        <TitleComponent titleData={"Partners"} />
+      </div>
 
-      <section className="relative flex items-center justify-center min-h-screen w-full px-4 sm:px-6 py-10 overflow-hidden bg-gradient-to-br from-[#020617] via-[#0b1121] to-[#111827]">
+      {/* Gradient background section */}
+      <section className="relative flex flex-col items-center justify-center min-h-screen w-full px-4 sm:px-6 py-10 overflow-hidden bg-gradient-to-br from-[#020617] via-[#0b1121] to-[#111827]">
         {/* Background pattern */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22rgba(255,255,255,0.05)%22/%3E%3C/svg%3E')] opacity-10"></div>
 
