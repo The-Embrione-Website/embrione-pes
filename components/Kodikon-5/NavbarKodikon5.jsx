@@ -49,7 +49,7 @@ const NavbarKodikon5 = () => {
               {/* --- Mobile Menu --- */}
               <div className="md:hidden flex flex-row items-center justify-center w-fit space-x-5">
                 <Link
-                  href="https://vision.hack2skill.com/event/kodikon5/registration"
+                  href="https://vision.hack2skill.com/event/kodikon5/?utm_source=hack2skill&utm_medium=homepage"
                   target="_blank"
                 >
                   <button className="text-white border border-white p-2 rounded-lg bg-opacity-25 h-fit w-fit text-sm md:text-xl">
