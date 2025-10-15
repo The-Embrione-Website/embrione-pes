@@ -26,11 +26,11 @@ const Footer = () => {
           {/* --- Column 1: Branding --- */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <a href="https://pes.edu/" target="_blank" className="mb-4">
-              <Image src={pesLogo} alt="PES University Logo" width={150} height={150} />
+              <Image src={pesLogo} alt="PES University Logo" width={200} height={200} />
             </a>
-            <p className="text-gray-400 max-w-xs">
+            {/* <p className="text-gray-400 max-w-xs">
               PES University's premier innovation challenge.
-            </p>
+            </p> */}
           </div>
 
           {/* --- Column 2: Contacts --- */}
