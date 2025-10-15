@@ -57,7 +57,7 @@ const HeroComponent = () => {
   return (
     // --- CHANGE: Height is now calculated to fit perfectly below your 112px navbar ---
     <div className="relative h-[calc(100vh-112px)] w-screen flex flex-col items-center justify-center overflow-hidden bg-dark-navy">
-      <MatrixBackground />
+      {/* <MatrixBackground /> */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-dark-navy/10 via-dark-navy/50 to-dark-navy" />
 
       <div
