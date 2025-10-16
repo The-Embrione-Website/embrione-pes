@@ -108,11 +108,11 @@ const NavbarKodikon5 = () => {
                     About
                   </Link>
                 </li>
-                <li className="text-white text-xs lg:text-[16px]">
+                {/* <li className="text-white text-xs lg:text-[16px]">
                   <Link href="#tracks" onClick={() => setNavbar(false)}>
                     Tracks
                   </Link>
-                </li>
+                </li> */}
                 <li className="text-white text-xs lg:text-[16px]">
                   <Link href="#timeline" onClick={() => setNavbar(false)}>
                     Timeline
