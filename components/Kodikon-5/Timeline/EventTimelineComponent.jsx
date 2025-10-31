@@ -14,7 +14,7 @@ const timelineEvents = [
   {
     id: 2,
     title: "Registrations and Submissions Close",
-    date: "28th October 2025",
+    date: "1st November 2025",
     description:
       "The registration and idea submission window closes on 28th October 2025. Make sure to finalize your team and submit your proposal before the deadline!",
     icon: Calendar,
