@@ -19,7 +19,9 @@ Official web repository for **The Embrione** — the technical vertical under th
 - [Environment Variables](#-environment-variables)
 - [Key Features & Routes](#-key-features--routes)
 - [How to Update Content](#-how-to-update-content)
-- [Collaboration & Git Workflow](#-collaboration--git-workflow)
+- [Collaboration & Preview Workflow](#-collaboration--preview-workflow)
+- [Domain & Deployment Setup (Vercel & DNS)](#-domain--deployment-setup-vercel--dns)
+- [Troubleshooting & FAQs](#-troubleshooting--faqs)
 - [Club Maintainers & Contact](#-club-maintainers--contact)
 - [License](#-license)
 
@@ -29,7 +31,7 @@ Official web repository for **The Embrione** — the technical vertical under th
 
 This application serves two main purposes:
 1. **Club Hub (`/`)**: Showcases Embrione's mission, domain leads, core committee, past hackathons, learning initiatives (Cipher, Spark), announcements, and contact channels.
-2. **Kodikon Hackathon Portal (`/kodikon-5`)**: The registration and information portal for Kodikon 5.0 (and archives for 4.0 and 3.0), featuring research-backed tracks, interactive theme popups, countdown clocks, event timeline, prizes, sponsors, partners, and FAQs.
+2. **Kodikon Hackathon Portal (`/kodikon-5`)**: The registration and information portal for Kodikon 5.0 (with historical archives for 4.0 and 3.0), featuring research-backed tracks, interactive theme popups, countdown clocks, event timeline, prizes, sponsors, partners, and FAQs.
 
 ---
 
@@ -53,6 +55,8 @@ This application serves two main purposes:
 
 ## 📂 Project Architecture & Directory Structure
 
+All components are strictly modularized into dedicated folders under `components/` matching Next.js best practices:
+
 ```text
 kodi5-website/
 ├── app/                                # Next.js App Router
@@ -62,19 +66,37 @@ kodi5-website/
 │   ├── kodikon-5/                      # Kodikon 5.0 Landing Page
 │   │   ├── page.js
 │   │   └── layout.js
-│   ├── kodikon-4/                      # Kodikon 4.0 Legacy Page
-│   └── kodikon-3/                      # Kodikon 3.0 Legacy Page
+│   ├── kodikon-4/                      # Kodikon 4.0 Archive Page
+│   └── kodikon-3/                      # Kodikon 3.0 Archive Page
 │
-├── components/                         # Modular React components
-│   ├── Navbar.jsx                      # Club header navbar
-│   ├── Hero.jsx                        # Club hero section with scramble text
-│   ├── AboutUs.jsx                     # About Embrione copy
-│   ├── Team.jsx                        # Domain heads & cores grid
-│   ├── PastEvents.jsx                  # Kodikon 1-4, Cipher, Spark viewer
-│   ├── Previous-Partners/              # Historical sponsor and partner grid
-│   ├── Announcements/                  # Recruitment and hackathon notices
+├── components/                         # Modular React components (one folder per section)
+│   ├── Navbar/                         # Main club header navigation
+│   │   └── Navbar.jsx
+│   ├── Hero/                           # Club hero with scramble text & orbit animation
+│   │   └── Hero.jsx
+│   ├── AboutUs/                        # Club mission & background
+│   │   └── AboutUs.jsx
+│   ├── Team/                           # Domain heads & cores grid
+│   │   └── Team.jsx
+│   ├── PastEvents/                     # Historical events viewer & photo carousel
+│   │   ├── PastEvents.jsx
+│   │   └── PastEventsCarousel.jsx
+│   ├── Announcements/                  # Recruitment and hackathon announcements
+│   │   ├── AnnouncementComponent.jsx
+│   │   ├── Announcements.jsx
+│   │   └── NavbarAnnouncementComponent.jsx
+│   ├── PreviousPartners/               # Previous sponsors & partners logo grid
+│   │   ├── PreviousPartner.jsx
+│   │   ├── PreviousPartners.jsx
+│   │   └── logos/
 │   ├── ContactUs/                      # Contact form with email API trigger
+│   │   └── ContactUs.jsx
 │   ├── Footer/                         # PES branding, socials, contacts
+│   │   └── Footer.jsx
+│   ├── ScrollProgress/                 # Top scroll progress bar
+│   │   └── ScrollProgressComponent.jsx
+│   ├── BottomNavigation/               # Mobile sticky navigation
+│   │   └── BottomNavigationComponent.jsx
 │   │
 │   └── Kodikon-5/                      # Kodikon 5.0 specific components
 │       ├── NavbarKodikon5.jsx          # Hackathon sticky navbar
@@ -95,22 +117,26 @@ kodi5-website/
 │   └── getTime.js                      # Server-synchronized countdown timestamp
 │
 ├── public/                             # Public static assets
-│   ├── 2025-domain-heads/              # Domain head & core photos
+│   ├── 2025-domain-heads/              # 2025 domain head & core headshots (27 photos)
+│   ├── current-domain-heads/           # 2024 domain head photos (18 photos archive)
+│   ├── domiainHeadPhotos/              # 2023 domain head photos (9 photos archive)
 │   ├── Kodikon5/                       # Theme thumbnails, logos, prize images
-│   ├── Kodikon4/                       # Kodikon 4.0 graphics & sponsor assets
+│   ├── Kodikon4/                       # Kodikon 4.0 graphics, prize.png, sponsor assets
+│   ├── Kodikon3/                       # Kodikon 3.0 graphics
 │   ├── sponsors/                       # Sponsor logos (Tech, Food, Travel)
 │   ├── Partners/                       # Hack2Skill and platform partner logos
 │   └── Cipher/, Spark/, Kodikon1-2/   # Past event photo galleries
 │
-├── assets/                             # Lottie JSON files, vector graphics
+├── assets/                             # Lottie JSON animations
 │   ├── about-kodikon.json
 │   ├── blue-orbit.json
-│   ├── contact.json
-│   └── PES_LogoWhite.webp
+│   └── contact.json
 │
 ├── constants.js                        # Master data file (Team, Events, Socials, Announcements)
 ├── firebaseConfig.js                   # Firebase client configuration
 ├── tailwind.config.js                  # Tailwind theme, typography & keyframes
+├── LICENSE                             # MIT License
+├── .env.example                        # Environment variable template
 └── package.json                        # Dependencies and npm scripts
 ```
 
@@ -126,11 +152,11 @@ kodi5-website/
 ### 2. Clone & Install
 ```bash
 # Clone the repository
-git clone https://github.com/The-Embrione-Website/embrione-website.git
+git clone https://github.com/The-Embrione-Website/embrione-pes.git
 cd kodi5-website
 
-# Install dependencies
-npm install
+# Install dependencies (use --legacy-peer-deps for dependency resolution)
+npm install --legacy-peer-deps
 ```
 
 ### 3. Setup Environment Variables
@@ -147,7 +173,7 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 To view the Kodikon 5 page directly, visit [http://localhost:3000/kodikon-5](http://localhost:3000/kodikon-5).
 
-### 5. Production Build
+### 5. Production Build Verification
 ```bash
 npm run build
 npm run start
@@ -216,36 +242,108 @@ Edit `constants.js` under `announcements`:
 
 ---
 
-## 🤝 Collaboration & Git Workflow
+## 🌿 Collaboration & Preview Workflow
 
-To keep the codebase stable and clean while collaborating:
+To allow everyone to test features in real-time with **Vercel Previews** without breaking production, we follow a two-tier branching strategy:
 
-### 1. Branching Strategy
-Never push directly to `main`. Create descriptive feature branches:
-```bash
-git checkout -b feat/your-feature-name      # New feature (e.g. feat/kodi6-theme-cards)
-git checkout -b fix/issue-description       # Bug fix (e.g. fix/navbar-mobile-overlap)
-git checkout -b content/update-team         # Content updates (e.g. content/2026-cores)
+- **`main`**: The **Production** branch. Only verified, release-ready code is merged here.
+- **`preview`**: The **Staging / Preview** branch. Every PR targeting `preview` automatically gets a live, shareable Vercel Preview URL.
+
+```mermaid
+gitGraph
+   commit id: "Production Baseline (main)"
+   branch preview
+   checkout preview
+   commit id: "Staging Baseline"
+   branch feat/kodi6-ui
+   checkout feat/kodi6-ui
+   commit id: "work on feature"
+   checkout preview
+   merge feat/kodi6-ui id: "PR merged into preview (Vercel Preview Test)"
+   checkout main
+   merge preview id: "Promote to Production (main)"
 ```
 
-### 2. Commit Message Standards
-Use clear and conventional commit messages:
-- `feat: add interactive track popup for AI theme`
-- `fix: correct registration countdown timezone`
-- `style: refine footer padding on mobile screens`
-- `docs: update setup instructions in README`
+### Step-by-Step Contribution Workflow
 
-### 3. Component & Styling Guidelines
-- **Modularity**: Place reusable subcomponents inside their respective folder (e.g., `components/Kodikon-5/<Section>/`).
-- **Responsive Design**: Always check changes across mobile (`sm: 640px`), tablet (`md: 768px`), and desktop (`lg: 1024px`, `xl: 1480px`).
-- **Next/Image**: Always use `next/image` for images to preserve optimization and avoid layout shifts.
-- **Client Components**: If using React hooks (`useState`, `useEffect`, `useRef`) or animations (`framer-motion`), ensure `"use client";` is declared at the top of the file.
+#### 1. Always branch off `preview`
+```bash
+# Switch to preview and pull the latest changes
+git checkout preview
+git pull origin preview
 
-### 4. Submitting a Pull Request
-1. Pull the latest `main` branch: `git pull origin main`
-2. Test the build locally: `npm run build && npm run lint`
-3. Push your branch: `git push -u origin feat/your-feature-name`
-4. Open a Pull Request on GitHub with a description of the changes made and screenshots for visual updates.
+# Create your descriptive feature branch
+git checkout -b feat/your-feature-name      # e.g. feat/kodi6-tracks
+# or: git checkout -b fix/navbar-bug
+```
+
+#### 2. Commit Standards
+Write clear, conventional commit messages:
+```bash
+git commit -m "feat: add interactive track popup for AI theme"
+git commit -m "fix: correct registration countdown timezone"
+git commit -m "style: refine footer padding on mobile screens"
+```
+
+#### 3. Push and Open a Pull Request targeting `preview`
+```bash
+git push -u origin feat/your-feature-name
+```
+On GitHub:
+- Set **Base branch**: `preview`
+- Set **Compare branch**: `feat/your-feature-name`
+
+#### 4. Test the Live Vercel Preview
+- Once the PR is opened, the Vercel GitHub bot will post a comment with a unique **Preview Deployment URL** (e.g. `https://embrione-pes-git-feat-your-feature-...vercel.app`).
+- Test your changes directly on mobile and desktop using that link!
+
+#### 5. Merge into `preview` ➔ Promote to `main`
+- After code review, merge your PR into `preview`.
+- Once all staging features on `preview` are verified, a designated lead will open a PR from `preview` into `main` to deploy to production.
+
+---
+
+## 🌐 Domain & Deployment Setup (Vercel & DNS)
+
+If you are connecting custom domains (`embrionepes.in` or `www.embrionepes.in`):
+
+### 1. Vercel Configuration
+1. Open your project on the [Vercel Dashboard](https://vercel.com/).
+2. Navigate to **Settings** ➔ **Domains**.
+3. Add both:
+   - `embrionepes.in`
+   - `www.embrionepes.in`
+
+### 2. Registrar (GoDaddy / Hostinger / BigRock) DNS Records
+Ensure your registrar's DNS records point to Vercel instead of parking servers:
+
+| Record Type | Name / Host | Target / Points To | Purpose |
+|---|---|---|---|
+| **A** | `@` | `76.76.21.21` | Direct apex domain to Vercel |
+| **CNAME** | `www` | `cname.vercel-dns.com` | Direct www subdomain to Vercel |
+
+---
+
+## ❓ Troubleshooting & FAQs
+
+### Q: Why does the domain redirect to `/lander`?
+**A:** This happens when the domain registrar (e.g. GoDaddy) has the domain parked. It means either:
+1. The domain registration expired and needs renewal at the registrar.
+2. The DNS `A` record is still set to GoDaddy's default parking IP (`13.248.213.45`) instead of Vercel's IP (`76.76.21.21`).
+*Note: Your local site (`npm run dev`) and Vercel preview links will work normally.*
+
+### Q: `npm install` throws peer dependency warnings?
+**A:** Use the `--legacy-peer-deps` flag:
+```bash
+npm install --legacy-peer-deps
+```
+
+### Q: How do I verify my build before pushing?
+**A:** Always run:
+```bash
+npm run build
+```
+Ensure all 8 routes generate with `✓ Generating static pages (8/8)` before opening a PR.
 
 ---
 
@@ -257,6 +355,10 @@ Use clear and conventional commit messages:
 - **Tech Team**: [theembrionetech@gmail.com](mailto:theembrionetech@gmail.com)
 - **Instagram**: [@the_embrione.pesu](https://www.instagram.com/the_embrione.pesu/)
 - **LinkedIn**: [The Embrione](https://www.linkedin.com/company/the-embrione/about/)
+- **Lead Contacts**:
+  - Kunjal Patwari (Club Head): [patwarikunjal@gmail.com](mailto:patwarikunjal@gmail.com)
+  - Preksha M (Club Head): [preksham2004@gmail.com](mailto:preksham2004@gmail.com)
+  - Vishal P (Web Development Head): [vishal04p74@gmail.com](mailto:vishal04p74@gmail.com)
 
 ---
 
