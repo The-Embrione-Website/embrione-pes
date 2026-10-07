@@ -84,6 +84,45 @@ export default function Kodikon6Page() {
 
   return (
     <div className="min-h-screen bg-[#000514] text-slate-200">
+      {/* Search Engine Event Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Hackathon",
+            name: "Kodikon 6.0",
+            description:
+              "The flagship 24-hour national undergraduate hackathon organized by The Embrione, Department of Computer Science & Engineering, PES University.",
+            eventStatus: "https://schema.org/EventScheduled",
+            eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+            location: {
+              "@type": "Place",
+              name: "PESU 52, PES University",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "100 Feet Ring Road, BSK III Stage",
+                addressLocality: "Bengaluru",
+                addressRegion: "Karnataka",
+                postalCode: "560085",
+                addressCountry: "IN",
+              },
+            },
+            organizer: {
+              "@type": "Organization",
+              name: "The Embrione",
+              url: "https://embrionepes.in",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "INR",
+              availability: "https://schema.org/PreOrder",
+            },
+          }),
+        }}
+      />
+
       {/* Top Header */}
       <header className="sticky top-0 z-40 bg-[#000514]/90 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
