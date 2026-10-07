@@ -193,7 +193,7 @@ export default function FooterHome() {
         </div>
 
         {/* Bottom Bar (No /old link) */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
           <p>
             &copy; {new Date().getFullYear()} The Embrione • Department of CSE, PES University. All rights reserved.
           </p>

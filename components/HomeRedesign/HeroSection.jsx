@@ -17,39 +17,39 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10">
+      <div className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10 w-full">
         {/* Next Hackathon Badge: Kodi 6.0 */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300">
-            <span className="w-2 h-2 rounded-sm bg-cyan-400" />
+        <div className="flex flex-wrap items-center justify-center gap-2 mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-md bg-slate-900 border border-slate-800 text-[11px] sm:text-xs font-mono text-slate-300">
+            <span className="w-2 h-2 rounded-sm bg-cyan-400 shrink-0" />
             <span>PES UNIVERSITY • DEPT OF CSE</span>
           </div>
           <Link
             href="/kodikon-6"
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-xs font-mono text-cyan-300 transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-md bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-[11px] sm:text-xs font-mono text-cyan-300 transition-colors"
           >
             <span>NEXT HACKATHON: KODIKON 6.0</span>
-            <ArrowRight size={12} />
+            <ArrowRight size={12} className="shrink-0" />
           </Link>
         </div>
 
         {/* Exact Hero Title & Tagline from Old Website */}
-        <span className="text-white text-3xl sm:text-5xl md:text-6xl font-mono tracking-tight">
+        <span className="text-white text-2xl sm:text-4xl md:text-5xl font-mono tracking-tight">
           The
         </span>
-        <h1 className="text-white font-extrabold text-6xl sm:text-8xl md:text-9xl tracking-tight py-2">
+        <h1 className="text-white font-extrabold text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight py-2 break-words">
           Embrione
         </h1>
 
-        <p className="mt-4 text-base sm:text-2xl md:text-3xl text-slate-200 font-light max-w-3xl leading-relaxed">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-xl md:text-2xl text-slate-200 font-light max-w-3xl leading-relaxed px-2">
           Tech vertical under CSE department, PES University
         </p>
 
         {/* Action Buttons: Kodi 6.0, Kodi 5.0, About */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
           <Link
             href="/kodikon-6"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-sm transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-sm transition-colors shadow-sm"
           >
             <span>Explore Kodikon 6.0</span>
             <ArrowRight size={16} />

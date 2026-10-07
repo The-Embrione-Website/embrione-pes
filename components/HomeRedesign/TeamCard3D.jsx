@@ -53,6 +53,8 @@ export default function TeamCard3D({ member }) {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTouchEnd={handleMouseLeave}
+      onTouchCancel={handleMouseLeave}
       style={{
         transform,
         transformStyle: "preserve-3d",
@@ -86,7 +88,7 @@ export default function TeamCard3D({ member }) {
 
       {/* Photo with Parallax Depth */}
       <div
-        className="relative w-full h-64 bg-slate-950 overflow-hidden"
+        className="relative w-full h-60 sm:h-64 bg-slate-950 overflow-hidden"
         style={{ transform: "translateZ(18px)", transformStyle: "preserve-3d" }}
       >
         <img

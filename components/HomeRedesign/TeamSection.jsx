@@ -232,10 +232,10 @@ export default function TeamSection() {
       </div>
 
       {/* Term / Batch Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-10">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-8 sm:mb-10">
         <button
           onClick={() => setActiveTab("2026")}
-          className={`px-4 py-2 rounded-md text-xs font-mono transition-colors border ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
             activeTab === "2026"
               ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
               : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
@@ -246,7 +246,7 @@ export default function TeamSection() {
 
         <button
           onClick={() => setActiveTab("2025")}
-          className={`px-4 py-2 rounded-md text-xs font-mono transition-colors border ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
             activeTab === "2025"
               ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
               : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
@@ -257,7 +257,7 @@ export default function TeamSection() {
 
         <button
           onClick={() => setActiveTab("2024")}
-          className={`px-4 py-2 rounded-md text-xs font-mono transition-colors border ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
             activeTab === "2024"
               ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
               : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
@@ -268,7 +268,7 @@ export default function TeamSection() {
 
         <button
           onClick={() => setActiveTab("2023")}
-          className={`px-4 py-2 rounded-md text-xs font-mono transition-colors border ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
             activeTab === "2023"
               ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
               : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
@@ -281,7 +281,7 @@ export default function TeamSection() {
       {/* TAB CONTENT: 2026 INCOMING HEADS */}
       {activeTab === "2026" && (
         <div className="space-y-6">
-          <div className="p-6 rounded-lg bg-slate-900/80 border border-slate-800">
+          <div className="p-4 sm:p-6 rounded-lg bg-slate-900/80 border border-slate-800">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
               <div>
                 <span className="text-xs font-mono text-cyan-400 uppercase">Incoming Term</span>

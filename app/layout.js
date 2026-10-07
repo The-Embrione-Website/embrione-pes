@@ -14,6 +14,13 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#000514",
+};
+
 export const metadata = {
   metadataBase: new URL("https://embrionepes.in"),
   title: {

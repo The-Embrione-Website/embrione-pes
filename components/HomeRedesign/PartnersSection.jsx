@@ -27,11 +27,11 @@ export default function PartnersSection() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4">
         {partners.map((partner) => (
           <div
             key={partner.name}
-            className="p-4 rounded-lg bg-slate-900/60 border border-slate-800 flex flex-col items-center justify-center text-center hover:border-slate-700 transition-colors"
+            className="p-3 sm:p-4 rounded-lg bg-slate-900/60 border border-slate-800 flex flex-col items-center justify-center text-center hover:border-slate-700 transition-colors"
           >
             <div className="w-full h-14 flex items-center justify-center mb-2">
               <img

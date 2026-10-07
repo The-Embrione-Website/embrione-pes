@@ -132,11 +132,12 @@ export default function Kodikon6Page() {
               className="inline-flex items-center gap-1.5 text-xs font-mono text-slate-400 hover:text-white transition-colors"
             >
               <ArrowLeft size={14} />
-              <span>Back to Home</span>
+              <span className="hidden xs:inline">Back to Home</span>
+              <span className="xs:hidden">Home</span>
             </Link>
             <span className="text-slate-700">|</span>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded bg-slate-900 border border-slate-800 flex items-center justify-center p-0.5">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded bg-slate-900 border border-slate-800 flex items-center justify-center p-0.5">
                 <Image src={embrioneLogo} alt="Embrione Logo" width={22} height={22} className="object-contain" />
               </div>
               <span className="text-xs font-semibold text-white font-mono">KODIKON 6.0</span>

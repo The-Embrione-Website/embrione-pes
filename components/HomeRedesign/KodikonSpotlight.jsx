@@ -90,12 +90,12 @@ export default function KodikonSpotlight() {
       </div>
 
       {/* Event Selection Pills/Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-8">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-8">
         {ClubEvents?.map((event) => (
           <button
             key={event.eventName}
             onClick={() => setSelectedEvent(event.eventName)}
-            className={`px-3.5 py-1.5 rounded-md text-xs font-mono transition-colors border ${
+            className={`px-3 sm:px-3.5 py-1.5 rounded-md text-xs font-mono transition-colors border ${
               selectedEvent === event.eventName
                 ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
                 : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
@@ -108,11 +108,11 @@ export default function KodikonSpotlight() {
 
       {/* Active Event Details */}
       {currentEvent && (
-        <div className="p-6 sm:p-8 rounded-lg bg-slate-900/60 border border-slate-800">
+        <div className="p-4 sm:p-8 rounded-lg bg-slate-900/60 border border-slate-800">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
             <div>
               <span className="text-xs font-mono text-cyan-400">Department Event</span>
-              <h3 className="text-2xl font-bold text-white mt-0.5">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mt-0.5">
                 {currentEvent.eventName}
               </h3>
             </div>
@@ -145,18 +145,18 @@ export default function KodikonSpotlight() {
             )}
           </div>
 
-          <p className="mt-5 text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+          <p className="mt-4 sm:mt-5 text-slate-300 text-xs sm:text-base leading-relaxed font-light">
             {currentEvent.eventDescription}
           </p>
 
           {/* Interactive Archive Image Gallery (Click to Zoom Lightbox) */}
           {currentEvent.eventImagesArray && currentEvent.eventImagesArray.length > 0 && (
-            <div className="mt-8 pt-6 border-t border-slate-800">
-              <div className="flex items-center justify-between mb-3 text-xs font-mono text-slate-400">
+            <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-800">
+              <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 mb-3 text-xs font-mono text-slate-400">
                 <span>EVENT ARCHIVE PHOTOGRAPHS</span>
-                <span className="text-cyan-400">Click image to enlarge</span>
+                <span className="text-cyan-400 text-[11px] xs:text-xs">Click image to enlarge</span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3">
                 {currentEvent.eventImagesArray.slice(0, 8).map((imgSrc, i) => (
                   <button
                     key={i}
@@ -167,7 +167,7 @@ export default function KodikonSpotlight() {
                         title: `${currentEvent.eventName} - Archive #${i + 1}`,
                       })
                     }
-                    className="group relative h-28 sm:h-32 rounded-md overflow-hidden bg-slate-950 border border-slate-800 hover:border-cyan-500/60 transition-all duration-200 cursor-pointer focus:outline-none"
+                    className="group relative h-24 sm:h-32 rounded-md overflow-hidden bg-slate-950 border border-slate-800 hover:border-cyan-500/60 transition-all duration-200 cursor-pointer focus:outline-none"
                     aria-label={`Enlarge photo ${i + 1} from ${currentEvent.eventName}`}
                   >
                     <img
@@ -195,12 +195,12 @@ export default function KodikonSpotlight() {
           role="dialog"
           aria-modal="true"
           onClick={() => setLightboxImage(null)}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-8 animate-fadeIn select-none"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col items-center justify-center p-3 sm:p-8 animate-fadeIn select-none touch-none"
         >
           {/* Close Button */}
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-md bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors z-50 cursor-pointer"
+            className="absolute top-3 right-3 sm:top-6 sm:right-6 p-2 rounded-md bg-slate-900/90 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-colors z-50 cursor-pointer"
             aria-label="Close enlarged image"
           >
             <X size={20} />
@@ -209,15 +209,15 @@ export default function KodikonSpotlight() {
           {/* Enlarge Image Container */}
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl max-h-[85vh] w-auto h-auto flex flex-col items-center"
+            className="relative max-w-5xl max-h-[85vh] w-auto h-auto flex flex-col items-center px-2"
           >
             <img
               src={lightboxImage.src}
               alt="Enlarged archive photograph"
-              className="max-h-[80vh] max-w-[90vw] object-contain rounded-lg border border-slate-700 shadow-2xl"
+              className="max-h-[75vh] sm:max-h-[80vh] max-w-[94vw] sm:max-w-[90vw] object-contain rounded-lg border border-slate-700 shadow-2xl"
             />
             {lightboxImage.title && (
-              <div className="mt-3 px-3 py-1 rounded bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300">
+              <div className="mt-3 px-3 py-1 rounded bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300 text-center max-w-[90vw] truncate">
                 {lightboxImage.title}
               </div>
             )}
