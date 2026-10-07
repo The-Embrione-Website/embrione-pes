@@ -2,7 +2,8 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { whitepeslogo, whitelogo } from "@/public/Kodikon3";
+import whitepeslogo from "@/public/Kodikon3/whitepeslogo.png";
+import whitelogo from "@/public/Kodikon3/whitelogo.png";
 import Image from "next/image";
 
 export const NavbarKodikon3 = () => {

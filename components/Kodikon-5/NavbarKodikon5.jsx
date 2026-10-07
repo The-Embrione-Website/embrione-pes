@@ -2,7 +2,7 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { whitepeslogo, whitelogo } from "@/public/Kodikon3";
+import whitelogo from "@/public/Kodikon3/whitelogo.png";
 import pes from "@/public/Kodikon5/pes.png";
 import cse from "@/public/Kodikon5/cse.png";
 import Image from "next/image";

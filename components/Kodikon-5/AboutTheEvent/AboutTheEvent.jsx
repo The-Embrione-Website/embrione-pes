@@ -7,8 +7,7 @@ const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 // Helper Components & Assets
 import TitleComponent from '../HelperComponents/TitleComponent';
-import aboutAnimation from '../../../assets/about-kodikon.json';
-import prizeImage from '../../../assets/prize.png'; 
+import aboutAnimation from '../../../assets/about-kodikon.json'; 
 
 // --- Component Data ---
 const aboutData = {

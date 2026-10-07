@@ -1,7 +1,10 @@
 'use client'
 
 import React from 'react'
-import { leftguy, rightguy, fourteen, fifteen } from "@/public/Kodikon4";
+import leftguy from "@/public/Kodikon4/leftguy.png";
+import rightguy from "@/public/Kodikon4/rightguy.png";
+import fourteen from "@/public/Kodikon4/14.png";
+import fifteen from "@/public/Kodikon4/15.png";
 import Image from 'next/image';
 import Kodikon41 from '/public/Kodikon4/Kodikon41.png';
 

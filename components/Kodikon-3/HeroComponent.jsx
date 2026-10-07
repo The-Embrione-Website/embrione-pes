@@ -3,7 +3,11 @@
 // ReadMe: Here the Banner provided by the team will be placed. Measure the right Aspect Ratio and fit the banner into
 // the screen.
 import React from 'react'
-import { copyofcopy, leftguy, rightguy, fourteen, fifteen } from "@/public/Kodikon3";
+import copyofcopy from "@/public/Kodikon3/copyofcopy.png";
+import leftguy from "@/public/Kodikon3/leftguy.png";
+import rightguy from "@/public/Kodikon3/rightguy.png";
+import fourteen from "@/public/Kodikon3/14.png";
+import fifteen from "@/public/Kodikon3/15.png";
 import Image from 'next/image';
 
 const HeroComponent = () => {

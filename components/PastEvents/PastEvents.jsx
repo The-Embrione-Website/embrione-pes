@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { ClubEvents } from "@/constants";
-import PastEventsCarousel from "./PastEvents/PastEventsCarousel";
+import PastEventsCarousel from "./PastEventsCarousel";
 const PastEvents = () => {
   const [activeEvent, setActiveEvent] = useState(null);
   const [eventDetails, setEventDetails] = useState(null);

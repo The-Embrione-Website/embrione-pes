@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useDragControls } from "framer-motion";
-import NavbarAnnouncementComponent from "./Announcements/NavbarAnnouncementComponent";
+import NavbarAnnouncementComponent from "@/components/Announcements/NavbarAnnouncementComponent";
 
 const icon = {
   hidden: {

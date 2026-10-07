@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-import vortex from "../assets/blue-orbit.json";
+import vortex from "@/assets/blue-orbit.json";
 import {
   motion,
   useScroll,

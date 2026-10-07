@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import { NavbarKodikon3 } from "@/components/Kodikon-3/NavbarKodikon3";
 import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressComponent";
 import BottomNavigationComponent from "@/components/BottomNavigation/BottomNavigationComponent";
