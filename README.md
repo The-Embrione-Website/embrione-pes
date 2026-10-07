@@ -6,6 +6,7 @@ Official web repository for **The Embrione** — the technical vertical under th
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-black?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 [![PES University](https://img.shields.io/badge/PES_University-Bengaluru-blue?style=for-the-badge)](https://pes.edu/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](./LICENSE)
 
 ---
 
@@ -20,6 +21,7 @@ Official web repository for **The Embrione** — the technical vertical under th
 - [How to Update Content](#-how-to-update-content)
 - [Collaboration & Git Workflow](#-collaboration--git-workflow)
 - [Club Maintainers & Contact](#-club-maintainers--contact)
+- [License](#-license)
 
 ---
 
@@ -255,6 +257,12 @@ Use clear and conventional commit messages:
 - **Tech Team**: [theembrionetech@gmail.com](mailto:theembrionetech@gmail.com)
 - **Instagram**: [@the_embrione.pesu](https://www.instagram.com/the_embrione.pesu/)
 - **LinkedIn**: [The Embrione](https://www.linkedin.com/company/the-embrione/about/)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](./LICENSE) &copy; 2025-2026 The Embrione, PES University.
 
 ---
 
