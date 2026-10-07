@@ -5,7 +5,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Kunjal.jpg",
     linkedinUrl: "https://www.linkedin.com/in/kunjal-patwari-967085291",
-    srn: "PES1UG23CS317",
     email: "patwarikunjal@gmail.com",
   },
   {
@@ -14,7 +13,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Preksha.jpg",
     linkedinUrl: "https://www.linkedin.com/in/preksha-m-90b309329/",
-    srn: "PES1UG23CS450",
     email: "preksham2004@gmail.com",
   },
   {
@@ -23,7 +21,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Vishal.jpg",
     linkedinUrl: "https://www.linkedin.com/in/vishal-p-269045280/",
-    srn: "PES1UG23CS696",
     email: "vishal04p74@gmail.com",
   },
   {
@@ -32,7 +29,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Nikhitha.jpg",
     linkedinUrl: "https://www.linkedin.com/in/nikhitha-sriram-068108270/",
-    srn: "PES1UG23CS394",
     email: "nikhithasriram.552@gmail.com",
   },
   {
@@ -41,7 +37,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Dhruv.jpg",
     linkedinUrl: "https://www.linkedin.com/in/d16r7v-17a8n",
-    srn: "PES1UG23CS189",
     email: "dhruvjeng@gmail.com",
   },
   {
@@ -50,7 +45,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Saanvi.jpg",
     linkedinUrl: "http://www.linkedin.com/in/saanvi-kakkar-483669325",
-    srn: "PES1UG23CS495",
     email: "saanvikakkar05@gmail.com",
   },
   {
@@ -59,7 +53,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Shrest.jpg",
     linkedinUrl: "https://www.linkedin.com/in/shrestkumar00963?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23CS557",
     email: "shrest.kumar03@gmail.com",
   },
   {
@@ -68,7 +61,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Shashwat.jpg",
     linkedinUrl: "https://www.linkedin.com/in/shashwat-jha-7a726b296?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23EC283",
     email: "shashwatjha384@gmail.com",
   },
   {
@@ -77,7 +69,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Sara.jpg",
     linkedinUrl: "https://www.linkedin.com/in/sara-girdhar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23AM273",
     email: "saragirdhar13@gmail.com",
   },
   {
@@ -86,7 +77,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Neerav.jpg",
     linkedinUrl: "www",
-    srn: "PES1UG23CS388",
     email: "neerav.aiyappa@gmail.com",
   },
   {
@@ -95,7 +85,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Achintya.jpg",
     linkedinUrl: "www",
-    srn: "PES1UG23CS916",
     email: "achintyan24680@gmail.com",
   },
   {
@@ -104,7 +93,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Rachana.jpg",
     linkedinUrl: "https://www.linkedin.com/in/rachana-ramchandar/",
-    srn: "PES1UG23CS459",
     email: "rachram2810@gmail.com",
   },
   {
@@ -113,7 +101,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Meghana.jpg",
     linkedinUrl: "https://www.linkedin.com/in/meghana-gururaj?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23CS356",
     email: "meghanag450@gmail.com",
   },
   {
@@ -122,7 +109,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Charitha.jpg",
     linkedinUrl: "https://www.linkedin.com/in/charitha-s-jain-43a933283?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23EC076",
     email: "charithasukumar07@gmail.com",
   },
   {
@@ -131,7 +117,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Taha.jpg",
     linkedinUrl: "https://www.linkedin.com/in/tahahussain1692502?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23AM333",
     email: "tahamb05@gmail.com",
   },
   {
@@ -140,7 +125,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Shreya.jpg",
     linkedinUrl: "www.linkedin.com/in/shreya-patil-26b903331",
-    srn: "PES1UG23AM293",
     email: "shreyaapatil18@gmail.com",
   },
   {
@@ -149,7 +133,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Anshita.jpg",
     linkedinUrl: "www",
-    srn: "PES1UG23EC049",
     email: "anshita325@gmail.com",
   },
   {
@@ -158,7 +141,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Ankith.jpg",
     linkedinUrl: "https://www.linkedin.com/in/ankithkhaitan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23CS082",
     email: "ankithkhaitan11@gmail.com",
   },
   {
@@ -167,7 +149,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Nishant.jpg",
     linkedinUrl: "www",
-    srn: "PES1UG23CS402",
     email: "nishanthegde2005@gmail.com",
   },
   {
@@ -176,7 +157,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Dibyadyuti.jpg",
     linkedinUrl: "www.linkedin.com/in/dibyadyuti-mohanty",
-    srn: "PES1UG23EC096",
     email: "mohanty.dibyadyuti@gmail.com",
   },
   {
@@ -185,7 +165,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Saanvim.jpg",
     linkedinUrl: "https://www.linkedin.com/in/saanvi-manjunath-803310295/",
-    srn: "PES1UG23AM251",
     email: "saanvimanjunath04@gmail.com",
   },
   {
@@ -194,7 +173,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Shrisha.jpg",
     linkedinUrl: "https://www.linkedin.com/in/shrisha-katti-b67440348/",
-    srn: "PES1UG23EC295",
     email: "shrishakatti2025@gmail.com",
   },
   {
@@ -203,7 +181,6 @@ export const teamMembersDetails = [
     role: "Core",
     photoUrl: "/2025-domain-heads/Dhanya.jpg",
     linkedinUrl: "www.linkedin.com/in/dhanya-bhat",
-    srn: "PES1UG23CS183",
     email: "dhanyabhat2005@gmail.com",
   },
   {
@@ -212,7 +189,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Deeksha.jpg",
     linkedinUrl: "https://www.linkedin.com/in/deeksha-kashyap-02546a185/",
-    srn: "PES1UG23CS177",
     email: "deekshakashyap05@gmail.com",
   },
   {
@@ -221,7 +197,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Chetan.jpg",
     linkedinUrl: "www",
-    srn: "PES1UG23CS161",
     email: "chetanhs123@gmail.com",
   },
   {
@@ -230,7 +205,6 @@ export const teamMembersDetails = [
     role: "Head",
     photoUrl: "/2025-domain-heads/Pranav.jpg",
     linkedinUrl: "https://www.linkedin.com/in/pranav-lokesh-a02983291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-    srn: "PES1UG23EC222",
     email: "pranavlokesh1@gmail.com",
   },
 ];
