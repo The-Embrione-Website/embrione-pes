@@ -236,10 +236,27 @@ export const teamMembersDetails = [
 ];
 
 export const ClubEvents = [
-    {
-    eventName: "Kodikon 4.0",
+  {
+    eventName: "Kodikon 5.0",
+    eventImagesArray: [
+      "/Kodikon5/kodikon5_logo.png",
+      "/Kodikon5/kodikon5_title_sponsor.png",
+      "/Kodikon5/bg1.png",
+      "/Kodikon5/pes.png",
+    ],
     eventDescription:
-    "Kodikon 4.0, the fourth edition of our highly successful annual hackathon, was aimed at developing cutting-edge solutions to real-world problems. With 322 teams registering and 40 teams battling it out for the coveted prizes, the event was open to all undergraduate engineering students across colleges in India. The hackathon revolved around five central themes—developer tools, edtech, smart cities, next-generation technologies such as blockchain and AR/VR, and assistive tech and accessibility with the vision of empowering all and enabling everyone. Kodikon 4.0 provided a platform for the next generation of engineers to showcase their skills while also learning through collaboration, and with guidance from mentors and industry experts, participants gained valuable exposure, built connections, and strengthened both their technical and interpersonal abilities."
+      "Kodikon 5.0, the fifth edition of our 24-hour national-level flagship hackathon, brought a research-driven dimension to undergraduate engineering. Grounded in emerging research themes: Edge Computer Vision with Pixcellence Technologies, Assistive GenAI, and Federated Learning Systems. Guided by experienced mentors from industry and academia at PES University, teams transformed ideas into impactful, research-backed solutions.",
+  },
+  {
+    eventName: "Kodikon 4.0",
+    eventImagesArray: [
+      "/Kodikon4/Kodikon4.png",
+      "/Kodikon4/SentinelOne.png",
+      "/Kodikon4/mesh.png",
+      "/Kodikon4/prize.png",
+    ],
+    eventDescription:
+      "Kodikon 4.0, the fourth edition of our highly successful annual hackathon, was aimed at developing cutting-edge solutions to real-world problems. With 322 teams registering and 40 teams battling it out for the coveted prizes, the event was open to all undergraduate engineering students across colleges in India. The hackathon revolved around five central themes: developer tools, edtech, smart cities, next-generation technologies such as blockchain and AR/VR, and assistive tech and accessibility with the vision of empowering all and enabling everyone. Kodikon 4.0 provided a platform for the next generation of engineers to showcase their skills while also learning through collaboration, and with guidance from mentors and industry experts, participants gained valuable exposure, built connections, and strengthened both their technical and interpersonal abilities.",
   },
     {
     eventName: "Kodikon 3.0",

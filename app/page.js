@@ -1,34 +1,57 @@
-import Navbar from "@/components/Navbar/Navbar";
-import Hero from "@/components/Hero/Hero";
-import AboutUs from "@/components/AboutUs/AboutUs";
-import Team from "@/components/Team/Team";
-import PastEvents from "@/components/PastEvents/PastEvents";
-import Footer from "@/components/Footer/Footer";
-import Announcements from "@/components/Announcements/Announcements";
-import PreviousPartners from "@/components/PreviousPartners/PreviousPartners";
-import ContactUs from "@/components/ContactUs/ContactUs";
-import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressComponent";
-import BottomNavigationComponent from "@/components/BottomNavigation/BottomNavigationComponent";
-export default function LandingPage() {
+import NavbarHome from "@/components/HomeRedesign/NavbarHome";
+import HeroSection from "@/components/HomeRedesign/HeroSection";
+import AboutSection from "@/components/HomeRedesign/AboutSection";
+import KodikonSpotlight from "@/components/HomeRedesign/KodikonSpotlight";
+import TeamSection from "@/components/HomeRedesign/TeamSection";
+import PartnersSection from "@/components/HomeRedesign/PartnersSection";
+import CTASection from "@/components/HomeRedesign/CTASection";
+import FooterHome from "@/components/HomeRedesign/FooterHome";
+
+export const metadata = {
+  metadataBase: new URL("https://embrionepes.in"),
+  title: "The Embrione | Department of Computer Science & Engineering, PES University",
+  description:
+    "Official portal of The Embrione, the student computing and hackathon society of the Department of Computer Science & Engineering, PES University (Ring Road Campus, Bengaluru). Organizers of the Kodikon 24-hour national hackathon.",
+  keywords: [
+    "The Embrione",
+    "PES University",
+    "CSE Department PESU",
+    "Kodikon",
+    "Kodikon 6.0",
+    "Kodikon 5.0",
+    "Hackathon Bangalore",
+  ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
+  openGraph: {
+    title: "The Embrione | PES University CSE Club",
+    description:
+      "Department of Computer Science & Engineering, PES University. Organizing Kodikon, collegiate technical workshops, and engineering initiatives.",
+    url: "https://embrionepes.in",
+    siteName: "The Embrione",
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+export default function RedesignedLandingPage() {
   return (
-    <>
-      <ScrollProgressComponent />
-      <div className="relative flex justify-center items-center">
-        <Navbar />
-      </div>
-      <Hero />
-      <AboutUs />
-      <Team />
-      <PastEvents />
-      <PreviousPartners />
-      <Announcements />
-      <ContactUs />
-      <div className="relative flex justify-center items-center">
-        <Footer />
-      </div>
-      <div className="flex flex-col items-center justify-center sticky bottom-4 bg-transparent">
-        <BottomNavigationComponent />
-      </div>
-    </>
+    <div className="relative min-h-screen bg-[#000514] text-white selection:bg-cyan-500/30 selection:text-cyan-200">
+      <NavbarHome />
+      <main>
+        <HeroSection />
+        <AboutSection />
+        <KodikonSpotlight />
+        <TeamSection />
+        <PartnersSection />
+        <CTASection />
+      </main>
+      <FooterHome />
+    </div>
   );
 }

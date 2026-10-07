@@ -1,0 +1,40 @@
+import Navbar from "@/components/Navbar/Navbar";
+import Hero from "@/components/Hero/Hero";
+import AboutUs from "@/components/AboutUs/AboutUs";
+import Team from "@/components/Team/Team";
+import PastEvents from "@/components/PastEvents/PastEvents";
+import Footer from "@/components/Footer/Footer";
+import Announcements from "@/components/Announcements/Announcements";
+import PreviousPartners from "@/components/PreviousPartners/PreviousPartners";
+import ContactUs from "@/components/ContactUs/ContactUs";
+import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressComponent";
+import BottomNavigationComponent from "@/components/BottomNavigation/BottomNavigationComponent";
+
+export const metadata = {
+  title: "The Embrione | Archive",
+  description: "Previous portal archive of The Embrione - Department of CSE, PES University",
+};
+
+export default function OldLandingPage() {
+  return (
+    <>
+      <ScrollProgressComponent />
+      <div className="relative flex justify-center items-center">
+        <Navbar />
+      </div>
+      <Hero />
+      <AboutUs />
+      <Team />
+      <PastEvents />
+      <PreviousPartners />
+      <Announcements />
+      <ContactUs />
+      <div className="relative flex justify-center items-center">
+        <Footer />
+      </div>
+      <div className="flex flex-col items-center justify-center sticky bottom-4 bg-transparent">
+        <BottomNavigationComponent />
+      </div>
+    </>
+  );
+}
