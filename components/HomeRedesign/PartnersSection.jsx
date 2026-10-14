@@ -2,22 +2,10 @@
 
 import React from "react";
 
-const partners = [
-  { name: "Pixcellence Technologies", category: "Title Sponsor", logo: "/Kodikon5/kodikon5_title_sponsor.webp" },
-  { name: "SentinelOne", category: "Title Sponsor", logo: "/Kodikon4/Sponsors/Title Sponsor/SentinelOne.webp" },
-  { name: "Hack2Skill", category: "Platform Partner", logo: "/Partners/h2s_white_logo.webp" },
-  { name: "Axure", category: "Tech Partner", logo: "/sponsors/axure.webp" },
-  { name: "Wolfram", category: "Tech Partner", logo: "/sponsors/wolfram.webp" },
-  { name: "1Password", category: "Tech Partner", logo: "/sponsors/1Password.webp" },
-  { name: "echo3D", category: "Tech Partner", logo: "/sponsors/echo-three-d.webp" },
-  { name: "Flatlogic", category: "Platform Partner", logo: "/Kodikon4/Sponsors/Platform Partners/flatlogic.webp" },
-  { name: "EaseMyTrip", category: "Travel Partner", logo: "/sponsors/TravelPartners/EaseMyTrip-Logo.webp" },
-  { name: "Brown Burger", category: "Food Partner", logo: "/sponsors/FoodPartners/brownburger.webp" },
-  { name: "Glen's Bakehouse", category: "Food Partner", logo: "/sponsors/FoodPartners/glens.webp" },
-  { name: "Cream Bell", category: "Food Partner", logo: "/sponsors/FoodPartners/creambell.webp" },
-];
+import { partnersData } from "./partnersData";
 
 export default function PartnersSection() {
+
   return (
     <section id="partners" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-black text-white">
       <div className="max-w-3xl mb-12 sm:mb-16">
@@ -33,7 +21,7 @@ export default function PartnersSection() {
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-        {partners.map((partner) => (
+        {partnersData.map((partner) => (
           <div
             key={partner.name}
             className="group p-5 rounded-2xl bg-[#161617] border border-white/10 hover:border-white/25 flex flex-col items-center justify-center text-center transition-all duration-300 min-h-[140px]"
