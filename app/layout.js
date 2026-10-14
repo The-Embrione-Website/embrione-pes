@@ -98,12 +98,15 @@ export const metadata = {
   },
 };
 
+import { Analytics } from "@vercel/analytics/react";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${orbitron.variable} ${poppins.variable}`}>
         {children}
         <AosInit />
+        <Analytics />
       </body>
     </html>
   );

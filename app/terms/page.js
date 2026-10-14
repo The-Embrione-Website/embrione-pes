@@ -6,7 +6,11 @@ export const metadata = {
   title: "Terms & Conditions | The Embrione - PES University",
   description:
     "Terms and Conditions governing website usage and hackathon participation with The Embrione, Department of CSE, PES University.",
+  alternates: {
+    canonical: "https://embrionepes.in/terms",
+  },
 };
+
 
 export default function TermsPage() {
   return (

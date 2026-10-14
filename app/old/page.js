@@ -11,9 +11,17 @@ import ScrollProgressComponent from "@/components/ScrollProgress/ScrollProgressC
 import BottomNavigationComponent from "@/components/BottomNavigation/BottomNavigationComponent";
 
 export const metadata = {
-  title: "The Embrione | Archive",
+  title: "The Embrione | Portal Archive",
   description: "Previous portal archive of The Embrione - Department of CSE, PES University",
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://embrionepes.in/old",
+  },
 };
+
 
 export default function OldLandingPage() {
   return (

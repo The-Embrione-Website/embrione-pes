@@ -10,10 +10,43 @@ export const metadata = {
   title: "Kodikon 6.0 | Flagship 24-Hour National Hackathon - PES University",
   description:
     "The flagship 24-hour national undergraduate hackathon organized by The Embrione, Department of Computer Science & Engineering, PES University at PESU 52, Bengaluru.",
+  keywords: [
+    "Kodikon 6.0",
+    "Kodikon Hackathon",
+    "PES University Hackathon",
+    "PESU 52",
+    "Bangalore Hackathon 2026",
+    "The Embrione",
+  ],
   alternates: {
     canonical: "https://embrionepes.in/kodikon-6",
   },
+  openGraph: {
+    title: "Kodikon 6.0 | Flagship 24-Hour National Hackathon - PES University",
+    description:
+      "Join South India's premier collegiate hackathon hosted by The Embrione, Department of CSE at PES University. In-person 24-hour sprint at PESU 52, Bengaluru.",
+    url: "https://embrionepes.in/kodikon-6",
+    siteName: "The Embrione",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Kodikon 6.0 Flagship Hackathon",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kodikon 6.0 | Flagship 24-Hour National Hackathon",
+    description:
+      "24-Hour Flagship National Hackathon at PESU 52, PES University. Organized by The Embrione.",
+    images: ["/og-image.png"],
+  },
 };
+
 
 export default function Kodikon6Page() {
   return (

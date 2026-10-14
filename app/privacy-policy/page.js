@@ -6,7 +6,11 @@ export const metadata = {
   title: "Privacy Policy | The Embrione - PES University",
   description:
     "Privacy Policy for The Embrione, Department of Computer Science & Engineering, PES University.",
+  alternates: {
+    canonical: "https://embrionepes.in/privacy-policy",
+  },
 };
+
 
 export default function PrivacyPolicyPage() {
   return (

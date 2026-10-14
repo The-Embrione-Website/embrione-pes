@@ -1,6 +1,35 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/kodi-6",
+        destination: "/kodikon-6",
+        permanent: true,
+      },
+      {
+        source: "/privacy",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
+      {
+        source: "/kodi-5",
+        destination: "/kodikon-5",
+        permanent: true,
+      },
+      {
+        source: "/kodi-4",
+        destination: "/kodikon-4",
+        permanent: true,
+      },
+      {
+        source: "/kodi-3",
+        destination: "/kodikon-3",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
