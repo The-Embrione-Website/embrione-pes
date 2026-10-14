@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import contact from "../../assets/contact.json";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,15 +26,19 @@ const ContactUs = () => {
       draggable: true,
       progress: undefined,
       theme: "dark",
-      });
+    });
 
-    axios
-      .post("/api/sendMessage", formData)
-      .then((res) => {
-        // console.log(res.data);
-        toast.success( `${res?.data?.message}`, {
+    fetch("/api/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+        if (!res.ok) throw new Error(data?.error || "Failed to send message");
+        toast.success(`${data?.message || "Message sent successfully"}`, {
           position: "top-center",
-          draggablePercent:60,
+          draggablePercent: 60,
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -45,7 +48,8 @@ const ContactUs = () => {
           theme: "dark",
         });
       })
-      .catch((err) => {console.log(err);
+      .catch((err) => {
+        console.error(err);
         toast.error('Some Error occured, Please try again', {
           position: "bottom-center",
           autoClose: 5000,
@@ -55,7 +59,8 @@ const ContactUs = () => {
           draggable: true,
           progress: undefined,
           theme: "dark",
-          });});
+        });
+      });
 
     // resetField("fullName");
     // resetField("emailID");

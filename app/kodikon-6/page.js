@@ -18,8 +18,8 @@ import {
   HelpCircle,
 } from "lucide-react";
 import { BsDiscord } from "react-icons/bs";
-import embrioneLogo from "@/public/embrionelogo.png";
-import pesLogo from "@/public/Kodikon5/pes.png";
+import embrioneLogo from "@/public/embrionelogo.webp";
+import pesLogo from "@/public/Kodikon5/pes.webp";
 
 const tracks = [
   {
@@ -83,7 +83,7 @@ export default function Kodikon6Page() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000514] text-slate-200">
+    <div className="min-h-screen bg-black text-neutral-200">
       {/* Search Engine Event Structured Data */}
       <script
         type="application/ld+json"
@@ -358,8 +358,6 @@ export default function Kodikon6Page() {
         <p>&copy; {new Date().getFullYear()} The Embrione • Department of CSE, PES University. All rights reserved.</p>
         <div className="mt-2 flex items-center justify-center gap-4 font-mono text-[11px]">
           <Link href="/" className="hover:text-white transition-colors">Home Portal</Link>
-          <span>•</span>
-          <Link href="/kodikon-5" className="hover:text-white transition-colors">Kodikon 5.0</Link>
           <span>•</span>
           <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
           <span>•</span>

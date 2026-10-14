@@ -97,7 +97,7 @@ const jsonLd = {
 
 export default function RedesignedLandingPage() {
   return (
-    <div className="relative min-h-screen bg-[#000514] text-white selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="relative min-h-screen bg-black text-white selection:bg-[#0071e3]/30 selection:text-white">
       {/* Search Engine Structured Data */}
       <script
         type="application/ld+json"

@@ -1,6 +1,5 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Countdown from 'react-countdown';
 import Link from 'next/link';
 
@@ -51,9 +50,12 @@ const renderer = ({ days, hours, minutes, seconds, completed }) => {
 const EventCountdown = () => {
     const [timeleft, setTimeLeft] = useState(null)
     useEffect(() => {
-        axios.get('/api/getTime').then((res) => {
-            setTimeLeft(res.data.timeLeft)
-        })
+        fetch('/api/getTime')
+            .then((res) => res.json())
+            .then((data) => {
+                if (data?.timeLeft) setTimeLeft(data.timeLeft);
+            })
+            .catch((err) => console.error(err));
     }, [])
     return (
         <>

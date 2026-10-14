@@ -11,7 +11,7 @@ const pastHeads2024 = [
     domain: "Club Head & Mentor",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Gagan H R.jpg",
+    photoUrl: "/current-domain-heads/Gagan H R.webp",
     linkedinUrl: "https://www.linkedin.com/in/gaganhr",
   },
   {
@@ -19,7 +19,7 @@ const pastHeads2024 = [
     domain: "Club Head",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/IMG-20230809-WA0016.jpg",
+    photoUrl: "/current-domain-heads/IMG-20230809-WA0016.webp",
     linkedinUrl: "https://www.linkedin.com/in/anveshanayak",
   },
   {
@@ -27,7 +27,7 @@ const pastHeads2024 = [
     domain: "Sponsorship",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Ankith Khaitan_.jpg",
+    photoUrl: "/current-domain-heads/Ankith Khaitan_.webp",
     linkedinUrl: "https://www.linkedin.com/in/ankith-khaitan",
   },
   {
@@ -35,7 +35,7 @@ const pastHeads2024 = [
     domain: "Event Management",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Arushi Katta.jpg",
+    photoUrl: "/current-domain-heads/Arushi Katta.webp",
     linkedinUrl: "https://www.linkedin.com/in/arushi-katta",
   },
   {
@@ -43,7 +43,7 @@ const pastHeads2024 = [
     domain: "Logistics",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Deeksha Kashyap.jpg",
+    photoUrl: "/current-domain-heads/Deeksha Kashyap.webp",
     linkedinUrl: "https://www.linkedin.com/in/deeksha-kashyap",
   },
   {
@@ -51,7 +51,7 @@ const pastHeads2024 = [
     domain: "Design",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Kanika.jpg",
+    photoUrl: "/current-domain-heads/Kanika.webp",
     linkedinUrl: "",
   },
   {
@@ -67,7 +67,7 @@ const pastHeads2024 = [
     domain: "Operations",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Manya Gaonkar.jpeg",
+    photoUrl: "/current-domain-heads/Manya Gaonkar.webp",
     linkedinUrl: "",
   },
   {
@@ -75,7 +75,7 @@ const pastHeads2024 = [
     domain: "Web Development",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Mayank Sharma.jpg",
+    photoUrl: "/current-domain-heads/Mayank Sharma.webp",
     linkedinUrl: "",
   },
   {
@@ -83,7 +83,7 @@ const pastHeads2024 = [
     domain: "Logistics",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Rahul Baradol.jpg",
+    photoUrl: "/current-domain-heads/Rahul Baradol.webp",
     linkedinUrl: "",
   },
   {
@@ -91,7 +91,7 @@ const pastHeads2024 = [
     domain: "Hospitality",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Rhea Gangamma.png",
+    photoUrl: "/current-domain-heads/Rhea Gangamma.webp",
     linkedinUrl: "",
   },
   {
@@ -99,7 +99,7 @@ const pastHeads2024 = [
     domain: "Operations",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/sadhanaAT.jpg",
+    photoUrl: "/current-domain-heads/sadhanaAT.webp",
     linkedinUrl: "",
   },
   {
@@ -107,7 +107,7 @@ const pastHeads2024 = [
     domain: "Design",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Shailja Shaktawat.jpeg",
+    photoUrl: "/current-domain-heads/Shailja Shaktawat.webp",
     linkedinUrl: "",
   },
   {
@@ -115,7 +115,7 @@ const pastHeads2024 = [
     domain: "Social Media",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Sravanthi N.jpg",
+    photoUrl: "/current-domain-heads/Sravanthi N.webp",
     linkedinUrl: "",
   },
   {
@@ -123,7 +123,7 @@ const pastHeads2024 = [
     domain: "Hospitality",
     role: "Head",
     term: "2024-2025",
-    photoUrl: "/current-domain-heads/Tanusha Raina_.jpg",
+    photoUrl: "/current-domain-heads/Tanusha Raina_.webp",
     linkedinUrl: "",
   },
 ];
@@ -134,7 +134,7 @@ const pastHeads2023 = [
     domain: "Club Founder & Head",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/vijit.jpg",
+    photoUrl: "/domiainHeadPhotos/vijit.webp",
     linkedinUrl: "",
   },
   {
@@ -142,7 +142,7 @@ const pastHeads2023 = [
     domain: "Marketing and Sponsorship",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/swikrit.jpg",
+    photoUrl: "/domiainHeadPhotos/swikrit.webp",
     linkedinUrl: "https://www.linkedin.com/in/swikrit-laxmishekhar-546878225/",
   },
   {
@@ -150,7 +150,7 @@ const pastHeads2023 = [
     domain: "Logistics",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/naresh.jpg",
+    photoUrl: "/domiainHeadPhotos/naresh.webp",
     linkedinUrl: "https://www.linkedin.com/in/naresh-srinivas-28a608215/",
   },
   {
@@ -158,7 +158,7 @@ const pastHeads2023 = [
     domain: "Operations",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/harsh.jpg",
+    photoUrl: "/domiainHeadPhotos/harsh.webp",
     linkedinUrl: "https://www.linkedin.com/in/harsh-verma-857b801b9/",
   },
   {
@@ -166,7 +166,7 @@ const pastHeads2023 = [
     domain: "Event Management",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/punarv.jpeg",
+    photoUrl: "/domiainHeadPhotos/punarv.webp",
     linkedinUrl: "",
   },
   {
@@ -174,7 +174,7 @@ const pastHeads2023 = [
     domain: "Hospitality",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/rhea.jpg",
+    photoUrl: "/domiainHeadPhotos/rhea.webp",
     linkedinUrl: "https://www.linkedin.com/in/rhea-sudheer/",
   },
   {
@@ -182,7 +182,7 @@ const pastHeads2023 = [
     domain: "Design",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/yogitha.jpg",
+    photoUrl: "/domiainHeadPhotos/yogitha.webp",
     linkedinUrl: "https://www.linkedin.com/in/yogitha-h-k-63bb74222/",
   },
   {
@@ -190,7 +190,7 @@ const pastHeads2023 = [
     domain: "Logistics",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/chaitra.jpeg",
+    photoUrl: "/domiainHeadPhotos/chaitra.webp",
     linkedinUrl: "https://www.linkedin.com/in/chaitra-upadhya-922426211/",
   },
   {
@@ -198,7 +198,7 @@ const pastHeads2023 = [
     domain: "Web Development",
     role: "Head",
     term: "2023-2024",
-    photoUrl: "/domiainHeadPhotos/vishal.jpeg",
+    photoUrl: "/domiainHeadPhotos/vishal.webp",
     linkedinUrl: "",
   },
 ];
@@ -216,40 +216,28 @@ export default function TeamSection() {
   const [activeTab, setActiveTab] = useState("2025");
 
   return (
-    <section id="team" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#000514]">
+    <section id="team" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-black text-white">
       {/* Section Header */}
-      <div className="max-w-3xl mb-8">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 mb-3">
-          <Users size={14} />
-          <span>DEPARTMENT LEADERSHIP</span>
-        </div>
-        <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
-          Meet The Team
+      <div className="max-w-3xl mb-12 sm:mb-16">
+        <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-neutral-400 block mb-3">
+          Student Leadership
+        </span>
+        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-tight">
+          Meet The Team.
         </h2>
-        <p className="mt-2 text-sm sm:text-base text-slate-300 leading-relaxed">
+        <p className="mt-3 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
           The undergraduate students leading domain operations, technical development, logistics, and partnerships across academic terms.
         </p>
       </div>
 
-      {/* Term / Batch Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-8 sm:mb-10">
-        <button
-          onClick={() => setActiveTab("2026")}
-          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
-            activeTab === "2026"
-              ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
-              : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
-          }`}
-        >
-          2026 Heads (Incoming)
-        </button>
-
+      {/* Apple-style Segmented Control Pills */}
+      <div className="flex flex-wrap items-center gap-2 mb-10 pb-2 overflow-x-auto scrollbar-none">
         <button
           onClick={() => setActiveTab("2025")}
-          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
+          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
             activeTab === "2025"
-              ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
-              : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
+              ? "bg-white text-black shadow-sm"
+              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
           }`}
         >
           2025 Domain Heads &amp; Core
@@ -257,10 +245,10 @@ export default function TeamSection() {
 
         <button
           onClick={() => setActiveTab("2024")}
-          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
+          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
             activeTab === "2024"
-              ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
-              : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
+              ? "bg-white text-black shadow-sm"
+              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
           }`}
         >
           2024 Domain Heads
@@ -268,68 +256,79 @@ export default function TeamSection() {
 
         <button
           onClick={() => setActiveTab("2023")}
-          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-md text-[11px] sm:text-xs font-mono transition-colors border ${
+          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
             activeTab === "2023"
-              ? "bg-cyan-600 border-cyan-500 text-white font-semibold"
-              : "bg-slate-900 border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800"
+              ? "bg-white text-black shadow-sm"
+              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
           }`}
         >
           2023 Founding Heads
+        </button>
+
+        <button
+          onClick={() => setActiveTab("2026")}
+          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+            activeTab === "2026"
+              ? "bg-white text-black shadow-sm"
+              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
+          }`}
+        >
+          2026 Incoming Board
         </button>
       </div>
 
       {/* TAB CONTENT: 2026 INCOMING HEADS */}
       {activeTab === "2026" && (
-        <div className="space-y-6">
-          <div className="p-4 sm:p-6 rounded-lg bg-slate-900/80 border border-slate-800">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
-              <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase">Incoming Term</span>
-                <h3 className="text-xl font-bold text-white mt-0.5">
-                  2026 - 2027 Executive Committee
-                </h3>
-              </div>
-              <div className="text-xs font-mono px-3 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700 w-fit">
-                Handover &amp; Selection in Progress
-              </div>
-            </div>
-
-            <p className="mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Domain leadership applications and transition for the 2026-2027 academic term are coordinated under Department of CSE faculty mentorship. The new executive board will drive Kodikon 6.0 and annual technical initiatives.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mt-6">
-              {upcoming2026Roles.map((role) => (
-                <div
-                  key={role.role}
-                  className="p-4 rounded-md bg-slate-950 border border-slate-800"
-                >
-                  <div className="text-xs font-mono text-cyan-400">Position Track</div>
-                  <h4 className="text-sm font-semibold text-white mt-0.5">{role.role}</h4>
-                  <p className="text-xs text-slate-400 mt-1 leading-relaxed">{role.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs text-slate-400 font-mono">
-                Interested in domain leadership or core contributions for 2026?
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#161617] border border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-neutral-400 block mb-1">
+                Incoming Term
               </span>
-              <a
-                href="mailto:embrione_cse@pes.edu"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium transition-colors"
-              >
-                <Mail size={13} />
-                <span>Contact Department Coordinators</span>
-              </a>
+              <h3 className="text-2xl font-semibold text-white tracking-tight">
+                2026 - 2027 Executive Committee
+              </h3>
             </div>
+            <div className="text-xs px-3.5 py-1.5 rounded-full bg-white/5 text-neutral-300 border border-white/10 w-fit">
+              Handover &amp; Selection in Progress
+            </div>
+          </div>
+
+          <p className="mt-6 text-base text-neutral-300 font-light leading-relaxed max-w-2xl">
+            Domain leadership applications and transition for the 2026-2027 academic term are coordinated under Department of CSE faculty mentorship. The new executive board will drive Kodikon 6.0 and annual technical initiatives.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+            {upcoming2026Roles.map((role) => (
+              <div
+                key={role.role}
+                className="p-5 rounded-2xl bg-black/40 border border-white/10"
+              >
+                <span className="text-[11px] uppercase tracking-wider text-neutral-400 block mb-1">Domain Track</span>
+                <h4 className="text-sm font-medium text-white">{role.role}</h4>
+                <p className="text-xs text-neutral-400 mt-1.5 leading-relaxed font-light">{role.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+            <span className="text-xs text-neutral-400 font-light">
+              Interested in domain leadership or core contributions for 2026?
+            </span>
+            <a
+              href="mailto:embrione_cse@pes.edu"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-medium transition-colors"
+            >
+              <Mail size={13} />
+              <span>Contact Coordinators</span>
+            </a>
           </div>
         </div>
       )}
 
       {/* TAB CONTENT: 2025 HEADS */}
       {activeTab === "2025" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {teamMembersDetails.map((member) => (
             <TeamCard3D key={member.name} member={{ ...member, term: "2025-2026" }} />
           ))}
@@ -338,7 +337,7 @@ export default function TeamSection() {
 
       {/* TAB CONTENT: 2024 HEADS */}
       {activeTab === "2024" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {pastHeads2024.map((member) => (
             <TeamCard3D key={member.name} member={member} />
           ))}
@@ -347,7 +346,7 @@ export default function TeamSection() {
 
       {/* TAB CONTENT: 2023 FOUNDING HEADS */}
       {activeTab === "2023" && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {pastHeads2023.map((member) => (
             <TeamCard3D key={member.name} member={member} />
           ))}
