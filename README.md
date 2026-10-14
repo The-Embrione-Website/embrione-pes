@@ -21,10 +21,12 @@ Official web repository for **The Embrione** — the technical vertical under th
 - [How to Update Content](#-how-to-update-content)
 - [Collaboration & Preview Workflow](#-collaboration--preview-workflow)
 - [Domain & Deployment Setup (Vercel & DNS)](#-domain--deployment-setup-vercel--dns)
+- [Design System & Color Palette](#-design-system--color-palette)
 - [Troubleshooting & FAQs](#-troubleshooting--faqs)
 - [License](#-license)
 
 ---
+
 
 ## 🌐 Overview
 
@@ -338,7 +340,32 @@ Ensure your registrar's DNS records point to Vercel instead of parking servers:
 
 ---
 
+## 🎨 Design System & Color Palette
+
+To keep UI components visually cohesive, all pages and components follow the **Embrione Design System**. The full reference guide, component code snippets, and Do's & Don'ts are available in [**`COLOR_PALETTE.md`**](./COLOR_PALETTE.md).
+
+### Quick Color Reference
+
+| Category | Token Name | Hex Code | Tailwind Utility | Primary Usage |
+|---|---|---|---|---|
+| **Canvas** | Page Background | `#000000` | `bg-brand-canvas` / `bg-black` | Root page background across routes |
+| **Surface** | Dark Surface | `#161617` | `bg-brand-surface` | Apple-style cards, modals, interactive panels |
+| **Surface** | Midnight Navy | `#000514` | `bg-brand-surface-navy` | Sticky headers, navbars, footer wells |
+| **Surface** | Slate Card | `#0f172a` | `bg-brand-surface-card` | Kodikon technical track & FAQ cards |
+| **Surface** | Input Well | `#020617` | `bg-brand-surface-input` | Form input backgrounds & textareas |
+| **Accent** | Interactive Blue | `#0071e3` | `bg-brand-accent-blue` | Primary buttons, links, active pills |
+| **Accent** | Kodikon Cyan | `#06b6d4` | `bg-brand-accent-cyan` | Hackathon accents, track badges, CTA hover |
+| **Accent** | Cyan Glow | `#22d3ee` | `text-brand-accent-cyan-glow` | Terminal labels, telemetry indicators |
+| **Typography** | High Emphasis | `#ffffff` | `text-brand-text-primary` | Headings (H1, H2), hero title copy |
+| **Typography** | Secondary Copy | `#a1a1a6` | `text-brand-text-secondary` | Body paragraphs, card subtitles, descriptions |
+| **Typography** | Muted Meta | `#6e6e73` | `text-brand-text-muted` | Footnotes, timestamps, fine print |
+| **Border** | Subtle Outline | `rgba(255,255,255,0.08)` | `border-brand-border-subtle` | Card borders (`border-white/10`) |
+| **Border** | Active / Hover | `rgba(255,255,255,0.20)` | `border-brand-border-hover` | Card hover state (`border-white/25`) |
+
+---
+
 ## ❓ Troubleshooting & FAQs
+
 
 ### Q: Why does the domain redirect to `/lander`?
 **A:** This happens when the domain registrar (e.g. GoDaddy) has the domain parked. It means either:
