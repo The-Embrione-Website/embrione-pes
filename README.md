@@ -22,121 +22,121 @@ Official web repository for **The Embrione** — the technical vertical under th
 - [Collaboration & Preview Workflow](#-collaboration--preview-workflow)
 - [Domain & Deployment Setup (Vercel & DNS)](#-domain--deployment-setup-vercel--dns)
 - [Troubleshooting & FAQs](#-troubleshooting--faqs)
-- [Club Maintainers & Contact](#-club-maintainers--contact)
 - [License](#-license)
 
 ---
 
 ## 🌐 Overview
 
-This application serves two main purposes:
-1. **Club Hub (`/`)**: Showcases Embrione's mission, domain leads, core committee, past hackathons, learning initiatives (Cipher, Spark), announcements, and contact channels.
-2. **Kodikon Hackathon Portal (`/kodikon-5`)**: The registration and information portal for Kodikon 5.0 (with historical archives for 4.0 and 3.0), featuring research-backed tracks, interactive theme popups, countdown clocks, event timeline, prizes, sponsors, partners, and FAQs.
+This application serves multiple primary functions:
+1. **Club Hub (`/`)**: A modern Apple-inspired redesign showcasing Embrione's mission, department heritage, domain leadership with interactive 3D cards, past hackathon archives with full-screen lightboxes, industry partners, and community recruitment.
+2. **Kodikon 6.0 Flagship Hackathon (`/kodikon-6` & `/kodi-6`)**: The preview and early-access notification portal for the upcoming 24-hour national hackathon at PESU 52, PES University, featuring curriculum-aligned research tracks, venue specifications, FAQ clarifications, and pre-registration.
+3. **Kodikon 5.0 Portal & Archives (`/kodikon-5`, `/kodikon-4`, `/kodikon-3`)**: The complete historical portals for previous editions with research themes, sponsor showcases, roadmaps, and prize galleries.
+4. **Legacy Club Portal (`/old`)**: The preserved original cyberpunk-themed club portal.
 
 ---
 
 ## 🛠 Tech Stack
 
 - **Framework**: [Next.js 13.5](https://nextjs.org/) (Hybrid App Router + Pages API)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom dark neon palette (`dark-navy`, cyan glows, matrix rain keyframes)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom dark palette, cyan glows, and responsive typography
 - **Animations & Interactivity**:
-  - [Framer Motion](https://www.framer.com/motion/) for fluid page entries and scroll transitions
-  - [Lottie React](https://github.com/Gamote/lottie-react) for interactive vector animations
-  - [use-scramble](https://use-scramble.vercel.app/) for futuristic cyberpunk terminal text effects
+  - [Framer Motion](https://www.framer.com/motion/) for fluid page entries and transitions
+  - [Lottie React](https://github.com/Gamote/lottie-react) for vector animations
+  - [use-scramble](https://use-scramble.vercel.app/) for terminal text effects
   - [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
   - [Swiper](https://swiperjs.com/) for touch-friendly event photo carousels
 - **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
-- **Forms & Notifications**: `react-hook-form`, `react-toastify`, and `axios`
-- **Backend & Integrations**:
-  - [Nodemailer](https://nodemailer.com/) (Gmail SMTP relay for `/api/sendMessage`)
-  - [Firebase SDK](https://firebase.google.com/) (Firestore initialization)
+- **SEO & Schema**: Schema.org JSON-LD (EducationalOrganization, Hackathon, WebSite), dynamic XML sitemap, robots.txt, and OpenGraph assets
 
 ---
 
 ## 📂 Project Architecture & Directory Structure
 
-All components are strictly modularized into dedicated folders under `components/` matching Next.js best practices:
+All components are strictly modularized into dedicated folders under `components/` with decoupled dataset files to minimize merge conflicts during concurrent development:
 
 ```text
 kodi5-website/
 ├── app/                                # Next.js App Router
-│   ├── layout.js                       # Root layout (fonts, global metadata)
-│   ├── globals.css                     # Global styles, scrollbar, neon gradients
-│   ├── page.js                         # Embrione Club Landing Page
+│   ├── layout.js                       # Root layout (fonts, SEO metadata, Schema.org)
+│   ├── globals.css                     # Global styles, scrollbar styling, animations
+│   ├── page.js                         # Redesigned Embrione Club Landing Page
+│   ├── kodikon-6/                      # Kodikon 6.0 Flagship Hackathon Page
+│   │   └── page.js
+│   ├── kodi-6/                         # Kodikon 6.0 Shortcut Route
+│   │   └── page.js
 │   ├── kodikon-5/                      # Kodikon 5.0 Landing Page
 │   │   ├── page.js
 │   │   └── layout.js
 │   ├── kodikon-4/                      # Kodikon 4.0 Archive Page
-│   └── kodikon-3/                      # Kodikon 3.0 Archive Page
+│   ├── kodikon-3/                      # Kodikon 3.0 Archive Page
+│   ├── old/                            # Legacy Club Portal Archive
+│   ├── privacy-policy/                 # Privacy Policy
+│   ├── terms/                          # Terms of Service
+│   ├── sitemap.js                      # Dynamic XML Sitemap Generator
+│   ├── robots.js                       # Search Engine Crawling Directives
+│   └── manifest.js                     # Web App Manifest
 │
-├── components/                         # Modular React components (one folder per section)
-│   ├── Navbar/                         # Main club header navigation
-│   │   └── Navbar.jsx
-│   ├── Hero/                           # Club hero with scramble text & orbit animation
-│   │   └── Hero.jsx
-│   ├── AboutUs/                        # Club mission & background
-│   │   └── AboutUs.jsx
-│   ├── Team/                           # Domain heads & cores grid
-│   │   └── Team.jsx
-│   ├── PastEvents/                     # Historical events viewer & photo carousel
-│   │   ├── PastEvents.jsx
-│   │   └── PastEventsCarousel.jsx
-│   ├── Announcements/                  # Recruitment and hackathon announcements
-│   │   ├── AnnouncementComponent.jsx
-│   │   ├── Announcements.jsx
-│   │   └── NavbarAnnouncementComponent.jsx
-│   ├── PreviousPartners/               # Previous sponsors & partners logo grid
-│   │   ├── PreviousPartner.jsx
-│   │   ├── PreviousPartners.jsx
-│   │   └── logos/
-│   ├── ContactUs/                      # Contact form with email API trigger
-│   │   └── ContactUs.jsx
-│   ├── Footer/                         # PES branding, socials, contacts
-│   │   └── Footer.jsx
-│   ├── ScrollProgress/                 # Top scroll progress bar
-│   │   └── ScrollProgressComponent.jsx
-│   ├── BottomNavigation/               # Mobile sticky navigation
-│   │   └── BottomNavigationComponent.jsx
+├── components/                         # Modular React components & decoupled datasets
+│   ├── HomeRedesign/                   # Redesigned homepage sections
+│   │   ├── NavbarHome.jsx              # Frosted glass responsive navbar
+│   │   ├── HeroSection.jsx             # Hero with dynamic statistics & CTAs
+│   │   ├── AboutSection.jsx            # Club mission & CSE department pillar
+│   │   ├── KodikonSpotlight.jsx        # Past editions spotlight & photo lightbox
+│   │   ├── TeamSection.jsx             # Domain leadership tabs & card layout
+│   │   ├── TeamCard3D.jsx              # 3D interactive member card with tilt
+│   │   ├── PartnersSection.jsx         # Industry partners grid
+│   │   ├── CTASection.jsx              # Engagement & recruitment banner
+│   │   ├── FooterHome.jsx              # Footer with campus details & links
+│   │   ├── pastHeadsData.js            # Decoupled past heads & role definitions
+│   │   └── partnersData.js             # Decoupled partner & sponsor list
 │   │
-│   └── Kodikon-5/                      # Kodikon 5.0 specific components
-│       ├── NavbarKodikon5.jsx          # Hackathon sticky navbar
-│       ├── HeroComponent.jsx           # Matrix rain effect + title sponsor
-│       ├── AboutTheEvent/              # Event narrative & stats
-│       ├── Countdown/                  # Dynamic registration countdown
-│       ├── HackathonThemes/            # 3 research tracks + detail popups
-│       ├── Timeline/                   # 5-stage interactive vertical roadmap
-│       ├── Sponsors/                   # Pixcellence title sponsor showcase
-│       ├── Partners/                   # Hack2Skill partner section
-│       ├── Prizes/                     # First, second, third prize badges
-│       ├── FAQComponent.jsx            # 14 hackathon Q&A accordions
-│       ├── MapComponent.jsx            # PES Dr. MRD Block embed & directions
-│       └── FAQData.js                  # FAQ content source
+│   ├── Kodikon-6/                      # Kodikon 6.0 modular components
+│   │   ├── NavbarKodikon6.jsx          # Header with home return & registration CTA
+│   │   ├── HeroComponent.jsx           # Hero banner & event facts (Duration, Venue, Team)
+│   │   ├── TracksComponent.jsx         # Technical tracks cards layout
+│   │   ├── tracksData.js               # Decoupled tracks data & descriptors
+│   │   ├── InterestFormComponent.jsx   # Interactive pre-registration notification form
+│   │   ├── FAQComponent.jsx            # Kodikon 6.0 Q&A grid
+│   │   ├── FAQData.js                  # Decoupled FAQ questions & answers
+│   │   ├── FooterKodikon6.jsx          # Edition footer & legal links
+│   │   ├── StructuredData.jsx          # Schema.org Hackathon JSON-LD
+│   │   └── index.js                    # Barrel exports
+│   │
+│   ├── Kodikon-5/                      # Kodikon 5.0 components
+│   │   ├── NavbarKodikon5.jsx          # Hackathon sticky navbar
+│   │   ├── HeroComponent.jsx           # Matrix rain effect + title sponsor
+│   │   ├── AboutTheEvent/              # Event narrative & stats
+│   │   ├── Countdown/                  # Dynamic registration countdown
+│   │   ├── HackathonThemes/            # 3 research tracks + detail popups
+│   │   ├── Timeline/                   # 5-stage interactive vertical roadmap
+│   │   ├── Sponsors/                   # Pixcellence title sponsor showcase
+│   │   ├── Partners/                   # Hack2Skill partner section
+│   │   ├── Prizes/                     # First, second, third prize badges
+│   │   ├── FAQComponent.jsx            # Hackathon Q&A accordions
+│   │   ├── MapComponent.jsx            # PES Dr. MRD Block embed & directions
+│   │   └── FAQData.js                  # FAQ content source
+│   │
+│   ├── Kodikon-4/                      # Kodikon 4.0 components
+│   ├── Kodikon-3/                      # Kodikon 3.0 components
+│   └── [Legacy Components]             # AboutUs, Announcements, ContactUs, Hero, etc.
 │
-├── pages/api/                          # Next.js API Routes
+├── pages/api/                          # Next.js Pages API Routes
 │   ├── sendMessage.js                  # Contact form email delivery via Nodemailer
 │   └── getTime.js                      # Server-synchronized countdown timestamp
 │
 ├── public/                             # Public static assets
-│   ├── 2025-domain-heads/              # 2025 domain head & core headshots (27 photos)
-│   ├── current-domain-heads/           # 2024 domain head photos (18 photos archive)
-│   ├── domiainHeadPhotos/              # 2023 domain head photos (9 photos archive)
+│   ├── 2025-domain-heads/              # Current domain head & core headshots
+│   ├── current-domain-heads/           # 2024 domain head photos archive
+│   ├── domiainHeadPhotos/              # 2023 domain head photos archive
 │   ├── Kodikon5/                       # Theme thumbnails, logos, prize images
-│   ├── Kodikon4/                       # Kodikon 4.0 graphics, prize.png, sponsor assets
-│   ├── Kodikon3/                       # Kodikon 3.0 graphics
-│   ├── sponsors/                       # Sponsor logos (Tech, Food, Travel)
-│   ├── Partners/                       # Hack2Skill and platform partner logos
-│   └── Cipher/, Spark/, Kodikon1-2/   # Past event photo galleries
+│   ├── Kodikon4/                       # Kodikon 4.0 graphics & assets
+│   ├── Kodikon3/                       # Kodikon 3.0 graphics & assets
+│   └── sponsors/                       # Sponsor logos (Tech, Food, Travel)
 │
-├── assets/                             # Lottie JSON animations
-│   ├── about-kodikon.json
-│   ├── blue-orbit.json
-│   └── contact.json
-│
-├── constants.js                        # Master data file (Team, Events, Socials, Announcements)
-├── firebaseConfig.js                   # Firebase client configuration
+├── constants.js                        # Master data file (Current Team, Events, Socials)
 ├── tailwind.config.js                  # Tailwind theme, typography & keyframes
 ├── LICENSE                             # MIT License
-├── .env.example                        # Environment variable template
 └── package.json                        # Dependencies and npm scripts
 ```
 
@@ -164,14 +164,17 @@ Create a local `.env.local` file:
 ```bash
 cp .env.example .env.local
 ```
-Add your credentials (see [Environment Variables](#-environment-variables)).
+Add your credentials if testing email relays (see [Environment Variables](#-environment-variables)).
 
 ### 4. Run Development Server
 ```bash
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) in your browser.
-To view the Kodikon 5 page directly, visit [http://localhost:3000/kodikon-5](http://localhost:3000/kodikon-5).
+- Homepage: [http://localhost:3000/](http://localhost:3000/)
+- Kodikon 6.0: [http://localhost:3000/kodikon-6](http://localhost:3000/kodikon-6)
+- Kodikon 5.0: [http://localhost:3000/kodikon-5](http://localhost:3000/kodikon-5)
+- Legacy Portal: [http://localhost:3000/old](http://localhost:3000/old)
 
 ### 5. Production Build Verification
 ```bash
@@ -198,47 +201,58 @@ The application supports the following environment variables in `.env.local`:
 
 | Route | Description | Primary Components |
 |---|---|---|
-| `/` | Embrione Club official portal | `Hero`, `AboutUs`, `Team`, `PastEvents`, `Announcements`, `ContactUs`, `Footer` |
-| `/kodikon-5` | Kodikon 5.0 Hackathon portal | `HeroComponent`, `AboutTheEvent`, `HackathonThemes`, `EventTimeline`, `Sponsors`, `Partners`, `Prizes`, `FAQ`, `Map` |
+| `/` | Modern Redesigned Club Portal | `NavbarHome`, `HeroSection`, `AboutSection`, `KodikonSpotlight`, `TeamSection`, `PartnersSection`, `CTASection`, `FooterHome` |
+| `/kodikon-6` | Kodikon 6.0 Flagship Hackathon Preview | `NavbarKodikon6`, `HeroComponent`, `TracksComponent`, `InterestFormComponent`, `FAQComponent`, `FooterKodikon6`, `StructuredData` |
+| `/kodi-6` | Shorthand vanity URL | 308 permanent redirect to `/kodikon-6` |
+
+| `/kodikon-5` | Kodikon 5.0 Hackathon Portal | `HeroComponent`, `AboutTheEvent`, `HackathonThemes`, `EventTimeline`, `Sponsors`, `Partners`, `Prizes`, `FAQ`, `Map` |
 | `/kodikon-4` | Kodikon 4.0 Archive | `Kodikon-4/*` |
 | `/kodikon-3` | Kodikon 3.0 Archive | `Kodikon-3/*` |
-| `/api/sendMessage` | Contact API route | Handles contact form POST submissions and dispatches emails to `embrione_cse@pes.edu` |
+| `/old` | Legacy Club Portal Archive | Legacy components (`Hero`, `AboutUs`, `Team`, `PastEvents`, etc.) |
+| `/privacy-policy` | Privacy Policy Page | Static legal policy document |
+| `/terms` | Terms of Service Page | Static legal terms document |
+| `/api/sendMessage` | Contact API route | Handles contact form POST submissions |
 | `/api/getTime` | Countdown sync API | Returns synchronized timestamp for countdown timers |
 
 ---
 
 ## ✏️ How to Update Content
 
-### 👥 Updating Team Members
+Data is decoupled from presentation components to ensure team members can update event details and rosters with minimal risk of merge conflicts.
+
+### 👥 Updating Current 2025 Team Members
 Edit `constants.js` under the `teamMembersDetails` array:
 ```javascript
 {
   name: "Full Name",
-  domain: "Web Development", // WebDev, Event Management, Sponsorship, Design, Operations, Logistics, Hospitality, Social Media, Campaigning
+  domain: "Web Development", // WebDev, Event Management, Sponsorship, Design, Operations, Logistics, Hospitality, Social Media
   role: "Head",              // "Head" or "Core"
-  photoUrl: "/2025-domain-heads/YourPhoto.jpg", // Place image in public/2025-domain-heads/
+  photoUrl: "/2025-domain-heads/YourPhoto.webp", // Place image in public/2025-domain-heads/
   linkedinUrl: "https://www.linkedin.com/in/username/",
-  srn: "PES1UG23CSxxx",
   email: "your.email@example.com",
 }
 ```
 
-### 🎯 Updating Hackathon Tracks & Themes
-Edit `components/Kodikon-5/HackathonThemes/HackathonThemes.jsx`:
-- Modify the `themes` array to adjust track titles, descriptions, application areas, and academic literature links.
-- Place track banner images in `public/Kodikon5/themes-thumbnail/`.
+### 🏛 Updating Past Heads & Upcoming 2026 Roles
+Edit `components/HomeRedesign/pastHeadsData.js`:
+- Update `pastHeads2024`, `pastHeads2023`, or `upcoming2026Roles` without touching `TeamSection.jsx`.
 
-### ❓ Updating FAQs
-Edit `components/Kodikon-5/FAQData.js`:
-- Add or modify questions and answers in `faqData`.
+### 🤝 Updating Industry Partners
+Edit `components/HomeRedesign/partnersData.js`:
+- Add or update partner names, categories, and logos in the `partnersData` array.
 
-### 📅 Updating Event Timeline
-Edit `components/Kodikon-5/Timeline/EventTimelineComponent.jsx`:
-- Update `timelineEvents` with the new milestones, dates, descriptions, and icons.
+### ⚡ Updating Kodikon 6.0 Tracks
+Edit `components/Kodikon-6/tracksData.js`:
+- Modify track codes (`TRACK-01`, etc.), titles, Lucide icons, and descriptions without modifying the layout component.
 
-### 📢 Updating Announcements
-Edit `constants.js` under `announcements`:
-- Add new announcement objects with `status: "Open"` or `"Closed"` and appropriate `formLink`.
+### ❓ Updating Kodikon 6.0 FAQs
+Edit `components/Kodikon-6/FAQData.js`:
+- Add or modify questions and answers in `Kodikon6FAQData`.
+
+### 🎯 Updating Kodikon 5.0 Themes, Timeline & FAQs
+- **Themes**: Edit `components/Kodikon-5/HackathonThemes/HackathonThemes.jsx`
+- **Timeline**: Edit `components/Kodikon-5/Timeline/EventTimelineComponent.jsx`
+- **FAQs**: Edit `components/Kodikon-5/FAQData.js`
 
 ---
 
@@ -343,22 +357,8 @@ npm install --legacy-peer-deps
 ```bash
 npm run build
 ```
-Ensure all 8 routes generate with `✓ Generating static pages (8/8)` before opening a PR.
+Ensure all routes compile successfully with `✓ Generating static pages (18/18)` before opening a PR.
 
----
-
-## 📬 Club Maintainers & Contact
-
-- **Organization**: The Embrione — Department of Computer Science & Engineering
-- **Institution**: PES University, Ring Road Campus, Banashankari, Bengaluru, Karnataka 560085
-- **Official Email**: [embrione_cse@pes.edu](mailto:embrione_cse@pes.edu)
-- **Tech Team**: [theembrionetech@gmail.com](mailto:theembrionetech@gmail.com)
-- **Instagram**: [@the_embrione.pesu](https://www.instagram.com/the_embrione.pesu/)
-- **LinkedIn**: [The Embrione](https://www.linkedin.com/company/the-embrione/about/)
-- **Lead Contacts**:
-  - Kunjal Patwari (Club Head): [patwarikunjal@gmail.com](mailto:patwarikunjal@gmail.com)
-  - Preksha M (Club Head): [preksham2004@gmail.com](mailto:preksham2004@gmail.com)
-  - Vishal P (Web Development Head): [vishal04p74@gmail.com](mailto:vishal04p74@gmail.com)
 
 ---
 
