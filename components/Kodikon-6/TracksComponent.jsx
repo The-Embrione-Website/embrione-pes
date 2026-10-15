@@ -24,28 +24,36 @@ export default function TracksComponent() {
       if (event.key === "Escape") closeTrack();
     };
 
-    // Calculate scrollbar width to prevent page jitter/layout shift
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    const oldOverflow = document.body.style.overflow;
-    const oldPaddingRight = document.body.style.paddingRight;
+    const root = document.documentElement;
+    const body = document.body;
+
+    const scrollbarWidth = window.innerWidth - root.clientWidth;
+    const prevRootOverflow = root.style.overflow;
+    const prevBodyOverflow = body.style.overflow;
+    const prevBodyPaddingRight = body.style.paddingRight;
 
     document.addEventListener("keydown", onKeyDown);
-    document.body.style.overflow = "hidden";
+
+    // Lock both html and body to completely disable main scrollbar
+    root.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
     if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      body.style.paddingRight = `${scrollbarWidth}px`;
     }
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = oldOverflow;
-      document.body.style.paddingRight = oldPaddingRight;
+      root.style.overflow = prevRootOverflow;
+      body.style.overflow = prevBodyOverflow;
+      body.style.paddingRight = prevBodyPaddingRight;
     };
   }, [selectedTrack]);
 
   return (
     <section
       id="tracks"
-      className="tracks-background relative isolate overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-12 text-brand-text-primary sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+      className="tracks-background relative overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-12 text-brand-text-primary sm:px-6 sm:py-16 lg:px-8 lg:py-20"
     >
       {/* Background */}
       <div
@@ -167,12 +175,9 @@ export default function TracksComponent() {
       {/* Track details modal */}
       {selectedTrack && (
         <div
-          className="tracks-modal-overlay fixed inset-0 z-[100] flex items-center justify-center overflow-hidden overscroll-contain p-2 backdrop-blur-md sm:p-4 md:p-6"
-          onWheel={(event) => {
-            if (event.target === event.currentTarget) {
-              event.preventDefault();
-            }
-          }}
+          className="tracks-modal-overlay fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden overscroll-contain p-2 backdrop-blur-md sm:p-4 md:p-6"
+          onWheel={(event) => event.stopPropagation()}
+          onTouchMove={(event) => event.stopPropagation()}
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeTrack();
           }}
