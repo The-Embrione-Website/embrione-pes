@@ -1,6 +1,7 @@
 import NavbarKodikon6 from "@/components/Kodikon-6/NavbarKodikon6";
 import HeroComponent from "@/components/Kodikon-6/HeroComponent";
 import TracksComponent from "@/components/Kodikon-6/TracksComponent";
+import MapComponent from "@/components/Kodikon-6/MapComponent";
 import InterestFormComponent from "@/components/Kodikon-6/InterestFormComponent";
 import FAQComponent from "@/components/Kodikon-6/FAQComponent";
 import FooterKodikon6 from "@/components/Kodikon-6/FooterKodikon6";
@@ -58,6 +59,7 @@ export default function Kodikon6Page() {
         <TracksComponent />
         <InterestFormComponent />
         <FAQComponent />
+        <MapComponent />
       </main>
       <FooterKodikon6 />
     </div>
