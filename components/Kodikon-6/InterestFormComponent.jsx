@@ -47,7 +47,7 @@ export default function InterestFormComponent() {
   return (
     <section
       id="interest-form"
-      className="relative isolate overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-12 text-brand-text-primary sm:px-6 sm:py-16 lg:px-8"
+      className="relative isolate overflow-hidden border-t border-brand-border-subtle bg-brand-surface-navy/90 px-4 py-12 text-brand-text-primary sm:px-6 sm:py-16 lg:px-8"
     >
       {/* Blue-only background glow */}
       <div
@@ -59,9 +59,9 @@ export default function InterestFormComponent() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:56px_56px]" />
       </div>
 
-      {/* Match the Tracks section width */}
+  
       <div className="mx-auto w-full max-w-6xl">
-        <div className="overflow-hidden rounded-xl border border-brand-border-subtle bg-brand-surface-card/80 shadow-2xl backdrop-blur-sm">
+        <div className="overflow-hidden rounded-xl border border-brand-border-subtle bg-brand-surface-navy/90 shadow-2xl backdrop-blur-sm">
           {/* Header */}
           <div className="border-b border-brand-border-subtle p-5 sm:p-7">
             <div className="mb-4 flex items-center gap-2">
