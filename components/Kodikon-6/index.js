@@ -6,4 +6,6 @@ export { default as FAQComponent } from "./FAQComponent";
 export { default as FooterKodikon6 } from "./FooterKodikon6";
 export { default as StructuredData } from "./StructuredData";
 export { tracksData } from "./tracksData";
+export { default as MapComponent } from "./MapComponent";
 export { Kodikon6FAQData } from "./FAQData";
+export { default as MapComponent } from "./MapComponent";
