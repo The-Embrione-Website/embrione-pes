@@ -927,3 +927,143 @@ body::-webkit-scrollbar-thumb {
 .text-outline {
   text-shadow: 0 2px 6px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.55);
 }
+
+
+
+/* Kodikon-6 Tracks scrollbar design */
+
+/* Kodikon 6.0 — global scrollbar theme */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #164e63 #030a13;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+.tracks-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+.tracks-scrollbar::-webkit-scrollbar-track {
+  background: #030a13;
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+.tracks-scrollbar::-webkit-scrollbar-thumb {
+  background: #164e63;
+  border: 1px solid #030a13;
+  border-radius: 8px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover,
+.tracks-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0891b2;
+}
+
+.tracks-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #164e63 #030a13;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.k6-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+}
+.k6-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 45% at 50% 0%,
+      color-mix(in srgb, var(--color-brand-accent-cyan) 12%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 95% 100%,
+      color-mix(in srgb, var(--color-brand-accent-cyan-dark) 16%, transparent), transparent 70%);
+}
+.k6-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+}
+
+.interest-form-blue-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.22) 0%,
+      rgba(0, 113, 227, 0.12) 28%,
+      rgba(0, 81, 180, 0.05) 48%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+}
+
+
+.tracks-background-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.22) 0%,
+      rgba(0, 113, 227, 0.10) 28%,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+}
+
+.faq-background-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.20) 0%,
+      rgba(0, 113, 227, 0.10) 28%,
+      rgba(0, 81, 180, 0.04) 48%,
+      transparent 68%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+} 
+
+
+.venue-background-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.20) 0%,
+      rgba(0, 113, 227, 0.10) 28%,
+      rgba(0, 81, 180, 0.04) 48%,
+      transparent 68%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+}
