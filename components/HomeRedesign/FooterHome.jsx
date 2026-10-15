@@ -49,6 +49,28 @@ const campusAddress =
 const mapsUrl = "https://maps.app.goo.gl/K2qedNEbRbfj2J397";
 
 export default function FooterHome() {
+  // Keep footer navigation links aligned with the navbar's anchor scrolling.
+  const handleFooterAnchorClick = (event, href) => {
+    if (!href?.startsWith("#")) return;
+
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
+    window.history.pushState(null, "", href);
+
+    const sectionTop = window.scrollY + target.getBoundingClientRect().top;
+    const sectionPaddingTop =
+      parseFloat(window.getComputedStyle(target).paddingTop) || 0;
+    const navbarHeight =
+      document.querySelector("header")?.getBoundingClientRect().height || 0;
+    const breathingRoom = 10;
+    const top =
+      sectionTop + sectionPaddingTop - navbarHeight - breathingRoom;
+
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  };
+
   return (
     <footer
       className="relative isolate overflow-hidden border-t border-cyan-100/10 bg-[#030814] pt-8 text-slate-400 sm:pt-10"
@@ -142,6 +164,7 @@ export default function FooterHome() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
+                    onClick={(event) => handleFooterAnchorClick(event, item.href)}
                     className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
                   >
                     <span>{item.name}</span>
@@ -162,6 +185,7 @@ export default function FooterHome() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
+                    onClick={(event) => handleFooterAnchorClick(event, item.href)}
                     className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
                   >
                     <span>{item.name}</span>
