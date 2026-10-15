@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -25,14 +24,21 @@ export default function TracksComponent() {
       if (event.key === "Escape") closeTrack();
     };
 
+    // Calculate scrollbar width to prevent page jitter/layout shift
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     const oldOverflow = document.body.style.overflow;
+    const oldPaddingRight = document.body.style.paddingRight;
 
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    }
 
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = oldOverflow;
+      document.body.style.paddingRight = oldPaddingRight;
     };
   }, [selectedTrack]);
 
@@ -54,6 +60,8 @@ export default function TracksComponent() {
 
         <div className="tracks-grid-overlay absolute inset-0" />
       </div>
+
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:56px_56px]" />
 
       <div className="relative mx-auto w-full max-w-6xl">
         {/* Section heading */}
@@ -159,7 +167,12 @@ export default function TracksComponent() {
       {/* Track details modal */}
       {selectedTrack && (
         <div
-          className="tracks-modal-overlay fixed inset-0 z-[100] flex items-center justify-center overflow-hidden p-2 backdrop-blur-md sm:p-4 md:p-6"
+          className="tracks-modal-overlay fixed inset-0 z-[100] flex items-center justify-center overflow-hidden overscroll-contain p-2 backdrop-blur-md sm:p-4 md:p-6"
+          onWheel={(event) => {
+            if (event.target === event.currentTarget) {
+              event.preventDefault();
+            }
+          }}
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeTrack();
           }}
