@@ -27,31 +27,6 @@ export default function NavbarHome() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Adjust only anchor-link scrolling. Scroll past the section's built-in top
-  // padding so the section heading lands just below the fixed navbar.
-  const handleAnchorClick = (event, href) => {
-    if (!href?.startsWith("#")) return;
-
-    const target = document.getElementById(href.slice(1));
-    if (!target) return;
-
-    event.preventDefault();
-    setMobileMenuOpen(false);
-    window.history.pushState(null, "", href);
-
-    const sectionTop = window.scrollY + target.getBoundingClientRect().top;
-    const sectionPaddingTop =
-      parseFloat(window.getComputedStyle(target).paddingTop) || 0;
-    const navbarHeight =
-      document.querySelector("header")?.getBoundingClientRect().height || 0;
-    const breathingRoom = 10;
-
-    const top =
-      sectionTop + sectionPaddingTop - navbarHeight - breathingRoom;
-
-    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-  };
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -89,7 +64,6 @@ export default function NavbarHome() {
             <Link
               key={link.label}
               href={link.href}
-              onClick={(event) => handleAnchorClick(event, link.href)}
               className="text-xs font-normal text-neutral-400 hover:text-white transition-colors"
             >
               {link.label}
@@ -134,10 +108,7 @@ export default function NavbarHome() {
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={(event) => {
-                  handleAnchorClick(event, link.href);
-                  setMobileMenuOpen(false);
-                }}
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-sm font-normal text-neutral-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg transition-colors"
               >
                 {link.label}
