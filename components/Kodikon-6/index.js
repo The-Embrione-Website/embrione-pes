@@ -8,6 +8,7 @@ export { default as StructuredData } from "./StructuredData";
 export { default as PrizesComponent } from "./Prizes/PrizesComponent";
 export { default as SponsorsComponent } from "./Sponsors/SponsorsComponent";
 export { tracksData } from "./tracksData";
+export { default as MapComponent } from "./MapComponent";
 export { Kodikon6FAQData } from "./FAQData";
 export * from "./Prizes/prizesData";
 export * from "./Sponsors/sponsorsData";
