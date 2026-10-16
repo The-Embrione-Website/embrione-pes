@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, ArrowUpRight, ChevronUp, ExternalLink } from "lucide-react";
+import { Mail, MapPin, ArrowUpRight, ChevronUp } from "lucide-react";
 import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
 import embrioneLogo from "@/public/embrionelogo.webp";
 import pesLogo from "@/public/Kodikon5/pes.webp";
@@ -11,14 +11,14 @@ import pesLogo from "@/public/Kodikon5/pes.webp";
 const navigation = {
   explore: [
     { name: "About Us", href: "#about" },
-    { name: "Kodikon 6.0", href: "/kodikon-6" },
+    { name: "Kodikon 6.0", href: "/kodikon-6", ongoing: true },
     { name: "Past Events", href: "#events" },
     { name: "Meet The Team", href: "#team" },
     { name: "Previous Partners", href: "#partners" },
     { name: "Contact Us", href: "#contact" },
   ],
   initiatives: [
-    { name: "Kodikon 6.0 (Upcoming)", href: "/kodikon-6" },
+    { name: "Kodikon 6.0", href: "/kodikon-6", ongoing: true },
     { name: "Kodikon 5.0 Archive", href: "#events" },
     { name: "Kodikon 4.0 Archive", href: "#events" },
     { name: "Systems & Research", href: "#about" },
@@ -109,7 +109,7 @@ export default function FooterHome({ className = "", logoClassName = "" } = {}) 
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Main Bento Footer Grid */}
+        {/* Main Footer Grid */}
         <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 border-b border-white/[0.06]">
           {/* Brand Identity Column (5 cols on lg) */}
           <div className="space-y-5 lg:col-span-5 pr-0 lg:pr-6">
@@ -192,9 +192,15 @@ export default function FooterHome({ className = "", logoClassName = "" } = {}) 
                   <Link
                     href={item.href}
                     onClick={(event) => handleFooterAnchorClick(event, item.href)}
-                    className="group inline-flex items-center gap-1 text-slate-400 transition-colors duration-200 hover:text-white"
+                    className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     <span>{item.name}</span>
+                    {item.ongoing && (
+                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-semibold tracking-wider uppercase text-emerald-400">
+                        <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" />
+                        Ongoing
+                      </span>
+                    )}
                     <ArrowUpRight
                       size={11}
                       className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 text-cyan-400"
@@ -216,9 +222,15 @@ export default function FooterHome({ className = "", logoClassName = "" } = {}) 
                   <Link
                     href={item.href}
                     onClick={(event) => handleFooterAnchorClick(event, item.href)}
-                    className="group inline-flex items-center gap-1 text-slate-400 transition-colors duration-200 hover:text-white"
+                    className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     <span>{item.name}</span>
+                    {item.ongoing && (
+                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[9px] font-semibold tracking-wider uppercase text-emerald-400">
+                        <span className="h-1 w-1 rounded-full bg-emerald-400 animate-pulse" />
+                        Ongoing
+                      </span>
+                    )}
                     <ArrowUpRight
                       size={11}
                       className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 text-cyan-400"
@@ -229,42 +241,42 @@ export default function FooterHome({ className = "", logoClassName = "" } = {}) 
             </ul>
           </nav>
 
-          {/* Campus Location Bento Card (3 cols on lg) */}
+          {/* Campus Column (3 cols on lg) */}
           <div className="lg:col-span-3">
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200">
-              Headquarters
+              Campus
             </h4>
-            <div className="rounded-2xl bg-[#040816]/90 border border-white/[0.08] p-4.5 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_rgba(0,0,0,0.6)]">
-              {/* Campus Indicator Badge */}
-              <div className="flex items-center gap-2 mb-3">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                </span>
-                <span className="text-[11px] font-semibold tracking-wide text-slate-300">
-                  PESU Ring Road Campus
-                </span>
+            <div className="space-y-3 text-xs leading-relaxed text-slate-400">
+              <div>
+                <p className="font-medium text-slate-200">
+                  PES University (RR Campus)
+                </p>
+                <p className="text-slate-400">
+                  Department of Computer Science &amp; Engineering
+                </p>
               </div>
 
-              <div className="flex items-start gap-2.5 text-slate-400 mb-4">
-                <MapPin size={15} className="mt-0.5 shrink-0 text-cyan-400" />
-                <p className="text-xs leading-relaxed text-slate-300">
+              <div className="flex items-start gap-2 pt-1 text-slate-400">
+                <MapPin size={14} className="mt-0.5 shrink-0 text-cyan-400" />
+                <p>
                   {campusAddress}
                 </p>
               </div>
 
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center justify-between w-full px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-cyan-500/10 border border-white/[0.08] hover:border-cyan-400/30 text-xs font-medium text-slate-300 hover:text-cyan-200 transition-all duration-200"
-              >
-                <span>Open in Google Maps</span>
-                <ArrowUpRight
-                  size={12}
-                  className="text-slate-400 group-hover:text-cyan-300 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
+              <div className="pt-1">
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1.5 font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  <span>Open in Google Maps</span>
+                  <ArrowUpRight
+                    size={12}
+                    className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>

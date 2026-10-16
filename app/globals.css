@@ -41,20 +41,15 @@ body {
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
   background: #000000;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
-body::-webkit-scrollbar {
-  width: 5px;
-  display: none;
-}
-
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 .bg-blue-gradient {
   background: linear-gradient(
@@ -930,47 +925,30 @@ body::-webkit-scrollbar-thumb {
 
 
 
-/* Kodikon-6 Tracks scrollbar design */
-
-/* Kodikon 6.0 — global scrollbar theme */
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #164e63 #030a13;
+/* Kodikon 6.0 & Global — Hide scrollbar everywhere while maintaining native smooth scroll */
+html,
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 html::-webkit-scrollbar,
-body::-webkit-scrollbar,
-.tracks-scrollbar::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-
-html::-webkit-scrollbar-track,
-body::-webkit-scrollbar-track,
-.tracks-scrollbar::-webkit-scrollbar-track {
-  background: #030a13;
-}
-
-html::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb,
-.tracks-scrollbar::-webkit-scrollbar-thumb {
-  background: #164e63;
-  border: 1px solid #030a13;
-  border-radius: 8px;
-}
-
-html::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover,
-.tracks-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #0891b2;
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 .tracks-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #164e63 #030a13;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+}
+.tracks-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 

@@ -118,16 +118,19 @@ export default function HeroSection() {
 
             <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-[11px] font-semibold uppercase tracking-wider mb-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                  <span>Flagship National Sprint · Sixth Edition</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/35 text-emerald-300 text-[11px] font-semibold uppercase tracking-wider mb-3">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                  </span>
+                  <span>Ongoing Now · 24H National Sprint</span>
                 </div>
 
                 <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
                   Kodikon 6.0
                 </h3>
                 <p className="mt-2.5 text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-xl">
-                  An intensive 24-hour overnight offline hackathon at PESU 52, PES University. Built for builders solving hard problems.
+                  An intensive 24-hour overnight offline hackathon happening now at PESU 52, PES University. Built for builders solving hard problems.
                 </p>
               </div>
 
