@@ -54,8 +54,7 @@ export default function HeroSection() {
       >
         {/* Apple-Style Pill Eyebrow */}
         <motion.div variants={itemVariants} className="mb-7">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.12] bg-white/[0.04] backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
-            <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full border border-white/[0.12] bg-white/[0.04] backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
             <span className="text-[11px] sm:text-xs tracking-wider uppercase font-medium text-slate-300">
               Department of CSE · PES University
             </span>
