@@ -33,17 +33,16 @@ export default function PrizesComponent() {
       pedestalHeight: "h-20 sm:h-28",
       cardTranslate: "lg:translate-y-4",
       accent: {
-        border: "border-cyan-400/50 hover:border-cyan-300",
-        glow: "shadow-[0_0_40px_rgba(6,182,212,0.2)]",
-        badge: "bg-cyan-950/60 text-cyan-300 border-cyan-400/50",
-        badgeGlow: "shadow-[0_0_15px_rgba(6,182,212,0.35)]",
-        textGradient: "from-cyan-300 via-sky-200 to-cyan-400",
-        pedestalBg: "bg-gradient-to-t from-cyan-950/60 via-[#071324] to-[#060c1d]",
-        pedestalBorder: "border-cyan-500/40",
+        border: "border-cyan-500/40 hover:border-cyan-300",
+        glow: "shadow-[0_0_35px_rgba(6,182,212,0.15)]",
+        badge: "bg-cyan-950/60 text-sky-300 border-cyan-500/40",
+        badgeGlow: "shadow-[0_0_15px_rgba(6,182,212,0.25)]",
+        textGradient: "from-sky-300 via-cyan-200 to-white",
+        pedestalBg: "bg-gradient-to-t from-cyan-950/50 via-[#060f1e] to-[#060c1d]",
+        pedestalBorder: "border-cyan-500/30",
         pedestalNum: "text-cyan-400/40",
-        haloBg: "bg-cyan-500/10",
-        icon: <Medal size={28} className="text-cyan-300" />,
-        ringColor: "border-cyan-400/40",
+        icon: <Medal size={28} className="text-sky-300" />,
+        ringColor: "border-cyan-500/40",
       },
     },
     {
@@ -53,17 +52,16 @@ export default function PrizesComponent() {
       pedestalHeight: "h-28 sm:h-40",
       cardTranslate: "lg:-translate-y-4",
       accent: {
-        border: "border-amber-400/60 hover:border-amber-300",
-        glow: "shadow-[0_0_55px_rgba(245,158,11,0.28)]",
-        badge: "bg-amber-950/70 text-amber-300 border-amber-400/60",
-        badgeGlow: "shadow-[0_0_20px_rgba(245,158,11,0.45)]",
-        textGradient: "from-amber-300 via-yellow-200 to-amber-400",
-        pedestalBg: "bg-gradient-to-t from-amber-950/60 via-[#181308] to-[#060c1d]",
-        pedestalBorder: "border-amber-400/50",
-        pedestalNum: "text-amber-400/40",
-        haloBg: "bg-amber-500/15",
-        icon: <Trophy size={32} className="text-amber-300" />,
-        ringColor: "border-amber-400/50",
+        border: "border-cyan-400/70 hover:border-cyan-300",
+        glow: "shadow-[0_0_50px_rgba(6,182,212,0.28)]",
+        badge: "bg-cyan-950/80 text-cyan-300 border-cyan-400/60",
+        badgeGlow: "shadow-[0_0_20px_rgba(6,182,212,0.4)]",
+        textGradient: "from-cyan-300 via-sky-200 to-white",
+        pedestalBg: "bg-gradient-to-t from-cyan-950/80 via-[#071324] to-[#060c1d]",
+        pedestalBorder: "border-cyan-400/50",
+        pedestalNum: "text-cyan-400/60",
+        icon: <Trophy size={32} className="text-cyan-300" />,
+        ringColor: "border-cyan-400/60",
       },
     },
     {
@@ -73,17 +71,16 @@ export default function PrizesComponent() {
       pedestalHeight: "h-14 sm:h-20",
       cardTranslate: "lg:translate-y-8",
       accent: {
-        border: "border-orange-500/50 hover:border-orange-400",
-        glow: "shadow-[0_0_40px_rgba(249,115,22,0.2)]",
-        badge: "bg-orange-950/60 text-orange-300 border-orange-400/50",
-        badgeGlow: "shadow-[0_0_15px_rgba(249,115,22,0.35)]",
-        textGradient: "from-orange-300 via-amber-200 to-orange-400",
-        pedestalBg: "bg-gradient-to-t from-orange-950/60 via-[#1a0e08] to-[#060c1d]",
-        pedestalBorder: "border-orange-500/40",
-        pedestalNum: "text-orange-400/40",
-        haloBg: "bg-orange-500/10",
-        icon: <Award size={28} className="text-orange-300" />,
-        ringColor: "border-orange-400/40",
+        border: "border-cyan-500/30 hover:border-cyan-400",
+        glow: "shadow-[0_0_30px_rgba(6,182,212,0.12)]",
+        badge: "bg-cyan-950/40 text-cyan-200 border-cyan-500/30",
+        badgeGlow: "shadow-[0_0_12px_rgba(6,182,212,0.2)]",
+        textGradient: "from-cyan-400 via-slate-200 to-white",
+        pedestalBg: "bg-gradient-to-t from-cyan-950/30 via-[#040a17] to-[#060c1d]",
+        pedestalBorder: "border-cyan-500/20",
+        pedestalNum: "text-cyan-400/30",
+        icon: <Award size={28} className="text-cyan-400" />,
+        ringColor: "border-cyan-500/30",
       },
     },
   ].filter((item) => Boolean(item.prize));
@@ -95,8 +92,8 @@ export default function PrizesComponent() {
       id="prizes"
       className="relative isolate overflow-hidden bg-[#02050e] border-t border-cyan-500/20 font-sans py-24 sm:py-32"
     >
-      {/* Background Cyber Ambient Lights */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-r from-cyan-500/10 via-amber-500/10 to-orange-500/10 blur-[130px] pointer-events-none -z-10" />
+      {/* Background Cyber Ambient Lights - Clean Cyan/Blue palette */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-cyan-500/10 blur-[130px] pointer-events-none -z-10" />
       <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-900/15 blur-[120px] pointer-events-none -z-10" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:48px_48px] pointer-events-none -z-10" />
 
@@ -104,15 +101,15 @@ export default function PrizesComponent() {
         {/* Section Header */}
         <div className="relative mb-16 sm:mb-20">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-            {/* Tactical Status Pill */}
-            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-amber-950/40 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            {/* Tactical Status Pill - Exactly matches Tracks & Sponsors */}
+            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-cyan-950/40 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               <span>BOUNTY PROTOCOL // 「賞金首」</span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-display">
               Bounties &amp;{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-500 drop-shadow-[0_0_25px_rgba(245,158,11,0.35)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
                 Prize Vault
               </span>
             </h2>
@@ -121,9 +118,9 @@ export default function PrizesComponent() {
               {prizePoolSummary.highlight}
             </p>
 
-            {/* Total Pool Banner */}
+            {/* Total Pool Banner - Cyan/Sapphire Cyber Theme */}
             <div className="mt-8 relative w-full max-w-2xl group">
-              <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-amber-400 to-orange-500 rounded-none blur-[2px] opacity-70 group-hover:opacity-100 transition duration-500 cyber-clip" />
+              <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-600 rounded-none blur-[2px] opacity-70 group-hover:opacity-100 transition duration-500 cyber-clip" />
               <div className="relative bg-[#060c1d]/95 border border-cyan-500/40 p-5 sm:p-6 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 cyber-clip">
                 {/* Crosshairs */}
                 <span className="absolute top-1.5 left-2 text-[8px] font-mono text-cyan-500/70 select-none">
@@ -148,10 +145,10 @@ export default function PrizesComponent() {
                 </div>
 
                 <div className="text-center sm:text-right">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-white drop-shadow-[0_0_20px_rgba(252,211,77,0.4)]">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
                     {prizePoolSummary.totalPool}
                   </div>
-                  <div className="text-[10px] font-mono text-amber-300/90 tracking-widest uppercase mt-0.5">
+                  <div className="text-[10px] font-mono text-cyan-400/90 tracking-widest uppercase mt-0.5">
                     ₹50K · ₹30K · ₹20K + TOP 10 GOODIES
                   </div>
                 </div>
@@ -187,11 +184,7 @@ export default function PrizesComponent() {
                   className={`relative p-6 sm:p-8 bg-[#060c1d]/95 border ${accent.border} ${accent.glow} cyber-clip flex flex-col justify-between overflow-hidden group`}
                 >
                   {/* Subtle top scan line */}
-                  <div
-                    className={`absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent ${
-                      isFirst ? "via-amber-400/80" : "via-cyan-400/80"
-                    } to-transparent`}
-                  />
+                  <div className="absolute top-0 left-4 right-4 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent" />
 
                   {/* Corner Sci-Fi Tags */}
                   <div className="flex items-center justify-between gap-2 mb-6">
@@ -202,7 +195,7 @@ export default function PrizesComponent() {
                       <span>{prize.badge}</span>
                     </span>
 
-                    <span className="text-xs font-mono text-slate-400 border border-white/10 px-2 py-0.5 bg-black/60">
+                    <span className="text-xs font-mono text-cyan-400/80 border border-cyan-500/30 px-2 py-0.5 bg-cyan-950/40">
                       RANK // 0{prize.rank}
                     </span>
                   </div>
@@ -211,9 +204,9 @@ export default function PrizesComponent() {
                   <div className="relative my-4 flex flex-col items-center justify-center">
                     {/* Glowing holographic ring */}
                     <div
-                      className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 ${accent.ringColor} flex items-center justify-center bg-black/70 shadow-[0_0_30px_rgba(0,0,0,0.8)] group-hover:scale-110 transition-transform duration-500`}
+                      className={`relative w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 ${accent.ringColor} flex items-center justify-center bg-black/70 shadow-[0_0_30px_rgba(6,182,212,0.15)] group-hover:scale-110 transition-transform duration-500`}
                     >
-                      <div className="absolute inset-1 rounded-full border border-dashed border-white/20 animate-[spin_25s_linear_infinite]" />
+                      <div className="absolute inset-1 rounded-full border border-dashed border-cyan-500/30 animate-[spin_25s_linear_infinite]" />
                       <div className="relative z-10">{accent.icon}</div>
                     </div>
 
@@ -225,12 +218,12 @@ export default function PrizesComponent() {
                   </div>
 
                   {/* Cash Reward Monolith */}
-                  <div className="my-5 py-4 px-4 bg-black/80 border border-white/10 relative text-center group-hover:border-white/25 transition-colors cyber-clip-sm">
-                    <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">
+                  <div className="my-5 py-4 px-4 bg-black/80 border border-cyan-500/30 relative text-center group-hover:border-cyan-400/50 transition-colors cyber-clip-sm">
+                    <div className="text-[10px] font-mono text-cyan-400/70 uppercase tracking-widest mb-1">
                       DIRECT CASH BOUNTY
                     </div>
                     <div
-                      className={`text-3xl sm:text-4xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${accent.textGradient} drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]`}
+                      className={`text-3xl sm:text-4xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${accent.textGradient} drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]`}
                     >
                       {prize.amount}
                     </div>
@@ -241,14 +234,12 @@ export default function PrizesComponent() {
                   </p>
 
                   {/* Perks Checklist */}
-                  <div className="pt-4 border-t border-white/10 space-y-2.5">
+                  <div className="pt-4 border-t border-cyan-500/20 space-y-2.5">
                     {prize.perks.map((perk, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
                         <Check
                           size={14}
-                          className={`mt-0.5 flex-shrink-0 ${
-                            isFirst ? "text-amber-400" : "text-cyan-400"
-                          }`}
+                          className="mt-0.5 flex-shrink-0 text-cyan-400"
                         />
                         <span className="font-light">{perk}</span>
                       </div>
@@ -263,10 +254,10 @@ export default function PrizesComponent() {
                   <div className="text-2xl sm:text-3xl font-black font-mono tracking-wider text-white">
                     {podiumRank}
                   </div>
-                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mt-0.5">
+                  <div className="text-[10px] font-mono text-cyan-400/80 uppercase tracking-widest mt-0.5">
                     {prize.title} · {prize.kanji}
                   </div>
-                  <div className="absolute bottom-1.5 inset-x-4 h-[1px] bg-white/10" />
+                  <div className="absolute bottom-1.5 inset-x-4 h-[1px] bg-cyan-500/20" />
                 </div>
               </div>
             );
@@ -280,7 +271,7 @@ export default function PrizesComponent() {
             <div className="absolute -right-20 -top-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
 
             {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-cyan-500/20 mb-8">
               <div>
                 <div className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-widest uppercase font-bold mb-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -310,11 +301,11 @@ export default function PrizesComponent() {
                 return (
                   <div
                     key={idx}
-                    className="p-5 bg-black/60 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 flex flex-col justify-between cyber-clip-sm group/perk"
+                    className="p-5 bg-black/60 border border-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between cyber-clip-sm group/perk"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-9 h-9 rounded bg-cyan-950/60 border border-cyan-500/40 flex items-center justify-center text-cyan-300 group-hover/perk:border-cyan-400 transition-colors">
+                        <div className="w-9 h-9 bg-cyan-950/60 border border-cyan-500/40 flex items-center justify-center text-cyan-300 group-hover/perk:border-cyan-400 transition-colors cyber-clip-sm">
                           <IconComponent size={18} />
                         </div>
                         <span className="text-[10px] font-mono text-cyan-400/80 tracking-widest uppercase">
@@ -330,7 +321,7 @@ export default function PrizesComponent() {
                       </p>
                     </div>
 
-                    <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                    <div className="mt-5 pt-3 border-t border-cyan-500/10 flex items-center justify-between text-[10px] font-mono text-slate-400">
                       <span>STATUS: INCLUDED</span>
                       <span className="text-cyan-400">TOP 10</span>
                     </div>
