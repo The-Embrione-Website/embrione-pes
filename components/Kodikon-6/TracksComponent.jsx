@@ -1,18 +1,63 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowDownRight, ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import { tracksData } from "./tracksData";
+import {
+  TenshuBuildingRoof,
+  PagodaBuildingRoof,
+  ShiroPavilionRoof,
+  BuildingEngawaBase,
+  KumikoPattern,
+  SeamlessPopupRoof,
+} from "./JapaneseBuildings";
+
+
+const TRACK_BUILDING_METADATA = {
+  "TRACK-01": {
+    kanjiNum: "壱",
+    kanjiSeal: "視",
+    kanjiTheme: "第壱領域 · 監視天守閣",
+    subBadge: "EDGE VISION & IOT",
+    buildingName: "Tenshu Keep Watchtower",
+    RoofComponent: TenshuBuildingRoof,
+  },
+  "TRACK-02": {
+    kanjiNum: "弐",
+    kanjiSeal: "智",
+    kanjiTheme: "第弐領域 · 五重智慧塔",
+    subBadge: "ASSISTIVE GENAI",
+    buildingName: "Gojū Sanctuary Pagoda",
+    RoofComponent: PagodaBuildingRoof,
+  },
+  "TRACK-03": {
+    kanjiNum: "参",
+    kanjiSeal: "密",
+    kanjiTheme: "第参領域 · 連邦本殿結界",
+    subBadge: "FEDERATED LEARNING",
+    buildingName: "Kekkai Fortress Pavilion",
+    RoofComponent: ShiroPavilionRoof,
+  },
+};
+
+const FLOATING_EMBERS = [
+  { left: "6%", top: "45%", size: "h-1.5 w-1.5", delay: "0s", duration: "7s", color: "bg-amber-400" },
+  { left: "16%", top: "65%", size: "h-1 w-1", delay: "1.2s", duration: "8s", color: "bg-brand-accent-cyan-glow" },
+  { left: "28%", top: "35%", size: "h-1.5 w-1.5", delay: "2.5s", duration: "9s", color: "bg-brand-accent-cyan" },
+  { left: "52%", top: "75%", size: "h-1 w-1", delay: "3s", duration: "8s", color: "bg-amber-300" },
+  { left: "70%", top: "50%", size: "h-1.5 w-1.5", delay: "0.8s", duration: "10s", color: "bg-brand-accent-cyan-glow" },
+  { left: "84%", top: "38%", size: "h-1 w-1", delay: "2.2s", duration: "7.5s", color: "bg-brand-accent-blue" },
+  { left: "94%", top: "60%", size: "h-1.5 w-1.5", delay: "1.7s", duration: "8.5s", color: "bg-amber-400" },
+];
 
 export default function TracksComponent() {
   const [selectedTrack, setSelectedTrack] = useState(null);
   const [activeTab, setActiveTab] = useState("problem");
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [hoveredTrack, setHoveredTrack] = useState(null);
 
   const openTrack = (track) => {
     setSelectedTrack(track);
     setActiveTab("problem");
-    setTilt({ x: 0, y: 0 });
   };
 
   const closeTrack = () => setSelectedTrack(null);
@@ -53,228 +98,348 @@ export default function TracksComponent() {
   return (
     <section
       id="tracks"
-      className="tracks-background relative overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-12 text-brand-text-primary sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+      className="tracks-background relative overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-16 text-brand-text-primary sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >
-      {/* Background */}
+      {/* Keyframe animations for Lanterns & Embers */}
+      <style jsx>{`
+        @keyframes floatEmber {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+            opacity: 0.2;
+          }
+          50% {
+            transform: translateY(-28px) translateX(6px) scale(1.3);
+            opacity: 0.65;
+          }
+        }
+        @keyframes swayLeftLantern {
+          0%, 100% {
+            transform: rotate(-3deg);
+          }
+          50% {
+            transform: rotate(2.5deg);
+          }
+        }
+        @keyframes swayRightLantern {
+          0%, 100% {
+            transform: rotate(2.8deg);
+          }
+          50% {
+            transform: rotate(-2.8deg);
+          }
+        }
+      `}</style>
+
+      {/* Atmospheric Ambient Gradients & Glows */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-20"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(0, 113, 227, 0.22) 0%, rgba(6, 182, 212, 0.12) 32%, rgba(0, 5, 20, 0.6) 65%, transparent 100%), linear-gradient(180deg, #000514 0%, #000000 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-28 top-1/3 -z-10 h-96 w-96 rounded-full bg-brand-accent-cyan/10 blur-[130px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-28 top-1/2 -z-10 h-96 w-96 rounded-full bg-brand-accent-blue/10 blur-[130px]"
+      />
+
+      {/* Signature 56px Checks Grid Overlay matching Hero */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:radial-gradient(ellipse_90%_75%_at_50%_40%,#000_65%,transparent_100%)]"
+      />
+
+      {/* Floating Spirit Embers (Hotaru) */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
-        <div className="tracks-background-glow absolute inset-0" />
-
-        <div className="absolute -left-24 top-36 h-72 w-72 rounded-full border border-brand-accent-cyan/10" />
-
-        <div className="absolute -right-28 top-24 h-80 w-80 rounded-full border border-brand-border-subtle" />
-
-        <div className="tracks-grid-overlay absolute inset-0" />
+        {FLOATING_EMBERS.map((ember, idx) => (
+          <span
+            key={idx}
+            style={{
+              left: ember.left,
+              top: ember.top,
+              animation: `floatEmber ${ember.duration} ease-in-out ${ember.delay} infinite`,
+            }}
+            className={`absolute rounded-full ${ember.size} ${ember.color} blur-[0.5px]`}
+          />
+        ))}
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:56px_56px]" />
-
-      <div className="relative mx-auto w-full max-w-6xl">
-        {/* Section heading */}
-        <header className="mx-auto mb-8 max-w-4xl text-center sm:mb-12 lg:mb-14">
-          <p className="mb-4 flex items-center justify-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-brand-text-secondary sm:gap-3 sm:text-xs sm:tracking-[0.32em]">
-            <span className="h-px w-5 shrink-0 bg-brand-accent-cyan-glow sm:w-7" />
-            KODIKON 6.0 · CHALLENGE TRACKS
-            <span className="h-px w-5 shrink-0 bg-brand-accent-cyan-glow sm:w-7" />
-          </p>
+      <div className="relative mx-auto w-full max-w-7xl">
+        {/* Section Heading with Medieval Japanese Aesthetic */}
+        <header className="mx-auto mb-12 max-w-4xl text-center sm:mb-16 lg:mb-20">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-accent-cyan/30 bg-brand-surface-navy/80 px-3.5 py-1.5 text-center backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.12)]">
+            <span className="h-1.5 w-1.5 rotate-45 bg-amber-400" />
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-brand-text-secondary sm:text-[10px] sm:tracking-[0.28em]">
+              KODIKON 6.0 · CHALLENGE TRACKS
+            </p>
+            <span className="h-1.5 w-1.5 rotate-45 bg-brand-accent-cyan-glow" />
+          </div>
 
           <h2 className="text-3xl font-black leading-[1.05] tracking-[-0.055em] sm:text-5xl md:text-6xl">
             EXPLORE THE{" "}
-            <span className="text-brand-accent-cyan-glow">TRACKS</span>
+            <span className="text-brand-accent-cyan-glow drop-shadow-[0_0_24px_rgba(34,211,238,0.5)]">
+              TRACKS
+            </span>
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-brand-text-secondary sm:mt-5 sm:text-base sm:leading-7">
-            Three challenge domains. Choose a track to explore its challenge,
-            background, applications, resources and mentor guidance.
+            Three challenge domains housed within light-blue medieval Japanese architectural sanctuaries.
+            Hover over a sanctuary to explore its mission and reveal track directives.
           </p>
+
+          <div className="mx-auto mt-6 flex items-center justify-center gap-3">
+            <span className="h-px w-12 bg-gradient-to-r from-transparent via-brand-accent-cyan/40 to-brand-accent-cyan-glow" />
+            <span className="font-mono text-xs font-bold text-amber-300">01 · 02 · 03</span>
+            <span className="h-px w-12 bg-gradient-to-l from-transparent via-brand-accent-cyan/40 to-brand-accent-cyan-glow" />
+          </div>
         </header>
 
-        {/* Track cards */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        {/* =====================================================================
+            TRACK BUILDINGS GRID (Image + Title in Building, "Know More" on Hover)
+           ===================================================================== */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-7 items-stretch">
           {tracksData.map((track) => {
-            const Icon = track.icon;
+            const meta = TRACK_BUILDING_METADATA[track.code] || {
+              kanjiNum: "壱",
+              kanjiSeal: "道",
+              kanjiTheme: "第壱領域",
+              subBadge: "TECHNICAL DOMAIN",
+              buildingName: "Sanctuary Pavilion",
+              RoofComponent: TenshuBuildingRoof,
+            };
+
+            const Roof = meta.RoofComponent;
+            const isHovered = hoveredTrack === track.code;
 
             return (
-              <button
+              <div
                 key={track.code}
-                type="button"
+                role="button"
+                tabIndex={0}
                 onClick={() => openTrack(track)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openTrack(track);
+                  }
+                }}
+                onMouseEnter={() => setHoveredTrack(track.code)}
+                onMouseLeave={() => setHoveredTrack(null)}
                 aria-label={`Open details for ${track.title}`}
-                className="group relative flex min-w-0 flex-col overflow-hidden border border-brand-border-subtle bg-brand-surface-navy/90 text-left transition duration-300 hover:-translate-y-1 hover:border-brand-border-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow motion-reduce:transform-none motion-reduce:transition-none"
+                className="group relative flex flex-col justify-between transition-transform duration-300 hover:-translate-y-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow motion-reduce:transform-none cursor-pointer select-none"
               >
-                {/* Image */}
-                <div className="relative aspect-[5/4] w-full overflow-hidden bg-brand-surface-input sm:aspect-square">
-                  <img
-                    src={track.image}
-                    alt={track.imageAlt}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
-                  />
-
-                  <div className="tracks-image-overlay absolute inset-0" />
-
-                  <span className="absolute left-3 top-3 border border-brand-border-hover bg-brand-surface-navy/80 px-2.5 py-1.5 font-mono text-[9px] tracking-[0.15em] text-brand-text-primary sm:left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-[10px]">
-                    {track.code}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="absolute right-3 top-3 h-3 w-3 border-r border-t border-brand-accent-cyan-glow sm:right-4 sm:top-4"
-                  />
-
-                  <span
-                    aria-hidden="true"
-                    className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-brand-text-secondary sm:bottom-4 sm:right-4"
-                  />
+                {/* 1. ROOF CANOPY (SVG Medieval Japanese Roof Tier) */}
+                <div className="relative z-10 w-full px-1">
+                  <Roof isHovered={isHovered} />
                 </div>
 
-                {/* Card content */}
-                <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="flex h-10 w-10 items-center justify-center border border-brand-accent-cyan/35 text-brand-accent-cyan sm:h-11 sm:w-11">
-                      <Icon size={20} strokeWidth={1.5} aria-hidden="true" />
-                    </span>
+                {/* 2. MAIN BUILDING CHAMBER (Image + Main Title inside the building) */}
+                <div className="relative -mt-3 flex flex-1 flex-col justify-between overflow-hidden rounded-sm border border-brand-accent-cyan/35 bg-gradient-to-b from-brand-surface-navy/85 via-[#000a20]/80 to-brand-surface-navy/95 p-4 sm:p-5 backdrop-blur-md transition-all duration-500 group-hover:border-brand-accent-cyan-glow group-hover:shadow-[0_0_35px_rgba(34,211,238,0.22)]">
+                  {/* Subtle Japanese Kumiko Screen Texture */}
+                  <KumikoPattern id={`kumiko-${track.code}`} />
 
-                    <ArrowUpRight
-                      size={19}
-                      className="text-brand-text-muted transition-colors group-hover:text-brand-accent-cyan-glow"
-                      aria-hidden="true"
-                    />
+                  {/* Corner Brass Hardware (Kanamono Accent Fittings) */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-brand-accent-cyan-glow/80"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-brand-accent-cyan-glow/80"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-brand-border-hover"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-brand-accent-cyan-glow/80"
+                  />
+
+                  {/* Left & Right Structural Pillar Guides (Hashira Columns) */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-brand-accent-cyan/40 via-brand-accent-cyan/15 to-transparent"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-y-0 right-0 w-1 bg-gradient-to-b from-brand-accent-cyan/40 via-brand-accent-cyan/15 to-transparent"
+                  />
+
+                  {/* Chamber Content */}
+                  <div className="relative z-10 flex flex-col">
+                    {/* Header Bar: Track Number Badge + Track Code + Domain Tag */}
+                    <div className="mb-3 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        {/* Domain Number Badge */}
+                        <span className="flex h-7 w-7 items-center justify-center rounded-sm border border-amber-400/60 bg-amber-500/10 font-mono text-xs font-bold text-amber-300 drop-shadow-[0_0_6px_rgba(251,191,36,0.5)]">
+                          {track.number}
+                        </span>
+
+                        <span className="border border-brand-border-hover bg-brand-surface-navy/90 px-2.5 py-0.5 font-mono text-[9px] tracking-[0.16em] text-brand-text-primary">
+                          {track.code}
+                        </span>
+                      </div>
+
+                      <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-brand-accent-cyan-glow">
+                        {meta.subBadge}
+                      </span>
+                    </div>
+
+                    {/* Image Container with "Know More" Hover Effect */}
+                    <div className="relative aspect-[16/10] sm:aspect-[4/3] w-full overflow-hidden rounded-lg border border-brand-accent-cyan/30 shadow-lg mt-1 mb-3 group/img">
+                      <img
+                        src={track.image}
+                        alt={track.imageAlt || track.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+
+                      {/* Vignette overlay */}
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+
+                      {/* Dark overlay with "Know More" button on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/35 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px]">
+                        <span className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-brand-accent-cyan to-brand-accent-blue text-white font-semibold text-xs tracking-wider uppercase shadow-[0_0_20px_rgba(34,211,238,0.5)] border border-cyan-300/40 hover:scale-105 transition-transform flex items-center gap-2">
+                          <span>Know More</span>
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Main Title Section (Directly seen in the building under image) */}
+                    <div className="flex flex-col items-center text-center pt-2 pb-1">
+                      <h3 className="text-lg sm:text-xl font-bold leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-brand-accent-cyan-glow px-2">
+                        {track.title}
+                      </h3>
+
+                      <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.15em] text-brand-accent-cyan-glow">
+                        {track.subtitle}
+                      </p>
+
+                      {/* Decorative Line (Kodikon-5 style) */}
+                      <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-brand-accent-cyan-glow to-transparent rounded-full mx-auto mt-3 opacity-60 group-hover:opacity-100 group-hover:w-28 transition-all duration-500 shadow-[0_0_10px_rgba(34,211,238,0.6)]" />
+
+                      {/* Mobile Tap Cue (visible only on small touch screens) */}
+                      <div className="mt-3 flex items-center justify-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-brand-accent-cyan-glow sm:hidden">
+                        <span>Tap to Know More</span>
+                        <ArrowUpRight size={12} aria-hidden="true" />
+                      </div>
+                    </div>
                   </div>
-
-                  <h3 className="text-lg font-bold leading-tight tracking-[-0.035em] text-brand-text-primary sm:text-xl">
-                    {track.title}
-                  </h3>
-
-                  <p className="mt-3 break-words font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-brand-accent-cyan-glow sm:text-[10px] sm:tracking-[0.13em]">
-                    {track.subtitle}
-                  </p>
-
-                  <p className="mt-3 text-sm leading-6 text-brand-text-secondary sm:mt-4">
-                    {track.desc}
-                  </p>
-
-                  <span className="mt-5 inline-flex items-center gap-2 border-t border-brand-border-subtle pt-4 font-mono text-[9px] uppercase tracking-[0.16em] text-brand-text-primary/90 transition-colors group-hover:text-brand-accent-cyan-glow sm:mt-6 sm:text-[10px] sm:tracking-[0.2em]">
-                    Explore track
-                    <ArrowDownRight size={15} aria-hidden="true" />
-                  </span>
                 </div>
 
-                <span
-                  aria-hidden="true"
-                  className="tracks-accent-line absolute bottom-0 left-0 h-px w-0 transition-all duration-500 group-hover:w-full"
-                />
-              </button>
+                {/* 3. BASE (Engawa Veranda & Stone Foundation Plinth) */}
+                <div className="relative z-10 w-full px-2 -mt-1">
+                  <BuildingEngawaBase isHovered={isHovered} />
+                </div>
+              </div>
             );
           })}
         </div>
       </div>
 
-      {/* Track details modal */}
+      {/* =====================================================================
+          TRACK DETAILS POPUP
+          (Clean popup with wide respective pagoda roof ABOVE the card,
+           full uncropped image banner, and structured text underneath)
+         ===================================================================== */}
       {selectedTrack && (
         <div
-          className="tracks-modal-overlay fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden overscroll-contain p-2 backdrop-blur-md sm:p-4 md:p-6"
+          className="tracks-modal-overlay fixed inset-0 z-[9999] flex items-center justify-center overflow-y-auto overflow-x-hidden overscroll-contain p-3 sm:p-5 md:p-6 backdrop-blur-md"
           onWheel={(event) => event.stopPropagation()}
           onTouchMove={(event) => event.stopPropagation()}
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeTrack();
           }}
         >
-          <section
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="track-dialog-title"
-            className="grid h-[94dvh] w-full max-w-6xl min-w-0 grid-rows-[auto_minmax(0,1fr)] overflow-hidden border border-brand-border-hover bg-brand-surface-navy sm:h-[92dvh] md:h-[88dvh] md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:grid-rows-1"
-          >
-            {/* Image panel */}
-            <div className="relative flex min-h-0 min-w-0 items-center justify-center overflow-hidden border-b border-brand-border-subtle bg-brand-surface-input p-0 md:border-b-0 md:border-r md:p-6">
-              <div
-                className="relative h-full min-h-[180px] w-full overflow-hidden sm:min-h-[220px] md:aspect-square md:h-auto md:max-w-[min(100%,calc(88dvh-3rem))]"
-                onMouseMove={(event) => {
-                  if (window.matchMedia("(hover: none)").matches) return;
+          {/* Backdrop overlay */}
+          <div
+            className="fixed inset-0 bg-black/85 backdrop-blur-md -z-10"
+            onClick={closeTrack}
+          />
 
-                  const rect = event.currentTarget.getBoundingClientRect();
-                  const x = (event.clientY - rect.top) / rect.height - 0.5;
-                  const y = (event.clientX - rect.left) / rect.width - 0.5;
+          {/* Outer Modal Container: Holds the wide roof ABOVE and the card */}
+          <div className="relative w-full max-w-4xl lg:max-w-5xl my-auto z-10 flex flex-col items-center">
+            {/* 1. SEAMLESS ROOF CROWN: Sits directly flush on top of the card */}
+            <div className="relative w-[119%] -mb-[3px] z-30 pointer-events-none select-none">
+              <SeamlessPopupRoof trackCode={selectedTrack.code} />
+            </div>
 
-                  setTilt({ x: -x * 3, y: y * 4 });
-                }}
-                onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+            {/* 2. THE MAIN POPUP CARD */}
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="track-dialog-title"
+              className="tracks-scrollbar relative w-full max-h-[75vh] sm:max-h-[78vh] overflow-y-auto rounded-b-2xl border-x border-b border-brand-accent-cyan/40 bg-gradient-to-b from-brand-surface-navy via-[#00081c] to-brand-surface-navy shadow-[0_0_60px_rgba(0,5,20,0.95)] backdrop-blur-xl"
+            >
+              {/* Close Button in top-right */}
+              <button
+                type="button"
+                onClick={closeTrack}
+                aria-label="Close track details"
+                className="absolute top-4 right-4 z-40 flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-brand-accent-cyan/50 bg-black/60 text-white hover:border-brand-accent-cyan-glow hover:text-brand-accent-cyan-glow hover:shadow-[0_0_15px_rgba(34,211,238,0.5)] transition-all group backdrop-blur-md"
               >
+                <X className="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-90 transition-transform duration-300" />
+              </button>
+
+              {/* Clean Image Banner at top of card (no side boxes or overlays) */}
+              <div className="relative h-56 sm:h-64 md:h-72 w-full overflow-hidden">
                 <img
                   src={selectedTrack.image}
-                  alt={selectedTrack.imageAlt}
-                  className="absolute inset-0 h-full w-full object-cover object-center"
-                  style={{
-                    transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.035)`,
-                    transition: "transform 220ms ease-out",
-                  }}
+                  alt={selectedTrack.imageAlt || selectedTrack.title}
+                  className="w-full h-full object-cover object-center"
                 />
 
-                <div className="tracks-modal-image-overlay absolute inset-0" />
+                {/* Soft gradient fade into content */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-surface-navy via-brand-surface-navy/30 to-transparent" />
+              </div>
 
-                <span className="absolute left-3 top-3 border border-brand-border-hover bg-brand-surface-navy/90 px-3 py-2 font-mono text-[9px] tracking-[0.15em] text-brand-text-primary sm:text-[10px]">
-                  {selectedTrack.code} / KODIKON 6.0
-                </span>
+              {/* 3. TEXT UNDERNEATH IT */}
+              <div className="pt-6 sm:pt-8 px-6 pb-8 sm:px-8 sm:pb-10 md:px-10 text-brand-text-primary">
+                {/* Category & Title */}
+                <div className="mb-5">
 
-                <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5">
-                  <p className="mb-2 font-mono text-[9px] uppercase tracking-[0.2em] text-brand-accent-cyan-glow">
-                    Technical domain / {selectedTrack.number}
-                  </p>
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="flex h-5 w-5 items-center justify-center rounded border border-amber-400/50 bg-amber-500/10 font-mono text-[10px] font-bold text-amber-300">
+                      {selectedTrack.number}
+                    </span>
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-brand-accent-cyan-glow">
+                      {selectedTrack.code} · TECHNICAL DOMAIN
+                    </span>
+                  </div>
 
                   <h2
                     id="track-dialog-title"
-                    className="text-xl font-extrabold leading-tight tracking-[-0.035em] text-brand-text-primary sm:text-2xl"
+                    className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight text-white"
                   >
                     {selectedTrack.title}
                   </h2>
-
-                  <p className="mt-2 text-[10px] font-semibold uppercase leading-5 tracking-[0.12em] text-brand-text-secondary sm:text-xs">
+                  <p className="mt-2 font-mono text-xs sm:text-sm uppercase tracking-[0.14em] text-brand-accent-cyan-glow">
                     {selectedTrack.subtitle}
                   </p>
                 </div>
 
-                <span
-                  aria-hidden="true"
-                  className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-brand-accent-cyan-glow"
-                />
-              </div>
-            </div>
-
-            {/* Scrollable details panel */}
-            <div className="tracks-scrollbar relative min-h-0 min-w-0 overflow-x-hidden overflow-y-auto overscroll-contain">
-              {/* Sticky modal toolbar */}
-              <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-brand-border-subtle bg-brand-surface-navy/95 px-3 py-3 backdrop-blur sm:px-6 sm:py-4">
-                <p className="min-w-0 font-mono text-[8px] uppercase tracking-[0.14em] text-brand-text-secondary sm:text-[9px] sm:tracking-[0.22em]">
-                  Track briefing
-                  <span className="mx-1.5 text-brand-accent-cyan-glow sm:mx-2">
-                    //
-                  </span>
-                  {selectedTrack.code}
-                </p>
-
-                <button
-                  type="button"
-                  onClick={closeTrack}
-                  aria-label="Close track details"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center border border-brand-border-hover text-brand-text-primary transition-colors hover:border-brand-accent-cyan hover:text-brand-accent-cyan-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow"
-                >
-                  <X size={18} aria-hidden="true" />
-                </button>
-              </div>
-
-              <div className="min-w-0 p-3 sm:p-6">
-                <p className="break-words border-b border-brand-border-subtle pb-4 text-sm leading-6 text-brand-text-secondary sm:pb-5 sm:leading-7">
-                  {selectedTrack.desc}
-                </p>
+                {/* Synopsis Box */}
+                <div className="mb-6 border-l-2 border-brand-accent-cyan bg-brand-surface/40 p-4 sm:p-5 rounded-r-lg backdrop-blur-sm">
+                  <p className="text-sm sm:text-base leading-relaxed text-brand-text-secondary">
+                    {selectedTrack.desc}
+                  </p>
+                </div>
 
                 {/* Tabs */}
                 <div
-                  className="tracks-scrollbar mt-4 flex gap-5 overflow-x-auto border-b border-brand-border-hover sm:gap-6"
+                  className="flex space-x-6 mb-6 border-b border-brand-border-hover overflow-x-auto"
                   role="tablist"
-                  aria-label="Track information"
+                  aria-label="Track information tabs"
                 >
                   <button
                     type="button"
@@ -283,15 +448,14 @@ export default function TracksComponent() {
                     aria-controls="track-tab-panel"
                     aria-selected={activeTab === "problem"}
                     onClick={() => setActiveTab("problem")}
-                    className={`shrink-0 border-b-2 py-3 text-xs font-semibold transition-colors sm:text-sm ${
+                    className={`pb-3 text-sm sm:text-base font-semibold transition-all flex items-center gap-2 shrink-0 ${
                       activeTab === "problem"
-                        ? "border-brand-accent-cyan-glow text-brand-accent-cyan-glow"
-                        : "border-transparent text-brand-text-muted hover:text-brand-text-primary"
+                        ? "text-brand-accent-cyan-glow border-b-2 border-brand-accent-cyan-glow shadow-[0_2px_10px_rgba(34,211,238,0.3)]"
+                        : "text-brand-text-muted hover:text-white"
                     }`}
                   >
-                    Problem Statement
+                    <span>Problem Statement</span>
                   </button>
-
                   <button
                     type="button"
                     role="tab"
@@ -299,122 +463,128 @@ export default function TracksComponent() {
                     aria-controls="track-tab-panel"
                     aria-selected={activeTab === "mentors"}
                     onClick={() => setActiveTab("mentors")}
-                    className={`shrink-0 border-b-2 py-3 text-xs font-semibold transition-colors sm:text-sm ${
+                    className={`pb-3 text-sm sm:text-base font-semibold transition-all flex items-center gap-2 shrink-0 ${
                       activeTab === "mentors"
-                        ? "border-brand-accent-cyan-glow text-brand-accent-cyan-glow"
-                        : "border-transparent text-brand-text-muted hover:text-brand-text-primary"
+                        ? "text-brand-accent-cyan-glow border-b-2 border-brand-accent-cyan-glow shadow-[0_2px_10px_rgba(34,211,238,0.3)]"
+                        : "text-brand-text-muted hover:text-white"
                     }`}
                   >
-                    Note from the Mentors
+                    <span>Note from the Mentors</span>
                   </button>
                 </div>
 
-                {/* Problem statement tab */}
+                {/* Tab Content */}
                 {activeTab === "problem" ? (
                   <div
                     id="track-tab-panel"
                     role="tabpanel"
                     aria-labelledby="problem-tab"
-                    className="space-y-4 pt-4 sm:pt-5"
+                    className="space-y-6"
                   >
-                    <section className="border-l-2 border-brand-accent-cyan bg-brand-surface/60 p-3 sm:p-5">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-brand-accent-cyan-glow sm:text-[10px] sm:tracking-[0.2em]">
-                        01 / The challenge
-                      </p>
-
-                      <h3 className="mt-3 text-lg font-bold text-brand-text-primary">
+                    {/* Problem Statement Card */}
+                    <div className="rounded-lg border border-brand-accent-cyan/30 bg-brand-surface-navy/70 p-4 sm:p-6">
+                      <h3 className="font-semibold text-brand-accent-cyan-glow text-lg mb-3">
                         Problem Statement
                       </h3>
-
-                      <p className="mt-3 whitespace-pre-line break-words text-sm leading-6 text-brand-text-secondary sm:leading-7">
+                      <p className="whitespace-pre-line text-sm sm:text-base leading-relaxed text-brand-text-secondary">
                         {selectedTrack.problemStatement}
                       </p>
-                    </section>
+                    </div>
 
-                    {selectedTrack.aboutSections.map((part, index) => (
-                      <section
-                        key={part.heading}
-                        className="min-w-0 border border-brand-border-subtle p-3 sm:p-5"
-                      >
-                        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-brand-text-secondary sm:text-[10px] sm:tracking-[0.2em]">
-                          {String(index + 2).padStart(2, "0")} / Track details
-                        </p>
+                    {/* About Sections */}
+                    <div className="pt-2 space-y-6">
+                      <h3 className="font-semibold text-white text-lg border-b border-brand-border-subtle pb-2">
+                        About the Problem Statement
+                      </h3>
 
-                        <h3 className="mt-3 break-words text-base font-bold text-brand-text-primary">
-                          {part.heading}
-                        </h3>
+                      {selectedTrack.aboutSections.map((section, index) => (
+                        <div
+                          key={section.heading}
+                          className="rounded-lg border border-brand-border-subtle bg-brand-surface-navy/40 p-4 sm:p-5"
+                        >
+                          <h4 className="font-bold text-slate-100 text-base mb-3 flex items-center gap-2">
+                            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-accent-cyan/15 text-brand-accent-cyan font-mono text-xs">
+                              {index + 1}
+                            </span>
+                            <span>{section.heading}</span>
+                          </h4>
 
-                        {part.content ? (
-                          <p className="mt-3 whitespace-pre-line break-words text-sm leading-6 text-brand-text-secondary sm:leading-7">
-                            {part.content}
-                          </p>
-                        ) : null}
+                          {section.content && (
+                            <p className="whitespace-pre-line text-sm sm:text-base leading-relaxed text-brand-text-secondary">
+                              {section.content}
+                            </p>
+                          )}
 
-                        {part.items ? (
-                          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-brand-text-secondary sm:leading-7">
-                            {part.items.map((item) => (
-                              <li key={item} className="break-words">
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
+                          {section.items && (
+                            <ul className="mt-3 list-disc pl-5 space-y-2 text-sm sm:text-base text-brand-text-secondary">
+                              {section.items.map((item, idx) => (
+                                <li key={idx} className="leading-relaxed">
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
 
-                        {part.links ? (
-                          <ul className="mt-3 space-y-3 text-sm leading-6 text-brand-text-secondary">
-                            {part.links.map((link) => (
-                              <li key={link.text} className="break-words">
-                                {link.url ? (
-                                  <a
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="underline decoration-brand-border-hover underline-offset-4 transition-colors hover:text-brand-accent-cyan-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow"
-                                  >
-                                    {link.text}{" "}
-                                    <span aria-hidden="true">↗</span>
-                                  </a>
-                                ) : (
-                                  <span>{link.text}</span>
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                      </section>
-                    ))}
+                          {section.links && (
+                            <ul className="mt-3 space-y-2.5 text-sm text-brand-text-secondary">
+                              {section.links.map((link, idx) => (
+                                <li key={idx}>
+                                  {link.url ? (
+                                    <a
+                                      href={link.url}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-brand-accent-cyan-glow hover:text-cyan-300 underline underline-offset-4 transition-colors inline-flex items-center gap-1.5"
+                                    >
+                                      <span>{link.text}</span>
+                                      <span aria-hidden="true">↗</span>
+                                    </a>
+                                  ) : (
+                                    <span>{link.text}</span>
+                                  )}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ) : (
-                  <section
+                  /* Mentors Tab Content */
+                  <div
                     id="track-tab-panel"
                     role="tabpanel"
                     aria-labelledby="mentors-tab"
-                    className="mt-4 border-l-2 border-brand-accent-cyan bg-brand-surface/60 p-3 sm:mt-5 sm:p-5"
+                    className="rounded-lg border-l-2 border-brand-accent-cyan bg-brand-surface/60 p-4 sm:p-6"
                   >
-                    <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-brand-text-secondary sm:text-[10px] sm:tracking-[0.2em]">
-                      Mentor insight
-                    </p>
-
-                    <h3 className="mt-3 break-words text-lg font-bold text-brand-text-primary">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-4">
                       {selectedTrack.mentorNoteHeading}
                     </h3>
-
-                    <p className="mt-3 whitespace-pre-line break-words text-sm leading-6 text-brand-text-secondary sm:leading-7">
+                    <p className="whitespace-pre-line text-sm sm:text-base leading-relaxed text-brand-text-secondary">
                       {selectedTrack.mentorNote}
                     </p>
-                  </section>
+                  </div>
                 )}
 
-                <button
-                  type="button"
-                  onClick={closeTrack}
-                  className="mt-6 border-t border-brand-border-subtle pt-4 text-left text-xs font-semibold uppercase tracking-[0.12em] text-brand-text-primary transition-colors hover:text-brand-accent-cyan-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow sm:tracking-[0.15em]"
-                >
-                  ← Back to tracks
-                </button>
+                {/* Back to tracks button at bottom */}
+                <div className="mt-8 pt-4 border-t border-brand-border-subtle flex justify-between items-center">
+                  <button
+                    type="button"
+                    onClick={closeTrack}
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-brand-text-primary transition-colors hover:text-brand-accent-cyan-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow"
+                  >
+                    <span>←</span>
+                    <span>Back to tracks</span>
+                  </button>
+
+                  <span className="font-mono text-[9px] text-brand-text-muted">
+                    KODIKON 6.0 · {selectedTrack.code}
+                  </span>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
       )}
     </section>
