@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from "react";
@@ -6,120 +7,149 @@ import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]">
-      {/* Apple-Style Ambient Glow */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/5 blur-[140px] pointer-events-none -z-10" />
+    <section
+      id="about"
+      className="relative overflow-hidden border-t border-white/[0.06] bg-[#000000] px-4 py-28 text-white sm:px-6 sm:py-36 lg:px-8"
+    >
+      {/* Ambient cyan glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-20 top-1/3 h-96 w-96 bg-cyan-500/[0.05] blur-[140px]"
+      />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Apple Headline & Lead */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.1] bg-white/[0.03] text-cyan-400 text-xs uppercase tracking-widest font-semibold mb-5 backdrop-blur-md">
+      <div className="relative z-10 mx-auto max-w-6xl">
+        {/* Section heading */}
+        <div className="mb-16 max-w-3xl sm:mb-20">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-400 backdrop-blur-md">
             <Sparkles size={12} />
-            <span>The Society · Core Architecture</span>
+            <span>The Society · About Embrione</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-white leading-[1.08]">
-            Engineered for curiosity. <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500">
-              Built for national impact.
+          <h2 className="text-4xl font-bold leading-[1.08] tracking-[-0.03em] text-white sm:text-6xl">
+            Built on Curiosity.
+            <br />
+            <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 bg-clip-text text-transparent">
+              Growing Through Technology.
             </span>
           </h2>
 
-          <div className="mt-8 space-y-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
-            <p>
-              <strong className="text-white font-medium">The Embrione</strong> is the official student technical vertical under the Department of Computer Science &amp; Engineering at PES University (Ring Road Campus, Bengaluru). We bridge academic research and production-grade engineering through rigorous student-led initiatives.
-            </p>
-          </div>
+          <p className="mt-8 text-base font-light leading-relaxed text-slate-300 sm:text-lg">
+            The Embrione is the student-led technical vertical under the
+            Department of Computer Science and Engineering at PES University,
+            Bengaluru. We bring students together to explore technology, work
+            on ideas, build projects, and learn through collaboration and
+            hands-on experience.
+          </p>
         </div>
 
-        {/* Apple Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
-          {/* Bento Card 1: Research & Systems (Spans 7 cols) */}
-          <div className="md:col-span-7 group p-8 sm:p-10 rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col justify-between backdrop-blur-2xl">
+        {/* Pillar cards */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-12 sm:gap-6">
+
+          {/* Pillar 1 — Collaborative Building */}
+          <div className="group flex flex-col justify-between rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] md:col-span-7 sm:p-10">
             <div>
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-[11px] font-semibold tracking-widest text-cyan-400 uppercase">
-                  Pillar 01 · Engineering Depth
+              <div className="mb-8 flex items-center justify-between gap-4">
+                <span className="text-[11px] font-semibold uppercase tracking-widest text-cyan-400">
+                  Pillar 01 · Collaborative Building
                 </span>
-                <div className="w-11 h-11 rounded-2xl bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 transition-transform duration-300 group-hover:scale-105">
                   <Cpu size={20} />
                 </div>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
-                Research-Driven Computing
+              <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-cyan-300 sm:text-3xl">
+                Learn Together.
+                <br />
+                Build Together.
               </h3>
-              <p className="mt-3.5 text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-xl">
-                Moving past boilerplate applications to dive deep into Distributed Systems, Edge Intelligence, Microkernel architectures, and high-throughput data backends.
+
+              <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-slate-300 sm:text-base">
+                We bring students together to work on technical projects,
+                exchange ideas, explore new technologies, and turn what they
+                learn into things they can actually build.
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/[0.06] flex flex-wrap items-center gap-2 text-xs">
-              <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-slate-300">
-                Distributed Systems
+            <div className="mt-8 flex flex-wrap gap-2 border-t border-white/[0.06] pt-6 text-xs">
+              <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-slate-300">
+                Collaboration
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-slate-300">
-                Edge Computer Vision
+              <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-slate-300">
+                Project Building
               </span>
-              <span className="px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-slate-300">
-                Compiler Engineering
+              <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-slate-300">
+                Exploration
               </span>
             </div>
           </div>
 
-          {/* Bento Card 2: Kodikon Series (Spans 5 cols) */}
-          <div className="md:col-span-5 group p-8 sm:p-10 rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col justify-between backdrop-blur-2xl">
+          {/* Pillar 2 — Hackathons */}
+          <div className="group flex flex-col justify-between rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] md:col-span-5 sm:p-10">
             <div>
-              <div className="flex items-center justify-between mb-8">
-                <span className="text-[11px] font-semibold tracking-widest text-cyan-400 uppercase">
-                  Pillar 02 · National Sprint
+              <div className="mb-8 flex items-center justify-between gap-4">
+                <span className="text-[11px] font-semibold uppercase tracking-widest text-cyan-400">
+                  Pillar 02 · Hackathons
                 </span>
-                <div className="w-11 h-11 rounded-2xl bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 transition-transform duration-300 group-hover:scale-105">
                   <Terminal size={20} />
                 </div>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+              <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-cyan-300 sm:text-3xl">
                 The Kodikon Series
               </h3>
-              <p className="mt-3.5 text-sm text-slate-300 font-light leading-relaxed">
-                South India&apos;s premier 24-hour national hackathon. Connecting hundreds of collegiate builders, industry sponsors, and research problems.
+
+              <p className="mt-4 text-sm font-light leading-relaxed text-slate-300">
+                Kodikon is our flagship 24-hour national hackathon, bringing
+                developers and problem solvers together to build, collaborate,
+                and tackle real-world challenges. With five successful
+                editions behind us, we continue to create a platform for
+                innovation and teamwork.
               </p>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/[0.06]">
+            <div className="mt-8 border-t border-white/[0.06] pt-6">
               <Link
                 href="/kodikon-6"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-cyan-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 transition-colors hover:text-white"
               >
-                <span>View Kodikon 6.0</span>
-                <ArrowRight size={13} />
+                <span>Explore Kodikon 6.0</span>
+                <ArrowRight
+                  size={14}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
               </Link>
             </div>
           </div>
 
-          {/* Bento Card 3: Department Legacy (Spans full 12 cols, wide format) */}
-          <div className="md:col-span-12 group p-8 sm:p-10 rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col sm:flex-row sm:items-center justify-between gap-8 backdrop-blur-2xl">
-            <div className="max-w-2xl">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[11px] font-semibold tracking-widest text-cyan-400 uppercase">
-                  Pillar 03 · Department Legacy
+          {/* Pillar 3 — Mentorship */}
+          <div className="group flex flex-col justify-between gap-8 rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] md:col-span-12 sm:flex-row sm:items-center sm:p-10">
+            <div className="max-w-3xl">
+              <div className="mb-4">
+                <span className="text-[11px] font-semibold uppercase tracking-widest text-cyan-400">
+                  Pillar 03 · Mentorship
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
-                Department of CSE Mentorship &amp; Peer Culture
+
+              <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-cyan-300 sm:text-3xl">
+                Guided by Experience
               </h3>
-              <p className="mt-3 text-sm sm:text-base text-slate-300 font-light leading-relaxed">
-                Mentored directly by faculty at PES University, fostering a disciplined collegiate engineering culture where students learn, build, collaborate, and ship together.
+
+              <p className="mt-4 text-sm font-light leading-relaxed text-slate-300 sm:text-base">
+                Students learn with guidance from industry professionals and
+                experienced mentors who share practical insights, offer
+                technical direction, and help turn early ideas into stronger
+                solutions.
               </p>
             </div>
 
-            <div className="shrink-0 flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-cyan-950/50 border border-cyan-500/30 text-cyan-300 flex items-center justify-center">
-                <Users size={26} />
-              </div>
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center self-start rounded-2xl border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 sm:self-center">
+              <Users size={26} />
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import TitleComponent from '../HelperComponents/TitleComponent'
-import { sponsors } from '@/constants'
+import { sponsors } from '@/components/HomeRedesign/constants'
 const SponsorCard = ({ sponsorName, sponsorImageURL, sponsorWebsiteURL, index }) => {
   return (
     <div className="flex flex-col items-center justify-center p-2  h-100 w-100     "

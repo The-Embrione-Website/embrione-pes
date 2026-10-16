@@ -27,7 +27,7 @@ const clubHeads = [
   { role: "Club Head", name: "Trisha", email: "trishavp25@gmail.com" },
   { role: "Club Head", name: "Chinmay", email: "chinmaygrandhi2006@gmail.com" },
   {
-    role: "Web Development Head",
+    role: "Tech Head",
     name: "Sagar",
     email: "sagarmh6364@gmail.com",
   },
@@ -91,7 +91,7 @@ export default function CTASection() {
                   className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.04] hover:bg-white/[0.08] px-7 py-3.5 text-sm font-medium text-slate-200 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <MapPin size={15} className="text-cyan-400" />
-                  <span>PES University, BE Block</span>
+                  <span>PES University</span>
                   <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </div>

@@ -4,7 +4,7 @@ import TitleComponent from "../HelperComponents/TitleComponent";
 import { VerticalTimeline } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import EventTimelineComponent from "./EventTimelineComponent";
-import { kodikon4Events } from "@/constants";
+import { kodikon4Events } from "@/components/HomeRedesign/constants";
 
 const EventTimeline = () => {
   return (

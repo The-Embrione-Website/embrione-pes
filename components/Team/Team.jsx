@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { staggerContainer } from "@/utils/framermotion";
-import { teamMembersDetails } from "@/constants";
+import { teamMembersDetails } from "@/components/HomeRedesign/constants";
 
 const Team = () => {
   return (

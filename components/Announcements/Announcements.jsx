@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { announcements } from "@/constants";
+import { announcements } from "@/components/HomeRedesign/constants";
 import AnnouncementComponent from "./AnnouncementComponent";
 import {
   motion,

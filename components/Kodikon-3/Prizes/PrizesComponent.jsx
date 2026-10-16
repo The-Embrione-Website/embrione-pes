@@ -1,6 +1,6 @@
 import React from 'react'
 import TitleComponent from '../HelperComponents/TitleComponent'
-import { sponsors } from '@/constants'
+import { sponsors } from '@/components/HomeRedesign/constants'
 import Image from 'next/image'
 
 const PrizeCard = ({ source, index }) => {

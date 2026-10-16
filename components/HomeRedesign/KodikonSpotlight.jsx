@@ -11,7 +11,7 @@ import {
   Camera,
   Layers,
 } from "lucide-react";
-import { ClubEvents } from "@/constants";
+import { ClubEvents } from "@/components/HomeRedesign/constants";
 
 // Only genuine event photographs (omitting sponsor logos or graphics for Kodi 3, 4, and 5)
 const eventPhotosMap = {
