@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, ArrowUpRight, ChevronUp, ExternalLink } from "lucide-react";
 import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
 import embrioneLogo from "@/public/embrionelogo.webp";
 import pesLogo from "@/public/Kodikon5/pes.webp";
@@ -17,13 +17,22 @@ const navigation = {
     { name: "Previous Partners", href: "#partners" },
     { name: "Contact Us", href: "#contact" },
   ],
-  editions: [
+  initiatives: [
     { name: "Kodikon 6.0 (Upcoming)", href: "/kodikon-6" },
-    { name: "Past Editions & Gallery", href: "#events" },
+    { name: "Kodikon 5.0 Archive", href: "#events" },
+    { name: "Kodikon 4.0 Archive", href: "#events" },
+    { name: "Systems & Research", href: "#about" },
+    { name: "Photo Gallery", href: "#events" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy-policy" },
     { name: "Terms & Conditions", href: "/terms" },
+    { name: "Code of Conduct", href: "/terms" },
+    {
+      name: "PES University CSE",
+      href: "https://www.pes.edu",
+      external: true,
+    },
   ],
   socials: [
     {
@@ -45,13 +54,18 @@ const navigation = {
 };
 
 const campusAddress =
-  "Department of CSE, BE Block, PES University, 100 Feet Ring Road, BSK III Stage - 560085";
+  "Department of CSE, B-Block, PES University, 100 Feet Ring Road, BSK III Stage, Bengaluru — 560085";
 const mapsUrl = "https://maps.app.goo.gl/K2qedNEbRbfj2J397";
 
-export default function FooterHome() {
-  // Keep footer navigation links aligned with the navbar's anchor scrolling.
+export default function FooterHome({ className = "", logoClassName = "" } = {}) {
+  // Keep footer navigation links aligned with smooth anchor scrolling
   const handleFooterAnchorClick = (event, href) => {
     if (!href?.startsWith("#")) return;
+
+    // If on another route (like /kodikon-6), navigate to /#section
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      return; // allow normal Link navigation to /#section
+    }
 
     const target = document.getElementById(href.slice(1));
     if (!target) return;
@@ -71,59 +85,74 @@ export default function FooterHome() {
     window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
   };
 
+  const scrollToTop = () => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer
-      className="relative isolate overflow-hidden border-t border-cyan-500/20 bg-[#02050e] pt-8 text-slate-400 sm:pt-10"
-      style={{ perspective: "1200px" }}
+      className={`relative isolate overflow-hidden bg-[#000000] text-slate-400 border-t border-white/[0.08] pt-16 pb-12 ${className}`}
     >
+      {/* Apple-style Subtle Specular Top Hairline */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent pointer-events-none" />
+
+      {/* Subtle Ambient Radial Lighting */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_8%_0%,rgba(6,182,212,0.10),transparent_32%),radial-gradient(ellipse_at_95%_55%,rgba(30,64,175,0.12),transparent_38%)]" />
-        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full border border-cyan-200/[0.08]" />
-        <div className="absolute -right-12 -top-12 h-56 w-56 rounded-full border border-cyan-200/[0.08]" />
-        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
-      </div>
+        className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] opacity-25 blur-[140px] rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(6, 182, 212, 0.20) 0%, rgba(37, 99, 235, 0.10) 40%, transparent 70%)",
+        }}
+      />
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 border-b border-white/10 pb-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6 lg:pb-7">
-          {/* Identity */}
-          <div className="space-y-3 sm:col-span-2 lg:col-span-2">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Main Bento Footer Grid */}
+        <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8 border-b border-white/[0.06]">
+          {/* Brand Identity Column (5 cols on lg) */}
+          <div className="space-y-5 lg:col-span-5 pr-0 lg:pr-6">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center border border-cyan-200/20 bg-white/[0.035] p-1 transition duration-300 hover:-translate-y-1 hover:rotate-[-3deg] hover:border-cyan-200/50">
+              {/* Embrione Logo */}
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#040816]/90 border border-white/[0.08] p-2 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
                 <Image
                   src={embrioneLogo}
-                  alt="The Embrione Logo"
-                  width={30}
-                  height={30}
-                  className="object-contain"
-                />
-              </div>
-              <div className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.035] p-1">
-                <Image
-                  src={pesLogo}
-                  alt="PES University"
+                  alt="The Embrione Crest"
                   width={28}
                   height={28}
                   className="object-contain"
                 />
               </div>
+
+              {/* PES University Logo */}
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#040816]/90 border border-white/[0.08] p-2 backdrop-blur-md shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+                <Image
+                  src={pesLogo}
+                  alt="PES University Crest"
+                  width={26}
+                  height={26}
+                  className="object-contain"
+                />
+              </div>
+
               <div>
-                <h3 className="text-sm font-semibold leading-tight text-white">
+                <h3 className={`text-base font-semibold tracking-[-0.02em] text-white ${logoClassName}`}>
                   The Embrione
                 </h3>
-                <p className="mt-1 text-[10px] font-mono uppercase tracking-[0.15em] text-slate-500">
+                <p className="text-[11px] font-medium tracking-wide text-slate-400">
                   PES University · Department of CSE
                 </p>
               </div>
             </div>
 
-            <p className="max-w-sm text-xs font-light leading-relaxed text-slate-400 sm:text-sm">
-              The technical club under the Department of Computer Science &amp;
-              Engineering at PES University.
+            <p className="max-w-md text-sm font-normal leading-relaxed text-slate-400">
+              The premier student computing &amp; hackathon society under the
+              Department of Computer Science &amp; Engineering at PES University.
+              Fostering systems engineering, open innovation, and national hackathons.
             </p>
 
+            {/* Social Pills */}
             <div className="flex items-center gap-2 pt-1">
               {navigation.socials.map((social) => {
                 const IconComponent = social.icon;
@@ -134,7 +163,7 @@ export default function FooterHome() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className="flex h-9 w-9 items-center justify-center border border-white/10 bg-white/[0.025] text-slate-400 transition duration-300 hover:-translate-y-1 hover:rotate-[-2deg] hover:border-cyan-200/50 hover:bg-cyan-200/[0.06] hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                    className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.03] border border-white/[0.08] text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/[0.08] transition-all duration-200"
                   >
                     <IconComponent size={14} />
                   </a>
@@ -145,105 +174,132 @@ export default function FooterHome() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Email The Embrione"
-                className="flex h-9 w-9 items-center justify-center border border-white/10 bg-white/[0.025] text-slate-400 transition duration-300 hover:-translate-y-1 hover:border-cyan-200/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/[0.03] border border-white/[0.08] text-slate-400 hover:text-cyan-300 hover:border-cyan-400/40 hover:bg-cyan-500/[0.08] transition-all duration-200"
               >
                 <Mail size={14} />
               </a>
             </div>
-
-            
           </div>
 
-          {/* Explore */}
-          <nav aria-label="Explore">
-            <h4 className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-cyan-100">
+          {/* Explore Column (2 cols on lg) */}
+          <nav aria-label="Explore Navigation" className="lg:col-span-2">
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200">
               Explore
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs">
               {navigation.explore.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
                     onClick={(event) => handleFooterAnchorClick(event, item.href)}
-                    className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
+                    className="group inline-flex items-center gap-1 text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     <span>{item.name}</span>
-                    <ArrowUpRight size={11} className="text-cyan-300/0 transition-colors group-hover:text-cyan-200" />
+                    <ArrowUpRight
+                      size={11}
+                      className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 text-cyan-400"
+                    />
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Hackathons and legal */}
-          <nav aria-label="Hackathons and legal">
-            <h4 className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-cyan-100">
-              Hackathons &amp; Legal
+          {/* Initiatives & Legal Column (2 cols on lg) */}
+          <nav aria-label="Initiatives & Legal Navigation" className="lg:col-span-2">
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200">
+              Initiatives
             </h4>
-            <ul className="space-y-2 text-xs">
-              {navigation.editions.map((item) => (
+            <ul className="space-y-2.5 text-xs">
+              {navigation.initiatives.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
                     onClick={(event) => handleFooterAnchorClick(event, item.href)}
-                    className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
+                    className="group inline-flex items-center gap-1 text-slate-400 transition-colors duration-200 hover:text-white"
                   >
                     <span>{item.name}</span>
-                    <ArrowUpRight size={11} className="text-cyan-300/0 transition-colors group-hover:text-cyan-200" />
-                  </Link>
-                </li>
-              ))}
-              <li className="!my-3 border-t border-white/10" />
-              {navigation.legal.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-slate-400 transition-colors hover:text-cyan-100"
-                  >
-                    {item.name}
+                    <ArrowUpRight
+                      size={11}
+                      className="opacity-0 -translate-x-1 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0 text-cyan-400"
+                    />
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* Location */}
-          <div className="min-w-0">
-            <h4 className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-cyan-100">
-              Campus Location
+          {/* Campus Location Bento Card (3 cols on lg) */}
+          <div className="lg:col-span-3">
+            <h4 className="mb-4 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200">
+              Headquarters
             </h4>
-            <div className="group border border-white/10 bg-white/[0.025] p-3 transition duration-300 [transform-style:preserve-3d] hover:[transform:perspective(900px)_rotateX(1deg)_translateY(-4px)] hover:border-cyan-200/35 hover:bg-cyan-200/[0.035]">
-              <div className="flex items-start gap-2.5">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-cyan-200" />
-                <p className="text-xs leading-relaxed text-slate-300">{campusAddress}</p>
+            <div className="rounded-2xl bg-[#040816]/90 border border-white/[0.08] p-4.5 backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_30px_rgba(0,0,0,0.6)]">
+              {/* Campus Indicator Badge */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span className="text-[11px] font-semibold tracking-wide text-slate-300">
+                  PESU Ring Road Campus
+                </span>
               </div>
+
+              <div className="flex items-start gap-2.5 text-slate-400 mb-4">
+                <MapPin size={15} className="mt-0.5 shrink-0 text-cyan-400" />
+                <p className="text-xs leading-relaxed text-slate-300">
+                  {campusAddress}
+                </p>
+              </div>
+
               <a
                 href={mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium text-cyan-200 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+                className="group flex items-center justify-between w-full px-3.5 py-2 rounded-xl bg-white/[0.04] hover:bg-cyan-500/10 border border-white/[0.08] hover:border-cyan-400/30 text-xs font-medium text-slate-300 hover:text-cyan-200 transition-all duration-200"
               >
-                Open in Google Maps
-                <ArrowUpRight size={12} />
+                <span>Open in Google Maps</span>
+                <ArrowUpRight
+                  size={12}
+                  className="text-slate-400 group-hover:text-cyan-300 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </a>
-              <div aria-hidden="true" className="mt-3 h-px w-full bg-gradient-to-r from-cyan-300/50 to-transparent" />
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-3 py-4 text-center text-[11px] font-light text-slate-500 sm:flex-row sm:text-left">
-          <p>
-            &copy; {new Date().getFullYear()} The Embrione · Department of CSE,
-            PES University. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-            <Link href="/privacy-policy" className="transition-colors hover:text-cyan-100">
+        {/* Bottom Bar (Apple style) */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-center sm:text-left">
+            <p>
+              &copy; {new Date().getFullYear()} The Embrione · Department of Computer Science &amp; Engineering, PES University.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4 text-[11px]">
+            <Link
+              href="/privacy-policy"
+              className="text-slate-400 hover:text-white transition-colors"
+            >
               Privacy Policy
             </Link>
-            <span className="text-cyan-300/50">/</span>
-            <Link href="/terms" className="transition-colors hover:text-cyan-100">
-              Terms &amp; Conditions
+            <span className="text-slate-700">·</span>
+            <Link
+              href="/terms"
+              className="text-slate-400 hover:text-white transition-colors"
+            >
+              Terms of Use
             </Link>
+            <span className="text-slate-700">·</span>
+            <button
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1 text-slate-400 hover:text-cyan-300 transition-colors"
+              aria-label="Scroll back to top"
+            >
+              <span>Back to Top</span>
+              <ChevronUp size={12} />
+            </button>
           </div>
         </div>
       </div>
