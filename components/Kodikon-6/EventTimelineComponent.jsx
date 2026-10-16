@@ -9,6 +9,8 @@ import { kodikon4Events } from "@/constants";
   - Esc, the close button, or the background closes the details.
   - Reads `kodikon4Events` ({ eventTitle, eventTimings, eventDescription, miscellaneous }).
     Falls back to sample events if the list is empty.
+  - Tokyo variant: old-Tokyo skyline outlines (pagodas, castle keep, temple halls, torii gate,
+    townhouses) sit faintly behind the river. Everything else is unchanged.
 */
 
 const FALLBACK_EVENTS = [
@@ -93,8 +95,8 @@ const buildRibbon = (C, widthAt, axisLength, axis) => {
     strands.push({
       d: pts.map(([x, y], i) => `${i ? "L" : "M"}${round(x)} ${round(y)}`).join(""),
       g: u > 0.1 ? "b" : "a",
-      w: round(0.6 + (((k * 37) % 10) / 10) * 0.9),
-      o: round(0.3 + (((k * 53) % 10) / 10) * 0.4),
+      w: round(1.3 + (((k * 37) % 10) / 10) * 1.7),
+      o: round(0.6 + (((k * 53) % 10) / 10) * 0.4),
     });
     if (k % 2 === 0) {
       const p = pts[4 + ((k * 11) % (n - 8))];
@@ -107,7 +109,7 @@ const buildRibbon = (C, widthAt, axisLength, axis) => {
 const DESKTOP_RIBBON = buildRibbon(
   RIVER_PCT.map(([x, y]) => [(x / 100) * DW, (y / 100) * DH]),
   (s) =>
-    (14 + 42 * (0.5 - 0.5 * Math.cos(2 * Math.PI * (s - 0.58)))) *
+    (22 + 64 * (0.5 - 0.5 * Math.cos(2 * Math.PI * (s - 0.58)))) *
     (1 - 0.25 * Math.exp(-(((s - 0.34) / 0.06) ** 2))),
   DW,
   "x"
@@ -118,7 +120,7 @@ const MOBILE_RIBBON = buildRibbon(
     const y = -4 + i * 2;
     return [(riverXMobile(y) / 100) * MW, (y / 100) * MH];
   }),
-  (s) => 15 + 17 * (0.5 + 0.5 * Math.cos(s * Math.PI * 6)),
+  (s) => 22 + 24 * (0.5 + 0.5 * Math.cos(s * Math.PI * 6)),
   MH,
   "y"
 );
@@ -141,6 +143,244 @@ const CodeBlock = ({ x, y, seed, rows = 5, fill = "#4fb0bd" }) => (
       <text key={i} x={x} y={y + i * 10}>{hexLine(seed + i)}</text>
     ))}
   </g>
+);
+
+/* ---------- Old-Tokyo skyline: outline art behind the river ----------
+   Pagodas, a castle keep, temple halls, a torii gate and a row of machiya houses, drawn as thin
+   cyan outlines. Built once as SVG markup (deterministic, so the server render matches the client).
+   Coordinates are local to each building: x = 0 is its centre, y = 0 is the ground, up is negative. */
+const SKY_W = 1440, SKY_H = 400, SKY_G = 388; // desktop skyline viewBox + ground line
+const SKY_MW = 390, SKY_MH = 300, SKY_MG = 292; // mobile skyline viewBox + ground line
+const SKY_LINE = "#4fb0bd", SKY_FILL = "#05080c", SKY_LAMP = "#b04a8c";
+const SKY_DASH = 'fill="none" stroke-dasharray="2 3" opacity=".7"';
+
+const skySeed = (seed) => {
+  let s = seed >>> 0;
+  return () => {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+};
+const skyPath = (d, extra = "") => `<path d="${d}"${extra ? " " + extra : ""}/>`;
+const skyPlace = (x, g, s, inner) => `<g transform="translate(${x} ${g}) scale(${s})">${inner}</g>`;
+
+// Curved temple roof: concave slope, flat ridge, upturned eave tips. One closed outline.
+const skyRoof = (x, y, hw, rh) => {
+  const rw = hw * 0.2;
+  const f = round;
+  return (
+    `M${f(x - hw - 13)} ${f(y - 8)}` +
+    `Q${f(x - hw - 3)} ${f(y + 5)} ${f(x - hw + 10)} ${f(y + 4)}` +
+    `H${f(x + hw - 10)}` +
+    `Q${f(x + hw + 3)} ${f(y + 5)} ${f(x + hw + 13)} ${f(y - 8)}` +
+    `L${f(x + hw)} ${f(y)}` +
+    `C${f(x + hw * 0.62)} ${f(y)} ${f(x + rw + hw * 0.16)} ${f(y - rh * 0.55)} ${f(x + rw)} ${f(y - rh)}` +
+    `H${f(x - rw)}` +
+    `C${f(x - rw - hw * 0.16)} ${f(y - rh * 0.55)} ${f(x - hw * 0.62)} ${f(y)} ${f(x - hw)} ${f(y)}Z`
+  );
+};
+// Open-bottom box (fill closes it, the stroke doesn't draw the bottom edge).
+const skyBox = (x, y, bw, bh) => `M${round(x - bw)} ${round(y)}V${round(y - bh)}H${round(x + bw)}V${round(y)}`;
+const skyPosts = (bw, y, bh, n) => {
+  let d = "";
+  for (let k = 1; k <= n; k++) d += `M${round(-bw + (2 * bw * k) / (n + 1))} ${round(y)}V${round(y - bh)}`;
+  return d;
+};
+
+// Stack of tiers (body + roof), each tucked into the roof below it.
+const skyStack = (list, y0) => {
+  let out = "", yb = y0, ridge = y0;
+  list.forEach((t) => {
+    const eave = yb - t.bh;
+    out += skyPath(skyBox(0, yb, t.bw, t.bh));
+    if (t.posts) out += skyPath(skyPosts(t.bw, yb, t.bh, t.posts), SKY_DASH);
+    out += `<rect x="-2.5" y="${round(yb - t.bh / 2 - 2.5)}" width="5" height="5"/>`;
+    out += skyPath(skyRoof(0, eave, t.hw, t.rh));
+    ridge = eave - t.rh;
+    yb = eave - t.rh * 0.25;
+  });
+  return { out, ridge };
+};
+
+const skyPagoda = (tiers, hw, th) => {
+  const list = [];
+  for (let i = 0; i < tiers; i++) {
+    const w = hw * (1 - i * 0.13);
+    list.push({ bw: w * 0.5, bh: th * 0.5, hw: w, rh: th * 0.5, posts: 2 });
+  }
+  const { out, ridge } = skyStack(list, -5);
+  const r = (n) => round(ridge - n);
+  return (
+    skyPath(skyBox(0, 0, hw * 0.85, 5)) +
+    out +
+    skyPath(`M0 ${round(ridge)}V${r(36)}M-6 ${r(9)}H6M-4.5 ${r(16)}H4.5M-3 ${r(23)}H3`, 'fill="none"') +
+    skyPath(`M0 ${r(45)}L3.2 ${r(40)}L0 ${r(35)}L-3.2 ${r(40)}Z`)
+  );
+};
+
+const skyCastle = () => {
+  const { out, ridge } = skyStack(
+    [
+      { bw: 54, bh: 34, hw: 84, rh: 24, posts: 3 },
+      { bw: 38, bh: 30, hw: 62, rh: 22, posts: 2 },
+      { bw: 24, bh: 26, hw: 44, rh: 26, posts: 1 },
+    ],
+    -42
+  );
+  const wall = (s) =>
+    skyPath(`M${s * 92} 0V-26H${s * 172}V0`) +
+    skyPath(`M${s * 90} -26L${s * 98} -32H${s * 166}L${s * 174} -26`) +
+    skyPath(`M${s * 112} 0V-26M${s * 132} 0V-26M${s * 152} 0V-26`, SKY_DASH);
+  const r = (n) => round(ridge + n);
+  return (
+    wall(1) +
+    wall(-1) +
+    skyPath("M-92 0L-74 -42H74L92 0Z") +
+    skyPath("M-86 -14H86M-80 -28H80", 'fill="none" opacity=".6"') +
+    out +
+    skyPath("M-26 -76Q-8 -78 0 -92Q8 -78 26 -76Z") +
+    '<rect x="-2.5" y="-86" width="5" height="5"/>' +
+    skyPath(`M-9 ${r(0)}Q-18 ${r(-2)} -15 ${r(-15)}M9 ${r(0)}Q18 ${r(-2)} 15 ${r(-15)}`, 'fill="none"') +
+    skyPath(`M0 ${r(0)}V${r(-10)}`, 'fill="none"')
+  );
+};
+
+const skyTemple = (hw) => {
+  const { out, ridge } = skyStack(
+    [
+      { bw: hw * 0.7, bh: 40, hw, rh: 30, posts: 5 },
+      { bw: hw * 0.42, bh: 26, hw: hw * 0.62, rh: 34, posts: 3 },
+    ],
+    -6
+  );
+  const tip = round(hw + 13);
+  const ring = (s) =>
+    `<circle cx="${s * tip}" cy="-54" r="5"/><circle cx="${s * tip}" cy="-54" r="1.8" fill="${SKY_LINE}" stroke="none"/>`;
+  return (
+    skyPath(skyBox(0, 0, hw * 0.8, 6)) +
+    out +
+    ring(1) +
+    ring(-1) +
+    skyPath(`M0 ${round(ridge)}V${round(ridge - 14)}`, 'fill="none"') +
+    `<rect x="-3" y="${round(ridge - 20)}" width="6" height="6"/>`
+  );
+};
+
+const skyTorii = (w, h) => {
+  const y0 = -h;
+  const post = (s) =>
+    skyPath(`M${round(s * (w + 3.5))} 0L${round(s * (w + 0.5))} ${y0}H${round(s * (w - 6.5))}L${round(s * (w - 3.5))} 0`);
+  return (
+    post(1) +
+    post(-1) +
+    skyPath(`M${-w + 5} ${y0 + 22}H${w - 5}V${y0 + 28}H${-w + 5}Z`) +
+    skyPath(`M0 ${y0 + 6}V${y0 + 22}`, 'fill="none"') +
+    `<rect x="-4" y="${y0 + 10}" width="8" height="10"/>` +
+    skyPath(`M${-w - 30} ${y0 - 14}Q0 ${y0 + 4} ${w + 30} ${y0 - 14}L${w + 20} ${y0 - 4}Q0 ${y0 + 14} ${-w - 20} ${y0 - 4}Z`)
+  );
+};
+
+// Row of low machiya townhouses (tile roofs, lattice windows), seeded.
+const skyHouses = (x0, x1, seed) => {
+  const r = skySeed(seed);
+  let out = "", x = x0;
+  while (x < x1) {
+    const w = 30 + r() * 34;
+    const tall = r() > 0.62;
+    const bh = (tall ? 38 : 22) + r() * 8;
+    const rh = 10 + r() * 7;
+    out += skyPath(
+      `M${round(x)} 0V${round(-bh)}H${round(x - 5)}L${round(x + w / 2)} ${round(-bh - rh)}L${round(x + w + 5)} ${round(-bh)}H${round(x + w)}V0`
+    );
+    if (tall) out += skyPath(`M${round(x - 3)} ${round(-bh * 0.5)}H${round(x + w + 3)}`, 'fill="none"');
+    out += skyPath(`M${round(x + w * 0.3)} ${round(-bh + 6)}V-4M${round(x + w * 0.7)} ${round(-bh + 6)}V-4`, SKY_DASH);
+    x += w + r() * 6;
+  }
+  return out;
+};
+
+// A string of festival lanterns (chochin) hung between two points.
+const skyLanterns = (x0, y0, x1, y1, sag, n) => {
+  const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2 + sag * 2;
+  const q = (t, a, c, b) => (1 - t) * (1 - t) * a + 2 * (1 - t) * t * c + t * t * b;
+  const rope = `fill="none" stroke="${SKY_LAMP}" stroke-opacity=".6" stroke-width=".8"`;
+  let out = `<path d="M${x0} ${y0}Q${round(cx)} ${round(cy)} ${x1} ${y1}" ${rope}/>`;
+  for (let k = 1; k <= n; k++) {
+    const t = k / (n + 1);
+    const px = round(q(t, x0, cx, x1)), py = round(q(t, y0, cy, y1));
+    out += `<path d="M${px} ${py}v5" ${rope}/>`;
+    out += `<ellipse cx="${px}" cy="${py + 10}" rx="3.4" ry="5" fill="${SKY_LAMP}" fill-opacity=".85" stroke="none"/>`;
+  }
+  return out;
+};
+
+// Ground line with tick marks, like the base of the track cards.
+const skyGround = (w, g) => {
+  let ticks = "";
+  for (let x = 6; x < w; x += 24) ticks += `M${x} ${g}v${x % 72 === 6 ? 7 : 4}`;
+  return (
+    skyPath(`M0 ${g}H${w}`, 'fill="none"') +
+    skyPath(`M0 ${g + 6}H${w}`, 'fill="none" opacity=".45" stroke-dasharray="14 6"') +
+    skyPath(ticks, 'fill="none" opacity=".7"')
+  );
+};
+
+// Wraps the far + front art with the glow, edge fades and styling. Ids are suffixed per variant.
+const skyMarkup = (suffix, w, h, far, front) =>
+  `<defs>
+    <filter id="tl-sky-blur${suffix}" filterUnits="userSpaceOnUse" x="-20" y="-20" width="${w + 40}" height="${h + 40}"><feGaussianBlur stdDeviation="2.6"/></filter>
+    <linearGradient id="tl-sky-hg${suffix}" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".12" stop-color="#fff"/><stop offset=".88" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="tl-sky-vg${suffix}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".15"/><stop offset=".55" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff"/></linearGradient>
+    <mask id="tl-sky-hm${suffix}" maskUnits="userSpaceOnUse" x="0" y="0" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="url(#tl-sky-hg${suffix})"/></mask>
+    <mask id="tl-sky-vm${suffix}" maskUnits="userSpaceOnUse" x="0" y="0" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="url(#tl-sky-vg${suffix})"/></mask>
+    <g id="tl-sky-far${suffix}">${far}</g>
+    <g id="tl-sky-front${suffix}">${front}</g>
+  </defs>
+  <g mask="url(#tl-sky-hm${suffix})"><g mask="url(#tl-sky-vm${suffix})">
+    <use href="#tl-sky-far${suffix}" fill="${SKY_FILL}" stroke="${SKY_LINE}" stroke-width="1" stroke-linejoin="round" opacity=".26"/>
+    <use href="#tl-sky-front${suffix}" fill="none" stroke="${SKY_LINE}" stroke-width="3.2" opacity=".5" filter="url(#tl-sky-blur${suffix})"/>
+    <use href="#tl-sky-front${suffix}" fill="${SKY_FILL}" stroke="${SKY_LINE}" stroke-width="1.25" stroke-linejoin="round" opacity=".6"/>
+  </g></g>`.replace(/\n\s*/g, "");
+
+const SKY_DESKTOP = skyMarkup(
+  "",
+  SKY_W,
+  SKY_H,
+  [
+    skyPlace(120, SKY_G, 0.55, skyPagoda(5, 58, 54)),
+    skyPlace(395, SKY_G, 0.5, skyCastle()),
+    skyPlace(860, SKY_G, 0.55, skyTemple(150)),
+    skyPlace(1085, SKY_G, 0.55, skyPagoda(3, 46, 50)),
+    skyPlace(1345, SKY_G, 0.5, skyPagoda(5, 58, 54)),
+  ].join(""),
+  [
+    skyPlace(0, SKY_G, 1, skyHouses(-10, SKY_W + 10, 7)),
+    skyPlace(255, SKY_G, 1, skyTemple(150)),
+    skyPlace(530, SKY_G, 1, skyPagoda(5, 62, 56)),
+    skyPlace(715, SKY_G, 1, skyTorii(44, 88)),
+    skyPlace(960, SKY_G, 1, skyCastle()),
+    skyPlace(1185, SKY_G, 1, skyPagoda(3, 46, 50)),
+    skyPlace(1345, SKY_G, 0.62, skyTemple(150)),
+    skyLanterns(418, SKY_G - 54, 455, SKY_G - 35, 8, 2),
+    skyLanterns(789, SKY_G - 102, 872, SKY_G - 76, 14, 3),
+    skyGround(SKY_W, SKY_G),
+  ].join("")
+);
+
+const SKY_MOBILE = skyMarkup(
+  "-m",
+  SKY_MW,
+  SKY_MH,
+  [
+    skyPlace(185, SKY_MG, 0.55, skyPagoda(3, 46, 50)),
+    skyPlace(350, SKY_MG, 0.45, skyPagoda(5, 58, 54)),
+  ].join(""),
+  [
+    skyPlace(0, SKY_MG, 0.8, skyHouses(-10, SKY_MW / 0.8 + 10, 11)),
+    skyPlace(80, SKY_MG, 1, skyPagoda(4, 40, 50)),
+    skyPlace(292, SKY_MG, 0.55, skyCastle()),
+    skyGround(SKY_MW, SKY_MG),
+  ].join("")
 );
 
 /* ---------- Small helpers ---------- */
@@ -211,34 +451,34 @@ function CyberGlyph({ variant }) {
 const RibbonDefs = ({ suffix, vertical, w, h }) => (
   <defs>
     <linearGradient id={`tl-grad-a${suffix}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={vertical ? 0 : w} y2={vertical ? h : 0}>
-      <stop offset="0" stopColor="#a8437f" />
-      <stop offset=".3" stopColor="#7d63b0" />
-      <stop offset=".6" stopColor="#4d7fb8" />
-      <stop offset="1" stopColor="#3a9fae" />
+      <stop offset="0" stopColor="#ff4fa8" />
+      <stop offset=".3" stopColor="#a885ff" />
+      <stop offset=".6" stopColor="#5fb2ff" />
+      <stop offset="1" stopColor="#3df0f0" />
     </linearGradient>
     <linearGradient id={`tl-grad-b${suffix}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={vertical ? 0 : w} y2={vertical ? h : 0}>
-      <stop offset="0" stopColor="#a8437f" />
-      <stop offset=".55" stopColor="#a0478a" />
-      <stop offset=".75" stopColor="#6f66b5" />
-      <stop offset="1" stopColor="#3a9fae" />
+      <stop offset="0" stopColor="#ff4fa8" />
+      <stop offset=".55" stopColor="#f05cc0" />
+      <stop offset=".75" stopColor="#8f86ff" />
+      <stop offset="1" stopColor="#3df0f0" />
     </linearGradient>
     <filter id={`tl-soft${suffix}`} filterUnits="userSpaceOnUse" x={-60} y={-60} width={w + 120} height={h + 120}>
-      <feGaussianBlur stdDeviation="4" />
+      <feGaussianBlur stdDeviation="8" />
     </filter>
   </defs>
 );
 
 const Ribbon = ({ ribbon, suffix }) => (
   <>
-    <use href={`#tl-strands${suffix}`} filter={`url(#tl-soft${suffix})`} opacity=".5" />
+    <use href={`#tl-strands${suffix}`} filter={`url(#tl-soft${suffix})`} opacity=".95" />
     <g id={`tl-strands${suffix}`} fill="none" strokeLinecap="round" strokeLinejoin="round">
       {ribbon.strands.map((s, i) => (
         <path key={i} d={s.d} stroke={`url(#tl-grad-${s.g}${suffix})`} strokeWidth={s.w} opacity={s.o} />
       ))}
     </g>
-    <g fill="#9fd2da" opacity=".45">
+    <g fill="#d8f8ff" opacity=".95">
       {ribbon.beads.map((b, i) => (
-        <circle key={i} cx={b.cx} cy={b.cy} r="1.3" />
+        <circle key={i} cx={b.cx} cy={b.cy} r="2.3" />
       ))}
     </g>
   </>
@@ -307,6 +547,22 @@ const EventTimeline = ({
           if (e.target === e.currentTarget) closeCard();
         }}
       >
+        {/* Old-Tokyo skyline outlines, behind the river */}
+        <svg
+          className="tl-river-bg tl-river-desktop tl-skyline"
+          viewBox={`0 0 ${SKY_W} ${SKY_H}`}
+          preserveAspectRatio="xMidYMax meet"
+          aria-hidden="true"
+          dangerouslySetInnerHTML={{ __html: SKY_DESKTOP }}
+        />
+        <svg
+          className="tl-river-bg tl-river-mobile tl-skyline"
+          viewBox={`0 0 ${SKY_MW} ${SKY_MH}`}
+          preserveAspectRatio="xMidYMax meet"
+          aria-hidden="true"
+          dangerouslySetInnerHTML={{ __html: SKY_MOBILE }}
+        />
+
         {/* Desktop backdrop */}
         <svg className="tl-river-bg tl-river-desktop" viewBox={`0 0 ${DW} ${DH}`} preserveAspectRatio="none" aria-hidden="true">
           <RibbonDefs suffix="" w={DW} h={DH} />
@@ -489,10 +745,10 @@ const css = `
   z-index: 2; font-family: 'Orbitron', ui-monospace, monospace; font-style: italic; font-weight: 700; text-transform: uppercase;
   color: #e4dcee;
   text-shadow: -1.5px 0 rgba(176, 74, 140, .55), 1.5px 0 rgba(79, 176, 189, .55), 0 0 18px rgba(125, 108, 192, .3);
-  font-size: 4.6cqw; letter-spacing: .6em; padding-left: .6em; line-height: 1; pointer-events: none;
+  font-size: 3.2cqw; letter-spacing: .5em; padding-left: .5em; line-height: 1; pointer-events: none;
 }
 .tl-title::before, .tl-title::after {
-  content: attr(data-text); position: absolute; left: 0; right: 0; top: 0; padding-left: .6em;
+  content: attr(data-text); position: absolute; left: 0; right: 0; top: 0; padding-left: .5em;
   text-align: center; opacity: 0; text-shadow: none; pointer-events: none;
 }
 .tl-title::before { color: var(--magenta); animation: tl-glitch-a 7s steps(1) infinite; }
@@ -515,7 +771,7 @@ const css = `
   z-index: 4; font-family: 'Orbitron', ui-monospace, monospace; font-style: italic; font-weight: 800; text-transform: uppercase;
   color: #9fd3dc;
   text-shadow: 0 0 6px rgba(79, 176, 189, .5), 0 0 24px rgba(79, 176, 189, .28), 0 0 42px rgba(176, 74, 140, .3), -1px 1px 0 rgba(176, 74, 140, .55);
-  font-size: 5.4cqw; line-height: 1.12; letter-spacing: .02em; pointer-events: none;
+  font-size: 3.6cqw; line-height: 1.12; letter-spacing: .02em; pointer-events: none;
 }
 
 /* Anchor nodes: hex glyph inside a slow dashed ring */
@@ -588,9 +844,9 @@ const css = `
   .tl-river-mobile { display: block; }
   .tl-node { width: 48px; height: 48px; margin: -24px 0 0 -24px; }
   .tl-cyber-glyph { width: 36px; height: 36px; }
-  .tl-title { top: 2.5%; font-size: 6.4cqw; letter-spacing: .25em; padding-left: .25em; }
+  .tl-title { top: 2.5%; font-size: 4.6cqw; letter-spacing: .25em; padding-left: .25em; }
   .tl-title::before, .tl-title::after { padding-left: .25em; }
-  .tl-subtitle { top: auto; bottom: 3%; font-size: 8cqw; }
+  .tl-subtitle { top: auto; bottom: 3%; font-size: 5.6cqw; }
   .tl-pop { max-height: 42%; overflow-y: auto; }
   .tl-pop, .tl-pop.to-left, .tl-pop.to-right {
     left: 10px; right: 10px; width: auto; transform-origin: center top;
