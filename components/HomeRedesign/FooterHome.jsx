@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, ArrowUpRight, ChevronRight } from "lucide-react";
+import { Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { BsInstagram, BsLinkedin, BsGithub } from "react-icons/bs";
 import embrioneLogo from "@/public/embrionelogo.webp";
 import pesLogo from "@/public/Kodikon5/pes.webp";
@@ -28,7 +28,7 @@ const navigation = {
   socials: [
     {
       name: "Instagram",
-      href: "https://www.instagram.com/the.embrione/",
+      href: "https://www.instagram.com/the_embrione.pesu/",
       icon: BsInstagram,
     },
     {
@@ -38,21 +38,60 @@ const navigation = {
     },
     {
       name: "GitHub",
-      href: "https://github.com/the-embrione",
+      href: "https://github.com/The-Embrione-Website/",
       icon: BsGithub,
     },
   ],
 };
 
+const campusAddress =
+  "Department of CSE, BE Block, PES University, 100 Feet Ring Road, BSK III Stage - 560085";
+const mapsUrl = "https://maps.app.goo.gl/K2qedNEbRbfj2J397";
+
 export default function FooterHome() {
+  // Keep footer navigation links aligned with the navbar's anchor scrolling.
+  const handleFooterAnchorClick = (event, href) => {
+    if (!href?.startsWith("#")) return;
+
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
+    window.history.pushState(null, "", href);
+
+    const sectionTop = window.scrollY + target.getBoundingClientRect().top;
+    const sectionPaddingTop =
+      parseFloat(window.getComputedStyle(target).paddingTop) || 0;
+    const navbarHeight =
+      document.querySelector("header")?.getBoundingClientRect().height || 0;
+    const breathingRoom = 10;
+    const top =
+      sectionTop + sectionPaddingTop - navbarHeight - breathingRoom;
+
+    window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-[#111111] border-t border-white/10 text-neutral-400 pt-16 pb-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-          {/* Col 1 & 2: Institutional Identity */}
-          <div className="lg:col-span-2 space-y-4">
+    <footer
+      className="relative isolate overflow-hidden border-t border-cyan-100/10 bg-[#030814] pt-8 text-slate-400 sm:pt-10"
+      style={{ perspective: "1200px" }}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_8%_0%,rgba(6,182,212,0.10),transparent_32%),radial-gradient(ellipse_at_95%_55%,rgba(30,64,175,0.12),transparent_38%)]" />
+        <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full border border-cyan-200/[0.08]" />
+        <div className="absolute -right-12 -top-12 h-56 w-56 rounded-full border border-cyan-200/[0.08]" />
+        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 border-b border-white/10 pb-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6 lg:pb-7">
+          {/* Identity */}
+          <div className="space-y-3 sm:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1">
+              <div className="flex h-10 w-10 items-center justify-center border border-cyan-200/20 bg-white/[0.035] p-1 transition duration-300 hover:-translate-y-1 hover:rotate-[-3deg] hover:border-cyan-200/50">
                 <Image
                   src={embrioneLogo}
                   alt="The Embrione Logo"
@@ -61,7 +100,7 @@ export default function FooterHome() {
                   className="object-contain"
                 />
               </div>
-              <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center p-1">
+              <div className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/[0.035] p-1">
                 <Image
                   src={pesLogo}
                   alt="PES University"
@@ -71,20 +110,20 @@ export default function FooterHome() {
                 />
               </div>
               <div>
-                <h3 className="text-white font-medium text-sm leading-tight">
+                <h3 className="text-sm font-semibold leading-tight text-white">
                   The Embrione
                 </h3>
-                <p className="text-[11px] text-neutral-400 uppercase tracking-wider font-light">
-                  PES University • Dept. of CSE
+                <p className="mt-1 text-[10px] font-mono uppercase tracking-[0.15em] text-slate-500">
+                  PES University · Department of CSE
                 </p>
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed max-w-sm font-light">
-              Official technical vertical under the Department of Computer Science &amp; Engineering at PES University (Ring Road Campus, Bengaluru).
+            <p className="max-w-sm text-xs font-light leading-relaxed text-slate-400 sm:text-sm">
+              The technical club under the Department of Computer Science &amp;
+              Engineering at PES University.
             </p>
 
-            {/* Social channels */}
             <div className="flex items-center gap-2 pt-1">
               {navigation.socials.map((social) => {
                 const IconComponent = social.icon;
@@ -95,25 +134,29 @@ export default function FooterHome() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white transition-colors"
+                    className="flex h-9 w-9 items-center justify-center border border-white/10 bg-white/[0.025] text-slate-400 transition duration-300 hover:-translate-y-1 hover:rotate-[-2deg] hover:border-cyan-200/50 hover:bg-cyan-200/[0.06] hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
                   >
-                    <IconComponent size={13} />
+                    <IconComponent size={14} />
                   </a>
                 );
               })}
               <a
-                href="mailto:embrione_cse@pes.edu"
-                className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white transition-colors"
-                aria-label="Email Embrione"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=embrione_cse%40pes.edu"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Email The Embrione"
+                className="flex h-9 w-9 items-center justify-center border border-white/10 bg-white/[0.025] text-slate-400 transition duration-300 hover:-translate-y-1 hover:border-cyan-200/50 hover:text-cyan-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
               >
-                <Mail size={13} />
+                <Mail size={14} />
               </a>
             </div>
+
+            
           </div>
 
-          {/* Col 3: Navigation */}
-          <div>
-            <h4 className="text-xs uppercase tracking-wider text-neutral-200 font-medium mb-3">
+          {/* Explore */}
+          <nav aria-label="Explore">
+            <h4 className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-cyan-100">
               Explore
             </h4>
             <ul className="space-y-2 text-xs">
@@ -121,18 +164,20 @@ export default function FooterHome() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-neutral-400 hover:text-white transition-colors"
+                    onClick={(event) => handleFooterAnchorClick(event, item.href)}
+                    className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    <ArrowUpRight size={11} className="text-cyan-300/0 transition-colors group-hover:text-cyan-200" />
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 4: Editions & Legal */}
-          <div>
-            <h4 className="text-xs uppercase tracking-wider text-neutral-200 font-medium mb-3">
+          {/* Hackathons and legal */}
+          <nav aria-label="Hackathons and legal">
+            <h4 className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-cyan-100">
               Hackathons &amp; Legal
             </h4>
             <ul className="space-y-2 text-xs">
@@ -140,64 +185,63 @@ export default function FooterHome() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-neutral-400 hover:text-white transition-colors"
+                    onClick={(event) => handleFooterAnchorClick(event, item.href)}
+                    className="group inline-flex items-center gap-1.5 text-slate-400 transition-colors hover:text-white"
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    <ArrowUpRight size={11} className="text-cyan-300/0 transition-colors group-hover:text-cyan-200" />
                   </Link>
                 </li>
               ))}
-              <li className="pt-2 border-t border-white/10" />
+              <li className="!my-3 border-t border-white/10" />
               {navigation.legal.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-neutral-400 hover:text-white transition-colors"
+                    className="text-slate-400 transition-colors hover:text-cyan-100"
                   >
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 5: Campus Location */}
-          <div>
-            <h4 className="text-xs uppercase tracking-wider text-neutral-200 font-medium mb-3">
+          {/* Location */}
+          <div className="min-w-0">
+            <h4 className="mb-3 text-[10px] font-mono uppercase tracking-[0.22em] text-cyan-100">
               Campus Location
             </h4>
-            <div className="space-y-2.5 text-xs text-neutral-400 font-light">
-              <div className="flex items-start gap-2">
-                <MapPin size={14} className="text-neutral-400 shrink-0 mt-0.5" />
-                <span className="leading-relaxed">
-                  Department of CSE, MRD Block, PES University, 100 Feet Ring Road, BSK III Stage, Bengaluru - 560085
-                </span>
+            <div className="group border border-white/10 bg-white/[0.025] p-3 transition duration-300 [transform-style:preserve-3d] hover:[transform:perspective(900px)_rotateX(1deg)_translateY(-4px)] hover:border-cyan-200/35 hover:bg-cyan-200/[0.035]">
+              <div className="flex items-start gap-2.5">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-cyan-200" />
+                <p className="text-xs leading-relaxed text-slate-300">{campusAddress}</p>
               </div>
-              <div className="pt-1">
-                <a
-                  href="https://maps.app.goo.gl/yM55i9sWcceH5pPn8"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] text-[#0071e3] hover:underline"
-                >
-                  <span>Open in Google Maps</span>
-                  <ArrowUpRight size={11} />
-                </a>
-              </div>
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium text-cyan-200 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+              >
+                Open in Google Maps
+                <ArrowUpRight size={12} />
+              </a>
+              <div aria-hidden="true" className="mt-3 h-px w-full bg-gradient-to-r from-cyan-300/50 to-transparent" />
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 text-center sm:text-left font-light">
+        <div className="flex flex-col items-center justify-between gap-3 py-4 text-center text-[11px] font-light text-slate-500 sm:flex-row sm:text-left">
           <p>
-            &copy; {new Date().getFullYear()} The Embrione • Department of CSE, PES University. All rights reserved.
+            &copy; {new Date().getFullYear()} The Embrione · Department of CSE,
+            PES University. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-xs">
-            <Link href="/privacy-policy" className="hover:text-neutral-400 transition-colors">
+          <div className="flex items-center gap-4">
+            <Link href="/privacy-policy" className="transition-colors hover:text-cyan-100">
               Privacy Policy
             </Link>
-            <span>•</span>
-            <Link href="/terms" className="hover:text-neutral-400 transition-colors">
+            <span className="text-cyan-300/50">/</span>
+            <Link href="/terms" className="transition-colors hover:text-cyan-100">
               Terms &amp; Conditions
             </Link>
           </div>

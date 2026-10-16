@@ -1,11 +1,14 @@
 export { default as NavbarKodikon6 } from "./NavbarKodikon6";
 export { default as HeroComponent } from "./HeroComponent";
-export { default as AboutTheEvent} from "./AboutTheEvent";
-export { default as EventTimelineComponent } from "./EventTimelineComponent";
 export { default as TracksComponent } from "./TracksComponent";
 export { default as InterestFormComponent } from "./InterestFormComponent";
 export { default as FAQComponent } from "./FAQComponent";
 export { default as FooterKodikon6 } from "./FooterKodikon6";
 export { default as StructuredData } from "./StructuredData";
+export { default as PrizesComponent } from "./Prizes/PrizesComponent";
+export { default as SponsorsComponent } from "./Sponsors/SponsorsComponent";
 export { tracksData } from "./tracksData";
+export { default as MapComponent } from "./MapComponent";
 export { Kodikon6FAQData } from "./FAQData";
+export * from "./Prizes/prizesData";
+export * from "./Sponsors/sponsorsData";
