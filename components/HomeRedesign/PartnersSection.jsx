@@ -6,7 +6,7 @@ import { partnersData } from "./partnersData";
 
 export default function PartnersSection() {
   return (
-    <section id="partners" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden border-t border-white/[0.06]">
+    <section id="partners" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]">
       {/* Background Subtle Ambient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-cyan-500/5 blur-[140px] pointer-events-none -z-10" />
 
@@ -32,7 +32,7 @@ export default function PartnersSection() {
           {partnersData.map((partner) => (
             <div
               key={partner.name}
-              className="group p-6 rounded-2xl bg-[#060c1d]/85 border border-white/[0.08] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:shadow-[0_10px_30px_rgba(6,182,212,0.12)] flex flex-col items-center justify-center text-center transition-all duration-300 min-h-[145px] backdrop-blur-xl hover:-translate-y-1"
+              className="group p-6 rounded-2xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_30px_rgba(6,182,212,0.12)] flex flex-col items-center justify-center text-center transition-all duration-300 min-h-[145px] backdrop-blur-xl hover:-translate-y-1"
             >
               <div className="w-full h-12 flex items-center justify-center mb-3">
                 <img

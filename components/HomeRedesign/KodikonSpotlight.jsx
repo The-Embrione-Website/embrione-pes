@@ -28,7 +28,7 @@ export default function KodikonSpotlight() {
   }, [lightboxImage]);
 
   return (
-    <section id="events" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden border-t border-white/[0.06]">
+    <section id="events" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]">
       {/* Background Subtle Ambient */}
       <div className="absolute top-1/2 right-0 w-96 h-96 bg-cyan-500/5 blur-[140px] pointer-events-none -z-10" />
 
@@ -73,7 +73,7 @@ export default function KodikonSpotlight() {
 
         {/* Apple Keynote Showcase Card */}
         {currentEvent && (
-          <div className="relative p-8 sm:p-12 rounded-3xl bg-[#060c1d]/85 border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
+          <div className="relative p-8 sm:p-12 rounded-3xl bg-[#040816]/90 border border-white/[0.07] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-2xl">
             <div className="max-w-3xl">
               <span className="text-xs uppercase tracking-wider text-cyan-400 font-semibold block mb-2">
                 Department Flagship Milestone

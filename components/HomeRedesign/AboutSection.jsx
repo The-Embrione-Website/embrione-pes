@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden border-t border-white/[0.06]">
+    <section id="about" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]">
       {/* Apple-Style Ambient Glow */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/5 blur-[140px] pointer-events-none -z-10" />
 
@@ -35,7 +35,7 @@ export default function AboutSection() {
         {/* Apple Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
           {/* Bento Card 1: Research & Systems (Spans 7 cols) */}
-          <div className="md:col-span-7 group p-8 sm:p-10 rounded-3xl bg-[#060c1d]/85 border border-white/[0.08] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_15px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col justify-between backdrop-blur-2xl">
+          <div className="md:col-span-7 group p-8 sm:p-10 rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col justify-between backdrop-blur-2xl">
             <div>
               <div className="flex items-center justify-between mb-8">
                 <span className="text-[11px] font-semibold tracking-widest text-cyan-400 uppercase">
@@ -68,7 +68,7 @@ export default function AboutSection() {
           </div>
 
           {/* Bento Card 2: Kodikon Series (Spans 5 cols) */}
-          <div className="md:col-span-5 group p-8 sm:p-10 rounded-3xl bg-[#060c1d]/85 border border-white/[0.08] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_15px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col justify-between backdrop-blur-2xl">
+          <div className="md:col-span-5 group p-8 sm:p-10 rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col justify-between backdrop-blur-2xl">
             <div>
               <div className="flex items-center justify-between mb-8">
                 <span className="text-[11px] font-semibold tracking-widest text-cyan-400 uppercase">
@@ -99,7 +99,7 @@ export default function AboutSection() {
           </div>
 
           {/* Bento Card 3: Department Legacy (Spans full 12 cols, wide format) */}
-          <div className="md:col-span-12 group p-8 sm:p-10 rounded-3xl bg-[#060c1d]/85 border border-white/[0.08] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_15px_40px_rgba(0,0,0,0.4)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col sm:flex-row sm:items-center justify-between gap-8 backdrop-blur-2xl">
+          <div className="md:col-span-12 group p-8 sm:p-10 rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] transition-all duration-500 flex flex-col sm:flex-row sm:items-center justify-between gap-8 backdrop-blur-2xl">
             <div className="max-w-2xl">
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-[11px] font-semibold tracking-widest text-cyan-400 uppercase">

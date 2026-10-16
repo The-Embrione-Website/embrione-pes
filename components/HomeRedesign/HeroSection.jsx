@@ -30,18 +30,18 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-36 pb-28 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden">
+    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-36 pb-28 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden">
       {/* Apple-style Radial Horizon Lighting */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] sm:w-[1200px] h-[550px] sm:h-[700px] pointer-events-none opacity-40 blur-[140px] rounded-full"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] sm:w-[1200px] h-[500px] sm:h-[650px] pointer-events-none opacity-25 blur-[160px] rounded-full"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(6, 182, 212, 0.28) 0%, rgba(37, 99, 235, 0.16) 40%, rgba(2, 6, 23, 0) 75%)",
+            "radial-gradient(ellipse at center, rgba(6, 182, 212, 0.22) 0%, rgba(37, 99, 235, 0.12) 40%, transparent 70%)",
         }}
       />
 
       {/* Subtle Specular Top Hairline */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
       {/* Ultra-Fine Micro-Dot Texture */}
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff0c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none [mask-image:radial-gradient(ellipse_70%_50%_at_50%_40%,#000_50%,transparent_100%)]" />
@@ -112,10 +112,10 @@ export default function HeroSection() {
         >
           <Link
             href="/kodikon-6"
-            className="group relative block p-7 sm:p-9 rounded-3xl bg-[#060c1d]/85 hover:bg-[#09132a]/95 border border-white/[0.1] hover:border-cyan-400/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.18)] transition-all duration-500 text-left backdrop-blur-2xl overflow-hidden"
+            className="group relative block p-7 sm:p-9 rounded-3xl bg-[#040816]/90 hover:bg-[#060c20]/95 border border-white/[0.08] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_60px_rgba(0,0,0,0.8)] hover:shadow-[0_0_40px_rgba(6,182,212,0.14)] transition-all duration-500 text-left backdrop-blur-2xl overflow-hidden"
           >
             {/* Ambient Inner Corner Light */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all duration-500" />
+            <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/15 transition-all duration-500" />
 
             <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div>
@@ -141,8 +141,8 @@ export default function HeroSection() {
             </div>
 
             {/* Apple-style Bento Specs Grid */}
-            <div className="relative z-10 mt-7 pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+            <div className="relative z-10 mt-7 pt-6 border-t border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="p-3.5 rounded-2xl bg-black/60 border border-white/[0.05] group-hover:border-white/[0.08] transition-colors">
                 <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
                   <Clock size={13} className="text-cyan-400" />
                   <span>Duration</span>
@@ -150,7 +150,7 @@ export default function HeroSection() {
                 <span className="text-white font-semibold text-sm">24h Overnight</span>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+              <div className="p-3.5 rounded-2xl bg-black/60 border border-white/[0.05] group-hover:border-white/[0.08] transition-colors">
                 <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
                   <Award size={13} className="text-cyan-400" />
                   <span>Prize Pool</span>
@@ -158,7 +158,7 @@ export default function HeroSection() {
                 <span className="text-white font-semibold text-sm">₹1,00,000 Cash</span>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+              <div className="p-3.5 rounded-2xl bg-black/60 border border-white/[0.05] group-hover:border-white/[0.08] transition-colors">
                 <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
                   <MapPin size={13} className="text-cyan-400" />
                   <span>Venue</span>
@@ -166,7 +166,7 @@ export default function HeroSection() {
                 <span className="text-white font-semibold text-sm">PESU 52</span>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+              <div className="p-3.5 rounded-2xl bg-black/60 border border-white/[0.05] group-hover:border-white/[0.08] transition-colors">
                 <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
                   <Users size={13} className="text-cyan-400" />
                   <span>Eligibility</span>
@@ -181,7 +181,7 @@ export default function HeroSection() {
       {/* Seamless Apple Fade into About Section */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent to-[#02050e]"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent to-[#000000]"
       />
     </section>
   );

@@ -54,14 +54,14 @@ export default function NavbarHome() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#030712]/85 backdrop-blur-xl border-b border-white/10 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+          ? "bg-black/80 backdrop-blur-2xl border-b border-white/[0.07] py-3 shadow-[0_4px_30px_rgba(0,0,0,0.8)]"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Identity */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-9 h-9 rounded-lg border border-white/10 bg-[#0b1222] flex items-center justify-center p-1.5 group-hover:border-cyan-400/50 transition-colors shadow-sm">
+          <div className="w-9 h-9 rounded-xl border border-white/[0.08] bg-white/[0.03] flex items-center justify-center p-1.5 group-hover:border-cyan-400/50 transition-colors shadow-sm">
             <Image
               src={embrioneLogo}
               alt="The Embrione Crest"

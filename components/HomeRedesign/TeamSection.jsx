@@ -10,7 +10,7 @@ export default function TeamSection() {
   const [activeTab, setActiveTab] = useState("2025");
 
   return (
-    <section id="team" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden border-t border-white/[0.06]">
+    <section id="team" className="relative py-28 sm:py-36 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]">
       {/* Background Subtle Ambient */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-cyan-500/5 blur-[140px] pointer-events-none -z-10" />
 
@@ -82,7 +82,7 @@ export default function TeamSection() {
 
         {/* TAB CONTENT: 2026 INCOMING HEADS */}
         {activeTab === "2026" && (
-          <div className="p-8 sm:p-12 rounded-3xl bg-[#060c1d]/85 border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
+          <div className="p-8 sm:p-12 rounded-3xl bg-[#040816]/90 border border-white/[0.07] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-2xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
               <div>
                 <span className="text-xs uppercase tracking-wider text-cyan-400 font-semibold block mb-1">

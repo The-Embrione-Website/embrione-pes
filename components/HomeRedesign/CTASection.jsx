@@ -37,19 +37,19 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden bg-[#02050e] px-4 py-24 sm:py-32 lg:px-8 border-t border-white/[0.06]"
+      className="relative isolate overflow-hidden bg-[#000000] px-4 py-24 sm:py-32 lg:px-8 border-t border-white/[0.06]"
     >
       {/* Subtle Night Sky Lighting */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(6,182,212,0.1),transparent_40%),radial-gradient(ellipse_at_80%_80%,rgba(37,99,235,0.12),transparent_45%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,rgba(6,182,212,0.08),transparent_40%),radial-gradient(ellipse_at_80%_80%,rgba(37,99,235,0.1),transparent_45%)]" />
       </div>
 
       <div className="mx-auto max-w-6xl">
         <div
-          className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#060c1d]/85 p-8 sm:p-12 lg:p-14 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08),0_25px_60px_rgba(0,0,0,0.5)] backdrop-blur-2xl"
+          className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 sm:p-12 lg:p-14 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl"
         >
           <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:gap-14">
             <div className="min-w-0">
