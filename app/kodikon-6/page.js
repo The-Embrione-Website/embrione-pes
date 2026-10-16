@@ -1,6 +1,7 @@
 import NavbarKodikon6 from "@/components/Kodikon-6/NavbarKodikon6";
 import HeroComponent from "@/components/Kodikon-6/HeroComponent";
 import TracksComponent from "@/components/Kodikon-6/TracksComponent";
+import EventTimeline from "@/components/Kodikon-6/Timeline/EventTimeline";
 import PrizesComponent from "@/components/Kodikon-6/Prizes/PrizesComponent";
 import SponsorsComponent from "@/components/Kodikon-6/Sponsors/SponsorsComponent";
 import FAQComponent from "@/components/Kodikon-6/FAQComponent";
@@ -58,6 +59,7 @@ export default function Kodikon6Page() {
       <main className="relative flex flex-col">
         <HeroComponent />
         <TracksComponent />
+        <EventTimeline />
         <PrizesComponent />
         <SponsorsComponent />
         <FAQComponent />

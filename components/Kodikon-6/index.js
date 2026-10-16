@@ -10,5 +10,8 @@ export { default as SponsorsComponent } from "./Sponsors/SponsorsComponent";
 export { tracksData } from "./tracksData";
 export { default as MapComponent } from "./MapComponent";
 export { Kodikon6FAQData } from "./FAQData";
+export { default as EventTimelineComponent } from "./Timeline/EventTimelineComponent";
+export { default as EventTimeline } from "./Timeline/EventTimeline";
+export * from "./Timeline/timelineData";
 export * from "./Prizes/prizesData";
 export * from "./Sponsors/sponsorsData";
