@@ -11,54 +11,65 @@ export default function TeamSection() {
   const [activeTab, setActiveTab] = useState("2025");
 
   return (
-    <section id="team" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-black text-white">
-      {/* Section Header */}
-      <div className="max-w-3xl mb-12 sm:mb-16">
-        <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-neutral-400 block mb-3">
-          Student Leadership
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-tight">
-          Meet The Team.
-        </h2>
-        <p className="mt-3 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
-          The undergraduate students leading domain operations, technical development, logistics, and partnerships across academic terms.
-        </p>
-      </div>
+    <section id="team" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden">
+      {/* Background Cyber Ambient */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:56px_56px] pointer-events-none" />
 
-      {/* Apple-style Segmented Control Pills */}
-      <div className="flex flex-wrap items-center gap-2 mb-10 pb-2 overflow-x-auto scrollbar-none">
-        <button
-          onClick={() => setActiveTab("2025")}
-          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-            activeTab === "2025"
-              ? "bg-white text-black shadow-sm"
-              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
-          }`}
-        >
-          2025 Domain Heads &amp; Core
-        </button>
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-12 sm:mb-16">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="h-px w-6 bg-cyan-400" />
+            <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] uppercase text-cyan-400 font-bold">
+              STUDENT LEADERSHIP // 「学生幹部」
+            </span>
+          </div>
 
-        <button
-          onClick={() => setActiveTab("2024")}
-          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-            activeTab === "2024"
-              ? "bg-white text-black shadow-sm"
-              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
-          }`}
-        >
-          2024 Domain Heads
-        </button>
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight uppercase font-display">
+            Meet The{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              Team.
+            </span>
+          </h2>
+          <p className="mt-3 text-base sm:text-lg text-slate-400 font-light leading-relaxed">
+            The undergraduate students leading domain operations, technical development, logistics, and partnerships across academic terms.
+          </p>
+        </div>
 
-        <button
-          onClick={() => setActiveTab("2023")}
-          className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-            activeTab === "2023"
-              ? "bg-white text-black shadow-sm"
-              : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
-          }`}
-        >
-          2023 Founding Heads
-        </button>
+        {/* Tokyo Cyberpunk Segmented Control Pills */}
+        <div className="flex flex-wrap items-center gap-2.5 mb-10 pb-2 overflow-x-auto scrollbar-none">
+          <button
+            onClick={() => setActiveTab("2025")}
+            className={`px-5 py-2 rounded text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+              activeTab === "2025"
+                ? "bg-gradient-to-r from-cyan-600 to-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.35)]"
+                : "bg-[#060c1d] hover:bg-[#0c1530] text-slate-400 hover:text-white border border-cyan-500/20"
+            }`}
+          >
+            2025 Domain Heads &amp; Core
+          </button>
+
+          <button
+            onClick={() => setActiveTab("2024")}
+            className={`px-5 py-2 rounded text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+              activeTab === "2024"
+                ? "bg-gradient-to-r from-cyan-600 to-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.35)]"
+                : "bg-[#060c1d] hover:bg-[#0c1530] text-slate-400 hover:text-white border border-cyan-500/20"
+            }`}
+          >
+            2024 Domain Heads
+          </button>
+
+          <button
+            onClick={() => setActiveTab("2023")}
+            className={`px-5 py-2 rounded text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+              activeTab === "2023"
+                ? "bg-gradient-to-r from-cyan-600 to-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.35)]"
+                : "bg-[#060c1d] hover:bg-[#0c1530] text-slate-400 hover:text-white border border-cyan-500/20"
+            }`}
+          >
+            2023 Founding Heads
+          </button>
 
         <button
           onClick={() => setActiveTab("2026")}
@@ -147,6 +158,7 @@ export default function TeamSection() {
           ))}
         </div>
       )}
+      </div>
     </section>
   );
 }

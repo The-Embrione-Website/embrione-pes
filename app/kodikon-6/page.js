@@ -3,9 +3,8 @@ import HeroComponent from "@/components/Kodikon-6/HeroComponent";
 import TracksComponent from "@/components/Kodikon-6/TracksComponent";
 import PrizesComponent from "@/components/Kodikon-6/Prizes/PrizesComponent";
 import SponsorsComponent from "@/components/Kodikon-6/Sponsors/SponsorsComponent";
-import MapComponent from "@/components/Kodikon-6/MapComponent";
-import InterestFormComponent from "@/components/Kodikon-6/InterestFormComponent";
 import FAQComponent from "@/components/Kodikon-6/FAQComponent";
+import MapComponent from "@/components/Kodikon-6/MapComponent";
 import FooterKodikon6 from "@/components/Kodikon-6/FooterKodikon6";
 import StructuredData from "@/components/Kodikon-6/StructuredData";
 
@@ -53,15 +52,14 @@ export const metadata = {
 
 export default function Kodikon6Page() {
   return (
-    <div className="min-h-screen bg-black text-neutral-200">
+    <div className="min-h-screen bg-[#02050e] text-neutral-200 selection:bg-cyan-500/30 selection:text-cyan-200">
       <StructuredData />
       <NavbarKodikon6 />
-      <main>
+      <main className="relative flex flex-col">
         <HeroComponent />
         <TracksComponent />
         <PrizesComponent />
         <SponsorsComponent />
-        <InterestFormComponent />
         <FAQComponent />
         <MapComponent />
       </main>

@@ -37,63 +37,51 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="relative isolate overflow-hidden bg-[#050b16] px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
+      className="relative isolate overflow-hidden bg-[#02050e] px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
       style={{ perspective: "1400px" }}
     >
-      {/* Atmospheric night-sky layers; intentionally subtle and shadow-free. */}
+      {/* Tokyo Cyberpunk atmospheric night-sky layers */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_20%,rgba(6,182,212,0.13),transparent_38%),radial-gradient(ellipse_at_85%_78%,rgba(30,64,175,0.16),transparent_42%)]" />
-        <div className="absolute -right-24 top-8 h-72 w-72 rounded-full border border-cyan-300/10 sm:h-96 sm:w-96" />
-        <div className="absolute -right-12 top-20 h-56 w-56 rounded-full border border-cyan-300/10 sm:h-80 sm:w-80" />
-        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
-        <div className="absolute right-[10%] top-0 h-full w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_15%_20%,rgba(6,182,212,0.15),transparent_40%),radial-gradient(ellipse_at_85%_78%,rgba(30,64,175,0.18),transparent_45%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        <div className="absolute -right-24 top-8 h-72 w-72 rounded-full border border-cyan-400/10 sm:h-96 sm:w-96" />
+        <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
       </div>
 
       <div className="mx-auto max-w-6xl">
         <div
-          className="relative overflow-hidden border border-cyan-100/15 bg-[#091321]/90 p-6 transition-transform duration-500 ease-out hover:[transform:rotateX(0.35deg)_rotateY(-0.35deg)] sm:p-9 lg:p-12"
+          className="relative overflow-hidden rounded-2xl border border-cyan-500/30 bg-[#060c1d]/90 p-6 transition-transform duration-500 ease-out hover:[transform:rotateX(0.35deg)_rotateY(-0.35deg)] shadow-[0_0_35px_rgba(6,182,212,0.1)] sm:p-9 lg:p-12"
           style={{ transformStyle: "preserve-3d" }}
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/80 to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent"
           />
-          <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-32 w-32 border-b border-l border-cyan-300/15 [clip-path:polygon(100%_0,100%_100%,0_0)]" />
+          <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-32 w-32 border-b border-l border-cyan-400/20 [clip-path:polygon(100%_0,100%_100%,0_0)]" />
+
+          {/* Cyber Corner Markers */}
+          <span className="absolute top-2 left-3 font-mono text-[8px] text-cyan-500/40 select-none">◤ 01</span>
+          <span className="absolute top-2 right-3 font-mono text-[8px] text-cyan-500/40 select-none">02 ◥</span>
 
           <div className="relative grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)] lg:gap-12">
             <div className="min-w-0">
               <div className="mb-4 flex items-center gap-3">
-                <span className="h-px w-8 bg-cyan-300" />
-                <span className="text-[10px] font-mono uppercase tracking-[0.28em] text-cyan-200">
-                  Get in touch
+                <span className="h-px w-8 bg-cyan-400" />
+                <span className="text-[10px] font-mono uppercase tracking-[0.28em] text-cyan-300 font-bold">
+                  GET IN TOUCH // 「交信端末」
                 </span>
               </div>
 
               <h2
                 aria-label="Let's build something meaningful."
-                className="max-w-2xl text-3xl font-semibold leading-[1.04] tracking-tight text-white sm:text-4xl lg:text-5xl"
+                className="max-w-2xl text-3xl font-black leading-[1.04] tracking-tight text-white uppercase font-display sm:text-4xl lg:text-5xl"
               >
-                <span aria-hidden="true">
-                  {["Let's", "build", "something"].map((word, index) => (
-                    <span
-                      key={word}
-                      className="cta-word-reveal mr-[0.22em] inline-block"
-                      style={{ animationDelay: `${index * 115}ms` }}
-                    >
-                      {word}
-                    </span>
-                  ))}
-                  <span className="block text-slate-400">
-                    <span
-                      className="cta-word-reveal inline-block"
-                      style={{ animationDelay: "345ms" }}
-                    >
-                      meaningful.
-                    </span>
-                  </span>
+                Let&apos;s build{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                  something meaningful.
                 </span>
               </h2>
 

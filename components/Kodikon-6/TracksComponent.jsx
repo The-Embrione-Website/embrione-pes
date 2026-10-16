@@ -53,7 +53,7 @@ export default function TracksComponent() {
   return (
     <section
       id="tracks"
-      className="tracks-background relative overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-12 text-brand-text-primary sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+      className="tracks-background relative overflow-hidden border-t border-cyan-500/20 bg-[#02050e] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8"
     >
       {/* Background */}
       <div
@@ -61,31 +61,30 @@ export default function TracksComponent() {
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
         <div className="tracks-background-glow absolute inset-0" />
-
-        <div className="absolute -left-24 top-36 h-72 w-72 rounded-full border border-brand-accent-cyan/10" />
-
-        <div className="absolute -right-28 top-24 h-80 w-80 rounded-full border border-brand-border-subtle" />
-
+        <div className="absolute -left-24 top-36 h-72 w-72 rounded-full border border-cyan-500/10" />
+        <div className="absolute -right-28 top-24 h-80 w-80 rounded-full border border-cyan-500/10" />
         <div className="tracks-grid-overlay absolute inset-0" />
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:56px_56px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:56px_56px]" />
 
       <div className="relative mx-auto w-full max-w-6xl">
         {/* Section heading */}
-        <header className="mx-auto mb-8 max-w-4xl text-center sm:mb-12 lg:mb-14">
-          <p className="mb-4 flex items-center justify-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-brand-text-secondary sm:gap-3 sm:text-xs sm:tracking-[0.32em]">
-            <span className="h-px w-5 shrink-0 bg-brand-accent-cyan-glow sm:w-7" />
-            KODIKON 6.0 · CHALLENGE TRACKS
-            <span className="h-px w-5 shrink-0 bg-brand-accent-cyan-glow sm:w-7" />
-          </p>
+        <header className="mx-auto mb-10 max-w-4xl text-center sm:mb-14 lg:mb-16">
+          <div className="mb-4 inline-flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-cyan-400 font-bold sm:text-xs">
+            <span className="h-px w-6 shrink-0 bg-cyan-400" />
+            CHALLENGE TRACKS // 「挑戦領域」
+            <span className="h-px w-6 shrink-0 bg-cyan-400" />
+          </div>
 
-          <h2 className="text-3xl font-black leading-[1.05] tracking-[-0.055em] sm:text-5xl md:text-6xl">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black leading-[1.05] tracking-tight uppercase font-display">
             EXPLORE THE{" "}
-            <span className="text-brand-accent-cyan-glow">TRACKS</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              TRACKS
+            </span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-brand-text-secondary sm:mt-5 sm:text-base sm:leading-7">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-slate-300 font-light sm:mt-5 sm:text-base sm:leading-7">
             Three challenge domains. Choose a track to explore its challenge,
             background, applications, resources and mentor guidance.
           </p>
@@ -102,61 +101,61 @@ export default function TracksComponent() {
                 type="button"
                 onClick={() => openTrack(track)}
                 aria-label={`Open details for ${track.title}`}
-                className="group relative flex min-w-0 flex-col overflow-hidden border border-brand-border-subtle bg-brand-surface-navy/90 text-left transition duration-300 hover:-translate-y-1 hover:border-brand-border-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-cyan-glow motion-reduce:transform-none motion-reduce:transition-none"
+                className="group relative flex min-w-0 flex-col overflow-hidden rounded-xl border border-cyan-500/25 bg-[#060c1d]/90 text-left transition duration-300 hover:-translate-y-1.5 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 motion-reduce:transform-none motion-reduce:transition-none"
               >
                 {/* Image */}
-                <div className="relative aspect-[5/4] w-full overflow-hidden bg-brand-surface-input sm:aspect-square">
+                <div className="relative aspect-[5/4] w-full overflow-hidden bg-[#02050e] sm:aspect-square">
                   <img
                     src={track.image}
                     alt={track.imageAlt}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   />
 
                   <div className="tracks-image-overlay absolute inset-0" />
 
-                  <span className="absolute left-3 top-3 border border-brand-border-hover bg-brand-surface-navy/80 px-2.5 py-1.5 font-mono text-[9px] tracking-[0.15em] text-brand-text-primary sm:left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-[10px]">
+                  <span className="absolute left-3 top-3 border border-cyan-500/40 bg-[#02050e]/90 px-2.5 py-1 font-mono text-[9px] tracking-[0.18em] text-cyan-300 font-bold sm:left-4 sm:top-4 sm:text-[10px] rounded">
                     {track.code}
                   </span>
 
                   <span
                     aria-hidden="true"
-                    className="absolute right-3 top-3 h-3 w-3 border-r border-t border-brand-accent-cyan-glow sm:right-4 sm:top-4"
+                    className="absolute right-3 top-3 h-3 w-3 border-r-2 border-t-2 border-cyan-400 sm:right-4 sm:top-4"
                   />
 
                   <span
                     aria-hidden="true"
-                    className="absolute bottom-3 right-3 h-3 w-3 border-b border-r border-brand-text-secondary sm:bottom-4 sm:right-4"
+                    className="absolute bottom-3 right-3 h-3 w-3 border-b-2 border-r-2 border-cyan-400 sm:bottom-4 sm:right-4"
                   />
                 </div>
 
                 {/* Card content */}
-                <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="flex h-10 w-10 items-center justify-center border border-brand-accent-cyan/35 text-brand-accent-cyan sm:h-11 sm:w-11">
+                    <span className="flex h-11 w-11 items-center justify-center rounded border border-cyan-500/40 bg-cyan-950/40 text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
                       <Icon size={20} strokeWidth={1.5} aria-hidden="true" />
                     </span>
 
                     <ArrowUpRight
                       size={19}
-                      className="text-brand-text-muted transition-colors group-hover:text-brand-accent-cyan-glow"
+                      className="text-slate-500 transition-colors group-hover:text-cyan-300"
                       aria-hidden="true"
                     />
                   </div>
 
-                  <h3 className="text-lg font-bold leading-tight tracking-[-0.035em] text-brand-text-primary sm:text-xl">
+                  <h3 className="text-xl font-bold leading-tight tracking-tight text-white group-hover:text-cyan-300 transition-colors">
                     {track.title}
                   </h3>
 
-                  <p className="mt-3 break-words font-mono text-[9px] uppercase leading-5 tracking-[0.12em] text-brand-accent-cyan-glow sm:text-[10px] sm:tracking-[0.13em]">
+                  <p className="mt-2.5 break-words font-mono text-[10px] uppercase leading-5 tracking-[0.15em] text-cyan-400 font-semibold">
                     {track.subtitle}
                   </p>
 
-                  <p className="mt-3 text-sm leading-6 text-brand-text-secondary sm:mt-4">
+                  <p className="mt-3 text-sm leading-6 text-slate-300 font-light">
                     {track.desc}
                   </p>
 
-                  <span className="mt-5 inline-flex items-center gap-2 border-t border-brand-border-subtle pt-4 font-mono text-[9px] uppercase tracking-[0.16em] text-brand-text-primary/90 transition-colors group-hover:text-brand-accent-cyan-glow sm:mt-6 sm:text-[10px] sm:tracking-[0.2em]">
+                  <span className="mt-5 inline-flex items-center gap-2 border-t border-cyan-500/20 pt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-400 group-hover:text-cyan-300 transition-colors">
                     Explore track
                     <ArrowDownRight size={15} aria-hidden="true" />
                   </span>
@@ -164,7 +163,7 @@ export default function TracksComponent() {
 
                 <span
                   aria-hidden="true"
-                  className="tracks-accent-line absolute bottom-0 left-0 h-px w-0 transition-all duration-500 group-hover:w-full"
+                  className="tracks-accent-line absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-cyan-500 to-amber-400 transition-all duration-500 group-hover:w-full"
                 />
               </button>
             );

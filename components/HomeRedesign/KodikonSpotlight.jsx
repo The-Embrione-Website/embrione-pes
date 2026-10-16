@@ -29,54 +29,71 @@ export default function KodikonSpotlight() {
   }, [lightboxImage]);
 
   return (
-    <section id="events" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-black text-white">
-      {/* Apple-style Section Header */}
-      <div className="max-w-3xl mb-12 sm:mb-16">
-        <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-neutral-400 block mb-3">
-          Event Archive
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-tight">
-          Past Editions.
-        </h2>
-        <p className="mt-3 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
-          From beginner-friendly offline challenges to national research hackathons. Explore what we&apos;ve conducted.
-        </p>
-      </div>
+    <section id="events" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden">
+      {/* Background Cyber Ambient */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:56px_56px] pointer-events-none" />
 
-      {/* Apple-style Segmented Control Pill Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-10 pb-2 overflow-x-auto scrollbar-none">
-        {ClubEvents?.map((event) => {
-          const isSelected = selectedEvent === event.eventName;
-          return (
-            <button
-              key={event.eventName}
-              onClick={() => setSelectedEvent(event.eventName)}
-              className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                isSelected
-                  ? "bg-white text-black shadow-sm"
-                  : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
-              }`}
-            >
-              {event.eventName}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Apple-style Featured Event Showcase Card */}
-      {currentEvent && (
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#161617] border border-white/10">
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-1">
-              Department Flagship
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Tokyo Cyberpunk Section Header */}
+        <div className="max-w-3xl mb-12 sm:mb-16">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="h-px w-6 bg-cyan-400" />
+            <span className="text-[10px] sm:text-xs font-mono tracking-[0.25em] uppercase text-cyan-400 font-bold">
+              EVENT ARCHIVE // 「過去大会」
             </span>
-            <h3 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-              {currentEvent.eventName}
-            </h3>
-            <p className="mt-4 text-base sm:text-lg text-neutral-300 font-light leading-relaxed">
-              {currentEvent.eventDescription}
-            </p>
           </div>
+
+          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight uppercase font-display">
+            Past{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              Editions.
+            </span>
+          </h2>
+          <p className="mt-3 text-base sm:text-lg text-slate-400 font-light leading-relaxed">
+            From beginner-friendly offline challenges to national research hackathons. Explore our journey.
+          </p>
+        </div>
+
+        {/* Tokyo Cyberpunk Segmented Control Tabs */}
+        <div className="flex flex-wrap items-center gap-2.5 mb-10 pb-2 overflow-x-auto scrollbar-none">
+          {ClubEvents?.map((event) => {
+            const isSelected = selectedEvent === event.eventName;
+            return (
+              <button
+                key={event.eventName}
+                onClick={() => setSelectedEvent(event.eventName)}
+                className={`px-5 py-2 rounded text-xs font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  isSelected
+                    ? "bg-gradient-to-r from-cyan-600 to-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(6,182,212,0.35)]"
+                    : "bg-[#060c1d] hover:bg-[#0c1530] text-slate-400 hover:text-white border border-cyan-500/20 hover:border-cyan-500/40"
+                }`}
+              >
+                {event.eventName}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Tokyo Cyberpunk Featured Event Showcase Card */}
+        {currentEvent && (
+          <div className="relative p-8 sm:p-12 rounded-2xl bg-[#060c1d]/90 border border-cyan-500/30 shadow-[0_0_35px_rgba(6,182,212,0.1)]">
+            {/* Cyber Corner Markers */}
+            <span className="absolute top-2 left-3 font-mono text-[8px] text-cyan-500/40 select-none">◤ 01</span>
+            <span className="absolute top-2 right-3 font-mono text-[8px] text-cyan-500/40 select-none">02 ◥</span>
+            <span className="absolute bottom-2 left-3 font-mono text-[8px] text-cyan-500/40 select-none">◣ 03</span>
+            <span className="absolute bottom-2 right-3 font-mono text-[8px] text-cyan-500/40 select-none">04 ◢</span>
+
+            <div className="max-w-3xl">
+              <span className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-semibold block mb-1">
+                DEPARTMENT FLAGSHIP · 「公式記録」
+              </span>
+              <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight uppercase">
+                {currentEvent.eventName}
+              </h3>
+              <p className="mt-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+                {currentEvent.eventDescription}
+              </p>
+            </div>
 
           {/* Clean Apple Photo Gallery */}
           {currentEvent.eventImagesArray && currentEvent.eventImagesArray.length > 0 && (
@@ -120,6 +137,7 @@ export default function KodikonSpotlight() {
           )}
         </div>
       )}
+      </div>
 
       {/* Apple-style Minimal Fullscreen Lightbox Modal */}
       {lightboxImage && (

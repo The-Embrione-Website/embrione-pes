@@ -35,7 +35,7 @@ export default function PrizesComponent() {
   return (
     <section
       id="prizes"
-      className="relative isolate overflow-hidden bg-brand-canvas font-sans"
+      className="relative isolate overflow-hidden bg-[#02050e] border-t border-cyan-500/20 font-sans"
     >
       {/* Full-width ambient glow — spans the entire viewport */}
       <div
@@ -62,6 +62,10 @@ export default function PrizesComponent() {
       <div className="relative mb-20">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           {/* Tactical Status Pill */}
+          <div className="mb-4 inline-flex items-center gap-2 font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase text-amber-300 font-bold">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span>BOUNTY PROTOCOL // 「賞金首」</span>
+          </div>
 
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-display">
             Bounties &amp;{" "}

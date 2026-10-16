@@ -56,53 +56,54 @@ export default function NavbarHome() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-black/80 backdrop-blur-xl border-b border-white/10 py-3"
+          ? "bg-[#02050e]/90 backdrop-blur-xl border-b border-cyan-500/20 py-3 shadow-[0_4px_25px_rgba(0,0,0,0.6)]"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Apple Style Brand Identity */}
+        {/* Tokyo Cyberpunk Brand Identity */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center p-1 group-hover:border-white/20 transition-colors">
+          <div className="w-8 h-8 rounded border border-cyan-500/30 bg-[#060c1d] flex items-center justify-center p-1 group-hover:border-cyan-400 transition-colors shadow-[0_0_12px_rgba(6,182,212,0.15)]">
             <Image
               src={embrioneLogo}
               alt="The Embrione Crest"
-              width={28}
-              height={28}
+              width={26}
+              height={26}
               className="object-contain"
               priority
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-white font-medium text-sm sm:text-base tracking-tight leading-tight">
+            <span className="text-white font-semibold text-sm sm:text-base tracking-tight leading-tight group-hover:text-cyan-300 transition-colors">
               The Embrione
             </span>
-            <span className="text-[10px] sm:text-[11px] text-neutral-400 tracking-wider uppercase font-normal">
-              PES University <span className="text-neutral-600">•</span> CSE
+            <span className="text-[9px] sm:text-[10px] font-mono text-cyan-400/80 tracking-wider uppercase font-normal">
+              PES UNIVERSITY // CSE
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Links (Clean Apple Typography) */}
+        {/* Desktop Nav Links (Clean Tokyo Cyberpunk Typography) */}
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={(event) => handleAnchorClick(event, link.href)}
-              className="text-xs font-normal text-neutral-400 hover:text-white transition-colors"
+              className="text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-cyan-300 transition-colors"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Apple Pill Action Button: Kodikon 6.0 */}
+        {/* Cyber Action Button: Kodikon 6.0 */}
         <div className="hidden sm:flex items-center gap-3">
           <Link
             href="/kodikon-6"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium text-white bg-[#0071e3] hover:bg-[#0077ed] transition-colors shadow-sm"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider text-black transition-all shadow-[0_0_15px_rgba(6,182,212,0.35)] hover:-translate-y-0.5"
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-black/60 animate-pulse" />
             <span>Kodikon 6.0</span>
             <ChevronRight size={13} />
           </Link>
@@ -112,13 +113,13 @@ export default function NavbarHome() {
         <div className="flex lg:hidden items-center gap-2">
           <Link
             href="/kodikon-6"
-            className="sm:hidden text-xs font-medium px-3 py-1.5 rounded-full bg-[#0071e3] text-white"
+            className="sm:hidden text-xs font-mono uppercase font-semibold px-3 py-1.5 rounded bg-cyan-500 text-black"
           >
             Kodi 6.0
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 min-h-[40px] min-w-[40px] flex items-center justify-center rounded-lg text-neutral-300 hover:text-white bg-white/5 border border-white/10 focus:outline-none"
+            className="p-2 min-h-[40px] min-w-[40px] flex items-center justify-center rounded text-slate-300 hover:text-white bg-[#060c1d] border border-cyan-500/30 focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}

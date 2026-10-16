@@ -73,7 +73,7 @@ export default function FooterHome() {
 
   return (
     <footer
-      className="relative isolate overflow-hidden border-t border-cyan-100/10 bg-[#030814] pt-8 text-slate-400 sm:pt-10"
+      className="relative isolate overflow-hidden border-t border-cyan-500/20 bg-[#02050e] pt-8 text-slate-400 sm:pt-10"
       style={{ perspective: "1200px" }}
     >
       <div
