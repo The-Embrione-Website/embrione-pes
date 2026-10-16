@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronRight, ArrowUpRight, Calendar, MapPin, Clock, Award } from "lucide-react";
+import { ChevronRight, ArrowUpRight, Clock, MapPin, Award, Users } from "lucide-react";
 
 export default function HeroSection() {
   const containerVariants = {
@@ -11,83 +11,87 @@ export default function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
+        staggerChildren: 0.1,
+        delayChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 16 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.85,
         ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col items-center justify-center pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden">
-      {/* Refined Ambient Glow */}
+    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-36 pb-28 px-4 sm:px-6 lg:px-8 bg-[#02050e] text-white overflow-hidden">
+      {/* Apple-style Radial Horizon Lighting */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] sm:w-[1000px] h-[450px] sm:h-[550px] pointer-events-none opacity-40 blur-[130px] rounded-full"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] sm:w-[1200px] h-[550px] sm:h-[700px] pointer-events-none opacity-40 blur-[140px] rounded-full"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(6, 182, 212, 0.22) 0%, rgba(37, 99, 235, 0.14) 45%, transparent 75%)",
+            "radial-gradient(ellipse at center, rgba(6, 182, 212, 0.28) 0%, rgba(37, 99, 235, 0.16) 40%, rgba(2, 6, 23, 0) 75%)",
         }}
       />
 
-      {/* Subtle Micro-Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.018)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.018)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_40%,#000_60%,transparent_100%)] pointer-events-none" />
+      {/* Subtle Specular Top Hairline */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/25 to-transparent" />
+
+      {/* Ultra-Fine Micro-Dot Texture */}
+      <div className="absolute inset-0 bg-[radial-gradient(#ffffff0c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none [mask-image:radial-gradient(ellipse_70%_50%_at_50%_40%,#000_50%,transparent_100%)]" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10 w-full"
+        className="max-w-5xl mx-auto flex flex-col items-center text-center relative z-10 w-full"
       >
-        {/* Eyebrow: Institutional Affiliation */}
-        <motion.div variants={itemVariants} className="mb-6">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-cyan-400" />
-            <span className="text-xs uppercase tracking-widest text-slate-300 font-medium">
-              PES University · Department of Computer Science &amp; Engineering
+        {/* Apple-Style Pill Eyebrow */}
+        <motion.div variants={itemVariants} className="mb-7">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/[0.12] bg-white/[0.04] backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
+            <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+            <span className="text-[11px] sm:text-xs tracking-wider uppercase font-medium text-slate-300">
+              Department of CSE · PES University
             </span>
           </div>
         </motion.div>
 
-        {/* Hero Title */}
+        {/* Monumental Title */}
         <motion.div variants={itemVariants}>
-          <h1 className="text-6xl xs:text-7xl sm:text-8xl md:text-9xl font-bold tracking-tight text-white leading-[1.04]">
+          <h1 className="text-6xl sm:text-8xl md:text-9xl font-bold tracking-[-0.035em] text-white leading-[1.02]">
             The{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyan-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-cyan-300">
               Embrione
             </span>
           </h1>
         </motion.div>
 
-        {/* Subheading */}
-        <motion.div variants={itemVariants} className="mt-5 max-w-2xl">
-          <p className="text-xl sm:text-2xl md:text-3xl text-slate-200 font-normal tracking-tight leading-snug">
-            Technical computing vertical under CSE, PES University.
+        {/* Apple Editorial Lead */}
+        <motion.div variants={itemVariants} className="mt-6 max-w-2xl">
+          <p className="text-xl sm:text-2xl md:text-3xl text-slate-200 font-normal tracking-[-0.015em] leading-snug">
+            Architecture over boilerplate. <br className="hidden sm:inline" />
+            Pure technical execution.
           </p>
-          <p className="mt-3 text-sm sm:text-base text-slate-400 font-light leading-relaxed">
-            A student-led community committed to research-grounded engineering, systems architecture, and organizers of{" "}
-            <strong className="text-cyan-300 font-medium">Kodikon 6.0</strong>, South India&apos;s flagship national 24-hour hackathon.
+          <p className="mt-3.5 text-sm sm:text-base text-slate-400 font-light leading-relaxed">
+            The premier computing and hackathon vertical under the Department of Computer Science &amp; Engineering at PES University. Hosts of{" "}
+            <strong className="text-cyan-300 font-medium">Kodikon 6.0</strong>.
           </p>
         </motion.div>
 
-        {/* Action Buttons */}
+        {/* Apple-Style Dual Button Group */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+          className="mt-9 sm:mt-11 flex flex-wrap items-center justify-center gap-3.5 sm:gap-4"
         >
           <Link
             href="/kodikon-6"
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-semibold tracking-wide transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-semibold tracking-wide transition-all duration-300 shadow-[0_0_25px_rgba(6,182,212,0.3)] hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>Explore Kodikon 6.0</span>
             <ChevronRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
@@ -95,95 +99,86 @@ export default function HeroSection() {
 
           <a
             href="#about"
-            className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white text-sm font-medium border border-white/10 hover:border-white/20 transition-all backdrop-blur-md hover:-translate-y-0.5"
+            className="inline-flex items-center gap-1.5 px-7 py-3.5 rounded-full bg-white/[0.05] hover:bg-white/[0.09] text-slate-200 hover:text-white text-sm font-medium border border-white/[0.1] hover:border-white/[0.2] transition-all duration-300 backdrop-blur-xl hover:scale-[1.02] active:scale-[0.98]"
           >
             <span>About The Society</span>
           </a>
-
-          <a
-            href="#events"
-            className="inline-flex items-center gap-1 text-sm text-slate-400 hover:text-cyan-300 px-4 py-2 transition-colors font-medium"
-          >
-            <span>Past Editions</span>
-            <ChevronRight size={14} />
-          </a>
         </motion.div>
 
-        {/* Professional Featured Event Banner (Kodikon 6.0) */}
+        {/* Apple Bento Spotlight: Kodikon 6.0 Keynote Card */}
         <motion.div
           variants={itemVariants}
-          className="mt-14 sm:mt-16 w-full max-w-3xl"
+          className="mt-16 sm:mt-20 w-full max-w-3xl"
         >
           <Link
             href="/kodikon-6"
-            className="group relative block p-6 sm:p-8 rounded-2xl bg-[#060c1d]/90 hover:bg-[#0a1226] border border-cyan-500/20 hover:border-cyan-400/50 shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.15)] transition-all duration-300 text-left backdrop-blur-md"
+            className="group relative block p-7 sm:p-9 rounded-3xl bg-[#060c1d]/85 hover:bg-[#09132a]/95 border border-white/[0.1] hover:border-cyan-400/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),0_20px_50px_rgba(0,0,0,0.6)] hover:shadow-[0_0_40px_rgba(6,182,212,0.18)] transition-all duration-500 text-left backdrop-blur-2xl overflow-hidden"
           >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+            {/* Ambient Inner Corner Light */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-500/20 transition-all duration-500" />
+
+            <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[11px] font-semibold tracking-wider uppercase text-cyan-400">
-                    Flagship 24-Hour National Hackathon
-                  </span>
-                  <span className="h-1 w-1 rounded-full bg-cyan-400" />
-                  <span className="text-[11px] font-medium text-slate-400">
-                    Sixth Edition
-                  </span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-300 text-[11px] font-semibold uppercase tracking-wider mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                  <span>Flagship National Sprint · Sixth Edition</span>
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+
+                <h3 className="text-3xl sm:text-4xl font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
                   Kodikon 6.0
                 </h3>
-                <p className="mt-2 text-sm text-slate-300 font-light leading-relaxed max-w-xl">
-                  An intensive in-person 24-hour engineering sprint bringing together undergraduate problem solvers from across India at PESU 52, Bengaluru.
+                <p className="mt-2.5 text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-xl">
+                  An intensive 24-hour overnight offline hackathon at PESU 52, PES University. Built for builders solving hard problems.
                 </p>
               </div>
 
               <div className="shrink-0 self-start sm:self-center">
-                <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-cyan-300 group-hover:text-black bg-cyan-500/10 group-hover:bg-cyan-400 px-5 py-2.5 rounded-full border border-cyan-500/30 group-hover:border-cyan-400 transition-all duration-300">
+                <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-cyan-300 group-hover:text-black bg-cyan-500/10 group-hover:bg-cyan-400 px-5 py-3 rounded-full border border-cyan-500/30 group-hover:border-cyan-400 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
                   <span>Enter Portal</span>
                   <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </span>
               </div>
             </div>
 
-            {/* Event Specs Grid */}
-            <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-              <div className="p-3 rounded-lg bg-black/40 border border-white/5">
-                <div className="flex items-center gap-1.5 text-slate-400 text-[11px] mb-1">
-                  <Clock size={12} className="text-cyan-400" />
+            {/* Apple-style Bento Specs Grid */}
+            <div className="relative z-10 mt-7 pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+                <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
+                  <Clock size={13} className="text-cyan-400" />
                   <span>Duration</span>
                 </div>
-                <span className="text-white font-medium">24h Overnight</span>
+                <span className="text-white font-semibold text-sm">24h Overnight</span>
               </div>
 
-              <div className="p-3 rounded-lg bg-black/40 border border-white/5">
-                <div className="flex items-center gap-1.5 text-slate-400 text-[11px] mb-1">
-                  <MapPin size={12} className="text-cyan-400" />
-                  <span>Venue</span>
-                </div>
-                <span className="text-white font-medium">PESU 52, Bengaluru</span>
-              </div>
-
-              <div className="p-3 rounded-lg bg-black/40 border border-white/5">
-                <div className="flex items-center gap-1.5 text-slate-400 text-[11px] mb-1">
-                  <Calendar size={12} className="text-cyan-400" />
-                  <span>Format</span>
-                </div>
-                <span className="text-white font-medium">In-Person Sprint</span>
-              </div>
-
-              <div className="p-3 rounded-lg bg-black/40 border border-white/5">
-                <div className="flex items-center gap-1.5 text-slate-400 text-[11px] mb-1">
-                  <Award size={12} className="text-cyan-400" />
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+                <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
+                  <Award size={13} className="text-cyan-400" />
                   <span>Prize Pool</span>
                 </div>
-                <span className="text-white font-medium">₹1,00,000 Cash + Perks</span>
+                <span className="text-white font-semibold text-sm">₹1,00,000 Cash</span>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+                <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
+                  <MapPin size={13} className="text-cyan-400" />
+                  <span>Venue</span>
+                </div>
+                <span className="text-white font-semibold text-sm">PESU 52</span>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] group-hover:border-white/[0.1] transition-colors">
+                <div className="flex items-center gap-1.5 text-slate-400 text-xs mb-1">
+                  <Users size={13} className="text-cyan-400" />
+                  <span>Eligibility</span>
+                </div>
+                <span className="text-white font-semibold text-sm">National UG</span>
               </div>
             </div>
           </Link>
         </motion.div>
       </motion.div>
 
-      {/* Seamless Bottom Gradient Fade into About Section */}
+      {/* Seamless Apple Fade into About Section */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent to-[#02050e]"
