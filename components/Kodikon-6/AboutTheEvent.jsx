@@ -71,6 +71,85 @@ const floatingShards = [
   { x: "87%", y: "88%", size: 11, delay: "1.9s", color: "cyan" },
 ];
 
+/* Each fragment gets an irregular silhouette, stretch and tilt so nothing reads as a diamond. */
+const shardAspects = [1.5, 2.8, 1.9, 3.1, 1.7, 2.4];
+const shards = floatingShards.map((s, i) => ({
+  ...s,
+  shape: i % 5,
+  aspect: shardAspects[i % shardAspects.length],
+  rot: (i * 47 + 20) % 180,
+}));
+
+/* ---------- Shattered-glass facets for the text panel (deterministic, so SSR matches) ---------- */
+const seeded = (n) => {
+  const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+};
+const r1 = (n) => Math.round(n * 10) / 10;
+
+const buildGlass = () => {
+  const C = [58, 40];       // impact point, in % of the panel
+  const N = 13;             // cracks radiating from it
+  const F = [0, 0.18, 0.42, 0.7, 1];
+  const toEdge = (a) => {
+    const dx = Math.cos(a), dy = Math.sin(a), ts = [];
+    if (dx > 0) ts.push((100 - C[0]) / dx);
+    if (dx < 0) ts.push((0 - C[0]) / dx);
+    if (dy > 0) ts.push((100 - C[1]) / dy);
+    if (dy < 0) ts.push((0 - C[1]) / dy);
+    return Math.min(...ts);
+  };
+  const P = Array.from({ length: N }, (_, i) => {
+    const a = (i / N) * Math.PI * 2 + (seeded(i + 1) - 0.5) * 0.4;
+    const T = toEdge(a);
+    return F.map((f, k) => {
+      const t = T * (k > 0 && k < 4 ? f + (seeded(i * 7 + k) - 0.5) * 0.12 : f);
+      return [r1(C[0] + Math.cos(a) * t), r1(C[1] + Math.sin(a) * t)];
+    });
+  });
+  const polys = [], glints = [];
+  const crack = [];
+  for (let i = 0; i < N; i++) {
+    const j = (i + 1) % N;
+    for (let k = 0; k < 4; k++) {
+      const pts = k === 0 ? [C, P[i][1], P[j][1]] : [P[i][k], P[i][k + 1], P[j][k + 1], P[j][k]];
+      const r = seeded(i * 13 + k * 5 + 2);
+      const fill =
+        r < 0.26 ? `rgba(174,139,255,${(0.03 + r * 0.22).toFixed(3)})`
+        : r < 0.52 ? `rgba(85,243,255,${(0.025 + (r - 0.26) * 0.2).toFixed(3)})`
+        : r < 0.8 ? "rgba(0,0,6,.3)"
+        : "rgba(255,91,186,.05)";
+      const str = pts.map(([x, y]) => `${x},${y}`).join(" ");
+      polys.push({ pts: str, fill });
+      if (seeded(i * 31 + k * 11 + 9) > 0.86) glints.push(str);
+    }
+    const reach = seeded(i + 40) > 0.45 ? 4 : 3;
+    crack.push(`M${C[0]} ${C[1]}L${P[i].slice(1, reach + 1).map(([x, y]) => `${x} ${y}`).join("L")}`);
+    for (let k = 1; k < 4; k++) {
+      if (seeded(i * 17 + k * 3 + 5) > 0.35) crack.push(`M${P[i][k][0]} ${P[i][k][1]}L${P[j][k][0]} ${P[j][k][1]}`);
+    }
+  }
+  const bright = [];
+  [2, 5, 9].forEach((i) => bright.push(`M${C[0]} ${C[1]}L${P[i].slice(1, 4).map(([x, y]) => `${x} ${y}`).join("L")}`));
+  return { polys, glints, cracks: crack.join(""), bright: bright.join(""), C };
+};
+const GLASS = buildGlass();
+
+/* ---------- Wisps of light drifting along the panel edges (viewBox 1000 x 600) ---------- */
+const wisps = [
+  { d: "M20 70C90 10 170 50 250 18S400 -4 470 28", c: "cyan", delay: "0s", dur: "9s" },
+  { d: "M520 20C600 -8 690 38 770 14S900 6 985 52", c: "violet", delay: "2.4s", dur: "10s" },
+  { d: "M985 110C940 175 1000 235 962 305S1000 410 968 490", c: "cyan", delay: "1.1s", dur: "11s" },
+  { d: "M985 540C900 585 830 545 740 578S590 592 510 565", c: "violet", delay: "3.6s", dur: "9.5s" },
+  { d: "M470 570C390 598 300 558 215 582S80 578 30 545", c: "cyan", delay: "5s", dur: "10.5s" },
+  { d: "M12 480C52 415 -8 360 30 295S-6 195 24 140", c: "violet", delay: "1.8s", dur: "12s" },
+];
+const motes = [
+  [60, 40, 1.8, "0s"], [300, 14, 1.2, "1.3s"], [640, 6, 1.6, "2.2s"], [930, 28, 1.3, "0.6s"],
+  [992, 250, 1.7, "1.9s"], [975, 520, 1.2, "2.8s"], [760, 592, 1.6, "0.9s"], [380, 596, 1.2, "3.1s"],
+  [40, 560, 1.7, "1.5s"], [6, 330, 1.3, "2.6s"], [150, 110, 1.1, "0.3s"], [880, 560, 1.1, "2s"],
+];
+
 const AboutTheEvent = () => {
   const [gridEntered, setGridEntered] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
@@ -117,8 +196,23 @@ const AboutTheEvent = () => {
         <div className="relative z-10 container mx-auto mt-16 lg:mt-20">
           <div className="flex flex-col gap-8">
             <div className="about-copy-wrap relative mx-auto w-full max-w-4xl">
+              {/* Drifting light along the edges, tucked behind the glass */}
+              <svg className="about-wisps" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+                {wisps.map((w, i) => (
+                  <g key={i} className={`about-wisp ${w.c}`} style={{ "--wd": w.delay, "--wdur": w.dur }}>
+                    <path className="about-wisp-base" d={w.d} />
+                    <path className="about-wisp-run glow" d={w.d} pathLength="100" />
+                    <path className="about-wisp-run core" d={w.d} pathLength="100" />
+                  </g>
+                ))}
+                {motes.map(([x, y, r, d], i) => (
+                  <circle key={i} className={`about-mote ${i % 2 ? "violet" : "cyan"}`} cx={x} cy={y} r={r} style={{ "--md": d }} />
+                ))}
+              </svg>
+
+              {/* Fragments and splinters floating around the glass */}
               <div className="about-floating-shards" aria-hidden="true">
-                {floatingShards.map((shard, index) => (
+                {shards.map((shard, index) => (
                   <span
                     key={index}
                     className={`about-micro-shard ${shard.color}`}
@@ -126,15 +220,42 @@ const AboutTheEvent = () => {
                       "--shard-x": shard.x,
                       "--shard-y": shard.y,
                       "--shard-size": `${shard.size}px`,
+                      "--shard-aspect": shard.aspect,
+                      "--shard-rot": `${shard.rot}deg`,
                       "--shard-delay": shard.delay,
                     }}
-                  />
+                  >
+                    <i className={`about-shard-face shape-${shard.shape}`} />
+                  </span>
                 ))}
               </div>
-              <div className="relative z-10 space-y-4 text-left text-base leading-relaxed text-gray-100 md:text-lg md:leading-relaxed rounded-2xl bg-[#070816]/70 backdrop-blur-sm p-6 md:p-8 border border-violet-400/15">
-                {aboutData.paragraphs.map((text, index) => (
-                  <p key={index}>{text}</p>
-                ))}
+
+              {/* Shattered-glass panel: jagged edge, fractured facets, fine cracks */}
+              <div className="about-glass relative z-10">
+                <div className="about-glass-body">
+                  <svg className="about-glass-facets" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="about-glint" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stopColor="#fff" stopOpacity=".17" />
+                        <stop offset=".65" stopColor="#fff" stopOpacity="0" />
+                      </linearGradient>
+                      <radialGradient id="about-impact">
+                        <stop offset="0" stopColor="#bff7ff" stopOpacity=".3" />
+                        <stop offset="1" stopColor="#55f3ff" stopOpacity="0" />
+                      </radialGradient>
+                    </defs>
+                    {GLASS.polys.map((f, i) => <polygon key={i} points={f.pts} fill={f.fill} />)}
+                    {GLASS.glints.map((g, i) => <polygon key={`g${i}`} points={g} fill="url(#about-glint)" />)}
+                    <ellipse cx={GLASS.C[0]} cy={GLASS.C[1]} rx="9" ry="14" fill="url(#about-impact)" />
+                    <path d={GLASS.cracks} fill="none" stroke="rgba(205,228,255,.26)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+                    <path d={GLASS.bright} fill="none" stroke="rgba(120,240,255,.5)" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+                  </svg>
+                  <div className="relative z-10 space-y-4 text-left text-base leading-relaxed text-gray-100 md:text-lg md:leading-relaxed p-6 md:p-8">
+                    {aboutData.paragraphs.map((text, index) => (
+                      <p key={index}>{text}</p>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -401,20 +522,76 @@ const AboutTheEvent = () => {
           left: var(--shard-x);
           top: var(--shard-y);
           width: var(--shard-size);
-          height: calc(var(--shard-size) * 1.8);
+          height: calc(var(--shard-size) * var(--shard-aspect));
+          transform: rotate(var(--shard-rot));
           opacity: .9;
-          clip-path: polygon(50% 0, 100% 38%, 67% 100%, 0 64%);
-          animation: about-shard-float 5.8s ease-in-out var(--shard-delay) infinite;
-          filter: drop-shadow(0 0 7px currentColor);
+          animation: about-shard-float 6.5s ease-in-out var(--shard-delay) infinite;
+          filter: drop-shadow(0 0 6px currentColor);
         }
-        .about-micro-shard.cyan { color: #55f3ff; background: linear-gradient(145deg, #efffff, #22d3ee 65%, #0891b2); }
-        .about-micro-shard.violet { color: #ae8bff; background: linear-gradient(145deg, #ffffff, #a78bfa 60%, #6d28d9); }
+        .about-micro-shard.cyan { color: #55f3ff; }
+        .about-micro-shard.violet { color: #ae8bff; }
+        /* faceted two-tone fill, so each piece reads as broken glass */
+        .about-shard-face { position: absolute; inset: 0; display: block; }
+        .about-micro-shard.cyan .about-shard-face { background: linear-gradient(125deg, #f2ffff 0 32%, #22d3ee 32% 68%, #0a7a94 68%); }
+        .about-micro-shard.violet .about-shard-face { background: linear-gradient(125deg, #ffffff 0 32%, #a78bfa 32% 68%, #5b21b6 68%); }
+        .about-shard-face.shape-0 { clip-path: polygon(0 0, 100% 34%, 22% 100%); }
+        .about-shard-face.shape-1 { clip-path: polygon(26% 0, 100% 12%, 78% 100%, 8% 82%, 0 28%); }
+        .about-shard-face.shape-2 { clip-path: polygon(54% 0, 100% 100%, 0 76%); }
+        .about-shard-face.shape-3 { clip-path: polygon(0 18%, 70% 0, 100% 48%, 40% 100%, 18% 64%); }
+        .about-shard-face.shape-4 { clip-path: polygon(42% 0, 66% 8%, 100% 100%, 0 92%); }
         @keyframes about-shard-float {
-          0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: .65; }
-          50% { transform: translate3d(9px, -16px, 0) rotate(28deg); opacity: 1; }
+          0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--shard-rot)); opacity: .6; }
+          50% { transform: translate3d(8px, -14px, 0) rotate(calc(var(--shard-rot) + 22deg)); opacity: 1; }
         }
+
+        /* Shattered-glass panel: the rim is a gradient showing through a 1.5px inset body */
+        .about-glass {
+          --glass-edge: polygon(0 3%, 5% 0, 18% 1.6%, 33% 0, 52% 1.3%, 69% 0, 86% 1.6%, 100% 0, 99% 17%, 100% 39%, 98.6% 62%, 100% 81%, 99% 100%, 81% 98.4%, 63% 100%, 45% 98.8%, 27% 100%, 10% 98.6%, 0 100%, 1.2% 79%, 0 56%, 1.5% 31%);
+          background: linear-gradient(120deg, rgba(85,243,255,.6), rgba(174,139,255,.5) 55%, rgba(255,91,186,.4));
+          clip-path: var(--glass-edge);
+        }
+        .about-glass-body {
+          position: relative;
+          margin: 1.5px;
+          overflow: hidden;
+          background: rgba(6, 7, 20, .78);
+          -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+          clip-path: var(--glass-edge);
+        }
+        .about-glass-facets { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+        /* Wisps of light: a faint thread plus a bright streak travelling along it */
+        .about-wisps {
+          position: absolute;
+          inset: -44px -52px;
+          width: calc(100% + 104px);
+          height: calc(100% + 88px);
+          z-index: 5;
+          overflow: visible;
+          pointer-events: none;
+        }
+        .about-wisp path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .about-wisp.cyan { color: #55f3ff; }
+        .about-wisp.violet { color: #ae8bff; }
+        .about-wisp-base { stroke: currentColor; stroke-width: 1; opacity: .26; }
+        .about-wisp-run { stroke: currentColor; stroke-dasharray: 15 85; stroke-dashoffset: 100; opacity: 0; animation: about-wisp-run var(--wdur) linear var(--wd) infinite; }
+        .about-wisp-run.glow { stroke-width: 7; filter: blur(5px); }
+        .about-wisp-run.core { stroke-width: 2; }
+        @keyframes about-wisp-run {
+          0% { stroke-dashoffset: 100; opacity: 0; }
+          12% { opacity: .95; }
+          88% { opacity: .95; }
+          100% { stroke-dashoffset: 0; opacity: 0; }
+        }
+        .about-mote { animation: about-mote 4.2s ease-in-out var(--md) infinite; }
+        .about-mote.cyan { fill: #bff7ff; }
+        .about-mote.violet { fill: #d6c7ff; }
+        @keyframes about-mote { 0%, 100% { opacity: .15; } 50% { opacity: .95; } }
+
         @media (prefers-reduced-motion: reduce) {
-          .about-micro-shard { animation: none !important; }
+          .about-micro-shard, .about-mote { animation: none !important; }
+          .about-wisp-run { animation: none !important; opacity: .55; stroke-dashoffset: 0; }
         }
       `}</style>
     </section>
