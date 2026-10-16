@@ -27,8 +27,6 @@ export default function NavbarHome() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Adjust only anchor-link scrolling. Scroll past the section's built-in top
-  // padding so the section heading lands just below the fixed navbar.
   const handleAnchorClick = (event, href) => {
     if (!href?.startsWith("#")) return;
 
@@ -56,14 +54,14 @@ export default function NavbarHome() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#02050e]/90 backdrop-blur-xl border-b border-cyan-500/20 py-3 shadow-[0_4px_25px_rgba(0,0,0,0.6)]"
+          ? "bg-[#030712]/85 backdrop-blur-xl border-b border-white/10 py-3 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Tokyo Cyberpunk Brand Identity */}
+        {/* Brand Identity */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded border border-cyan-500/30 bg-[#060c1d] flex items-center justify-center p-1 group-hover:border-cyan-400 transition-colors shadow-[0_0_12px_rgba(6,182,212,0.15)]">
+          <div className="w-9 h-9 rounded-lg border border-white/10 bg-[#0b1222] flex items-center justify-center p-1.5 group-hover:border-cyan-400/50 transition-colors shadow-sm">
             <Image
               src={embrioneLogo}
               alt="The Embrione Crest"
@@ -77,33 +75,33 @@ export default function NavbarHome() {
             <span className="text-white font-semibold text-sm sm:text-base tracking-tight leading-tight group-hover:text-cyan-300 transition-colors">
               The Embrione
             </span>
-            <span className="text-[9px] sm:text-[10px] font-mono text-cyan-400/80 tracking-wider uppercase font-normal">
-              PES UNIVERSITY // CSE
+            <span className="text-[10px] text-slate-400 tracking-wider uppercase font-medium">
+              Department of CSE · PES University
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Links (Clean Tokyo Cyberpunk Typography) */}
-        <nav className="hidden lg:flex items-center gap-6">
+        {/* Desktop Nav Links */}
+        <nav className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               onClick={(event) => handleAnchorClick(event, link.href)}
-              className="text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-cyan-300 transition-colors"
+              className="text-xs uppercase tracking-wider text-slate-300 hover:text-white transition-colors font-medium"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        {/* Cyber Action Button: Kodikon 6.0 */}
+        {/* Kodikon 6.0 Pill Button */}
         <div className="hidden sm:flex items-center gap-3">
           <Link
             href="/kodikon-6"
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 text-xs font-mono font-semibold uppercase tracking-wider text-black transition-all shadow-[0_0_15px_rgba(6,182,212,0.35)] hover:-translate-y-0.5"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-xs font-semibold uppercase tracking-wider text-black transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:-translate-y-0.5"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-black/60 animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-black/70 animate-pulse" />
             <span>Kodikon 6.0</span>
             <ChevronRight size={13} />
           </Link>
@@ -113,13 +111,13 @@ export default function NavbarHome() {
         <div className="flex lg:hidden items-center gap-2">
           <Link
             href="/kodikon-6"
-            className="sm:hidden text-xs font-mono uppercase font-semibold px-3 py-1.5 rounded bg-cyan-500 text-black"
+            className="sm:hidden text-xs font-semibold px-3 py-1.5 rounded-full bg-cyan-500 text-black uppercase tracking-wider"
           >
-            Kodi 6.0
+            Kodikon 6.0
           </Link>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 min-h-[40px] min-w-[40px] flex items-center justify-center rounded text-slate-300 hover:text-white bg-[#060c1d] border border-cyan-500/30 focus:outline-none"
+            className="p-2 min-h-[40px] min-w-[40px] flex items-center justify-center rounded-lg text-slate-300 hover:text-white bg-white/5 border border-white/10 focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -129,8 +127,8 @@ export default function NavbarHome() {
 
       {/* Mobile Dropdown Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-black/95 backdrop-blur-2xl border-b border-white/10 px-4 sm:px-6 py-5 space-y-4 max-h-[85vh] overflow-y-auto">
-          <nav className="flex flex-col space-y-2">
+        <div className="lg:hidden bg-[#030712]/95 backdrop-blur-2xl border-b border-white/10 px-4 sm:px-6 py-5 space-y-4 max-h-[85vh] overflow-y-auto">
+          <nav className="flex flex-col space-y-1.5">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -139,7 +137,7 @@ export default function NavbarHome() {
                   handleAnchorClick(event, link.href);
                   setMobileMenuOpen(false);
                 }}
-                className="text-sm font-normal text-neutral-300 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg transition-colors"
+                className="text-sm font-medium text-slate-200 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg transition-colors"
               >
                 {link.label}
               </Link>
@@ -149,7 +147,7 @@ export default function NavbarHome() {
             <Link
               href="/kodikon-6"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-1.5 min-h-[44px] py-2.5 px-4 rounded-full bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-medium transition-colors w-full"
+              className="flex items-center justify-center gap-1.5 min-h-[44px] py-2.5 px-4 rounded-full bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-semibold uppercase tracking-wider transition-colors w-full"
             >
               <span>Explore Kodikon 6.0</span>
               <ChevronRight size={14} />
