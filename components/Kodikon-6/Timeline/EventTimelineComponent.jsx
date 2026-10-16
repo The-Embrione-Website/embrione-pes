@@ -14,7 +14,7 @@ const FLOATING_EMBERS = [
   { left: "88%", top: "78%", size: "h-1 w-1", delay: "2.2s", duration: "8s", color: "bg-cyan-400" },
 ];
 
-// Configuration for each floor's connection geometry
+// Configuration for each floor's connection geometry on desktop
 const FLOOR_CONFIG = [
   {
     floorIndex: 0,
@@ -22,7 +22,7 @@ const FLOOR_CONFIG = [
     isLeft: true,
     cardTop: 280,
     lineY: 338,
-    roomHalfWidth: 105, // half of roomWidth (220) scaled to 480px tower
+    roomHalfWidth: 105,
   },
   {
     floorIndex: 1,
@@ -30,7 +30,7 @@ const FLOOR_CONFIG = [
     isLeft: false,
     cardTop: 490,
     lineY: 549,
-    roomHalfWidth: 120, // half of roomWidth (250)
+    roomHalfWidth: 120,
   },
   {
     floorIndex: 2,
@@ -38,7 +38,7 @@ const FLOOR_CONFIG = [
     isLeft: true,
     cardTop: 725,
     lineY: 784,
-    roomHalfWidth: 134, // half of roomWidth (280)
+    roomHalfWidth: 134,
   },
   {
     floorIndex: 3,
@@ -46,7 +46,7 @@ const FLOOR_CONFIG = [
     isLeft: false,
     cardTop: 985,
     lineY: 1043,
-    roomHalfWidth: 151, // half of roomWidth (315)
+    roomHalfWidth: 151,
   },
   {
     floorIndex: 4,
@@ -54,7 +54,7 @@ const FLOOR_CONFIG = [
     isLeft: true,
     cardTop: 1270,
     lineY: 1327,
-    roomHalfWidth: 168, // half of roomWidth (350)
+    roomHalfWidth: 168,
   },
 ];
 
@@ -87,7 +87,7 @@ export function EventTimelineComponent() {
     <section
       id="timeline"
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-brand-canvas font-sans text-brand-text-primary pt-24 pb-32 sm:pt-32 sm:pb-40"
+      className="relative isolate overflow-hidden bg-brand-canvas font-sans text-brand-text-primary pt-20 pb-28 sm:pt-28 sm:pb-36"
     >
       {/* 1. Ambient Background Glows */}
       <div
@@ -126,7 +126,7 @@ export function EventTimelineComponent() {
       </div>
 
       {/* 4. SECTION HEADER */}
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16 sm:mb-24 text-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-14 sm:mb-20 text-center">
         {/* Torii Gate Emblem / Crest */}
         <div className="inline-flex items-center justify-center gap-2 mb-3 px-3.5 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-400 text-xs font-mono uppercase tracking-widest backdrop-blur-sm">
           <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-spin" style={{ animationDuration: "8s" }} />
@@ -135,7 +135,7 @@ export function EventTimelineComponent() {
         </div>
 
         {/* Main Title */}
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
           Kodikon 6.0{" "}
           <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">
             Timeline
@@ -143,7 +143,7 @@ export function EventTimelineComponent() {
         </h2>
 
         {/* Subtitle */}
-        <p className="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 font-normal leading-relaxed">
+        <p className="max-w-2xl mx-auto text-sm sm:text-base text-neutral-400 font-normal leading-relaxed px-4">
           Ascend the sacred five-story pagoda, exploring each milestone of Kodikon 6.0 along the ancient architectural spine.
         </p>
 
@@ -156,23 +156,18 @@ export function EventTimelineComponent() {
       </div>
 
       {/* ============================================================== */}
-      {/* 5. TOWER & TIMELINE CONTAINER                                  */}
+      {/* 5. DESKTOP VIEW (>= 1024px)                                    */}
       {/* Centered continuous 5-story Pagoda Tower (0 gaps between rooms) */}
       {/* Cards pushed away giving the tower generous space               */}
       {/* Lines start at building room edge and connect to card edge      */}
       {/* ============================================================== */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 min-h-[1750px]">
+      <div className="hidden lg:block relative max-w-7xl mx-auto px-6 min-h-[1750px]">
         {/* CENTRAL SINGLE LONG PAGODA TOWER (Gojūnotō 五重塔) */}
-        {/* Made with pure cyan line art, no color fills, wide rooms, zero room gaps */}
         <div className="relative z-10 pointer-events-none mx-auto w-full max-w-[480px]">
           <SingleJapaneseTower activeFloor={activeFloor} />
         </div>
 
-        {/* ============================================================== */}
-        {/* 5 ALTERNATING TIMELINE CARDS & CONNECTING BRIDGES              */}
-        {/* Cards pushed further away giving tower space (calc(50% +- 280px))*/}
-        {/* Line starts from end of building room and connects to card edge*/}
-        {/* ============================================================== */}
+        {/* 5 ALTERNATING TIMELINE CARDS & CONNECTING BRIDGES */}
         <div className="absolute inset-0 pointer-events-auto">
           {kodikon6TimelineEvents.map((event, idx) => {
             const config = FLOOR_CONFIG[idx];
@@ -181,12 +176,11 @@ export function EventTimelineComponent() {
 
             return (
               <React.Fragment key={event.id}>
-                {/* A. HORIZONTAL CONNECTING BEAM LINE */}
-                {/* Starts from end of building for that room and connects to the card edge */}
+                {/* Horizontal Connecting Beam Line */}
                 {isLeft ? (
                   /* LEFT CARD LINE: starts from room left end, spans to right end of left card */
                   <div
-                    className="hidden lg:flex items-center absolute pointer-events-none z-20"
+                    className="flex items-center absolute pointer-events-none z-20"
                     style={{
                       top: `${config.lineY}px`,
                       right: `calc(50% + ${config.roomHalfWidth}px)`,
@@ -211,7 +205,7 @@ export function EventTimelineComponent() {
                 ) : (
                   /* RIGHT CARD LINE: starts from room right end, spans to left end of right card */
                   <div
-                    className="hidden lg:flex items-center absolute pointer-events-none z-20"
+                    className="flex items-center absolute pointer-events-none z-20"
                     style={{
                       top: `${config.lineY}px`,
                       left: `calc(50% + ${config.roomHalfWidth}px)`,
@@ -235,13 +229,12 @@ export function EventTimelineComponent() {
                   </div>
                 )}
 
-                {/* B. TIMELINE EVENT CARD */}
-                {/* Pushed further away from tower giving space (calc(50% +- 280px)) */}
+                {/* Timeline Event Card (Pushed out to calc(50% +- 280px) for generous tower space) */}
                 <div
-                  className={`absolute z-20 w-[calc(100%-2rem)] lg:w-[calc(50%-310px)] max-w-[420px] ${
+                  className={`absolute z-20 w-[calc(50%-310px)] max-w-[420px] ${
                     isLeft
-                      ? "left-4 lg:left-auto lg:right-[calc(50%+280px)]"
-                      : "left-4 lg:left-[calc(50%+280px)]"
+                      ? "right-[calc(50%+280px)]"
+                      : "left-[calc(50%+280px)]"
                   }`}
                   style={{ top: `${config.cardTop}px` }}
                 >
@@ -256,12 +249,80 @@ export function EventTimelineComponent() {
           })}
         </div>
       </div>
+
+      {/* ============================================================== */}
+      {/* 6. MOBILE / TABLET VIEW (< 1024px)                             */}
+      {/* NO TOWER: Clean vertical connected timeline matching Kodikon-5 */}
+      {/* Fully responsive, touch-optimized, no overlapping or clipping  */}
+      {/* ============================================================== */}
+      <div className="block lg:hidden max-w-2xl mx-auto px-4 sm:px-6">
+        <div className="relative">
+          {/* Vertical Connecting Rail on the left */}
+          <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-cyan-500/50 via-purple-500/30 to-cyan-500/50 -translate-x-1/2" />
+
+          {/* Timeline Events Stack */}
+          <div className="space-y-8 sm:space-y-10">
+            {kodikon6TimelineEvents.map((event, index) => {
+              const Icon = event.icon;
+
+              return (
+                <div key={event.id} className="relative flex gap-4 sm:gap-6 group">
+                  {/* Left Column: Milestone Icon Circle */}
+                  <div className="relative flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-slate-900 border-2 border-slate-700 flex items-center justify-center transition-all duration-500 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] group-hover:scale-105 z-10">
+                      <Icon className="w-5 h-5 text-slate-300 transition-colors duration-300 group-hover:text-cyan-300" />
+                    </div>
+                  </div>
+
+                  {/* Right Column: Card Content (matching Kodikon 5 format with Kodikon 6 theme) */}
+                  <div className="flex-1 pb-2">
+                    {/* Date Pill & Phase Tag */}
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30 text-xs font-mono text-cyan-300 font-semibold">
+                        <Calendar className="w-3.5 h-3.5 text-cyan-400" />
+                        <span>{event.date}</span>
+                      </div>
+                      <span className="text-[11px] font-mono text-neutral-400">
+                        {event.phaseTag}
+                      </span>
+                    </div>
+
+                    {/* Content Card */}
+                    <div className="relative rounded-xl border border-neutral-800 bg-[#070e1b]/90 backdrop-blur-md p-5 transition-all duration-300 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.25)]">
+                      {/* Corner Accents */}
+                      <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-amber-400/80" />
+                      <div className="absolute top-0 right-0 w-2.5 h-2.5 border-t border-r border-amber-400/80" />
+                      <div className="absolute bottom-0 left-0 w-2.5 h-2.5 border-b border-l border-amber-400/80" />
+                      <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-amber-400/80" />
+
+                      {/* Title with Archaic Kanji Numeral */}
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <span className="px-1.5 py-0.5 rounded bg-red-950/80 border border-red-500/60 text-red-400 font-bold font-mono text-xs">
+                          {event.kanjiNum}
+                        </span>
+                        <h3 className="text-lg font-bold text-white tracking-tight">
+                          {event.title}
+                        </h3>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-neutral-300 text-sm leading-relaxed">
+                        {event.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
 
 /**
- * Medieval Japanese Fortress Card (clean, no lines overlapping text)
+ * Medieval Japanese Fortress Card (Desktop)
  */
 function TimelineEventCard({ event, isLeft, isActive = false }) {
   const Icon = event.icon;
