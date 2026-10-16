@@ -1,0 +1,468 @@
+
+/* =========================================
+   EMBRIONE — 3D KODIKON EVENT HELIX
+========================================= */
+
+.helix-page {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #030610;
+  color: #f4f8ff;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.helix-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 52% 50%, #0c1b2c 0%, #030610 48%, #02030a 100%);
+}
+
+.helix-stage > div:first-child {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0;
+}
+
+.helix-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: none;
+}
+
+/* Subtle cyberpunk grid */
+
+.helix-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(#22d3ee16 1px, transparent 1px),
+    linear-gradient(90deg, #22d3ee16 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+/* Header */
+
+.helix-topbar {
+  position: absolute;
+  z-index: 4;
+  top: 28px;
+  left: 4.5%;
+  right: 4.5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  pointer-events: none;
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* Main heading */
+
+.helix-heading {
+  position: absolute;
+  z-index: 3;
+  top: 23%;
+  left: 5%;
+  width: min(36%, 440px);
+  pointer-events: none;
+}
+
+.helix-heading p {
+  margin: 0 0 20px;
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.helix-heading h1 {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(25px, 3.1vw, 48px);
+  line-height: 1.28;
+  font-weight: 700;
+  text-shadow: 0 0 25px #22d3ee12;
+}
+
+.helix-heading h1 span {
+  color: #22d3ee;
+}
+
+.helix-heading small {
+  display: block;
+  margin-top: 24px;
+  color: #71869b;
+  font-family: "Orbitron", sans-serif;
+  font-size: 8px;
+  line-height: 1.8;
+  letter-spacing: 1.5px;
+}
+
+/* Flowing KODIKON text over the central yellow axis */
+
+.helix-axis-flow {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 190px;
+  transform: translateX(-50%);
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
+.helix-axis-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: kodikonTextFlow 22s linear infinite;
+}
+
+.helix-axis-track span {
+  display: flex;
+  flex: 0 0 80px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #ffe014;
+  font-family: "Orbitron", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px #ffe01470;
+  white-space: nowrap;
+}
+
+@keyframes kodikonTextFlow {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* EMBRIONE centre hub */
+
+.helix-centre-label {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: 148px;
+  height: 148px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: translate(-50%, -50%);
+  border: 1px solid #22d3ee85;
+  border-radius: 50%;
+  background: radial-gradient(circle, #102338 0%, #030610 72%);
+  box-shadow:
+    0 0 24px #22d3ee20,
+    inset 0 0 25px #22d3ee0d;
+  pointer-events: none;
+}
+
+.helix-centre-mark {
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.helix-centre-label strong {
+  color: #ffffff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.helix-centre-label small {
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+}
+
+/* Active event indicator */
+
+.helix-active-event {
+  position: absolute;
+  z-index: 4;
+  left: 5%;
+  bottom: 13%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 30%;
+  pointer-events: none;
+}
+
+.helix-active-event span,
+.helix-active-event small {
+  color: #7890a7;
+  font-family: "Orbitron", sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  line-height: 1.7;
+}
+
+.helix-active-event strong {
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(15px, 1.7vw, 24px);
+}
+
+/* Scroll hint */
+
+.helix-scroll-hint {
+  position: absolute;
+  z-index: 4;
+  right: 4.5%;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #91a4b8;
+  font-family: "Orbitron", sans-serif;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  pointer-events: none;
+}
+
+.helix-scroll-line {
+  position: relative;
+  display: block;
+  width: 44px;
+  height: 1px;
+  overflow: hidden;
+  background: #ffffff25;
+}
+
+.helix-scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #22d3ee;
+  animation: scrollLinePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollLinePulse {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+}
+
+/* Event details modal */
+
+.helix-modal-backdrop {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: #01030bd9;
+  backdrop-filter: blur(12px);
+}
+
+.helix-modal-panel {
+  width: min(620px, 100%);
+  max-height: 88%;
+  overflow-y: auto;
+  padding: clamp(20px, 4vw, 36px);
+  color: #eaf5ff;
+  background: #07101c;
+  border: 1px solid #22d3ee75;
+  box-shadow: 0 0 45px #22d3ee13;
+  scrollbar-width: thin;
+  scrollbar-color: #22d3ee #07101c;
+}
+
+.helix-modal-top,
+.helix-modal-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.helix-modal-top button {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  color: #22d3ee;
+  background: transparent;
+  border: 1px solid #22d3ee65;
+  font-size: 26px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+
+.helix-modal-top button:hover {
+  color: #030610;
+  background: #22d3ee;
+}
+
+.helix-modal-edition {
+  margin: 30px 0 8px;
+  color: #22d3ee;
+  font-family: "Orbitron", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.helix-modal-panel h2 {
+  margin: 0;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(26px, 5vw, 42px);
+}
+
+.helix-modal-year {
+  color: #9db0c3;
+  font-size: 14px;
+}
+
+.helix-modal-image {
+  width: 100%;
+  height: clamp(170px, 30vw, 260px);
+  margin: 22px 0;
+  background-color: #101b2a;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid #22d3ee45;
+}
+
+.helix-modal-description {
+  color: #c4d1df;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.helix-modal-bottom {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid #ffffff20;
+}
+
+/* Smaller screens */
+
+@media (max-width: 760px) {
+  .helix-heading {
+    top: 12%;
+    left: 5%;
+    width: 75%;
+  }
+
+  .helix-heading p {
+    margin-bottom: 10px;
+    font-size: 8px;
+  }
+
+  .helix-heading h1 {
+    font-size: clamp(21px, 5.5vw, 34px);
+  }
+
+  .helix-heading small {
+    margin-top: 12px;
+    font-size: 7px;
+  }
+
+  .helix-centre-label {
+    width: 112px;
+    height: 112px;
+  }
+
+  .helix-centre-label strong {
+    font-size: 9px;
+  }
+
+  .helix-axis-flow {
+    width: 150px;
+  }
+
+  .helix-active-event {
+    bottom: 10%;
+    max-width: 40%;
+  }
+
+  .helix-scroll-hint {
+    right: 5%;
+    bottom: 20px;
+    font-size: 7px;
+  }
+
+  .helix-topbar {
+    top: 18px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 420px) {
+  .helix-heading {
+    width: 85%;
+  }
+
+  .helix-heading h1 {
+    font-size: 21px;
+  }
+
+  .helix-active-event {
+    bottom: 9%;
+  }
+
+  .helix-modal-backdrop {
+    padding: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helix-axis-track,
+  .helix-scroll-line::after {
+    animation: none;
+  }
+}
+
+/* Hide the centre branding completely */
+.helix-centre-label,
+.helix-axis-flow {
+  display: none !important;
+}

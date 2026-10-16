@@ -1,4 +1,5 @@
-import "./globals.css";
+﻿import "./globals.css";
+import "./redesign.css";
 import AosInit from "@/components/AosInit";
 import { Orbitron, Poppins } from "next/font/google";
 
@@ -111,3 +112,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
