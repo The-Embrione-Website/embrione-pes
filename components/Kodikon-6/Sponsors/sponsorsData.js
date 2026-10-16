@@ -93,7 +93,7 @@ export const techPartners = [
 ];
 
 export const sponsorStats = [
-  { value: "₹4.5L+", label: "Prize & Grant Pool" },
+  { value: "₹1L", label: "Prize Pool" },
   { value: "40+", label: "Shortlisted Teams" },
   { value: "24h", label: "Continuous Prototyping" },
   { value: "100%", label: "IP Retained by Builders" },

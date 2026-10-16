@@ -41,7 +41,7 @@ export default function MapComponent() {
     <section
       id="venue"
       aria-labelledby="venue-heading"
-      className="relative isolate overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-16 text-brand-text-primary sm:px-6 lg:px-8"
+      className="relative isolate overflow-hidden border-t border-cyan-500/20 bg-[#02050e] px-4 py-20 text-white sm:px-6 lg:px-8"
     >
       {/* Blue glow and subtle grid */}
       <div
@@ -49,37 +49,35 @@ export default function MapComponent() {
         className="pointer-events-none absolute inset-0 -z-10"
       >
         <div className="venue-background-glow absolute inset-0" />
-
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:56px_56px]" />
       </div>
 
       <div className="mx-auto w-full max-w-5xl">
         {/* Header */}
-        <div className="mb-7">
-          <div className="mb-2 inline-flex items-center gap-1.5 font-mono text-xs text-brand-accent-cyan-glow">
-            <MapPin size={14} aria-hidden="true" />
-            <span>CAMPUS VENUE</span>
+        <div className="mb-12">
+          <div className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-cyan-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="tracking-[0.25em] uppercase font-bold">CAMPUS VENUE // 「開催会場」</span>
           </div>
 
           <h2
             id="venue-heading"
-            className="text-2xl font-bold tracking-tight text-brand-text-primary sm:text-3xl"
+            className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase font-display"
           >
-            Find the Venue
+            Venue &amp;{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              Navigation.
+            </span>
           </h2>
 
-          <p className="mt-2 text-sm font-light leading-6 text-brand-text-secondary">
-            PESU 52, PES University
-          </p>
-
-          <p className="text-sm font-light leading-6 text-brand-text-muted">
-            100 Feet Ring Road, BSK III Stage, Bengaluru, Karnataka 560085
+          <p className="mt-3 text-sm sm:text-base font-light leading-6 text-slate-300">
+            <strong className="text-white font-medium">PESU 52, PES University</strong> · 100 Feet Ring Road, BSK III Stage, Bengaluru 560085
           </p>
         </div>
 
         {/* Map and travel details */}
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
-          <div className="overflow-hidden rounded-xl border border-brand-border-subtle bg-brand-surface-card/80 shadow-xl backdrop-blur-sm lg:col-span-3">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-5">
+          <div className="overflow-hidden rounded-xl border border-cyan-500/30 bg-[#060c1d]/90 shadow-[0_0_30px_rgba(6,182,212,0.1)] backdrop-blur-sm lg:col-span-3">
             <iframe
               src={EMBED_SRC}
               title="Map showing PESU 52, PES University Ring Road Campus"

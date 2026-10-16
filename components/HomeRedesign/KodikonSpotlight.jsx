@@ -1,158 +1,301 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { X, ZoomIn } from "lucide-react";
-import { ClubEvents } from "@/constants";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Calendar,
+  ZoomIn,
+  X,
+  ChevronRight,
+  ChevronLeft,
+  Camera,
+  Layers,
+} from "lucide-react";
+import { ClubEvents } from "@/components/HomeRedesign/constants";
+
+// Only genuine event photographs (omitting sponsor logos or graphics for Kodi 3, 4, and 5)
+const eventPhotosMap = {
+  "Kodikon 2.0": [
+    "/Kodikon2/image4.webp",
+    "/Kodikon2/image5.webp",
+    "/Kodikon2/image6.webp",
+    "/Kodikon2/image7.webp",
+    "/Kodikon2/image8.webp",
+    "/Kodikon2/image9.webp",
+    "/Kodikon2/image10.webp",
+    "/Kodikon2/image11.webp",
+    "/Kodikon2/image12.webp",
+  ],
+  "Kodikon 1.0": [
+    "/Kodikon1/image1.webp",
+    "/Kodikon1/image2.webp",
+    "/Kodikon1/image3.webp",
+    "/Kodikon1/image4.webp",
+    "/Kodikon1/image5.webp",
+    "/Kodikon1/image6.webp",
+    "/Kodikon1/image7.webp",
+    "/Kodikon1/image8.webp",
+    "/Kodikon1/image9.webp",
+  ],
+  Cipher: [
+    "/Cipher/image1.webp",
+    "/Cipher/image2.webp",
+    "/Cipher/image3.webp",
+    "/Cipher/image4.webp",
+  ],
+  Spark: [
+    "/Spark/image1.webp",
+    "/Spark/image2.webp",
+    "/Spark/image3.webp",
+  ],
+};
 
 export default function KodikonSpotlight() {
-  const [selectedEvent, setSelectedEvent] = useState("Kodikon 5.0");
-  const [lightboxImage, setLightboxImage] = useState(null);
+  const [selectedEventName, setSelectedEventName] = useState("Kodikon 5.0");
+  const [lightboxIndex, setLightboxIndex] = useState(null); // number or null
 
   const currentEvent =
-    ClubEvents?.find((e) => e.eventName === selectedEvent) || ClubEvents[0];
+    ClubEvents?.find((e) => e.eventName === selectedEventName) || ClubEvents[0];
 
-  // Close lightbox on Escape key
+  const currentPhotos = eventPhotosMap[currentEvent?.eventName] || [];
+
+  // Reset lightbox when changing event
+  useEffect(() => {
+    setLightboxIndex(null);
+  }, [selectedEventName]);
+
+  // Keyboard navigation for Lightbox
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") setLightboxImage(null);
+      if (lightboxIndex === null) return;
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight") {
+        setLightboxIndex((prev) =>
+          prev !== null ? (prev + 1) % currentPhotos.length : 0
+        );
+      }
+      if (e.key === "ArrowLeft") {
+        setLightboxIndex((prev) =>
+          prev !== null
+            ? (prev - 1 + currentPhotos.length) % currentPhotos.length
+            : 0
+        );
+      }
     };
-    if (lightboxImage) {
+
+    if (lightboxIndex !== null) {
       window.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [lightboxImage]);
+  }, [lightboxIndex, currentPhotos.length]);
 
   return (
-    <section id="events" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-black text-white">
-      {/* Apple-style Section Header */}
-      <div className="max-w-3xl mb-12 sm:mb-16">
-        <span className="text-xs sm:text-sm font-medium tracking-[0.2em] uppercase text-neutral-400 block mb-3">
-          Event Archive
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight text-white leading-tight">
-          Past Editions.
-        </h2>
-        <p className="mt-3 text-base sm:text-lg text-neutral-400 font-light leading-relaxed">
-          From beginner-friendly offline challenges to national research hackathons. Explore what we&apos;ve conducted.
-        </p>
-      </div>
+    <section
+      id="events"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]"
+    >
+      {/* Subtle Ambient Radial Lighting */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/3 right-0 w-[500px] h-[500px] bg-cyan-500/10 blur-[160px] rounded-full -z-10"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-[160px] rounded-full -z-10"
+      />
 
-      {/* Apple-style Segmented Control Pill Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-10 pb-2 overflow-x-auto scrollbar-none">
-        {ClubEvents?.map((event) => {
-          const isSelected = selectedEvent === event.eventName;
-          return (
-            <button
-              key={event.eventName}
-              onClick={() => setSelectedEvent(event.eventName)}
-              className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-                isSelected
-                  ? "bg-white text-black shadow-sm"
-                  : "bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white border border-white/5"
-              }`}
-            >
-              {event.eventName}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Apple-style Featured Event Showcase Card */}
-      {currentEvent && (
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#161617] border border-white/10">
-          <div className="max-w-3xl">
-            <span className="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-1">
-              Department Flagship
-            </span>
-            <h3 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-              {currentEvent.eventName}
-            </h3>
-            <p className="mt-4 text-base sm:text-lg text-neutral-300 font-light leading-relaxed">
-              {currentEvent.eventDescription}
-            </p>
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.1] bg-white/[0.03] text-cyan-400 text-xs uppercase tracking-widest font-semibold mb-5 backdrop-blur-md">
+            <Calendar size={13} />
+            <span>Event Archive · Historical Milestones</span>
           </div>
 
-          {/* Clean Apple Photo Gallery */}
-          {currentEvent.eventImagesArray && currentEvent.eventImagesArray.length > 0 && (
-            <div className="mt-10 pt-8 border-t border-white/10">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs uppercase tracking-wider text-neutral-400 font-medium">
-                  Edition Photographs
-                </span>
-                <span className="text-xs text-neutral-500 font-light">Click to zoom</span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-                {currentEvent.eventImagesArray.slice(0, 8).map((imgSrc, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() =>
-                      setLightboxImage({
-                        src: imgSrc,
-                        title: `${currentEvent.eventName} • Moment #${i + 1}`,
-                      })
-                    }
-                    className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/40 border border-white/10 hover:border-white/30 transition-all duration-300 cursor-pointer focus:outline-none"
-                    aria-label={`Enlarge photo from ${currentEvent.eventName}`}
-                  >
-                    <img
-                      src={imgSrc}
-                      alt={`${currentEvent.eventName} photograph`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="p-2 rounded-full bg-black/70 text-white backdrop-blur-md border border-white/20">
-                        <ZoomIn size={16} />
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
+          <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-white leading-[1.08]">
+            Past{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500">
+              Editions.
+            </span>
+          </h2>
+          <p className="mt-3.5 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+            From beginner-friendly offline challenges to national research hackathons. Explore the evolution of our flagship series.
+          </p>
         </div>
-      )}
 
-      {/* Apple-style Minimal Fullscreen Lightbox Modal */}
-      {lightboxImage && (
+        {/* Apple Capsule Segmented Control Track (All 7 original events preserved) */}
+        <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-xl mb-10 overflow-x-auto max-w-full scrollbar-none">
+          {ClubEvents?.map((event) => {
+            const isSelected = selectedEventName === event.eventName;
+            return (
+              <button
+                key={event.eventName}
+                type="button"
+                onClick={() => setSelectedEventName(event.eventName)}
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                  isSelected
+                    ? "bg-cyan-500 text-black shadow-[0_0_18px_rgba(6,182,212,0.35)]"
+                    : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                {event.eventName}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Apple Keynote Showcase Card */}
+        {currentEvent && (
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentEvent.eventName}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative p-7 sm:p-11 lg:p-12 rounded-3xl bg-[#040816]/90 border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden"
+            >
+              {/* Corner Ambient Glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 max-w-4xl">
+                <span className="text-xs uppercase tracking-wider text-cyan-400 font-semibold block mb-2">
+                  Department Milestone
+                </span>
+                <h3 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">
+                  {currentEvent.eventName}
+                </h3>
+                <p className="mt-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+                  {currentEvent.eventDescription}
+                </p>
+              </div>
+
+              {/* Event Photo Gallery (Rendered only for events with genuine event photos) */}
+              {currentPhotos.length > 0 && (
+                <div className="relative z-10 mt-10 pt-8 border-t border-white/[0.08]">
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-2">
+                      <Camera size={14} className="text-cyan-400" />
+                      <span className="text-xs uppercase tracking-wider text-slate-300 font-medium">
+                        Event Photographs ({currentPhotos.length})
+                      </span>
+                    </div>
+                    <span className="text-xs text-slate-500 font-light">
+                      Click photo to zoom
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5 sm:gap-4">
+                    {currentPhotos.map((imgSrc, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setLightboxIndex(i)}
+                        className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-cyan-400/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-left cursor-pointer shadow-lg hover:scale-[1.02]"
+                        aria-label={`View photo ${i + 1} from ${currentEvent.eventName}`}
+                      >
+                        <img
+                          src={imgSrc}
+                          alt=""
+                          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                          <span className="p-2.5 rounded-full bg-black/60 text-white backdrop-blur-md">
+                            <ZoomIn size={16} />
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Institutional Footer Tag */}
+              <div className="relative z-10 mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-500">
+                <div className="flex items-center gap-2">
+                  <Layers size={13} className="text-cyan-400/80" />
+                  <span>Department of Computer Science &amp; Engineering</span>
+                </div>
+                <span>PES University</span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </div>
+
+      {/* Lightbox Modal (Clean preview, keyboard arrow navigation, NO text descriptions) */}
+      {lightboxIndex !== null && currentPhotos[lightboxIndex] && (
         <div
           role="dialog"
           aria-modal="true"
-          onClick={() => setLightboxImage(null)}
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-4 sm:p-8 select-none"
+          aria-label="Enlarged photo preview"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6"
+          onClick={() => setLightboxIndex(null)}
         >
-          {/* Close Button */}
-          <button
-            onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-            aria-label="Close image"
-          >
-            <X size={20} />
-          </button>
-
-          {/* Lightbox Image */}
           <div
+            className="relative max-w-4xl max-h-[88vh] w-full flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-5xl max-h-[85vh] w-auto h-auto flex flex-col items-center"
           >
-            <img
-              src={lightboxImage.src}
-              alt="Enlarged photograph"
-              className="max-h-[80vh] max-w-[92vw] object-contain rounded-2xl border border-white/10 shadow-2xl"
-            />
-            {lightboxImage.title && (
-              <p className="mt-4 text-xs font-normal text-neutral-400 text-center">
-                {lightboxImage.title}
-              </p>
-            )}
+            {/* Top Bar with Title, Counter and Controls */}
+            <div className="w-full flex items-center justify-between pb-3 text-white">
+              <div className="text-xs sm:text-sm font-medium text-slate-300">
+                <span>{currentEvent.eventName}</span>
+                <span className="text-slate-500 ml-2">
+                  ({lightboxIndex + 1} of {currentPhotos.length})
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxIndex(
+                      (lightboxIndex - 1 + currentPhotos.length) %
+                        currentPhotos.length
+                    )
+                  }
+                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  aria-label="Previous photo"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setLightboxIndex((lightboxIndex + 1) % currentPhotos.length)
+                  }
+                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  aria-label="Next photo"
+                >
+                  <ChevronRight size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLightboxIndex(null)}
+                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer ml-2"
+                  aria-label="Close photo preview"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            </div>
+
+            {/* Enlarged Image */}
+            <div className="relative max-h-[75vh] w-full flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/80">
+              <img
+                src={currentPhotos[lightboxIndex]}
+                alt=""
+                className="max-w-full max-h-[75vh] object-contain rounded-2xl"
+              />
+            </div>
           </div>
         </div>
       )}

@@ -4,7 +4,7 @@ import pesLogo from "../../assets/PES_LogoWhite.webp";
 import Image from "next/image";
 import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 import { AiFillLinkedin } from "react-icons/ai";
-import { socialLinks } from "@/constants";
+import { socialLinks } from "@/components/HomeRedesign/constants";
 import { useScramble } from "use-scramble";
 
 const iconStyles =

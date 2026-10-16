@@ -15,7 +15,7 @@ export default function FAQComponent() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="relative isolate overflow-hidden border-t border-brand-border-subtle bg-brand-canvas px-4 py-16 text-brand-text-primary sm:px-6 lg:px-8"
+      className="relative isolate overflow-hidden border-t border-cyan-500/20 bg-[#02050e] px-4 py-20 text-white sm:px-6 lg:px-8"
     >
       {/* Background glow and subtle grid */}
       <div
@@ -23,31 +23,33 @@ export default function FAQComponent() {
         className="pointer-events-none absolute inset-0 -z-10"
       >
         <div className="faq-background-glow absolute inset-0" />
-
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:56px_56px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:56px_56px]" />
       </div>
 
       {/* FAQ content */}
       <div className="mx-auto w-full max-w-5xl">
-        <div className="mb-8">
-          <div className="mb-2 inline-flex items-center gap-1.5 font-mono text-xs text-brand-accent-cyan-glow">
-            <HelpCircle size={14} aria-hidden="true" />
-            <span>CLARIFICATIONS</span>
+        <div className="mb-12">
+          <div className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-cyan-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="tracking-[0.25em] uppercase font-bold">CLARIFICATIONS // 「質疑応答」</span>
           </div>
 
           <h2
             id="faq-heading"
-            className="text-2xl font-bold tracking-tight text-brand-text-primary sm:text-3xl"
+            className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase font-display"
           >
-            FAQs
+            System{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+              Clarifications.
+            </span>
           </h2>
 
-          <p className="mt-2 max-w-xl text-sm leading-6 text-brand-text-secondary">
-            Everything you need to know about Kodikon 6.0.
+          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-400 font-light">
+            Everything you need to know about Kodikon 6.0 guidelines, participation, and logistics.
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {Kodikon6FAQData.map((faq, index) => {
             const isOpen = openId === faq.id;
             const panelId = `${faq.id}-panel`;
@@ -56,10 +58,10 @@ export default function FAQComponent() {
             return (
               <div
                 key={faq.id}
-                className={`rounded-lg border bg-brand-surface-card/60 backdrop-blur-sm transition-colors duration-200 ${
+                className={`rounded-xl border bg-[#060c1d]/90 backdrop-blur-sm transition-all duration-300 ${
                   isOpen
-                    ? "border-brand-accent-cyan/50"
-                    : "border-brand-border-divider hover:border-brand-border-hover"
+                    ? "border-cyan-400/80 shadow-[0_0_25px_rgba(6,182,212,0.15)] bg-[#081228]/95"
+                    : "border-cyan-500/20 hover:border-cyan-400/50"
                 }`}
               >
                 <h3>

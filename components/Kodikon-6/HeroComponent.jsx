@@ -100,7 +100,7 @@ export default function HeroComponent() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate overflow-hidden bg-brand-canvas font-sans h-[100vh] text-brand-text-primary pt-24 pb-20 sm:pt-32 sm:pb-28"
+      className="relative isolate overflow-hidden bg-[#02050e] font-sans min-h-screen flex flex-col justify-center text-white pt-24 pb-20 sm:pt-32 sm:pb-28"
     >
       {/* Keyframes for Swaying Lanterns, Tassels & Floating Embers */}
       <style jsx>{`
@@ -452,15 +452,15 @@ export default function HeroComponent() {
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           {/* Institution Pill + Hanko Seal */}
-          <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-brand-border-subtle bg-brand-surface-navy/10 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.1)]">
-            {/* <span className="h-1.5 w-1.5 rounded-full bg-brand-accent-cyan-glow shadow-[0_0_8px_#22d3ee]" />
-            <span className="font-mono text-[10px] sm:text-xs tracking-[0.18em] text-slate-300 uppercase">
-              PES UNIVERSITY • DEPARTMENT OF CSE
+          <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
+            <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-slate-300 uppercase">
+              PES UNIVERSITY // DEPARTMENT OF CSE
             </span>
-            <span className="h-3 w-px bg-brand-border-subtle" />
-            <span className="rounded-sm border border-amber-400/40 bg-amber-500/10 px-1.5 py-0.5 font-mono text-[10px] font-semibold tracking-widest text-amber-300">
-              第六回
-            </span> */}
+            <span className="h-3 w-px bg-cyan-500/30" />
+            <span className="rounded border border-amber-400/40 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-bold tracking-widest text-amber-300">
+              「第六回」24H SPRINT
+            </span>
           </div>
 
           {/* Watermark Kanji + Hero Title */}
@@ -471,7 +471,7 @@ export default function HeroComponent() {
                 transform: `translate3d(calc(-50% + ${mouseOffset.x * -14}px), ${mouseOffset.y * -10}px, 0)`,
                 transition: "transform 250ms ease-out",
               }}
-              className="pointer-events-none absolute -top-7 left-1/2 select-none font-mono text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.25em] text-white/[0.03] whitespace-nowrap will-change-transform"
+              className="pointer-events-none absolute -top-7 left-1/2 select-none font-mono text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.25em] text-white/[0.04] whitespace-nowrap will-change-transform"
             >
               武士道・六
             </span>
@@ -481,10 +481,10 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className="tracking-in-expand relative font-display text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-brand-text-primary uppercase will-change-transform"
+              className="tracking-in-expand relative font-display text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white uppercase will-change-transform"
             >
               KODIKON{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-cyan-glow via-brand-accent-cyan to-brand-accent-blue drop-shadow-[0_0_30px_rgba(34,211,238,0.35)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">
                 6.0
               </span>
             </h1>
@@ -492,35 +492,35 @@ export default function HeroComponent() {
 
           {/* Katana Horizon & Tsuba Emblem Subtitle */}
           <div className="mt-5 flex items-center justify-center gap-3 sm:gap-4">
-            <span className="h-px w-8 sm:w-16 bg-gradient-to-r from-transparent to-brand-accent-cyan-glow/70" />
-            <span className="h-1.5 w-1.5 rotate-45 border border-brand-accent-cyan-glow bg-brand-surface-navy" />
-            <p className="font-mono text-xs sm:text-base md:text-lg uppercase tracking-[0.2em] text-brand-accent-cyan-glow">
-              24-Hour Flagship National Hackathon
+            <span className="h-px w-8 sm:w-16 bg-gradient-to-r from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <p className="font-mono text-xs sm:text-base md:text-lg uppercase tracking-[0.2em] text-cyan-300">
+              Tokyo Cyberpunk · 24-Hour National Hackathon
             </p>
-            <span className="h-1.5 w-1.5 rotate-45 border border-brand-accent-cyan-glow bg-brand-surface-navy" />
-            <span className="h-px w-8 sm:w-16 bg-gradient-to-l from-transparent to-brand-accent-cyan-glow/70" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <span className="h-px w-8 sm:w-16 bg-gradient-to-l from-transparent to-cyan-400/70" />
           </div>
 
           {/* Description Copy */}
-          <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed font-light text-brand-text-secondary">
+          <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed font-light text-slate-300">
             The Department of Computer Science &amp; Engineering presents the
             sixth edition of South India&apos;s premier collegiate hackathon.
             Research-grounded problem statements, rigorous mentor review, and
-            rapid prototype engineering.
+            rapid prototype engineering at PESU 52.
           </p>
 
-          {/* Clean Dual CTAs */}
+          {/* Clean Tokyo Cyberpunk CTAs (No email notification) */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto">
             <a
-              href="#interest-form"
-              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-brand-accent-cyan-dark hover:bg-brand-accent-cyan px-7 py-3.5 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.28)]"
+              href="#tracks"
+              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 px-7 py-3.5 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
             >
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
               />
               <Sparkles size={15} />
-              <span>Pre-Register Now</span>
+              <span>Explore Tracks</span>
               <ArrowUpRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -528,51 +528,58 @@ export default function HeroComponent() {
             </a>
 
             <a
-              href="#tracks"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-brand-border-subtle hover:border-brand-accent-cyan/40 bg-brand-surface-navy/80 hover:bg-brand-surface-card/70 px-6 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-brand-text-primary transition-all duration-300 hover:-translate-y-0.5"
+              href="#prizes"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-6 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <Compass
                 size={15}
-                className="text-brand-accent-cyan-glow transition-transform duration-500 group-hover:rotate-45"
+                className="text-cyan-400 transition-transform duration-500 group-hover:rotate-45"
               />
-              <span>Explore Tracks</span>
+              <span>Prize Vault</span>
+            </a>
+
+            <a
+              href="#venue"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-5 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <span>Venue Guide</span>
             </a>
           </div>
         </div>
 
         {/* Unified "Makimono / Ema" Horizontal Scroll Bar */}
         <div className="mt-14 sm:mt-16 relative">
-          <div className="relative overflow-hidden rounded-xl border border-brand-border-subtle bg-brand-surface-navy/85 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+          <div className="relative overflow-hidden rounded-xl border border-cyan-500/30 bg-[#060c1d]/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
             {/* Top subtle cyan horizon gleam */}
-            <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-brand-accent-cyan/50 to-transparent" />
+            <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-brand-border-subtle">
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-cyan-500/20">
               {EDICT_SCROLL_ITEMS.map((item) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex items-center gap-4 p-5 sm:p-6 transition-colors duration-300 hover:bg-white/[0.02]"
+                    className="group relative flex items-center gap-4 p-5 sm:p-6 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
                   >
                     {/* Minimal Kanji Seal Stamp Box */}
-                    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-brand-accent-cyan/25 bg-brand-surface-input text-brand-accent-cyan-glow transition-all duration-300 group-hover:border-brand-accent-cyan group-hover:shadow-[0_0_15px_rgba(34,211,238,0.2)]">
-                      <span className="font-mono text-lg font-bold select-none opacity-85 group-hover:scale-110 transition-transform">
+                    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-cyan-500/30 bg-[#02050e] text-cyan-300 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                      <span className="font-mono text-lg font-bold select-none opacity-90 group-hover:scale-110 transition-transform text-amber-300">
                         {item.kanji}
                       </span>
-                      <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-surface-navy border border-brand-border-subtle text-brand-accent-cyan">
+                      <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#060c1d] border border-cyan-500/40 text-cyan-400">
                         <Icon size={9} />
                       </span>
                     </div>
 
                     {/* Text Details */}
                     <div className="min-w-0 text-left">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand-accent-cyan-glow/90">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
                         {item.label}
                       </div>
-                      <div className="mt-0.5 text-sm sm:text-base font-bold text-brand-text-primary truncate">
+                      <div className="mt-0.5 text-sm sm:text-base font-bold text-white truncate font-mono">
                         {item.value}
                       </div>
-                      <div className="mt-0.5 text-xs font-light text-brand-text-secondary truncate">
+                      <div className="mt-0.5 text-xs font-light text-slate-400 truncate">
                         {item.subtext}
                       </div>
                     </div>
@@ -583,6 +590,12 @@ export default function HeroComponent() {
           </div>
         </div>
       </div>
+
+      {/* Seamless Tokyo Cyberpunk Bottom Blending into Tracks Section */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#02050e]/80 to-[#02050e] -z-10"
+      />
     </section>
   );
 }
