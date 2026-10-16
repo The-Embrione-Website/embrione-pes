@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Handshake } from "lucide-react";
+import { Globe } from "lucide-react";
 import { partnersData } from "./partnersData";
 
 export default function PartnersSection() {
@@ -13,7 +13,7 @@ export default function PartnersSection() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-cyan-400 text-xs uppercase tracking-widest font-semibold mb-4">
-            <Handshake size={12} />
+            <Globe size={12} />
             <span>Industry Network · Technology Allies</span>
           </div>
 
