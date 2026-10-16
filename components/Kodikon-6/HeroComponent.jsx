@@ -28,7 +28,7 @@ const EDICT_SCROLL_ITEMS = [
   {
     kanji: "隊",
     label: "Team Composition",
-    value: "2 to 4 Members",
+    value: "Four Members",
     subtext: "Undergraduate engineers",
     icon: Users,
   },
@@ -453,14 +453,10 @@ export default function HeroComponent() {
         <div className="flex flex-col items-center text-center">
           {/* Institution Pill + Hanko Seal */}
           <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
             <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-slate-300 uppercase">
-              PES UNIVERSITY // DEPARTMENT OF CSE
+              PES UNIVERSITY | DEPARTMENT OF CSE
             </span>
-            <span className="h-3 w-px bg-cyan-500/30" />
-            <span className="rounded border border-amber-400/40 bg-amber-500/10 px-2 py-0.5 font-mono text-[10px] font-bold tracking-widest text-amber-300">
-              「第六回」24H SPRINT
-            </span>
+           
           </div>
 
           {/* Watermark Kanji + Hero Title */}
@@ -503,10 +499,7 @@ export default function HeroComponent() {
 
           {/* Description Copy */}
           <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed font-light text-slate-300">
-            The Department of Computer Science &amp; Engineering presents the
-            sixth edition of South India&apos;s premier collegiate hackathon.
-            Research-grounded problem statements, rigorous mentor review, and
-            rapid prototype engineering at PESU 52.
+            Explore four frontier tracks spanning human-machine interfaces, autonomous AI economies, accessible cyber defense, and hardware innovation. Build impactful solutions through intelligent systems, practical engineering, and rapid prototyping.
           </p>
 
           {/* Clean Tokyo Cyberpunk CTAs (No email notification) */}

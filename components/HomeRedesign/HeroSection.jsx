@@ -133,7 +133,7 @@ export default function HeroSection() {
 </div>
 
   <span className="text-[11px] sm:text-xs tracking-[0.18em] uppercase font-medium text-slate-300">
-    Department of CSE
+    PES University | Department of CSE
   </span>
 </motion.div>
 

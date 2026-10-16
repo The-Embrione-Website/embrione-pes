@@ -108,10 +108,7 @@ export default function PrizesComponent() {
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-display">
-              Bounties &amp;{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]">
-                Prize Vault
-              </span>
+              Bounties 
             </h2>
 
             <p className="mt-4 text-sm sm:text-base text-slate-300 font-light max-w-2xl leading-relaxed">
@@ -234,17 +231,7 @@ export default function PrizesComponent() {
                   </p>
 
                   {/* Perks Checklist */}
-                  <div className="pt-4 border-t border-cyan-500/20 space-y-2.5">
-                    {prize.perks.map((perk, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check
-                          size={14}
-                          className="mt-0.5 flex-shrink-0 text-cyan-400"
-                        />
-                        <span className="font-light">{perk}</span>
-                      </div>
-                    ))}
-                  </div>
+                  
                 </div>
 
                 {/* Physical Podium Pedestal Block */}

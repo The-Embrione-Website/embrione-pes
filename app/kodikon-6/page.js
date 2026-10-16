@@ -8,6 +8,7 @@ import FAQComponent from "@/components/Kodikon-6/FAQComponent";
 import MapComponent from "@/components/Kodikon-6/MapComponent";
 import FooterKodikon6 from "@/components/Kodikon-6/FooterKodikon6";
 import StructuredData from "@/components/Kodikon-6/StructuredData";
+import About from "@/components/Kodikon-6/About";
 
 export const metadata = {
   title: "Kodikon 6.0 | Flagship 24-Hour National Hackathon - PES University",
@@ -58,6 +59,7 @@ export default function Kodikon6Page() {
       <NavbarKodikon6 />
       <main className="relative flex flex-col">
         <HeroComponent />
+        <About />
         <TracksComponent />
         <EventTimeline />
         <PrizesComponent />
