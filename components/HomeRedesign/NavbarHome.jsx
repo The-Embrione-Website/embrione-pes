@@ -71,10 +71,12 @@ export default function NavbarHome() {
     });
   };
 
+  // Shared look only. Display (hidden / inline-flex) and padding are set
+  // per usage below so they can never conflict with each other.
   const ctaClass =
-    "inline-flex shrink-0 items-center justify-center gap-1.5 " +
+    "shrink-0 items-center justify-center gap-1.5 " +
     "rounded-full border border-cyan-400/30 bg-white/[0.04] " +
-    "px-4 py-2 text-xs font-semibold uppercase tracking-wider " +
+    "py-2 font-semibold uppercase tracking-wider " +
     "text-cyan-300 transition-all duration-200 " +
     "hover:border-cyan-300/70 hover:bg-cyan-400/10 " +
     "hover:text-white hover:-translate-y-0.5";
@@ -87,7 +89,7 @@ export default function NavbarHome() {
           : "bg-transparent py-5 sm:py-6"
       }`}
     >
-      <div className="max-w-6xl h-[60px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+      <div className="max-w-6xl h-[60px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-3">
         {/* Horizontal Embrione logo */}
         <Link
           href="/"
@@ -95,18 +97,18 @@ export default function NavbarHome() {
           className="flex shrink-0 items-center gap-1.5 group"
           aria-label="The Embrione homepage"
         >
-          <div className="relative w-[96px] h-[44px] sm:w-[112px] sm:h-[52px] shrink-0 overflow-hidden">
+          <div className="relative w-[60px] h-[40px] sm:w-[112px] sm:h-[52px] shrink-0 overflow-hidden">
             <Image
               src={embrioneLogo}
               alt="Embrione logo"
               fill
               sizes="112px"
               priority
-              className="object-cover object-center"
+              className="object-contain sm:object-cover object-center"
             />
           </div>
 
-          <span className="text-white font-bold text-lg sm:text-xl lg:text-2xl tracking-tight whitespace-nowrap transition-colors group-hover:text-cyan-300">
+          <span className="max-[359px]:hidden text-white font-bold text-base sm:text-xl lg:text-2xl tracking-tight whitespace-nowrap transition-colors group-hover:text-cyan-300">
             The Embrione
           </span>
         </Link>
@@ -132,22 +134,23 @@ export default function NavbarHome() {
           })}
         </nav>
 
-        {/* Dynamic desktop CTA */}
+        {/* Desktop / tablet CTA (640px and up) */}
         <Link
           href={ctaHref}
           onClick={(event) => handleAnchorClick(event, ctaHref)}
-          className={`hidden sm:inline-flex ${ctaClass}`}
+          className={`hidden sm:inline-flex px-4 text-xs ${ctaClass}`}
         >
           {ctaLabel}
           <ChevronRight size={14} />
         </Link>
 
         {/* Mobile controls */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden shrink-0 items-center gap-2">
+          {/* Phone-only CTA (below 640px) */}
           <Link
             href={ctaHref}
             onClick={(event) => handleAnchorClick(event, ctaHref)}
-            className={`sm:hidden px-3 py-2 ${ctaClass}`}
+            className={`inline-flex sm:hidden px-2.5 text-[11px] ${ctaClass}`}
           >
             {ctaLabel}
           </Link>
@@ -155,7 +158,7 @@ export default function NavbarHome() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="p-2 min-h-10 min-w-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-cyan-300 bg-white/[0.04] border border-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            className="p-2 min-h-10 min-w-10 flex shrink-0 items-center justify-center rounded-lg text-slate-300 hover:text-cyan-300 bg-white/[0.04] border border-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
             aria-label={
               mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
             }
@@ -194,7 +197,7 @@ export default function NavbarHome() {
             <Link
               href={ctaHref}
               onClick={(event) => handleAnchorClick(event, ctaHref)}
-              className={`w-full min-h-11 ${ctaClass}`}
+              className={`inline-flex w-full min-h-11 px-4 text-xs ${ctaClass}`}
             >
               {ctaLabel}
               <ChevronRight size={14} />
