@@ -396,8 +396,7 @@ export default function HeroComponent() {
             className="relative flex items-center justify-center will-change-transform"
           >
             <div className="h-[280px] w-[280px] sm:h-[430px] sm:w-[430px] rounded-full bg-gradient-to-b from-brand-accent-cyan/15 via-brand-accent-blue/10 to-transparent blur-2xl" />
-            <div className="absolute h-[220px] w-[220px] sm:h-[340px] sm:w-[340px] rounded-full border border-brand-accent-cyan/15 bg-brand-surface-navy/40 shadow-[0_0_80px_rgba(6,182,212,0.12)]" />
-            <div className="absolute h-[255px] w-[255px] sm:h-[380px] sm:w-[380px] rounded-full border border-dashed border-brand-accent-cyan/15 animate-[spin_60s_linear_infinite]" />
+            <div className="absolute h-[220px] w-[220px] sm:h-[340px] sm:w-[340px] rounded-full bg-[#01040f]/75 shadow-[0_0_80px_rgba(6,182,212,0.12)]" />
           </div>
 
           {/* Layer B: Geometric Torii Gate Silhouette */}
@@ -595,4 +594,4 @@ export default function HeroComponent() {
       />
     </section>
   );
-}
+   }
