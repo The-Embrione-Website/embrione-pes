@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { Orbitron } from "next/font/google";
 import {
   Calendar,
   MapPin,
@@ -9,6 +10,12 @@ import {
   Compass,
   Sparkles,
 } from "lucide-react";
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["700", "900"],
+  display: "swap",
+});
 
 const EDICT_SCROLL_ITEMS = [
   {
@@ -100,7 +107,7 @@ export default function HeroComponent() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate overflow-hidden bg-[#02050e] font-sans min-h-screen flex flex-col justify-center text-white pt-24 pb-20 sm:pt-32 sm:pb-28"
+      className="relative isolate overflow-hidden bg-[#02050e] font-sans min-h-[100svh] flex flex-col justify-start text-white pt-28 pb-40 sm:pt-32 sm:pb-48 lg:pt-32"
     >
       {/* Keyframes for Swaying Lanterns, Tassels & Floating Embers */}
       <style jsx>{`
@@ -201,13 +208,14 @@ export default function HeroComponent() {
          ===================================================================== */}
 
       {/* LEFT SIDE FRAME (Eave + Hanging Chōchin Lantern + Vertical Scroll) */}
+      <div className="pointer-events-none absolute left-1 top-[104px] z-0 origin-top-left scale-[0.5] sm:left-6 sm:top-[112px] sm:scale-[0.6] lg:left-10 lg:top-14 lg:scale-100 xl:left-16">
       <div
         aria-hidden="true"
         style={{
           transform: `translate3d(${mouseOffset.x * 14}px, ${scrollY * -0.08 + mouseOffset.y * 10}px, 0)`,
           transition: "transform 300ms ease-out",
         }}
-        className="pointer-events-none absolute left-2 sm:left-6 lg:left-10 xl:left-16 top-16 z-0 flex flex-col items-center select-none will-change-transform"
+        className="flex flex-col items-center select-none will-change-transform"
       >
         {/* Top Wooden/Cyber Eave Bracket (Noki) */}
         <div className="relative flex flex-col items-start">
@@ -271,7 +279,7 @@ export default function HeroComponent() {
         </div>
 
         {/* Left Vertical Hanging Scroll (Kakejiku) — Visible on Desktop to Fill Side Space */}
-        <div className="mt-6 hidden lg:flex flex-col items-center">
+        <div className="mt-6 hidden md:flex flex-col items-center">
           {/* Top Scroll Rod */}
           <div className="h-1 w-12 rounded-full bg-brand-border-hover" />
           {/* Scroll Banner Body */}
@@ -289,15 +297,17 @@ export default function HeroComponent() {
           <div className="h-5 w-px bg-gradient-to-b from-brand-accent-cyan/40 to-transparent" />
         </div>
       </div>
+      </div>
 
       {/* RIGHT SIDE FRAME (Eave + Hanging Chōchin Lantern + Vertical Scroll) */}
+      <div className="pointer-events-none absolute right-1 top-[104px] z-0 origin-top-right scale-[0.5] sm:right-6 sm:top-[112px] sm:scale-[0.6] lg:right-10 lg:top-14 lg:scale-100 xl:right-16">
       <div
         aria-hidden="true"
         style={{
           transform: `translate3d(${mouseOffset.x * -14}px, ${scrollY * -0.08 + mouseOffset.y * -10}px, 0)`,
           transition: "transform 300ms ease-out",
         }}
-        className="pointer-events-none absolute right-2 sm:right-6 lg:right-10 xl:right-16 top-16 z-0 flex flex-col items-center select-none will-change-transform"
+        className="flex flex-col items-center select-none will-change-transform"
       >
         {/* Top Wooden/Cyber Eave Bracket (Noki) */}
         <div className="relative flex flex-col items-end">
@@ -359,7 +369,7 @@ export default function HeroComponent() {
         </div>
 
         {/* Right Vertical Hanging Scroll (Kakejiku) — Visible on Desktop */}
-        <div className="mt-6 hidden lg:flex flex-col items-center">
+        <div className="mt-6 hidden md:flex flex-col items-center">
           <div className="h-1 w-12 rounded-full bg-brand-border-hover" />
           <div className="w-9 border-x border-y border-brand-border-subtle bg-brand-surface-navy/75 py-5 flex flex-col items-center gap-3 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
             <span className="h-1.5 w-1.5 rotate-45 bg-brand-accent-cyan/60" />
@@ -374,13 +384,14 @@ export default function HeroComponent() {
           <div className="h-5 w-px bg-gradient-to-b from-brand-accent-cyan/40 to-transparent" />
         </div>
       </div>
+      </div>
 
       {/* =====================================================================
           5. CENTER PARALLAX: RISING SUN & TORII GATE SILHOUETTE
          ===================================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-8 -z-10 flex justify-center overflow-hidden"
+        className="pointer-events-none absolute inset-x-0 top-12 sm:top-14 lg:top-4 -z-10 flex justify-center overflow-hidden"
       >
         <div className="relative flex items-center justify-center">
           {/* Layer A: Deep Cyber Rising Sun */}
@@ -391,9 +402,8 @@ export default function HeroComponent() {
             }}
             className="relative flex items-center justify-center will-change-transform"
           >
-            <div className="h-[280px] w-[280px] sm:h-[430px] sm:w-[430px] rounded-full bg-gradient-to-b from-brand-accent-cyan/15 via-brand-accent-blue/10 to-transparent blur-2xl" />
-            <div className="absolute h-[220px] w-[220px] sm:h-[340px] sm:w-[340px] rounded-full border border-brand-accent-cyan/15 bg-brand-surface-navy/40 shadow-[0_0_80px_rgba(6,182,212,0.12)]" />
-            <div className="absolute h-[255px] w-[255px] sm:h-[380px] sm:w-[380px] rounded-full border border-dashed border-brand-accent-cyan/15 animate-[spin_60s_linear_infinite]" />
+            <div className="h-[240px] w-[240px] sm:h-[340px] sm:w-[340px] lg:h-[480px] lg:w-[480px] rounded-full bg-gradient-to-b from-brand-accent-cyan/15 via-brand-accent-blue/10 to-transparent blur-2xl" />
+            <div className="absolute h-[190px] w-[190px] sm:h-[270px] sm:w-[270px] lg:h-[390px] lg:w-[390px] rounded-full bg-[#01040f]/75 shadow-[0_0_80px_rgba(6,182,212,0.12)]" />
           </div>
 
           {/* Layer B: Geometric Torii Gate Silhouette */}
@@ -408,7 +418,7 @@ export default function HeroComponent() {
               viewBox="0 0 640 340"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-[340px] sm:w-[560px] md:w-[660px] text-brand-accent-cyan opacity-25"
+              className="w-[300px] sm:w-[460px] md:w-[520px] lg:w-[760px] text-brand-accent-cyan opacity-25"
             >
               {/* Kasagi (Top Curved Lintel) */}
               <path
@@ -449,11 +459,11 @@ export default function HeroComponent() {
       {/* =====================================================================
           6. MAIN FOREGROUND CONTENT & UNIFIED MAKIMONO SCROLL BAR
          ===================================================================== */}
-      <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-4xl lg:max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           {/* Institution Pill + Hanko Seal */}
-          <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-slate-300 uppercase">
+          <div className="mb-5 lg:mb-7 inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-3 sm:px-3.5 lg:px-5 py-1 lg:py-2 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+            <span className="font-mono text-[9px] sm:text-[11px] md:text-xs lg:text-sm tracking-[0.12em] sm:tracking-[0.18em] text-center text-slate-300 uppercase">
               PES UNIVERSITY | DEPARTMENT OF CSE
             </span>
            
@@ -467,7 +477,7 @@ export default function HeroComponent() {
                 transform: `translate3d(calc(-50% + ${mouseOffset.x * -14}px), ${mouseOffset.y * -10}px, 0)`,
                 transition: "transform 250ms ease-out",
               }}
-              className="pointer-events-none absolute -top-7 left-1/2 select-none font-mono text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.25em] text-white/[0.04] whitespace-nowrap will-change-transform"
+              className="pointer-events-none absolute -top-5 left-1/2 select-none font-mono text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-black tracking-[0.25em] text-white/[0.04] whitespace-nowrap will-change-transform"
             >
               武士道・六
             </span>
@@ -477,7 +487,7 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className="tracking-in-expand relative font-display text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white uppercase will-change-transform"
+              className={`tracking-in-expand relative ${orbitron.className} text-4xl md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap font-black tracking-normal text-white uppercase will-change-transform`}
             >
               KODIKON{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">
@@ -487,26 +497,26 @@ export default function HeroComponent() {
           </div>
 
           {/* Katana Horizon & Tsuba Emblem Subtitle */}
-          <div className="mt-5 flex items-center justify-center gap-3 sm:gap-4">
-            <span className="h-px w-8 sm:w-16 bg-gradient-to-r from-transparent to-cyan-400/70" />
-            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <p className="font-mono text-xs sm:text-base md:text-lg uppercase tracking-[0.2em] text-cyan-300">
+          <div className="mt-4 flex w-full items-center justify-center gap-2 sm:gap-3 lg:gap-4">
+            <span className="h-px w-6 sm:w-10 md:w-12 lg:w-16 shrink-0 bg-gradient-to-r from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 shrink-0 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <p className="font-mono text-[10px] sm:text-xs md:text-sm lg:text-lg xl:text-xl uppercase tracking-[0.16em] lg:tracking-[0.2em] text-center leading-relaxed text-cyan-300">
               Tokyo Cyberpunk · 24-Hour National Hackathon
             </p>
-            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <span className="h-px w-8 sm:w-16 bg-gradient-to-l from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 shrink-0 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <span className="h-px w-6 sm:w-10 md:w-12 lg:w-16 shrink-0 bg-gradient-to-l from-transparent to-cyan-400/70" />
           </div>
 
           {/* Description Copy */}
-          <p className="mt-5 max-w-2xl text-sm sm:text-base leading-relaxed font-light text-slate-300">
+          <p className="mt-3 sm:mt-4 lg:mt-6 max-w-xl lg:max-w-2xl xl:max-w-3xl text-[11px] sm:text-sm md:text-[15px] lg:text-lg leading-relaxed font-light text-slate-300">
             Explore four frontier tracks spanning human-machine interfaces, autonomous AI economies, accessible cyber defense, and hardware innovation. Build impactful solutions through intelligent systems, practical engineering, and rapid prototyping.
           </p>
 
           {/* Clean Tokyo Cyberpunk CTAs (No email notification) */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto">
+          <div className="mt-6 lg:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
             <a
               href="#tracks"
-              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 px-7 py-3.5 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
+              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 px-5 lg:px-8 py-[9px] sm:py-2.5 md:py-3 lg:py-3.5 font-mono text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
             >
               <span
                 aria-hidden="true"
@@ -522,7 +532,7 @@ export default function HeroComponent() {
 
             <a
               href="#prizes"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-6 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 lg:px-7 py-[9px] sm:py-2.5 md:py-3 lg:py-3.5 font-mono text-[10px] sm:text-xs md:text-sm lg:text-base font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <Compass
                 size={15}
@@ -533,7 +543,7 @@ export default function HeroComponent() {
 
             <a
               href="#venue"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-5 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 lg:px-6 py-[9px] sm:py-2.5 md:py-3 lg:py-3.5 font-mono text-[10px] sm:text-xs md:text-sm lg:text-base font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <span>Venue Guide</span>
             </a>
@@ -541,7 +551,7 @@ export default function HeroComponent() {
         </div>
 
         {/* Unified "Makimono / Ema" Horizontal Scroll Bar */}
-        <div className="mt-14 sm:mt-16 relative">
+        <div className="mt-10 sm:mt-12 lg:mt-16 relative">
           <div className="relative overflow-hidden rounded-xl border border-cyan-500/30 bg-[#060c1d]/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
             {/* Top subtle cyan horizon gleam */}
             <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
@@ -552,11 +562,11 @@ export default function HeroComponent() {
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex items-center gap-4 p-5 sm:p-6 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
+                    className="group relative flex items-center gap-4 md:gap-3 lg:gap-5 p-4 sm:p-4 md:p-3 lg:p-6 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
                   >
                     {/* Minimal Kanji Seal Stamp Box */}
-                    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-cyan-500/30 bg-[#02050e] text-cyan-300 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
-                      <span className="font-mono text-lg font-bold select-none opacity-90 group-hover:scale-110 transition-transform text-amber-300">
+                    <div className="relative flex h-10 w-10 lg:h-14 lg:w-14 shrink-0 items-center justify-center rounded-lg border border-cyan-500/30 bg-[#02050e] text-cyan-300 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                      <span className="font-mono text-base lg:text-xl font-bold select-none opacity-90 group-hover:scale-110 transition-transform text-amber-300">
                         {item.kanji}
                       </span>
                       <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#060c1d] border border-cyan-500/40 text-cyan-400">
@@ -566,13 +576,13 @@ export default function HeroComponent() {
 
                     {/* Text Details */}
                     <div className="min-w-0 text-left">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
+                      <div className="font-mono text-[9px] lg:text-[11px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
                         {item.label}
                       </div>
-                      <div className="mt-0.5 text-sm sm:text-base font-bold text-white truncate font-mono">
+                      <div className="mt-0.5 text-[11px] sm:text-sm md:text-xs lg:text-base xl:text-lg font-bold leading-snug text-white break-words font-mono">
                         {item.value}
                       </div>
-                      <div className="mt-0.5 text-xs font-light text-slate-400 truncate">
+                      <div className="mt-0.5 text-[11px] lg:text-xs xl:text-sm font-light leading-snug text-slate-400 break-words">
                         {item.subtext}
                       </div>
                     </div>
@@ -591,4 +601,4 @@ export default function HeroComponent() {
       />
     </section>
   );
-}
+   }
