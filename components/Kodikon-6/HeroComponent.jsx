@@ -100,7 +100,7 @@ export default function HeroComponent() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate overflow-hidden bg-[#02050e] font-sans min-h-screen flex flex-col justify-center text-white pt-24 pb-20 sm:pt-32 sm:pb-28"
+      className="relative isolate overflow-hidden bg-[#02050e] font-sans min-h-[100svh] flex flex-col justify-center text-white pt-24 pb-20 sm:pt-32 sm:pb-28"
     >
       {/* Keyframes for Swaying Lanterns, Tassels & Floating Embers */}
       <style jsx>{`
@@ -201,13 +201,14 @@ export default function HeroComponent() {
          ===================================================================== */}
 
       {/* LEFT SIDE FRAME (Eave + Hanging Chōchin Lantern + Vertical Scroll) */}
+      <div className="pointer-events-none absolute left-2 top-4 z-0 origin-top-left scale-50 sm:left-6 sm:top-12 sm:scale-75 lg:left-10 lg:top-16 lg:scale-100 xl:left-16">
       <div
         aria-hidden="true"
         style={{
           transform: `translate3d(${mouseOffset.x * 14}px, ${scrollY * -0.08 + mouseOffset.y * 10}px, 0)`,
           transition: "transform 300ms ease-out",
         }}
-        className="pointer-events-none absolute left-2 sm:left-6 lg:left-10 xl:left-16 top-16 z-0 flex flex-col items-center select-none will-change-transform"
+        className="flex flex-col items-center select-none will-change-transform"
       >
         {/* Top Wooden/Cyber Eave Bracket (Noki) */}
         <div className="relative flex flex-col items-start">
@@ -289,15 +290,17 @@ export default function HeroComponent() {
           <div className="h-5 w-px bg-gradient-to-b from-brand-accent-cyan/40 to-transparent" />
         </div>
       </div>
+      </div>
 
       {/* RIGHT SIDE FRAME (Eave + Hanging Chōchin Lantern + Vertical Scroll) */}
+      <div className="pointer-events-none absolute right-2 top-4 z-0 origin-top-right scale-50 sm:right-6 sm:top-12 sm:scale-75 lg:right-10 lg:top-16 lg:scale-100 xl:right-16">
       <div
         aria-hidden="true"
         style={{
           transform: `translate3d(${mouseOffset.x * -14}px, ${scrollY * -0.08 + mouseOffset.y * -10}px, 0)`,
           transition: "transform 300ms ease-out",
         }}
-        className="pointer-events-none absolute right-2 sm:right-6 lg:right-10 xl:right-16 top-16 z-0 flex flex-col items-center select-none will-change-transform"
+        className="flex flex-col items-center select-none will-change-transform"
       >
         {/* Top Wooden/Cyber Eave Bracket (Noki) */}
         <div className="relative flex flex-col items-end">
@@ -373,6 +376,7 @@ export default function HeroComponent() {
           <div className="h-1.5 w-12 rounded-full bg-brand-border-hover" />
           <div className="h-5 w-px bg-gradient-to-b from-brand-accent-cyan/40 to-transparent" />
         </div>
+      </div>
       </div>
 
       {/* =====================================================================
@@ -452,8 +456,8 @@ export default function HeroComponent() {
       <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center">
           {/* Institution Pill + Hanko Seal */}
-          <div className="mb-7 inline-flex flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span className="font-mono text-[10px] sm:text-xs tracking-[0.2em] text-slate-300 uppercase">
+          <div className="mb-7 inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-3 sm:px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+            <span className="font-mono text-[10px] sm:text-xs tracking-[0.12em] sm:tracking-[0.2em] text-center text-slate-300 uppercase">
               PES UNIVERSITY | DEPARTMENT OF CSE
             </span>
            
@@ -467,7 +471,7 @@ export default function HeroComponent() {
                 transform: `translate3d(calc(-50% + ${mouseOffset.x * -14}px), ${mouseOffset.y * -10}px, 0)`,
                 transition: "transform 250ms ease-out",
               }}
-              className="pointer-events-none absolute -top-7 left-1/2 select-none font-mono text-6xl sm:text-8xl md:text-9xl font-black tracking-[0.25em] text-white/[0.04] whitespace-nowrap will-change-transform"
+              className="pointer-events-none absolute -top-7 left-1/2 select-none font-mono text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-[0.25em] text-white/[0.04] whitespace-nowrap will-change-transform"
             >
               武士道・六
             </span>
@@ -477,7 +481,7 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className="tracking-in-expand relative font-display text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white uppercase will-change-transform"
+              className="tracking-in-expand relative font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl whitespace-nowrap font-black tracking-tight text-white uppercase will-change-transform"
             >
               KODIKON{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">
@@ -487,14 +491,14 @@ export default function HeroComponent() {
           </div>
 
           {/* Katana Horizon & Tsuba Emblem Subtitle */}
-          <div className="mt-5 flex items-center justify-center gap-3 sm:gap-4">
-            <span className="h-px w-8 sm:w-16 bg-gradient-to-r from-transparent to-cyan-400/70" />
-            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <p className="font-mono text-xs sm:text-base md:text-lg uppercase tracking-[0.2em] text-cyan-300">
+          <div className="mt-5 flex w-full items-center justify-center gap-2 sm:gap-3 lg:gap-4">
+            <span className="h-px w-6 sm:w-10 md:w-12 lg:w-16 shrink-0 bg-gradient-to-r from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 shrink-0 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <p className="font-mono text-[10px] sm:text-sm md:text-base lg:text-lg uppercase tracking-[0.12em] sm:tracking-[0.16em] lg:tracking-[0.2em] text-center leading-relaxed text-cyan-300">
               Tokyo Cyberpunk · 24-Hour National Hackathon
             </p>
-            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <span className="h-px w-8 sm:w-16 bg-gradient-to-l from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 shrink-0 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <span className="h-px w-6 sm:w-10 md:w-12 lg:w-16 shrink-0 bg-gradient-to-l from-transparent to-cyan-400/70" />
           </div>
 
           {/* Description Copy */}
@@ -552,7 +556,7 @@ export default function HeroComponent() {
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex items-center gap-4 p-5 sm:p-6 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
+                    className="group relative flex items-center gap-4 md:gap-3 lg:gap-4 p-5 sm:p-6 md:p-4 lg:p-6 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
                   >
                     {/* Minimal Kanji Seal Stamp Box */}
                     <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-cyan-500/30 bg-[#02050e] text-cyan-300 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
@@ -569,10 +573,10 @@ export default function HeroComponent() {
                       <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
                         {item.label}
                       </div>
-                      <div className="mt-0.5 text-sm sm:text-base font-bold text-white truncate font-mono">
+                      <div className="mt-0.5 text-sm sm:text-base md:text-sm lg:text-base font-bold leading-snug text-white break-words font-mono">
                         {item.value}
                       </div>
-                      <div className="mt-0.5 text-xs font-light text-slate-400 truncate">
+                      <div className="mt-0.5 text-xs font-light leading-snug text-slate-400 break-words">
                         {item.subtext}
                       </div>
                     </div>
