@@ -90,7 +90,7 @@ export function EventTimelineComponent() {
     <section
       id="timeline"
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-brand-canvas font-sans text-brand-text-primary pt-20 pb-28 sm:pt-28 sm:pb-36"
+      className="scroll-mt-20 sm:scroll-mt-24 relative isolate overflow-hidden bg-brand-canvas font-sans text-brand-text-primary pt-20 pb-28 sm:pt-28 sm:pb-36"
     >
       {/* 1. Ambient Background Glows */}
       <div

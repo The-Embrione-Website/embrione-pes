@@ -135,7 +135,7 @@ export default function TracksComponent() {
   return (
     <section
       id="tracks"
-      className="relative overflow-hidden bg-[#000514] px-4 border-t border-cyan-400/20 py-16 sm:px-6 sm:py-20 lg:px-8"
+      className="scroll-mt-20 sm:scroll-mt-24 relative overflow-hidden bg-[#000514] px-4 border-t border-cyan-400/20 py-16 sm:px-6 sm:py-20 lg:px-8"
       >
         {/* Top blur fade to soften the grid alignment */}
 <div

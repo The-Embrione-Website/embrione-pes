@@ -10,7 +10,7 @@ export default function SponsorsComponent() {
   return (
     <section
       id="sponsors"
-      className="relative w-full overflow-hidden bg-[#000514] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+      className="scroll-mt-20 sm:scroll-mt-24 relative w-full overflow-hidden bg-[#000514] px-4 py-16 text-white sm:px-6 sm:py-20 lg:px-8 lg:py-24"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.035)_1px,transparent_1px)] bg-[size:48px_48px]" />

@@ -41,7 +41,7 @@ export default function MapComponent() {
     <section
       id="venue"
       aria-labelledby="venue-heading"
-      className="relative isolate overflow-hidden border-t border-cyan-500/20 bg-[#02050e] px-4 py-20 text-white sm:px-6 lg:px-8"
+      className="scroll-mt-20 sm:scroll-mt-24 relative isolate overflow-hidden border-t border-cyan-500/20 bg-[#02050e] px-4 py-20 text-white sm:px-6 lg:px-8"
     >
       {/* Blue glow and subtle grid */}
       <div

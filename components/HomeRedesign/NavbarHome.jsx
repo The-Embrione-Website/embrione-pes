@@ -83,12 +83,14 @@ export default function NavbarHome() {
     event.preventDefault();
     window.history.pushState(null, "", href);
 
+    // Measure only the fixed top navigation bar, excluding any open mobile dropdown drawer
+    const topBar = document.querySelector("header > div");
+    const navbarHeight = topBar
+      ? topBar.getBoundingClientRect().height
+      : (window.innerWidth >= 640 ? 80 : 64);
+
     const sectionTop = window.scrollY + target.getBoundingClientRect().top;
-
-    const navbarHeight =
-      document.querySelector("header")?.getBoundingClientRect().height || 0;
-
-    const top = sectionTop - navbarHeight - 10;
+    const top = sectionTop - navbarHeight - 12;
 
     window.scrollTo({
       top: Math.max(0, top),

@@ -177,7 +177,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative isolate w-full overflow-hidden bg-[#000514] px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28"
+      className="scroll-mt-20 sm:scroll-mt-24 relative isolate w-full overflow-hidden bg-[#000514] px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28"
     >
       {/* Background grid */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(34,211,238,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.035)_1px,transparent_1px)] bg-[size:48px_48px]" />

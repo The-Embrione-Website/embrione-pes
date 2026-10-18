@@ -85,7 +85,7 @@ export default function PrizesComponent() {
   return (
     <section
       id="prizes"
-      className="relative isolate overflow-hidden bg-[#02050e] border-t border-cyan-500/20 font-sans py-24 sm:py-32"
+      className="scroll-mt-20 sm:scroll-mt-24 relative isolate overflow-hidden bg-[#02050e] border-t border-cyan-500/20 font-sans py-24 sm:py-32"
     >
       {/* Background Cyber Ambient Lights - Clean Cyan/Blue palette */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-cyan-500/10 blur-[130px] pointer-events-none -z-10" />
@@ -220,13 +220,6 @@ export default function PrizesComponent() {
                       {prize.amount}
                     </div>
                   </div>
-
-                  <p className="text-xs text-slate-300 font-light leading-relaxed text-center mb-6 min-h-[36px]">
-                    {prize.description}
-                  </p>
-
-                  {/* Perks Checklist */}
-                  
                 </div>
 
                 {/* Physical Podium Pedestal Block */}

@@ -20,11 +20,10 @@
 }
 
 
-/* Keep smooth scrolling global, without adding a second large offset
-   before sections that already have their own top padding. */
+/* Smooth in-page scrolling with fixed navbar height offset */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 0;
+  scroll-padding-top: 5rem;
 }
 
 @media (prefers-color-scheme: dark) {

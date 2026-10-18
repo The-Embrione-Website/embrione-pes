@@ -21,8 +21,6 @@ export const mainPrizes = [
     haloClass: "shadow-[0_0_50px_rgba(6,182,212,0.3)]",
     stepHeight: "h-28 sm:h-36",
     stepLabel: "PODIUM_01 // APEX",
-    description:
-      "Awarded to the grand champions for technical excellence, architectural rigor, and working prototype execution.",
     perks: [
       "₹50,000 Direct Cash Prize",
       "Grand Champion Trophy & Official Citations",
@@ -45,8 +43,6 @@ export const mainPrizes = [
     haloClass: "shadow-[0_0_35px_rgba(6,182,212,0.2)]",
     stepHeight: "h-20 sm:h-28",
     stepLabel: "PODIUM_02 // RUNNER_UP",
-    description:
-      "Recognizing outstanding engineering execution, robust benchmarks, and high-impact problem solving.",
     perks: [
       "₹30,000 Direct Cash Prize",
       "First Runner-Up Trophy & Citations",
@@ -69,8 +65,6 @@ export const mainPrizes = [
     haloClass: "shadow-[0_0_30px_rgba(6,182,212,0.15)]",
     stepHeight: "h-14 sm:h-20",
     stepLabel: "PODIUM_03 // TIER_3",
-    description:
-      "Commendable algorithmic design, innovative feature set, and polished prototype demonstration.",
     perks: [
       "₹20,000 Direct Cash Prize",
       "Second Runner-Up Trophy & Citations",
