@@ -12,7 +12,7 @@ export const Kodikon6FAQData = [
   {
     id: "k6-faq-eligibility",
     q: "Who is eligible to participate in Kodikon 6.0?",
-    a: "Participation is open to all bona fide undergraduate engineering students across accredited universities in India. Teams must consist of 2 to 4 members.",
+    a: "Participation is open to all bona fide undergraduate engineering students across accredited universities in India. Teams must consist of exactly 4 members.",
   },
   {
     id: "k6-faq-qualifications",

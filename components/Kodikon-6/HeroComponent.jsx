@@ -28,9 +28,9 @@ const EDICT_SCROLL_ITEMS = [
   },
   {
     kanji: "隊",
-    label: "Team Composition",
-    value: "2 to 4 Members",
-    subtext: "National undergraduate engineers",
+    label: "Team Size",
+    value: "Exactly 4 Members",
+    subtext: "4 undergraduate engineers per team",
     icon: Users,
   },
 ];
@@ -471,7 +471,7 @@ export default function HeroComponent() {
             <span className="h-px w-6 sm:w-14 bg-gradient-to-r from-transparent to-cyan-400/70" />
             <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
             <p className="font-mono text-[10px] sm:text-sm lg:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-cyan-300">
-              Tokyo Cyberpunk · 24-Hour National Hackathon
+              24-Hour National Hackathon
             </p>
             <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
             <span className="h-px w-6 sm:w-14 bg-gradient-to-l from-transparent to-cyan-400/70" />
@@ -567,7 +567,7 @@ export default function HeroComponent() {
         </div>
       </div>
 
-      {/* Seamless Tokyo Cyberpunk Bottom Blending into Next Section */}
+      {/* Seamless Bottom Blending into Next Section */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent via-[#02050e]/80 to-[#02050e] -z-10"

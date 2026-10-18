@@ -192,7 +192,7 @@ export default function PrizesComponent() {
                     </span>
                   </div>
 
-                  {/* Emblem / Badge (No Image, Sleek Tokyo Cyber Crest) */}
+                  {/* Emblem / Badge (No Image, Sleek Crest Badge) */}
                   <div className="relative my-4 flex flex-col items-center justify-center">
                     {/* Glowing holographic ring */}
                     <div

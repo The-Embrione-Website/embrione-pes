@@ -431,15 +431,6 @@ export default function TeamSection() {
           })}
         </div>
 
-        {/* Counter Header */}
-        <div className="mb-6 flex items-center justify-between text-xs text-slate-400">
-          <span>
-            Showing <strong className="text-white">{visibleMembers.length}</strong>{" "}
-            {visibleMembers.length === 1 ? "profile" : "profiles"}{" "}
-            {selectedDomain !== "All" ? `in ${selectedDomain}` : "in active team"}
-          </span>
-        </div>
-
         {/* Unified Profiles Grid with smooth, instantaneous cross-fade transition */}
         <AnimatePresence mode="wait">
           <motion.div

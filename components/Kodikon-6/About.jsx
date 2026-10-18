@@ -36,14 +36,14 @@ const tracks = [
   },
 ];
 
-function TokyoSkyline() {
+function SkylineIllustration() {
   return (
     <svg
       viewBox="0 0 500 390"
       className="h-full w-full"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Decorative futuristic Tokyo skyline illustration"
+      aria-label="Decorative futuristic skyline illustration"
       role="img"
     >
       <defs>
@@ -51,7 +51,7 @@ function TokyoSkyline() {
           <stop offset="0%" stopColor="#22D3EE" stopOpacity=".9" />
           <stop offset="100%" stopColor="#2563EB" stopOpacity=".15" />
         </linearGradient>
-        <linearGradient id="tokyoSky" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="skylineGrad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#082B48" stopOpacity=".3" />
           <stop offset="100%" stopColor="#020617" stopOpacity=".95" />
         </linearGradient>
@@ -107,7 +107,7 @@ function TokyoSkyline() {
         ))
       )}
 
-      {/* Tokyo tower-inspired centerpiece */}
+      {/* Tower-inspired centerpiece */}
       <path
         d="M250 70L215 275H285L250 70Z"
         fill="url(#towerGlow)"
@@ -167,7 +167,7 @@ function TokyoSkyline() {
         fontSize="10"
         letterSpacing="4"
       >
-        TOKYO // FUTURE SYSTEMS
+        KODIKON // FUTURE SYSTEMS
       </text>
     </svg>
   );
@@ -179,7 +179,7 @@ export default function AboutSection() {
       id="about"
       className="relative isolate w-full overflow-hidden bg-[#000514] px-4 py-20 text-white sm:px-6 sm:py-24 lg:px-8 lg:py-28"
     >
-      {/* Cyberpunk background */}
+      {/* Background grid */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(34,211,238,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.035)_1px,transparent_1px)] bg-[size:48px_48px]" />
 
       <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-96 w-[700px] max-w-full -translate-x-1/2 rounded-full bg-cyan-500/[0.08] blur-[140px]" />
@@ -256,7 +256,7 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Tokyo illustration panel */}
+          {/* Skyline illustration panel */}
           <div className="relative mx-auto w-full max-w-[540px]">
             <div className="absolute inset-10 rounded-full bg-cyan-500/10 blur-[70px]" />
 
@@ -268,12 +268,12 @@ export default function AboutSection() {
                   <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
                 </div>
                 <span className="font-mono text-[9px] tracking-[0.15em] text-slate-500">
-                  TOKYO_NODE // 35.6762° N
+                  PESU_NODE // 12.9344° N
                 </span>
               </div>
 
               <div className="relative aspect-[5/4]">
-                <TokyoSkyline />
+                <SkylineIllustration />
               </div>
 
               <div className="flex items-center justify-between gap-3 border-t border-white/[0.08] px-3 py-3">
