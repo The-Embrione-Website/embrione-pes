@@ -107,7 +107,7 @@ export default function HeroComponent() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative isolate overflow-hidden bg-[#02050e] font-sans min-h-[100svh] flex flex-col justify-start text-white pt-28 pb-40 sm:pt-32 sm:pb-48 lg:pt-32"
+      className="relative isolate overflow-hidden bg-[#02050e] font-sans text-white min-h-[100svh] flex flex-col justify-between pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20"
     >
       {/* Keyframes for Swaying Lanterns, Tassels & Floating Embers */}
       <style jsx>{`
@@ -163,7 +163,7 @@ export default function HeroComponent() {
         className="pointer-events-none absolute inset-0 -z-20"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(0, 113, 227, 0.22) 0%, rgba(6, 182, 212, 0.11) 30%, rgba(0, 81, 180, 0.04) 52%, transparent 75%), linear-gradient(180deg, #000514 0%, #000000 100%)",
+            "radial-gradient(ellipse at 50% 15%, rgba(0, 113, 227, 0.24) 0%, rgba(6, 182, 212, 0.12) 30%, rgba(0, 81, 180, 0.04) 55%, transparent 75%), linear-gradient(180deg, #000514 0%, #000000 100%)",
         }}
       />
       <div
@@ -204,64 +204,58 @@ export default function HeroComponent() {
       </div>
 
       {/* =====================================================================
-          4. LEFT & RIGHT SIDE ARCHITECTURE: HANGING LANTERNS & KAKEJIKU SCROLLS
+          4. LEFT & RIGHT LANTERNS: ANCHORED FLUSH TO TOP/NAVBAR (NEVER DETACH)
          ===================================================================== */}
 
-      {/* LEFT SIDE FRAME (Eave + Hanging Chōchin Lantern + Vertical Scroll) */}
-      <div className="pointer-events-none absolute left-1 top-[104px] z-0 origin-top-left scale-[0.5] sm:left-6 sm:top-[112px] sm:scale-[0.6] lg:left-10 lg:top-14 lg:scale-100 xl:left-16">
+      {/* LEFT SIDE LANTERN & SCROLL */}
       <div
         aria-hidden="true"
         style={{
-          transform: `translate3d(${mouseOffset.x * 14}px, ${scrollY * -0.08 + mouseOffset.y * 10}px, 0)`,
+          transform: `translate3d(${mouseOffset.x * 12}px, ${scrollY * -0.06 + mouseOffset.y * 8}px, 0)`,
           transition: "transform 300ms ease-out",
         }}
-        className="flex flex-col items-center select-none will-change-transform"
+        className="pointer-events-none absolute left-2 sm:left-6 lg:left-10 xl:left-16 top-0 z-0 flex flex-col items-center select-none will-change-transform"
       >
-        {/* Top Wooden/Cyber Eave Bracket (Noki) */}
-        <div className="relative flex flex-col items-start">
-          <div className="h-[2px] w-16 sm:w-28 lg:w-36 bg-gradient-to-r from-brand-accent-cyan/50 via-brand-accent-cyan/30 to-transparent" />
-          <div className="mt-1 h-[1px] w-12 sm:w-20 lg:w-28 bg-gradient-to-r from-brand-border-hover to-transparent" />
+        {/* Continuous Hanging Cord from Navbar */}
+        <div className="h-16 sm:h-20 lg:h-24 w-px bg-gradient-to-b from-cyan-400/80 via-cyan-400/50 to-cyan-400/30" />
+
+        {/* Eave Bracket (Noki) */}
+        <div className="relative flex flex-col items-start -mt-1">
+          <div className="h-[2px] w-12 sm:w-24 lg:w-32 bg-gradient-to-r from-brand-accent-cyan/60 via-brand-accent-cyan/30 to-transparent" />
+          <div className="mt-0.5 h-[1px] w-8 sm:w-16 lg:w-24 bg-gradient-to-r from-brand-border-hover to-transparent" />
         </div>
 
-        {/* Swaying Left Chōchin (Japanese Lantern / Laltain) */}
+        {/* Swaying Left Chōchin */}
         <div
           style={{
             transformOrigin: "top center",
             animation: "swayLeftLantern 5.5s ease-in-out infinite",
           }}
-          className="flex flex-col items-center -mt-0.5"
+          className="flex flex-col items-center mt-1"
         >
-          {/* Hanging Chain / Cord */}
-          <div className="h-8 sm:h-12 w-px bg-gradient-to-b from-brand-accent-cyan/60 to-brand-accent-cyan/30" />
-          {/* Ring Hook */}
-          <div className="h-2 w-2 rounded-full border border-brand-accent-cyan/60" />
-          {/* Top Lantern Rim */}
-          <div className="h-1.5 w-6 sm:w-8 rounded-t-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
+          <div className="h-4 sm:h-6 w-px bg-cyan-400/50" />
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full border border-brand-accent-cyan/60" />
+          <div className="h-1 sm:h-1.5 w-5 sm:w-7 rounded-t-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
 
           {/* Main Chōchin Ribbed Body */}
-          <div className="relative h-16 w-12 sm:h-20 sm:w-14 rounded-2xl border border-brand-accent-cyan/50 bg-brand-surface-navy/90 flex items-center justify-center overflow-hidden shadow-[0_0_35px_rgba(34,211,238,0.22)]">
-            {/* Ambient Inner Warm + Cyan Glow */}
+          <div className="relative h-12 w-9 sm:h-16 sm:w-12 lg:h-20 lg:w-14 rounded-2xl border border-brand-accent-cyan/50 bg-brand-surface-navy/90 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(34,211,238,0.22)]">
             <div
               style={{ animation: "lanternPulse 3.8s ease-in-out infinite" }}
-              className="absolute h-10 w-8 rounded-full bg-gradient-to-b from-brand-accent-cyan/40 via-amber-400/35 to-brand-accent-cyan/30 blur-md"
+              className="absolute h-8 w-6 sm:h-10 sm:w-8 rounded-full bg-gradient-to-b from-brand-accent-cyan/40 via-amber-400/35 to-brand-accent-cyan/30 blur-md"
             />
-            {/* Bamboo Ribs */}
             <div className="absolute inset-x-0 top-1/4 h-px bg-brand-accent-cyan/25" />
             <div className="absolute inset-x-0 top-2/4 h-px bg-brand-accent-cyan/25" />
             <div className="absolute inset-x-0 top-3/4 h-px bg-brand-accent-cyan/25" />
-            {/* Vertical Spine */}
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-brand-accent-cyan/15" />
 
-            {/* Kanji Character ("Create") */}
-            <span className="relative z-10 font-mono text-xs sm:text-sm font-bold text-amber-200 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]">
+            <span className="relative z-10 font-mono text-[10px] sm:text-xs lg:text-sm font-bold text-amber-200 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]">
               創
             </span>
           </div>
 
-          {/* Bottom Lantern Rim */}
-          <div className="h-1.5 w-6 sm:w-8 rounded-b-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
+          <div className="h-1 sm:h-1.5 w-5 sm:w-7 rounded-b-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
 
-          {/* Hanging Tassel */}
+          {/* Tassel */}
           <div
             style={{
               transformOrigin: "top center",
@@ -269,89 +263,80 @@ export default function HeroComponent() {
             }}
             className="flex flex-col items-center"
           >
-            <div className="h-1.5 w-1.5 rounded-full bg-amber-400/70 mt-0.5" />
+            <div className="h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-amber-400/70 mt-0.5" />
             <div className="flex gap-[2px]">
-              <div className="h-6 sm:h-8 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
-              <div className="h-7 sm:h-9 w-px bg-gradient-to-b from-brand-accent-cyan/60 to-transparent" />
-              <div className="h-6 sm:h-8 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
+              <div className="h-4 sm:h-7 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
+              <div className="h-5 sm:h-8 w-px bg-gradient-to-b from-brand-accent-cyan/60 to-transparent" />
+              <div className="h-4 sm:h-7 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
             </div>
           </div>
         </div>
 
-        {/* Left Vertical Hanging Scroll (Kakejiku) — Visible on Desktop to Fill Side Space */}
-        <div className="mt-6 hidden md:flex flex-col items-center">
-          {/* Top Scroll Rod */}
-          <div className="h-1 w-12 rounded-full bg-brand-border-hover" />
-          {/* Scroll Banner Body */}
-          <div className="w-9 border-x border-y border-brand-border-subtle bg-brand-surface-navy/75 py-5 flex flex-col items-center gap-3 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
-            <span className="h-1.5 w-1.5 rotate-45 bg-brand-accent-cyan/60" />
-            <span className="font-mono text-xs tracking-[0.35em] text-brand-text-secondary/70 [writing-mode:vertical-rl]">
-              武士道・技術革新
+        {/* Vertical Scroll (Desktop & Tablet) */}
+        <div className="mt-3 hidden sm:flex flex-col items-center">
+          <div className="h-1 w-8 sm:w-10 rounded-full bg-brand-border-hover" />
+          <div className="w-7 sm:w-8 border-x border-y border-brand-border-subtle bg-brand-surface-navy/75 py-3 sm:py-4 flex flex-col items-center gap-2 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+            <span className="h-1 w-1 sm:h-1.5 sm:w-1.5 rotate-45 bg-brand-accent-cyan/60" />
+            <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.3em] text-brand-text-secondary/70 [writing-mode:vertical-rl]">
+              武士道・技術
             </span>
-            <span className="rounded-sm border border-amber-400/30 bg-amber-500/10 px-1 py-0.5 font-mono text-[8px] text-amber-300">
+            <span className="rounded-sm border border-amber-400/30 bg-amber-500/10 px-0.5 py-0.2 font-mono text-[7px] text-amber-300">
               六
             </span>
           </div>
-          {/* Bottom Scroll Weight Rod */}
-          <div className="h-1.5 w-12 rounded-full bg-brand-border-hover" />
-          <div className="h-5 w-px bg-gradient-to-b from-brand-accent-cyan/40 to-transparent" />
+          <div className="h-1 w-8 sm:w-10 rounded-full bg-brand-border-hover" />
         </div>
       </div>
-      </div>
 
-      {/* RIGHT SIDE FRAME (Eave + Hanging Chōchin Lantern + Vertical Scroll) */}
-      <div className="pointer-events-none absolute right-1 top-[104px] z-0 origin-top-right scale-[0.5] sm:right-6 sm:top-[112px] sm:scale-[0.6] lg:right-10 lg:top-14 lg:scale-100 xl:right-16">
+      {/* RIGHT SIDE LANTERN & SCROLL */}
       <div
         aria-hidden="true"
         style={{
-          transform: `translate3d(${mouseOffset.x * -14}px, ${scrollY * -0.08 + mouseOffset.y * -10}px, 0)`,
+          transform: `translate3d(${mouseOffset.x * -12}px, ${scrollY * -0.06 + mouseOffset.y * -8}px, 0)`,
           transition: "transform 300ms ease-out",
         }}
-        className="flex flex-col items-center select-none will-change-transform"
+        className="pointer-events-none absolute right-2 sm:right-6 lg:right-10 xl:right-16 top-0 z-0 flex flex-col items-center select-none will-change-transform"
       >
-        {/* Top Wooden/Cyber Eave Bracket (Noki) */}
-        <div className="relative flex flex-col items-end">
-          <div className="h-[2px] w-16 sm:w-28 lg:w-36 bg-gradient-to-l from-brand-accent-cyan/50 via-brand-accent-cyan/30 to-transparent" />
-          <div className="mt-1 h-[1px] w-12 sm:w-20 lg:w-28 bg-gradient-to-l from-brand-border-hover to-transparent" />
+        {/* Continuous Hanging Cord from Navbar */}
+        <div className="h-16 sm:h-20 lg:h-24 w-px bg-gradient-to-b from-cyan-400/80 via-cyan-400/50 to-cyan-400/30" />
+
+        {/* Eave Bracket (Noki) */}
+        <div className="relative flex flex-col items-end -mt-1">
+          <div className="h-[2px] w-12 sm:w-24 lg:w-32 bg-gradient-to-l from-brand-accent-cyan/60 via-brand-accent-cyan/30 to-transparent" />
+          <div className="mt-0.5 h-[1px] w-8 sm:w-16 lg:w-24 bg-gradient-to-l from-brand-border-hover to-transparent" />
         </div>
 
-        {/* Swaying Right Chōchin (Japanese Lantern / Laltain) */}
+        {/* Swaying Right Chōchin */}
         <div
           style={{
             transformOrigin: "top center",
             animation: "swayRightLantern 6.2s ease-in-out infinite",
           }}
-          className="flex flex-col items-center -mt-0.5"
+          className="flex flex-col items-center mt-1"
         >
-          {/* Hanging Chain / Cord */}
-          <div className="h-10 sm:h-14 w-px bg-gradient-to-b from-brand-accent-cyan/60 to-brand-accent-cyan/30" />
-          {/* Ring Hook */}
-          <div className="h-2 w-2 rounded-full border border-brand-accent-cyan/60" />
-          {/* Top Lantern Rim */}
-          <div className="h-1.5 w-6 sm:w-8 rounded-t-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
+          <div className="h-4 sm:h-6 w-px bg-cyan-400/50" />
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full border border-brand-accent-cyan/60" />
+          <div className="h-1 sm:h-1.5 w-5 sm:w-7 rounded-t-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
 
           {/* Main Chōchin Ribbed Body */}
-          <div className="relative h-16 w-12 sm:h-20 sm:w-14 rounded-2xl border border-brand-accent-cyan/50 bg-brand-surface-navy/90 flex items-center justify-center overflow-hidden shadow-[0_0_35px_rgba(34,211,238,0.22)]">
+          <div className="relative h-12 w-9 sm:h-16 sm:w-12 lg:h-20 lg:w-14 rounded-2xl border border-brand-accent-cyan/50 bg-brand-surface-navy/90 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(34,211,238,0.22)]">
             <div
               style={{ animation: "lanternPulse 4.2s ease-in-out 1s infinite" }}
-              className="absolute h-10 w-8 rounded-full bg-gradient-to-b from-brand-accent-cyan/40 via-amber-400/35 to-brand-accent-cyan/30 blur-md"
+              className="absolute h-8 w-6 sm:h-10 sm:w-8 rounded-full bg-gradient-to-b from-brand-accent-cyan/40 via-amber-400/35 to-brand-accent-cyan/30 blur-md"
             />
-            {/* Bamboo Ribs */}
             <div className="absolute inset-x-0 top-1/4 h-px bg-brand-accent-cyan/25" />
             <div className="absolute inset-x-0 top-2/4 h-px bg-brand-accent-cyan/25" />
             <div className="absolute inset-x-0 top-3/4 h-px bg-brand-accent-cyan/25" />
             <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-brand-accent-cyan/15" />
 
-            {/* Kanji Character ("Craft / Skill") */}
-            <span className="relative z-10 font-mono text-xs sm:text-sm font-bold text-amber-200 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]">
+            <span className="relative z-10 font-mono text-[10px] sm:text-xs lg:text-sm font-bold text-amber-200 drop-shadow-[0_0_8px_rgba(251,191,36,0.8)]">
               技
             </span>
           </div>
 
-          {/* Bottom Lantern Rim */}
-          <div className="h-1.5 w-6 sm:w-8 rounded-b-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
+          <div className="h-1 sm:h-1.5 w-5 sm:w-7 rounded-b-sm bg-brand-surface-navy border border-brand-accent-cyan/50" />
 
-          {/* Hanging Tassel */}
+          {/* Tassel */}
           <div
             style={{
               transformOrigin: "top center",
@@ -359,114 +344,105 @@ export default function HeroComponent() {
             }}
             className="flex flex-col items-center"
           >
-            <div className="h-1.5 w-1.5 rounded-full bg-amber-400/70 mt-0.5" />
+            <div className="h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-amber-400/70 mt-0.5" />
             <div className="flex gap-[2px]">
-              <div className="h-6 sm:h-8 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
-              <div className="h-7 sm:h-9 w-px bg-gradient-to-b from-brand-accent-cyan/60 to-transparent" />
-              <div className="h-6 sm:h-8 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
+              <div className="h-4 sm:h-7 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
+              <div className="h-5 sm:h-8 w-px bg-gradient-to-b from-brand-accent-cyan/60 to-transparent" />
+              <div className="h-4 sm:h-7 w-px bg-gradient-to-b from-amber-400/60 to-transparent" />
             </div>
           </div>
         </div>
 
-        {/* Right Vertical Hanging Scroll (Kakejiku) — Visible on Desktop */}
-        <div className="mt-6 hidden md:flex flex-col items-center">
-          <div className="h-1 w-12 rounded-full bg-brand-border-hover" />
-          <div className="w-9 border-x border-y border-brand-border-subtle bg-brand-surface-navy/75 py-5 flex flex-col items-center gap-3 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
-            <span className="h-1.5 w-1.5 rotate-45 bg-brand-accent-cyan/60" />
-            <span className="font-mono text-xs tracking-[0.35em] text-brand-text-secondary/70 [writing-mode:vertical-rl]">
-              電脳戦・弐拾四時間
+        {/* Vertical Scroll (Desktop & Tablet) */}
+        <div className="mt-3 hidden sm:flex flex-col items-center">
+          <div className="h-1 w-8 sm:w-10 rounded-full bg-brand-border-hover" />
+          <div className="w-7 sm:w-8 border-x border-y border-brand-border-subtle bg-brand-surface-navy/75 py-3 sm:py-4 flex flex-col items-center gap-2 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+            <span className="h-1 w-1 sm:h-1.5 sm:w-1.5 rotate-45 bg-brand-accent-cyan/60" />
+            <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.3em] text-brand-text-secondary/70 [writing-mode:vertical-rl]">
+              電脳・陣地
             </span>
-            <span className="rounded-sm border border-amber-400/30 bg-amber-500/10 px-1 py-0.5 font-mono text-[8px] text-amber-300">
+            <span className="rounded-sm border border-amber-400/30 bg-amber-500/10 px-0.5 py-0.2 font-mono text-[7px] text-amber-300">
               陣
             </span>
           </div>
-          <div className="h-1.5 w-12 rounded-full bg-brand-border-hover" />
-          <div className="h-5 w-px bg-gradient-to-b from-brand-accent-cyan/40 to-transparent" />
+          <div className="h-1 w-8 sm:w-10 rounded-full bg-brand-border-hover" />
         </div>
-      </div>
       </div>
 
       {/* =====================================================================
-          5. CENTER PARALLAX: RISING SUN & TORII GATE SILHOUETTE
+          5. MAIN CONTENT BLOCK (CENTERED & PROPORTIONALLY DISTRIBUTED)
          ===================================================================== */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-12 sm:top-14 lg:top-4 -z-10 flex justify-center overflow-hidden"
-      >
-        <div className="relative flex items-center justify-center">
-          {/* Layer A: Deep Cyber Rising Sun */}
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex-1 flex flex-col justify-center my-auto">
+        <div className="relative flex flex-col items-center text-center">
+          
+          {/* CENTER PARALLAX: RISING SUN & TORII GATE SILHOUETTE */}
           <div
-            style={{
-              transform: `translate3d(${mouseOffset.x * -16}px, ${scrollY * 0.15 + mouseOffset.y * -16}px, 0)`,
-              transition: "transform 400ms cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-            className="relative flex items-center justify-center will-change-transform"
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[52%] -z-10 flex items-center justify-center"
           >
-            <div className="h-[240px] w-[240px] sm:h-[340px] sm:w-[340px] lg:h-[480px] lg:w-[480px] rounded-full bg-gradient-to-b from-brand-accent-cyan/15 via-brand-accent-blue/10 to-transparent blur-2xl" />
-            <div className="absolute h-[190px] w-[190px] sm:h-[270px] sm:w-[270px] lg:h-[390px] lg:w-[390px] rounded-full bg-[#01040f]/75 shadow-[0_0_80px_rgba(6,182,212,0.12)]" />
-          </div>
-
-          {/* Layer B: Geometric Torii Gate Silhouette */}
-          <div
-            style={{
-              transform: `translate3d(${mouseOffset.x * 22}px, ${scrollY * 0.08 + mouseOffset.y * 16}px, 0)`,
-              transition: "transform 260ms cubic-bezier(0.16, 1, 0.3, 1)",
-            }}
-            className="absolute flex items-center justify-center will-change-transform"
-          >
-            <svg
-              viewBox="0 0 640 340"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-[300px] sm:w-[460px] md:w-[520px] lg:w-[760px] text-brand-accent-cyan opacity-25"
+            {/* Deep Cyber Rising Sun */}
+            <div
+              style={{
+                transform: `translate3d(${mouseOffset.x * -16}px, ${scrollY * 0.12 + mouseOffset.y * -16}px, 0)`,
+                transition: "transform 400ms cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+              className="relative flex items-center justify-center will-change-transform"
             >
-              {/* Kasagi (Top Curved Lintel) */}
-              <path
-                d="M40 60 C190 88, 450 88, 600 60 L584 82 C440 102, 200 102, 56 82 Z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                fill="rgba(6,182,212,0.06)"
-              />
-              {/* Nuki (Secondary Crossbeam) */}
-              <rect
-                x="95"
-                y="120"
-                width="450"
-                height="13"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                fill="rgba(0,113,227,0.05)"
-              />
-              {/* Center Tablet */}
-              <rect
-                x="302"
-                y="85"
-                width="36"
-                height="35"
-                stroke="currentColor"
-                strokeWidth="1.2"
-              />
-              {/* Left & Right Pillars */}
-              <line x1="160" y1="86" x2="145" y2="320" stroke="currentColor" strokeWidth="2" />
-              <line x1="178" y1="86" x2="165" y2="320" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-              <line x1="480" y1="86" x2="495" y2="320" stroke="currentColor" strokeWidth="2" />
-              <line x1="462" y1="86" x2="475" y2="320" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
-            </svg>
-          </div>
-        </div>
-      </div>
+              <div className="h-[260px] w-[260px] sm:h-[380px] sm:w-[380px] lg:h-[450px] lg:w-[450px] rounded-full bg-gradient-to-b from-cyan-500/15 via-blue-600/10 to-transparent blur-2xl" />
+              <div className="absolute h-[200px] w-[200px] sm:h-[300px] sm:w-[300px] lg:h-[360px] lg:w-[360px] rounded-full border border-cyan-400/20 bg-[#02050e]/60 shadow-[0_0_80px_rgba(6,182,212,0.15)]" />
+              <div className="absolute h-[230px] w-[230px] sm:h-[340px] sm:w-[340px] lg:h-[400px] lg:w-[400px] rounded-full border border-dashed border-cyan-400/20 animate-[spin_60s_linear_infinite]" />
+            </div>
 
-      {/* =====================================================================
-          6. MAIN FOREGROUND CONTENT & UNIFIED MAKIMONO SCROLL BAR
-         ===================================================================== */}
-      <div className="relative z-10 mx-auto max-w-4xl lg:max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          {/* Institution Pill + Hanko Seal */}
-          <div className="mb-5 lg:mb-7 inline-flex max-w-full flex-wrap items-center justify-center gap-2.5 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-3 sm:px-3.5 lg:px-5 py-1 lg:py-2 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span className="font-mono text-[9px] sm:text-[11px] md:text-xs lg:text-sm tracking-[0.12em] sm:tracking-[0.18em] text-center text-slate-300 uppercase">
+            {/* Geometric Torii Gate Silhouette */}
+            <div
+              style={{
+                transform: `translate3d(${mouseOffset.x * 22}px, ${scrollY * 0.06 + mouseOffset.y * 16}px, 0)`,
+                transition: "transform 260ms cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+              className="absolute flex items-center justify-center will-change-transform"
+            >
+              <svg
+                viewBox="0 0 640 340"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-[320px] sm:w-[500px] md:w-[620px] lg:w-[720px] text-brand-accent-cyan opacity-25"
+              >
+                <path
+                  d="M40 60 C190 88, 450 88, 600 60 L584 82 C440 102, 200 102, 56 82 Z"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  fill="rgba(6,182,212,0.06)"
+                />
+                <rect
+                  x="95"
+                  y="120"
+                  width="450"
+                  height="13"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  fill="rgba(0,113,227,0.05)"
+                />
+                <rect
+                  x="302"
+                  y="85"
+                  width="36"
+                  height="35"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                />
+                <line x1="160" y1="86" x2="145" y2="320" stroke="currentColor" strokeWidth="2" />
+                <line x1="178" y1="86" x2="165" y2="320" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+                <line x1="480" y1="86" x2="495" y2="320" stroke="currentColor" strokeWidth="2" />
+                <line x1="462" y1="86" x2="475" y2="320" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Institution Pill */}
+          <div className="mb-5 sm:mb-6 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-3.5 sm:px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+            <span className="font-mono text-[9px] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-slate-300 uppercase">
               PES UNIVERSITY | DEPARTMENT OF CSE
             </span>
-           
           </div>
 
           {/* Watermark Kanji + Hero Title */}
@@ -477,7 +453,7 @@ export default function HeroComponent() {
                 transform: `translate3d(calc(-50% + ${mouseOffset.x * -14}px), ${mouseOffset.y * -10}px, 0)`,
                 transition: "transform 250ms ease-out",
               }}
-              className="pointer-events-none absolute -top-5 left-1/2 select-none font-mono text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-black tracking-[0.25em] text-white/[0.04] whitespace-nowrap will-change-transform"
+              className="pointer-events-none absolute -top-5 sm:-top-7 left-1/2 select-none font-mono text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-[0.22em] text-white/[0.04] whitespace-nowrap will-change-transform"
             >
               武士道・六
             </span>
@@ -487,7 +463,7 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className={`tracking-in-expand relative ${orbitron.className} text-4xl md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap font-black tracking-normal text-white uppercase will-change-transform`}
+              className={`tracking-in-expand relative ${orbitron.className} text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase will-change-transform`}
             >
               KODIKON{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">
@@ -496,27 +472,27 @@ export default function HeroComponent() {
             </h1>
           </div>
 
-          {/* Katana Horizon & Tsuba Emblem Subtitle */}
-          <div className="mt-4 flex w-full items-center justify-center gap-2 sm:gap-3 lg:gap-4">
-            <span className="h-px w-6 sm:w-10 md:w-12 lg:w-16 shrink-0 bg-gradient-to-r from-transparent to-cyan-400/70" />
-            <span className="h-1.5 w-1.5 shrink-0 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <p className="font-mono text-[10px] sm:text-xs md:text-sm lg:text-lg xl:text-xl uppercase tracking-[0.16em] lg:tracking-[0.2em] text-center leading-relaxed text-cyan-300">
+          {/* Katana Horizon Subtitle */}
+          <div className="mt-4 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-4">
+            <span className="h-px w-6 sm:w-14 bg-gradient-to-r from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <p className="font-mono text-[10px] sm:text-sm lg:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-cyan-300">
               Tokyo Cyberpunk · 24-Hour National Hackathon
             </p>
-            <span className="h-1.5 w-1.5 shrink-0 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <span className="h-px w-6 sm:w-10 md:w-12 lg:w-16 shrink-0 bg-gradient-to-l from-transparent to-cyan-400/70" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
+            <span className="h-px w-6 sm:w-14 bg-gradient-to-l from-transparent to-cyan-400/70" />
           </div>
 
           {/* Description Copy */}
-          <p className="mt-3 sm:mt-4 lg:mt-6 max-w-xl lg:max-w-2xl xl:max-w-3xl text-[11px] sm:text-sm md:text-[15px] lg:text-lg leading-relaxed font-light text-slate-300">
+          <p className="mt-4 sm:mt-5 max-w-xl sm:max-w-2xl text-xs sm:text-sm lg:text-base leading-relaxed font-light text-slate-300 px-2 sm:px-0">
             Explore four frontier tracks spanning human-machine interfaces, autonomous AI economies, accessible cyber defense, and hardware innovation. Build impactful solutions through intelligent systems, practical engineering, and rapid prototyping.
           </p>
 
-          {/* Clean Tokyo Cyberpunk CTAs (No email notification) */}
-          <div className="mt-6 lg:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
+          {/* Action CTAs */}
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
             <a
               href="#tracks"
-              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 px-5 lg:px-8 py-[9px] sm:py-2.5 md:py-3 lg:py-3.5 font-mono text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
+              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 px-6 sm:px-7 py-3 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
             >
               <span
                 aria-hidden="true"
@@ -532,7 +508,7 @@ export default function HeroComponent() {
 
             <a
               href="#prizes"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 lg:px-7 py-[9px] sm:py-2.5 md:py-3 lg:py-3.5 font-mono text-[10px] sm:text-xs md:text-sm lg:text-base font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 sm:px-6 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <Compass
                 size={15}
@@ -543,17 +519,18 @@ export default function HeroComponent() {
 
             <a
               href="#venue"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 lg:px-6 py-[9px] sm:py-2.5 md:py-3 lg:py-3.5 font-mono text-[10px] sm:text-xs md:text-sm lg:text-base font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <span>Venue Guide</span>
             </a>
           </div>
         </div>
 
-        {/* Unified "Makimono / Ema" Horizontal Scroll Bar */}
-        <div className="mt-10 sm:mt-12 lg:mt-16 relative">
+        {/* ===================================================================
+            6. UNIFIED MAKIMONO HORIZONTAL SCROLL BAR
+           =================================================================== */}
+        <div className="mt-8 sm:mt-12 lg:mt-14 w-full relative px-2 sm:px-0">
           <div className="relative overflow-hidden rounded-xl border border-cyan-500/30 bg-[#060c1d]/90 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
-            {/* Top subtle cyan horizon gleam */}
             <div className="absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
 
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-cyan-500/20">
@@ -562,27 +539,25 @@ export default function HeroComponent() {
                 return (
                   <div
                     key={item.label}
-                    className="group relative flex items-center gap-4 md:gap-3 lg:gap-5 p-4 sm:p-4 md:p-3 lg:p-6 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
+                    className="group relative flex items-center gap-3.5 sm:gap-4 p-4 sm:p-5 transition-colors duration-300 hover:bg-cyan-500/[0.04]"
                   >
-                    {/* Minimal Kanji Seal Stamp Box */}
-                    <div className="relative flex h-10 w-10 lg:h-14 lg:w-14 shrink-0 items-center justify-center rounded-lg border border-cyan-500/30 bg-[#02050e] text-cyan-300 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
-                      <span className="font-mono text-base lg:text-xl font-bold select-none opacity-90 group-hover:scale-110 transition-transform text-amber-300">
+                    <div className="relative flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-lg border border-cyan-500/30 bg-[#02050e] text-cyan-300 transition-all duration-300 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+                      <span className="font-mono text-base sm:text-lg font-bold select-none opacity-90 group-hover:scale-110 transition-transform text-amber-300">
                         {item.kanji}
                       </span>
-                      <span className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#060c1d] border border-cyan-500/40 text-cyan-400">
-                        <Icon size={9} />
+                      <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5 sm:h-4 sm:w-4 items-center justify-center rounded-full bg-[#060c1d] border border-cyan-500/40 text-cyan-400">
+                        <Icon size={8} />
                       </span>
                     </div>
 
-                    {/* Text Details */}
                     <div className="min-w-0 text-left">
-                      <div className="font-mono text-[9px] lg:text-[11px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
+                      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
                         {item.label}
                       </div>
-                      <div className="mt-0.5 text-[11px] sm:text-sm md:text-xs lg:text-base xl:text-lg font-bold leading-snug text-white break-words font-mono">
+                      <div className="mt-0.5 text-xs sm:text-sm lg:text-base font-bold text-white truncate font-mono">
                         {item.value}
                       </div>
-                      <div className="mt-0.5 text-[11px] lg:text-xs xl:text-sm font-light leading-snug text-slate-400 break-words">
+                      <div className="mt-0.5 text-[11px] sm:text-xs font-light text-slate-400 truncate">
                         {item.subtext}
                       </div>
                     </div>
@@ -594,11 +569,11 @@ export default function HeroComponent() {
         </div>
       </div>
 
-      {/* Seamless Tokyo Cyberpunk Bottom Blending into Tracks Section */}
+      {/* Seamless Tokyo Cyberpunk Bottom Blending into Next Section */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 inset-x-0 h-32 bg-gradient-to-b from-transparent via-[#02050e]/80 to-[#02050e] -z-10"
+        className="pointer-events-none absolute bottom-0 inset-x-0 h-28 bg-gradient-to-b from-transparent via-[#02050e]/80 to-[#02050e] -z-10"
       />
     </section>
   );
-   }
+}
