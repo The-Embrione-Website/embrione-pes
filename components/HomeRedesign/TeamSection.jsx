@@ -22,9 +22,8 @@ import {
 } from "lucide-react";
 import teamMembers from "./teamData";
 import { teamMembersDetails } from "./constants.js";
-import { pastHeads2024 } from "./pastHeadsData.js";
 
-const years = ["2026", "2025", "2024"];
+const years = ["2026", "2025"];
 
 // Domain hierarchy ranking:
 // club head -> web dev -> evm -> operations -> logs -> spons -> design -> hospi -> campaining -> smve
@@ -147,11 +146,7 @@ function normalizeMember(member, year) {
     featured: Boolean(member.featured) || domain === "Club Head",
     term:
       member.term ||
-      (year === "2026"
-        ? "2025–2026"
-        : year === "2025"
-        ? "2024–2025"
-        : "2023–2024"),
+      (year === "2026" ? "2025–2026" : "2024–2025"),
   };
 }
 
@@ -283,7 +278,6 @@ export default function TeamSection() {
     () => ({
       2026: teamMembers.map((m) => normalizeMember(m, "2026")),
       2025: teamMembersDetails.map((m) => normalizeMember(m, "2025")),
-      2024: pastHeads2024.map((m) => normalizeMember(m, "2024")),
     }),
     []
   );
