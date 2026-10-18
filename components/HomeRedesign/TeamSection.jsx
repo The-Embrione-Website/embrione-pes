@@ -22,19 +22,20 @@ import {
 } from "lucide-react";
 import teamMembers from "./teamData";
 import { teamMembersDetails } from "./constants.js";
+import { pastHeads2024, pastHeads2023 } from "./pastHeadsData.js";
 
-const years = ["2026", "2025"];
+const years = ["2026", "2025", "2024", "2023"];
 
 // Domain hierarchy ranking:
 // club head -> web dev -> evm -> operations -> logs -> spons -> design -> hospi -> campaining -> smve
 function getDomainRank(domain) {
   const d = (domain || "").toLowerCase().trim();
-  if (d.includes("club head") || d.includes("leadership") || d.includes("mentor")) return 1;
+  if (d.includes("club head") || d.includes("leadership") || d.includes("mentor") || d.includes("founder")) return 1;
   if (d.includes("web") || d.includes("dev")) return 2;
   if (d.includes("event") || d.includes("evm")) return 3;
   if (d.includes("operation")) return 4;
   if (d.includes("logistic") || d.includes("logs")) return 5;
-  if (d.includes("sponsor") || d.includes("spons")) return 6;
+  if (d.includes("sponsor") || d.includes("spons") || d.includes("market")) return 6;
   if (d.includes("design")) return 7;
   if (d.includes("hospit") || d.includes("hospi")) return 8;
   if (d.includes("campaign") || d.includes("campain")) return 9;
@@ -130,11 +131,27 @@ function normalizeMember(member, year) {
   const rawLinkedIn = member.linkedin ?? member.linkedinUrl ?? "";
   const rawGithub = member.github ?? member.githubUrl ?? "";
 
-  const validUrl = (url) =>
-    typeof url === "string" && /^https?:\/\//i.test(url) ? url : null;
+  const validUrl = (url) => {
+    if (!url || typeof url !== "string") return null;
+    const trimmed = url.trim();
+    if (trimmed === "" || trimmed === "www" || trimmed === "goto-linkedin") return null;
+    if (/^https?:\/\//i.test(trimmed)) return trimmed;
+    if (/^www\./i.test(trimmed)) return `https://${trimmed}`;
+    if (/^[a-z0-9]+\.[a-z]{2,}/i.test(trimmed)) return `https://${trimmed}`;
+    return null;
+  };
 
   const domain = canonicalizeDomain(member.domain);
   const role = canonicalizeRole(member.role);
+
+  const defaultTerm =
+    year === "2026"
+      ? "2025–2026"
+      : year === "2025"
+      ? "2024–2025"
+      : year === "2024"
+      ? "2023–2024"
+      : "2022–2023";
 
   return {
     name: member.name,
@@ -144,9 +161,7 @@ function normalizeMember(member, year) {
     linkedin: validUrl(rawLinkedIn),
     github: validUrl(rawGithub),
     featured: Boolean(member.featured) || domain === "Club Head",
-    term:
-      member.term ||
-      (year === "2026" ? "2025–2026" : "2024–2025"),
+    term: member.term || defaultTerm,
   };
 }
 
@@ -278,6 +293,8 @@ export default function TeamSection() {
     () => ({
       2026: teamMembers.map((m) => normalizeMember(m, "2026")),
       2025: teamMembersDetails.map((m) => normalizeMember(m, "2025")),
+      2024: pastHeads2024.map((m) => normalizeMember(m, "2024")),
+      2023: pastHeads2023.map((m) => normalizeMember(m, "2023")),
     }),
     []
   );
