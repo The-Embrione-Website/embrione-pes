@@ -128,16 +128,16 @@ export default function HeroSection() {
   variants={itemVariants}
   className="mb-7 flex flex-col items-center gap-3"
 >
- <div className="relative w-34 h-16 sm:w-48 sm:h-[106px]">
-  <Image
-    src={pesLogo}
-    alt="PES University"
-    fill
-    priority
-    sizes="112px"
-    className="object-contain"
-  />
-</div>
+  <div className="relative w-36 h-20 sm:w-48 sm:h-[106px]">
+    <Image
+      src={pesLogo}
+      alt="PES University"
+      fill
+      priority
+      sizes="(max-width: 640px) 144px, 192px"
+      className="object-contain"
+    />
+  </div>
 
   <span className="text-[11px] sm:text-xs tracking-[0.18em] uppercase font-medium text-slate-300">
     PES University | Department of CSE
