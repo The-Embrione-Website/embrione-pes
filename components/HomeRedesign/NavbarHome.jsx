@@ -7,12 +7,21 @@ import { usePathname } from "next/navigation";
 import { ChevronRight, Menu, X } from "lucide-react";
 import embrioneLogo from "@/public/embrionelogo.webp";
 
-const navLinks = [
+const homeNavLinks = [
   { label: "About", href: "#about" },
   { label: "Past Events", href: "#events" },
   { label: "Team", href: "#team" },
   { label: "Partners", href: "#partners" },
   { label: "Contact", href: "#contact" },
+];
+
+const kodikonNavLinks = [
+  { label: "About", href: "#about" },
+  { label: "Tracks", href: "#tracks" },
+  { label: "Timeline", href: "#timeline" },
+  { label: "Prizes", href: "#prizes" },
+  { label: "Partners", href: "#sponsors" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function NavbarHome() {
@@ -23,8 +32,9 @@ export default function NavbarHome() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const ctaHref = isKodikonPage ? "#tracks" : "/kodikon-6";
-  const ctaLabel = isKodikonPage ? "See Tracks" : "Kodikon 6.0";
+  const currentNavLinks = isKodikonPage ? kodikonNavLinks : homeNavLinks;
+  const ctaHref = isKodikonPage ? "#timeline" : "/kodikon-6";
+  const ctaLabel = isKodikonPage ? "Timeline" : "Kodikon 6.0";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 15);
@@ -46,8 +56,12 @@ export default function NavbarHome() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Homepage section links work from every route.
+  // Homepage and Kodikon section links work from every route.
   const getLinkHref = (href) => {
+    if (isKodikonPage) {
+      return href;
+    }
+
     if (href.startsWith("#") && !isHome) {
       return `/${href}`;
     }
@@ -127,7 +141,7 @@ export default function NavbarHome() {
           aria-label="Main navigation"
           className="hidden lg:flex items-center gap-5 xl:gap-7"
         >
-          {navLinks.map((link) => {
+          {currentNavLinks.map((link) => {
             const href = getLinkHref(link.href);
 
             return (
@@ -176,7 +190,7 @@ export default function NavbarHome() {
           className="lg:hidden mt-3 bg-[#030712]/95 backdrop-blur-2xl border-t border-b border-white/10 px-4 sm:px-6 py-4 space-y-3 max-h-[calc(100dvh-75px)] overflow-y-auto"
         >
           <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
-            {navLinks.map((link) => {
+            {currentNavLinks.map((link) => {
               const href = getLinkHref(link.href);
 
               return (

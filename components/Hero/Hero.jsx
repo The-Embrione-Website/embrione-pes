@@ -15,10 +15,9 @@ const Hero = () => {
   const [isBigScreen, setIsBigScreen] = useState(true);
   useEffect(() => {
     if (window.innerWidth < 1024) {
-      console.log("Big Screen");
       setIsBigScreen(false);
     }
-  });
+  }, []);
   // const { scrollYProgress, scrollY } = useScroll();
   // const scale = useTransform(scrollYProgress, [1, 0], [0.01, 1]);
   // const scrollRef = useRef(null);

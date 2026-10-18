@@ -13,10 +13,10 @@ import {
 
 const EDICT_SCROLL_ITEMS = [
   {
-    kanji: "時",
-    label: "Duration",
-    value: "24 Hours Overnight",
-    subtext: "Continuous in-person sprint",
+    kanji: "日",
+    label: "Hackathon Dates",
+    value: "31st Oct – 1st Nov",
+    subtext: "Registrations: 19th – 23rd Oct",
     icon: Calendar,
   },
   {
@@ -29,8 +29,8 @@ const EDICT_SCROLL_ITEMS = [
   {
     kanji: "隊",
     label: "Team Composition",
-    value: "Four Members",
-    subtext: "Undergraduate engineers",
+    value: "2 to 4 Members",
+    subtext: "National undergraduate engineers",
     icon: Users,
   },
 ];
@@ -501,21 +501,25 @@ export default function HeroComponent() {
             </a>
 
             <a
-              href="#prizes"
+              href="#timeline"
               className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 sm:px-6 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <Calendar
+                size={15}
+                className="text-cyan-400 transition-transform duration-300 group-hover:scale-110"
+              />
+              <span>Timeline &amp; Schedule</span>
+            </a>
+
+            <a
+              href="#prizes"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <Compass
                 size={15}
                 className="text-cyan-400 transition-transform duration-500 group-hover:rotate-45"
               />
               <span>Prize Vault</span>
-            </a>
-
-            <a
-              href="#venue"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <span>Venue Guide</span>
             </a>
           </div>
         </div>

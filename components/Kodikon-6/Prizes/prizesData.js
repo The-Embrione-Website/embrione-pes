@@ -1,8 +1,8 @@
 export const prizePoolSummary = {
   totalPool: "₹1,00,000",
-  poolLabel: "Total Cash Bounty Pool + Goodies",
+  poolLabel: "Total Cash Bounty Pool",
   telemetry: "SYS_REWARDS // VERIFIED_ESCROW",
-  highlight: "₹1 Lakh direct cash pool for the top 3 winners, plus exclusive developer goodies & swag kits for all top 10 finalists.",
+  highlight: "₹1,00,000 cash prize pool for the top 3 winners. Top 10 teams (including the top 3) will be receiving goodies.",
 };
 
 export const mainPrizes = [
@@ -80,27 +80,5 @@ export const mainPrizes = [
   },
 ];
 
-export const top10Goodies = {
-  badge: "// ALL TOP 10 TEAMS // 「上位十組」",
-  title: "Goodies & Swag Kit For Top 10 Teams",
-  subtitle:
-    "Every team ranking in the Top 10 (including 1st, 2nd, and 3rd place winners) is awarded exclusive Kodikon 6.0 merchandise, partner perks, and honors.",
-  perks: [
-    {
-      title: "Exclusive Kodikon 6.0 Merchandise",
-      desc: "Limited-edition Tokyo Cyberpunk hoodies/tees, stickers, and NFC badges.",
-    },
-    {
-      title: "Curated Sponsor Goodies & Perks",
-      desc: "Developer cloud credits, premium tooling subscriptions, and sponsor gifts.",
-    },
-    {
-      title: "Official Merit Citations",
-      desc: "Recognized certificates endorsed by The Embrione & Dept. of CSE, PES University.",
-    },
-    {
-      title: "Fast-Track Mentorship & Incubation",
-      desc: "Direct access to PESU innovation mentors, faculty testbeds, and peer network.",
-    },
-  ],
-};
+export const top10GoodiesNote =
+  "Top 10 teams (including the top 3) will be receiving goodies.";

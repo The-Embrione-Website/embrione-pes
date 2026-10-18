@@ -1,10 +1,8 @@
-
 "use client";
 
 import Image from "next/image";
 import {
   sponsorsHeader,
-  titleSponsor,
   platformPartners,
 } from "./sponsorsData";
 
@@ -30,7 +28,7 @@ export default function SponsorsComponent() {
           </div>
 
           <h2 className="text-3xl font-black tracking-tight sm:text-5xl md:text-6xl">
-            Sponsors &{" "}
+            Platform &amp;{" "}
             <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">
               Industry Partners
             </span>
@@ -41,122 +39,11 @@ export default function SponsorsComponent() {
           </p>
         </header>
 
-        {/* Title Sponsor heading */}
+        {/* Platform Partners Heading */}
         <div className="mb-5 flex items-center gap-3">
           <span className="h-px w-8 shrink-0 bg-cyan-400" />
           <p className="font-mono text-xs uppercase tracking-[0.22em] text-cyan-300">
-            {titleSponsor.tier}
-          </p>
-        </div>
-
-        {/* Featured Title Sponsor */}
-        <article className="group relative mb-14 w-full overflow-hidden rounded-3xl border border-cyan-400/30 bg-[#050d20] shadow-[0_0_60px_rgba(6,182,212,0.07)] transition duration-500 hover:border-cyan-300/60 sm:mb-20">
-          <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px]" />
-
-          <div className="pointer-events-none absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
-
-          <div className="relative grid grid-cols-1 lg:grid-cols-[0.85fr_1.5fr]">
-            {/* Logo */}
-            <div className="relative flex min-h-[260px] flex-col items-center justify-center border-b border-white/10 p-6 sm:min-h-[320px] sm:p-10 lg:border-b-0 lg:border-r">
-              <span className="absolute left-5 top-5 max-w-[80%] break-words font-mono text-[9px] tracking-[0.12em] text-cyan-300/70 sm:text-[10px] sm:tracking-[0.18em]">
-                {titleSponsor.tierBadge}
-              </span>
-
-              <div className="relative mt-6 flex h-36 w-full max-w-[280px] items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition duration-500 group-hover:border-cyan-300/30 group-hover:bg-white/[0.05] sm:h-44">
-                <Image
-                  src={titleSponsor.logo}
-                  alt={`${titleSponsor.name} logo`}
-                  width={400}
-                  height={200}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-
-              <p className="mt-6 text-center text-xs uppercase tracking-[0.15em] text-slate-500">
-                Official Title Sponsor · Kodikon 6.0
-              </p>
-
-              <a
-                href={titleSponsor.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 px-5 py-2.5 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/10"
-              >
-                Visit Website
-                <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            {/* Sponsor details */}
-            <div className="relative min-w-0 p-6 sm:p-9 lg:p-10">
-              <div className="mb-4 inline-flex max-w-full items-center gap-2 rounded-full border border-amber-300/25 bg-amber-300/5 px-3 py-1.5">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300" />
-                <span className="break-words font-mono text-[9px] tracking-[0.1em] text-amber-200 sm:text-[10px] sm:tracking-[0.15em]">
-                  {titleSponsor.tierBadge}
-                </span>
-              </div>
-
-              <h3 className="break-words text-3xl font-black tracking-tight sm:text-4xl">
-                {titleSponsor.name}
-              </h3>
-
-              <p className="mt-3 max-w-2xl text-base font-medium leading-7 text-cyan-200 sm:text-lg">
-                {titleSponsor.tagline}
-              </p>
-
-              <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-400 sm:text-base">
-                {titleSponsor.description}
-              </p>
-
-              {/* Highlights */}
-              {Array.isArray(titleSponsor.highlights) &&
-                titleSponsor.highlights.length > 0 && (
-                  <div className="mt-7 space-y-3">
-                    {titleSponsor.highlights.map((highlight, index) => (
-                      <div
-                        key={`${index}-${highlight}`}
-                        className="flex items-start gap-3"
-                      >
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-cyan-400/25 bg-cyan-400/10 font-mono text-xs text-cyan-200">
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-
-                        <p className="text-sm leading-6 text-slate-300">
-                          {highlight}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-              {/* Stats */}
-              {Array.isArray(titleSponsor.stats) &&
-                titleSponsor.stats.length > 0 && (
-                  <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                    {titleSponsor.stats.map((stat) => (
-                      <div
-                        key={stat.label}
-                        className="min-w-0 rounded-xl border border-white/10 bg-black/20 p-4"
-                      >
-                        <p className="font-mono text-[9px] tracking-[0.15em] text-slate-500">
-                          {stat.label}
-                        </p>
-                        <p className="mt-2 break-words text-sm font-semibold leading-5 text-white">
-                          {stat.value}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-            </div>
-          </div>
-        </article>
-
-        {/* Software Support Partners */}
-        <div className="mb-5 flex items-center gap-3">
-          <span className="h-px w-8 shrink-0 bg-cyan-400" />
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-cyan-300">
-            Platform & Software Support
+            Platform &amp; Infrastructure Partner
           </p>
         </div>
 
@@ -259,7 +146,7 @@ export default function SponsorsComponent() {
             ◆
           </span>
           <p className="text-xs leading-5 text-slate-500">
-            Built through industry collaboration and technology support.
+            Built through community collaboration and technology support.
           </p>
         </div>
       </div>

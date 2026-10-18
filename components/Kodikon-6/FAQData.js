@@ -45,6 +45,11 @@ export const Kodikon6FAQData = [
     a: "An expert panel of experienced mentors, professors and field professionals will review all the idea submissions made across the different tracks, and shortlist teams to attend the offline hackathon and work on their prototypes.",
   },
   {
+    id: "k6-faq-timeline",
+    q: "What are the important dates and timeline for Kodikon 6.0?",
+    a: "Registrations and idea submissions open on 19th October and close on 23rd October 2026. The shortlisted Top 35 teams will be announced on 26th October 2026. The 24-hour in-person hackathon will take place on 31st October and 1st November 2026 at PESU 52, PES University.",
+  },
+  {
     id: "k6-faq-venue",
     q: "Where will the grand finale take place?",
     a: "The final 24-hour sprint is hosted offline in-person at PESU 52, PES University, Ring Road Campus, Bengaluru.",

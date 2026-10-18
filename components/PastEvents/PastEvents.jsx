@@ -10,7 +10,6 @@ const PastEvents = () => {
       const eventDetailsLocal = ClubEvents?.find(
         (clubEvent) => clubEvent["eventName"] === activeEvent
       );
-      console.log(eventDetailsLocal);
       setEventDetails(eventDetailsLocal);
     }
   }, [activeEvent]);

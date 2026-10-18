@@ -7,16 +7,13 @@ import {
   Award,
   Zap,
   Sparkles,
-  Package,
   Gift,
-  FileCheck,
-  Compass,
   Check,
 } from "lucide-react";
 import {
   prizePoolSummary,
   mainPrizes,
-  top10Goodies,
+  top10GoodiesNote,
 } from "./prizesData";
 
 export default function PrizesComponent() {
@@ -84,8 +81,6 @@ export default function PrizesComponent() {
       },
     },
   ].filter((item) => Boolean(item.prize));
-
-  const goodiesIcons = [Package, Gift, FileCheck, Compass];
 
   return (
     <section
@@ -251,71 +246,11 @@ export default function PrizesComponent() {
           })}
         </div>
 
-        {/* SECTOR 02: GOODIES FOR ALL TOP 10 FINALISTS */}
-        <div className="mt-16 sm:mt-24">
-          <div className="relative p-6 sm:p-10 bg-[#060c1d]/95 border border-cyan-500/40 shadow-[0_0_40px_rgba(6,182,212,0.15)] cyber-clip overflow-hidden">
-            {/* Ambient Corner Glow */}
-            <div className="absolute -right-20 -top-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-cyan-500/20 mb-8">
-              <div>
-                <div className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 tracking-widest uppercase font-bold mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                  {top10Goodies.badge}
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase font-display">
-                  {top10Goodies.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-300 font-light max-w-2xl leading-relaxed">
-                  {top10Goodies.subtitle}
-                </p>
-              </div>
-
-              <div className="flex-shrink-0 self-start md:self-center">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-950/60 border border-cyan-400/50 text-cyan-300 font-mono text-xs font-bold uppercase tracking-wider cyber-clip-sm shadow-[0_0_15px_rgba(6,182,212,0.25)]">
-                  <Gift size={14} />
-                  <span>GUARANTEED FOR TOP 10</span>
-                </span>
-              </div>
-            </div>
-
-            {/* 4 Goodies Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {top10Goodies.perks.map((item, idx) => {
-                const IconComponent = goodiesIcons[idx % goodiesIcons.length];
-
-                return (
-                  <div
-                    key={idx}
-                    className="p-5 bg-black/60 border border-cyan-500/20 hover:border-cyan-400/50 transition-all duration-300 flex flex-col justify-between cyber-clip-sm group/perk"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="w-9 h-9 bg-cyan-950/60 border border-cyan-500/40 flex items-center justify-center text-cyan-300 group-hover/perk:border-cyan-400 transition-colors cyber-clip-sm">
-                          <IconComponent size={18} />
-                        </div>
-                        <span className="text-[10px] font-mono text-cyan-400/80 tracking-widest uppercase">
-                          PERK // 0{idx + 1}
-                        </span>
-                      </div>
-
-                      <h4 className="text-sm font-bold text-white mb-2 group-hover/perk:text-cyan-300 transition-colors font-display">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-slate-300 font-light leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-5 pt-3 border-t border-cyan-500/10 flex items-center justify-between text-[10px] font-mono text-slate-400">
-                      <span>STATUS: INCLUDED</span>
-                      <span className="text-cyan-400">TOP 10</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+        {/* TOP 10 TEAMS GOODIES NOTE */}
+        <div className="mt-12 sm:mt-16 text-center">
+          <div className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full bg-[#060c1d]/90 border border-cyan-500/30 text-slate-200 text-xs sm:text-sm font-mono shadow-[0_0_25px_rgba(6,182,212,0.15)] backdrop-blur-xl">
+            <Gift size={16} className="text-amber-400 shrink-0" />
+            <span>Top 10 teams (including the top 3) will be receiving goodies.</span>
           </div>
         </div>
       </div>
