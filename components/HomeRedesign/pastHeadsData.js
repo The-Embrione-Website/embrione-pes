@@ -148,16 +148,16 @@ export const pastHeads2024 = [
 export const pastHeads2023 = [
   {
     name: "Vijit Kumar",
-    domain: "Club Founder & Head",
-    role: "Head",
+    domain: "Founder",
+    role: "Founder",
     term: "2023-2024",
     photoUrl: "/domiainHeadPhotos/vijit.webp",
     linkedinUrl: "https://www.linkedin.com/in/vijit-kumar/",
   },
   {
     name: "Vishal J Lodha",
-    domain: "Club Founder & Head",
-    role: "Head",
+    domain: "Founder",
+    role: "Founder",
     term: "2023-2024",
     photoUrl: "/domiainHeadPhotos/vishal.webp",
     linkedinUrl: "https://www.linkedin.com/in/vishal-j-lodha",

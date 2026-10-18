@@ -27,10 +27,12 @@ import { pastHeads2024, pastHeads2023 } from "./pastHeadsData.js";
 const years = ["2026", "2025", "2024", "2023"];
 
 // Domain hierarchy ranking:
-// club head -> web dev -> evm -> operations -> logs -> spons -> design -> hospi -> campaining -> smve
+// Domain hierarchy ranking:
+// founder -> club head -> web dev -> evm -> operations -> logs -> spons -> design -> hospi -> campaining -> smve
 function getDomainRank(domain) {
   const d = (domain || "").toLowerCase().trim();
-  if (d.includes("club head") || d.includes("leadership") || d.includes("mentor") || d.includes("founder")) return 1;
+  if (d.includes("founder")) return 0;
+  if (d.includes("club head") || d.includes("leadership") || d.includes("mentor")) return 1;
   if (d.includes("web") || d.includes("dev")) return 2;
   if (d.includes("event") || d.includes("evm")) return 3;
   if (d.includes("operation")) return 4;
@@ -44,9 +46,10 @@ function getDomainRank(domain) {
 }
 
 // Role hierarchy ranking:
-// head -> vice-head -> core
+// founder -> head -> vice-head -> core
 function getRoleRank(role) {
   const r = (role || "").toLowerCase().trim();
+  if (r.includes("founder")) return 0;
   if (r === "head" || (r.startsWith("head") && !r.includes("vice"))) return 1;
   if (r.includes("vice") || r.includes("co-head") || r.includes("associate")) return 2;
   if (r.includes("core") || r.includes("member")) return 3;
@@ -57,6 +60,7 @@ function getRoleRank(role) {
 function getDomainIcon(domain) {
   const rank = getDomainRank(domain);
   switch (rank) {
+    case 0:
     case 1:
       return Crown;
     case 2:
@@ -84,6 +88,8 @@ function getDomainIcon(domain) {
 
 // Canonical domain name resolver
 function canonicalizeDomain(rawDomain) {
+  const d = (rawDomain || "").toLowerCase().trim();
+  if (d.includes("founder")) return "Founder";
   const rank = getDomainRank(rawDomain);
   switch (rank) {
     case 1:
@@ -113,6 +119,8 @@ function canonicalizeDomain(rawDomain) {
 
 // Canonical role name resolver
 function canonicalizeRole(rawRole) {
+  const r = (rawRole || "").toLowerCase().trim();
+  if (r.includes("founder")) return "Founder";
   const rank = getRoleRank(rawRole);
   switch (rank) {
     case 1:
@@ -160,7 +168,7 @@ function normalizeMember(member, year) {
     photo: member.photo || member.photoUrl || null,
     linkedin: validUrl(rawLinkedIn),
     github: validUrl(rawGithub),
-    featured: Boolean(member.featured) || domain === "Club Head",
+    featured: Boolean(member.featured) || domain === "Club Head" || domain === "Founder",
     term: member.term || defaultTerm,
   };
 }
@@ -183,7 +191,8 @@ function SocialLink({ href, label, children }) {
 }
 
 function MemberCard({ member }) {
-  const isClubHead = member.domain === "Club Head";
+  const isFounder = member.role === "Founder" || member.domain === "Founder";
+  const isClubHead = member.domain === "Club Head" || isFounder;
   const isHead = member.role === "Head";
   const isViceHead = member.role === "Vice-Head";
 
@@ -232,7 +241,7 @@ function MemberCard({ member }) {
 
       {/* Top badges: Role & Domain */}
       <div className="absolute inset-x-0 top-0 p-3.5 flex items-center justify-between gap-2 z-10">
-        {/* Role badge adhering to hierarchy: Head -> Vice-Head -> Core */}
+        {/* Role badge adhering to hierarchy: Founder -> Head -> Vice-Head -> Core */}
         <span
           className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${
             isClubHead
@@ -244,8 +253,13 @@ function MemberCard({ member }) {
               : "bg-black/60 text-slate-300 border-white/10"
           }`}
         >
-          {isHead && <Sparkles size={11} className="text-cyan-300" />}
-          {isViceHead && <Crown size={11} className="text-sky-300" />}
+          {isFounder ? (
+            <Crown size={11} className="text-cyan-300" />
+          ) : isHead ? (
+            <Sparkles size={11} className="text-cyan-300" />
+          ) : isViceHead ? (
+            <Crown size={11} className="text-sky-300" />
+          ) : null}
           <span>{member.role}</span>
         </span>
 
