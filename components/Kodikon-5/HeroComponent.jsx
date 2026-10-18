@@ -5,8 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 // Event visuals
-import TitleSponsorLogo from "/public/Kodikon5/kodikon5_title_sponsor.png";
-import Kodikon5Logo from "/public/Kodikon5/kodikon5_logo_copy.png";
+import TitleSponsorLogo from "@/public/Kodikon5/kodikon5_title_sponsor.png";
+import Kodikon5Logo from "@/public/Kodikon5/kodikon5_logo_copy.png";
 
 // --- "Matrix" style background component with randomized speeds ---
 const MatrixBackground = () => {

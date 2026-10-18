@@ -1,13 +1,13 @@
-import sevenEleven from "./logos/seveneleven.png";
-import azure from "./logos/azure.png";
-import brownBurger from "./logos/brownburger.png";
-import cothas from "./logos/cothas.png";
-import flatlogic from "./logos/flatlogic.png";
-import glens from "./logos/glens.png";
-import internshala from "./logos/internshala.png";
-import rage from "./logos/rage.png";
-import sentinel from "./logos/sentinel.png";
-import wolfram from "./logos/wolfram.png";
+import sevenEleven from "./logos/seveneleven.webp";
+import azure from "./logos/azure.webp";
+import brownBurger from "./logos/brownburger.webp";
+import cothas from "./logos/cothas.webp";
+import flatlogic from "./logos/flatlogic.webp";
+import glens from "./logos/glens.webp";
+import internshala from "./logos/internshala.webp";
+import rage from "./logos/rage.webp";
+import sentinel from "./logos/sentinel.webp";
+import wolfram from "./logos/wolfram.webp";
 import PreviousPartner from "./PreviousPartner";
 
 

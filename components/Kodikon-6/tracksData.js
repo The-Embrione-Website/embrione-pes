@@ -1,0 +1,38 @@
+export const tracksData = [
+  {
+    code: "TRACK-01",
+    number: "01",
+    title: "Human-Machine Interfaces (HMI)",
+    subtitle: "",
+    image: "/Kodikon6/Tracks/track-01.jpeg",
+    imageAlt: "Human-Machine Interfaces",
+    desc: "Build intuitive, adaptive, and accessible ways for people to interact with computers, machines, and intelligent systems beyond traditional keyboards, mice, and touchscreens. Participants can leverage modalities such as real-time computer vision, natural gestures, voice, eye-gaze tracking, biometrics, or wearables to create hands-free, low-latency, and universally accessible interfaces—especially for assistive technology, dynamic workspaces, or sterile physical environments.",
+  },
+  {
+    code: "TRACK-02",
+    number: "02",
+    title: "Autonomous Economy",
+    subtitle: "",
+    image: "/Kodikon6/Tracks/track-02.png",
+    imageAlt: "Autonomous Economy",
+    desc: "Create systems, coordination mechanisms, or applications where autonomous AI agents, machines, and digital entities can discover services, negotiate terms, allocate resources, and carry out automated transactions with minimal or zero human intervention. Focus on machine-to-machine (M2M) coordination, agent identity, service discovery, and low-friction micro-settlement rails that allow software agents to autonomously trade data, compute, or specialized digital services.",
+  },
+  {
+    code: "TRACK-03",
+    number: "03",
+    title: "Zero-Expertise Cyber Defense",
+    subtitle: "",
+    image: "/Kodikon6/Tracks/track-03.jpeg",
+    imageAlt: "Zero-Expertise Cyber Defense",
+    desc: "Build an automated, intuitive security solution that gives small, non-technical organizations (such as community clinics, retail shops, or schools) the threat visibility and decision-making clarity of a dedicated security operations team. The solution should abstract away cryptic technical jargon, filter out noise, translate security events into plain, actionable language, and guide non-technical staff (such as a receptionist or administrator) to take confident defensive action without requiring any cybersecurity expertise.",
+  },
+  {
+    code: "TRACK-04",
+    number: "04",
+    title: "Hardware & Embedded Innovation",
+    subtitle: "",
+    image: "/Kodikon6/Tracks/track-04.jpeg",
+    imageAlt: "Hardware and Embedded Innovation",
+    desc: "Build platforms and collaborative tools that enable developers, students, and engineers to remotely access, program, execute, monitor, and debug code on embedded devices (such as Arduino, ESP32, and Raspberry Pi). Focus on browser-accessible programming environments, remote compilation and flashing pipelines, sandboxed device execution, and real-time interactive feedback (such as live serial console output, telemetry, or synchronized video) to make physical hardware development as accessible and collaborative as modern cloud software.",
+  },
+];

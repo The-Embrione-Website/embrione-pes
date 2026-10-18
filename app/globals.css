@@ -1,18 +1,30 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --font-poppins: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-orbitron: "Orbitron", -apple-system, BlinkMacSystemFont, sans-serif;
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
 * {
-  scroll-behavior: smooth;
-  scroll-padding-top: 130px;
   font-family: "Poppins", sans-serif;
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron);
+}
+
+
+/* Keep smooth scrolling global, without adding a second large offset
+   before sections that already have their own top padding. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,23 +42,21 @@
   }
 }
 
+html,
 body {
+  max-width: 100vw;
+  overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
-  background: #000514;
+  background: #000000;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
-body::-webkit-scrollbar {
-  width: 5px;
-  display: none;
-}
-
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 .bg-blue-gradient {
   background: linear-gradient(
@@ -918,4 +928,178 @@ body::-webkit-scrollbar-thumb {
 /* Text outline helper for better contrast over images */
 .text-outline {
   text-shadow: 0 2px 6px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.55);
+}
+
+
+
+/* Kodikon 6.0 & Global — Hide scrollbar everywhere while maintaining native smooth scroll */
+html,
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.tracks-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.tracks-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+.k6-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  overflow: hidden;
+}
+.k6-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 45% at 50% 0%,
+      color-mix(in srgb, var(--color-brand-accent-cyan) 12%, transparent), transparent 70%),
+    radial-gradient(40% 40% at 95% 100%,
+      color-mix(in srgb, var(--color-brand-accent-cyan-dark) 16%, transparent), transparent 70%);
+}
+.k6-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+}
+
+.interest-form-blue-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.22) 0%,
+      rgba(0, 113, 227, 0.12) 28%,
+      rgba(0, 81, 180, 0.05) 48%,
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+}
+
+
+.tracks-background-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.22) 0%,
+      rgba(0, 113, 227, 0.10) 28%,
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+}
+
+.faq-background-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.20) 0%,
+      rgba(0, 113, 227, 0.10) 28%,
+      rgba(0, 81, 180, 0.04) 48%,
+      transparent 68%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+} 
+
+
+.venue-background-glow {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(0, 113, 227, 0.20) 0%,
+      rgba(0, 113, 227, 0.10) 28%,
+      rgba(0, 81, 180, 0.04) 48%,
+      transparent 68%
+    ),
+    linear-gradient(
+      180deg,
+      #000514 0%,
+      #000000 100%
+    );
+}
+
+/* =====================================================================
+   TOKYO + CYBERPUNK UNIFIED DESIGN SYSTEM
+   Clean, lightweight, high-performance styling primitives
+   ===================================================================== */
+
+/* Cyberpunk Chamfered Geometric Cuts */
+.cyber-clip {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.cyber-clip-sm {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+.cyber-clip-corner-tl-br {
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+}
+
+/* Tokyo Neon Glow Utilities */
+.neon-glow-cyan {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
+}
+
+.neon-glow-amber {
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.35);
+}
+
+.neon-glow-pink {
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.35);
+}
+
+.neon-text-cyan {
+  text-shadow: 0 0 10px rgba(34, 211, 238, 0.7), 0 0 25px rgba(6, 182, 212, 0.4);
+}
+
+.neon-text-amber {
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.7), 0 0 25px rgba(245, 158, 11, 0.4);
+}
+
+.neon-text-pink {
+  text-shadow: 0 0 10px rgba(244, 63, 94, 0.7), 0 0 25px rgba(225, 29, 72, 0.4);
+}
+
+/* Seamless Continuous Cyber Grid Overlay */
+.tokyo-cyber-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 56px 56px;
 }

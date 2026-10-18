@@ -14,7 +14,25 @@ import EventCountdown  from "@/components/Kodikon-4/Countdown/EventCountdown";
 
 import FAQ from "@/components/Kodikon-4/FAQComponent";
 import Map from "@/components/Kodikon-4/MapComponent";
+
+export const metadata = {
+  title: "Kodikon 4.0 | Archive - The Embrione, PES University",
+  description:
+    "Explore the event archive, themes, sponsors, and timeline of Kodikon 4.0 organized by The Embrione, Department of CSE, PES University.",
+  alternates: {
+    canonical: "https://embrionepes.in/kodikon-4",
+  },
+  openGraph: {
+    title: "Kodikon 4.0 Archive | The Embrione - PES University",
+    description: "Explore the archive, themes, and results of Kodikon 4.0.",
+    url: "https://embrionepes.in/kodikon-4",
+    siteName: "The Embrione",
+    images: ["/og-image.png"],
+  },
+};
+
 export default function LandingPage() {
+
   return (
     <>
       

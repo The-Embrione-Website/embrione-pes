@@ -9,10 +9,30 @@ import EventTimeline from "@/components/Kodikon-3/Timeline/EventTimeline";
 import SponsorsComponent from "@/components/Kodikon-3/Sponsors/SponsorsComponent";
 import PrizesComponent from "@/components/Kodikon-3/Prizes/PrizesComponent";
 import Footer from "@/components/Footer/Footer";
-import EventCountdown  from "@/components/Kodikon-3/Countdown/EventCountdown";
+import EventCountdown from "@/components/Kodikon-3/Countdown/EventCountdown";
 import FAQ from "@/components/Kodikon-3/FAQComponent";
 import Map from "@/components/Kodikon-3/MapComponent";
+
+
+
+export const metadata = {
+  title: "Kodikon 3.0 | Archive - The Embrione, PES University",
+  description:
+    "Explore the event archive, themes, sponsors, and timeline of Kodikon 3.0 organized by The Embrione, Department of CSE, PES University.",
+  alternates: {
+    canonical: "https://embrionepes.in/kodikon-3",
+  },
+  openGraph: {
+    title: "Kodikon 3.0 Archive | The Embrione - PES University",
+    description: "Explore the archive, themes, and results of Kodikon 3.0.",
+    url: "https://embrionepes.in/kodikon-3",
+    siteName: "The Embrione",
+    images: ["/og-image.png"],
+  },
+};
+
 export default function LandingPage() {
+
   return (
     <>
       

@@ -64,7 +64,7 @@ const AnnouncementComponent = ({
         ) : formLinkStatus === "Soon" ? (
           <p>⏳ 🟡 {"     "}  Coming Soon</p>
         ) : formLinkStatus === "Open" ? (
-          <a href={formLink} target="_blank">
+          <a href={formLink} target="_blank" rel="noopener noreferrer">
             <p>🔗 🟢 Click to register! </p>
           </a>
         ) : (

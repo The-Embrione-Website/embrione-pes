@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { ClubEvents } from "@/constants";
+import { ClubEvents } from "@/components/HomeRedesign/constants";
 import PastEventsCarousel from "./PastEventsCarousel";
 const PastEvents = () => {
   const [activeEvent, setActiveEvent] = useState(null);
@@ -10,7 +10,6 @@ const PastEvents = () => {
       const eventDetailsLocal = ClubEvents?.find(
         (clubEvent) => clubEvent["eventName"] === activeEvent
       );
-      console.log(eventDetailsLocal);
       setEventDetails(eventDetailsLocal);
     }
   }, [activeEvent]);
