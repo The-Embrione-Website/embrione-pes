@@ -1,155 +1,173 @@
-
 "use client";
 
 import React from "react";
-import { Cpu, Terminal, Users, Sparkles, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import {
+  Sparkles,
+  Terminal,
+  Users2,
+  Cpu,
+  Building2,
+  Clock,
+  Flame,
+} from "lucide-react";
 
 export default function AboutSection() {
+  const highlights = [
+    {
+      icon: Terminal,
+      tag: "The Core Focus",
+      title: "All About The Hackathon",
+      description:
+        "Our club has one clear, singular mission: organizing and hosting Kodikon — our 24-hour flagship national offline hackathon at PES University.",
+      accent: "text-cyan-400",
+      border: "hover:border-cyan-400/40",
+    },
+    {
+      icon: Users2,
+      tag: "The Circle",
+      title: "Meet Great People",
+      description:
+        "Find your circle of driven developers, builders, and creative problem-solvers. The real takeaway is the community and genuine friendships you build along the way.",
+      accent: "text-sky-400",
+      border: "hover:border-sky-400/40",
+    },
+    {
+      icon: Cpu,
+      tag: "Behind The Scenes",
+      title: "Learn The Backend Work",
+      description:
+        "Master what it actually takes behind the curtain to run a high-stakes national event — building web portals, securing sponsors, and managing live 24-hour operations.",
+      accent: "text-teal-400",
+      border: "hover:border-teal-400/40",
+    },
+  ];
+
   return (
     <section
       id="about"
-      className="relative overflow-hidden border-t border-white/[0.06] bg-[#000000] px-4 py-28 text-white sm:px-6 sm:py-36 lg:px-8"
+      className="relative overflow-hidden border-t border-white/[0.06] bg-[#000000] px-4 py-24 text-white sm:px-6 sm:py-32 lg:px-8"
     >
-      {/* Ambient cyan glow */}
+      {/* Ambient lighting */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-20 top-1/3 h-96 w-96 bg-cyan-500/[0.05] blur-[140px]"
+        className="pointer-events-none absolute -left-32 top-1/4 h-[500px] w-[500px] rounded-full bg-cyan-500/[0.06] blur-[150px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-32 bottom-1/4 h-[450px] w-[450px] rounded-full bg-blue-600/[0.04] blur-[140px]"
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        {/* Section heading */}
-        <div className="mb-16 max-w-3xl sm:mb-20">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-400 backdrop-blur-md">
-            <Sparkles size={12} />
-            <span>The Society · About Embrione</span>
-          </div>
-
-          <h2 className="text-4xl font-bold leading-[1.08] tracking-[-0.03em] text-white sm:text-6xl">
-            Built on Curiosity.
-            <br />
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 bg-clip-text text-transparent">
-              Growing Through Technology.
-            </span>
-          </h2>
-
-          <p className="mt-8 text-base font-light leading-relaxed text-slate-300 sm:text-lg">
-            The Embrione is the student-led technical vertical under the
-            Department of Computer Science and Engineering at PES University,
-            Bengaluru. We bring students together to explore technology, work
-            on ideas, build projects, and learn through collaboration and
-            hands-on experience.
-          </p>
+        {/* Section badge */}
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-400 backdrop-blur-md">
+          <Sparkles size={12} />
+          <span>The Society · About Us</span>
         </div>
 
-        {/* Pillar cards */}
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-12 sm:gap-6">
+        {/* Section title */}
+        <div className="mb-12 max-w-3xl sm:mb-16">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.08]">
+            Built Around The Hackathon.{" "}
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyan-300">
+              Run by Students Who Build.
+            </span>
+          </h2>
+        </div>
 
-          {/* Pillar 1 — Collaborative Building */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] md:col-span-7 sm:p-10">
-            <div>
-              <div className="mb-8 flex items-center justify-between gap-4">
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-cyan-400">
-                  Pillar 01 · Collaborative Building
-                </span>
-
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 transition-transform duration-300 group-hover:scale-105">
-                  <Cpu size={20} />
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-cyan-300 sm:text-3xl">
-                Learn Together.
-                <br />
-                Build Together.
-              </h3>
-
-              <p className="mt-4 max-w-xl text-sm font-light leading-relaxed text-slate-300 sm:text-base">
-                We bring students together to work on technical projects,
-                exchange ideas, explore new technologies, and turn what they
-                learn into things they can actually build.
-              </p>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-2 border-t border-white/[0.06] pt-6 text-xs">
-              <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-slate-300">
-                Collaboration
-              </span>
-              <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-slate-300">
-                Project Building
-              </span>
-              <span className="rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-slate-300">
-                Exploration
-              </span>
-            </div>
+        {/* Primary Narrative Card */}
+        <div className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-[#040816]/85 p-7 sm:p-11 backdrop-blur-2xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_20px_50px_rgba(0,0,0,0.6)]">
+          {/* Institutional sub-badge */}
+          <div className="mb-6 inline-flex items-center gap-2 rounded-lg border border-cyan-500/20 bg-cyan-950/40 px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-cyan-300">
+            <Building2 size={13} className="text-cyan-400" />
+            <span>Department of CSE · PES University, Bengaluru</span>
           </div>
 
-          {/* Pillar 2 — Hackathons */}
-          <div className="group flex flex-col justify-between rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] md:col-span-5 sm:p-10">
-            <div>
-              <div className="mb-8 flex items-center justify-between gap-4">
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-cyan-400">
-                  Pillar 02 · Hackathons
-                </span>
+          {/* Official About Content */}
+          <div className="space-y-6 text-base sm:text-lg lg:text-xl font-normal leading-relaxed text-slate-200">
+            <p>
+              Embrione is the official technical vertical under the Department
+              of Computer Science and Engineering at PES University, Bengaluru.
+              We are a student-led collective driven by curiosity,
+              collaboration, and the pursuit of meaningful innovation. At
+              Embrione, we move beyond building projects — we question ideas,
+              explore possibilities, and push the boundaries of technology
+              itself.
+            </p>
 
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 transition-transform duration-300 group-hover:scale-105">
-                  <Terminal size={20} />
-                </div>
+            <p className="text-slate-300">
+              Through initiatives like Kodikon, our flagship national hackathon,
+              we create spaces for students to think deeply, experiment boldly,
+              and bring research-inspired ideas to life. Our goal is to bridge
+              the gap between learning and doing — fostering a culture where
+              students don’t just work with technology, but actively shape its
+              future.
+            </p>
+          </div>
+
+          {/* Real quick facts bar */}
+          <div className="mt-8 pt-7 border-t border-white/[0.07] grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-950/40 text-cyan-300">
+                <Flame size={16} />
               </div>
-
-              <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-cyan-300 sm:text-3xl">
-                The Kodikon Series
-              </h3>
-
-              <p className="mt-4 text-sm font-light leading-relaxed text-slate-300">
-                Kodikon is our flagship 24-hour national hackathon, bringing
-                developers and problem solvers together to build, collaborate,
-                and tackle real-world challenges. With five successful
-                editions behind us, we continue to create a platform for
-                innovation and teamwork.
-              </p>
+              <div>
+                <div className="text-xs font-semibold text-white">Kodikon Series</div>
+                <div className="text-[11px] text-slate-400">Our flagship 24H national hackathon</div>
+              </div>
             </div>
 
-            <div className="mt-8 border-t border-white/[0.06] pt-6">
-              <Link
-                href="/kodikon-6"
-                className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 transition-colors hover:text-white"
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-950/40 text-cyan-300">
+                <Clock size={16} />
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-white">24-Hour Offline Sprint</div>
+                <div className="text-[11px] text-slate-400">Hosted on campus at PESU 52</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-500/20 bg-cyan-950/40 text-cyan-300">
+                <Users2 size={16} />
+              </div>
+              <div>
+                <div className="text-xs font-semibold text-white">100% Student-Run</div>
+                <div className="text-[11px] text-slate-400">Organized &amp; executed by undergrads</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Real Pillars of Embrione */}
+        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {highlights.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className={`group flex flex-col justify-between rounded-2xl border border-white/[0.06] bg-[#040816]/70 p-7 backdrop-blur-xl transition-all duration-300 ${item.border} hover:bg-[#060c20]/90 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)]`}
               >
-                <span>Explore Kodikon 6.0</span>
-                <ArrowRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </Link>
-            </div>
-          </div>
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-cyan-400">
+                      {item.tag}
+                    </span>
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-cyan-500/25 bg-cyan-950/40 text-cyan-300 transition-transform group-hover:scale-105">
+                      <Icon size={17} />
+                    </div>
+                  </div>
 
-          {/* Pillar 3 — Mentorship */}
-          <div className="group flex flex-col justify-between gap-8 rounded-3xl border border-white/[0.07] bg-[#040816]/90 p-8 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_15px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(6,182,212,0.12)] md:col-span-12 sm:flex-row sm:items-center sm:p-10">
-            <div className="max-w-3xl">
-              <div className="mb-4">
-                <span className="text-[11px] font-semibold uppercase tracking-widest text-cyan-400">
-                  Pillar 03 · Mentorship
-                </span>
+                  <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 text-sm font-light leading-relaxed text-slate-300">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-
-              <h3 className="text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-cyan-300 sm:text-3xl">
-                Guided by Experience
-              </h3>
-
-              <p className="mt-4 text-sm font-light leading-relaxed text-slate-300 sm:text-base">
-                Students learn with guidance from industry professionals and
-                experienced mentors who share practical insights, offer
-                technical direction, and help turn early ideas into stronger
-                solutions.
-              </p>
-            </div>
-
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center self-start rounded-2xl border border-cyan-500/30 bg-cyan-950/50 text-cyan-300 sm:self-center">
-              <Users size={26} />
-            </div>
-          </div>
-
+            );
+          })}
         </div>
       </div>
     </section>

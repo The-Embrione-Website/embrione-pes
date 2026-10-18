@@ -1,75 +1,157 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
-
+import React, { useMemo, useState } from "react";
 import Image from "next/image";
-
-import { AnimatePresence, motion } from "framer-motion";
-
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  Github,
-  Linkedin,
-  ArrowUpRight,
+  Crown,
+  Code2,
+  Calendar,
+  SlidersHorizontal,
+  Boxes,
+  BadgeDollarSign,
+  Palette,
+  Coffee,
+  Megaphone,
+  Video,
+  Sparkles,
   Users,
   CalendarDays,
+  Linkedin,
+  Github,
 } from "lucide-react";
-
 import teamMembers from "./teamData";
-
 import { teamMembersDetails } from "./constants.js";
-
 import { pastHeads2024 } from "./pastHeadsData.js";
-
-const currentDomains = [
-  "Club Heads",
-
-  "Web Development",
-
-  "Design",
-
-  "Logistics",
-
-  "Hospitality",
-
-  "Social Media & Video Editing",
-
-  "Campaigning",
-
-  "Sponsorship",
-
-  "Event Management",
-
-  "Operations",
-];
 
 const years = ["2026", "2025", "2024"];
 
-// Convert older data formats into the current team-card format.
+// Domain hierarchy ranking:
+// club head -> web dev -> evm -> operations -> logs -> spons -> design -> hospi -> campaining -> smve
+function getDomainRank(domain) {
+  const d = (domain || "").toLowerCase().trim();
+  if (d.includes("club head") || d.includes("leadership") || d.includes("mentor")) return 1;
+  if (d.includes("web") || d.includes("dev")) return 2;
+  if (d.includes("event") || d.includes("evm")) return 3;
+  if (d.includes("operation")) return 4;
+  if (d.includes("logistic") || d.includes("logs")) return 5;
+  if (d.includes("sponsor") || d.includes("spons")) return 6;
+  if (d.includes("design")) return 7;
+  if (d.includes("hospit") || d.includes("hospi")) return 8;
+  if (d.includes("campaign") || d.includes("campain")) return 9;
+  if (d.includes("social") || d.includes("media") || d.includes("video") || d.includes("smve")) return 10;
+  return 99;
+}
 
+// Role hierarchy ranking:
+// head -> vice-head -> core
+function getRoleRank(role) {
+  const r = (role || "").toLowerCase().trim();
+  if (r === "head" || (r.startsWith("head") && !r.includes("vice"))) return 1;
+  if (r.includes("vice") || r.includes("co-head") || r.includes("associate")) return 2;
+  if (r.includes("core") || r.includes("member")) return 3;
+  return 4;
+}
+
+// Map domains to icons
+function getDomainIcon(domain) {
+  const rank = getDomainRank(domain);
+  switch (rank) {
+    case 1:
+      return Crown;
+    case 2:
+      return Code2;
+    case 3:
+      return Calendar;
+    case 4:
+      return SlidersHorizontal;
+    case 5:
+      return Boxes;
+    case 6:
+      return BadgeDollarSign;
+    case 7:
+      return Palette;
+    case 8:
+      return Coffee;
+    case 9:
+      return Megaphone;
+    case 10:
+      return Video;
+    default:
+      return Users;
+  }
+}
+
+// Canonical domain name resolver
+function canonicalizeDomain(rawDomain) {
+  const rank = getDomainRank(rawDomain);
+  switch (rank) {
+    case 1:
+      return "Club Head";
+    case 2:
+      return "Web Development";
+    case 3:
+      return "Event Management";
+    case 4:
+      return "Operations";
+    case 5:
+      return "Logistics";
+    case 6:
+      return "Sponsorship";
+    case 7:
+      return "Design";
+    case 8:
+      return "Hospitality";
+    case 9:
+      return "Campaigning";
+    case 10:
+      return "Social Media & Video Editing";
+    default:
+      return rawDomain || "Other";
+  }
+}
+
+// Canonical role name resolver
+function canonicalizeRole(rawRole) {
+  const rank = getRoleRank(rawRole);
+  switch (rank) {
+    case 1:
+      return "Head";
+    case 2:
+      return "Vice-Head";
+    case 3:
+      return "Core";
+    default:
+      return rawRole || "Member";
+  }
+}
+
+// Normalize member across schema differences
 function normalizeMember(member, year) {
   const rawLinkedIn = member.linkedin ?? member.linkedinUrl ?? "";
-
   const rawGithub = member.github ?? member.githubUrl ?? "";
 
   const validUrl = (url) =>
     typeof url === "string" && /^https?:\/\//i.test(url) ? url : null;
 
+  const domain = canonicalizeDomain(member.domain);
+  const role = canonicalizeRole(member.role);
+
   return {
     name: member.name,
-
-    domain: member.domain || "Other",
-
-    role: member.role || "Member",
-
+    domain,
+    role,
     photo: member.photo || member.photoUrl || null,
-
     linkedin: validUrl(rawLinkedIn),
-
     github: validUrl(rawGithub),
-
-    featured: Boolean(member.featured),
-
-    term: member.term || (year === "2025" ? "2025–2026" : "2024–2025"),
+    featured: Boolean(member.featured) || domain === "Club Head",
+    term:
+      member.term ||
+      (year === "2026"
+        ? "2025–2026"
+        : year === "2025"
+        ? "2024–2025"
+        : "2023–2024"),
   };
 }
 
@@ -82,39 +164,49 @@ function SocialLink({ href, label, children }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      onClick={(event) => event.stopPropagation()}
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/50 text-white/80 transition duration-300 hover:border-cyan-400/50 hover:bg-cyan-400/10 hover:text-cyan-300 sm:h-9 sm:w-9"
+      onClick={(e) => e.stopPropagation()}
+      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white/80 transition-all duration-300 hover:border-cyan-400/60 hover:bg-cyan-400/15 hover:text-cyan-300 hover:scale-110"
     >
       {children}
     </a>
   );
 }
 
-function MemberCard({ member, index, priority = false }) {
+function MemberCard({ member }) {
+  const isClubHead = member.domain === "Club Head";
+  const isHead = member.role === "Head";
+  const isViceHead = member.role === "Vice-Head";
+
+  // Short label for domain badge
+  const shortDomain =
+    member.domain === "Social Media & Video Editing"
+      ? "SMVE"
+      : member.domain === "Web Development"
+      ? "Web Dev"
+      : member.domain === "Event Management"
+      ? "EVM"
+      : member.domain;
+
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -6 }}
-      transition={{
-        duration: 0.25,
-
-        delay: index * 0.035,
-
-        ease: "easeOut",
-      }}
-      className="group relative isolate aspect-[4/5] w-full min-w-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#040816] shadow-[0_8px_30px_rgba(0,0,0,0.2)] transition-colors duration-300 hover:border-cyan-400/40"
+    <article
+      className={`group relative aspect-[3/4] w-full min-w-0 overflow-hidden rounded-2xl border bg-[#040816] shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 ${
+        isClubHead
+          ? "border-cyan-400/40 hover:border-cyan-300/80 hover:shadow-[0_0_35px_rgba(6,182,212,0.22)]"
+          : isHead
+          ? "border-white/[0.12] hover:border-cyan-400/50 hover:shadow-[0_0_25px_rgba(6,182,212,0.14)]"
+          : isViceHead
+          ? "border-white/[0.1] hover:border-sky-400/50 hover:shadow-[0_0_25px_rgba(56,189,248,0.14)]"
+          : "border-white/[0.08] hover:border-white/25 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]"
+      }`}
     >
+      {/* Photo */}
       {member.photo ? (
         <Image
           src={member.photo}
           alt={member.name}
           fill
-          priority={priority}
-          loading="eager"
-          sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 33vw"
-          className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.035]"
-          style={{ objectPosition: "50% 50%" }}
+          sizes="(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#040816] via-[#0b1830] to-cyan-950/40">
@@ -124,29 +216,43 @@ function MemberCard({ member, index, priority = false }) {
         </div>
       )}
 
-      {/* Readability overlays */}
+      {/* Dark gradient overlays */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/15 via-transparent to-blue-950/25 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
+      {/* Top badges: Role & Domain */}
+      <div className="absolute inset-x-0 top-0 p-3.5 flex items-center justify-between gap-2 z-10">
+        {/* Role badge adhering to hierarchy: Head -> Vice-Head -> Core */}
+        <span
+          className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${
+            isClubHead
+              ? "bg-cyan-500/25 text-cyan-200 border-cyan-400/50 shadow-[0_0_12px_rgba(6,182,212,0.25)]"
+              : isHead
+              ? "bg-cyan-500/20 text-cyan-300 border-cyan-400/40 shadow-[0_0_10px_rgba(6,182,212,0.15)]"
+              : isViceHead
+              ? "bg-sky-500/20 text-sky-200 border-sky-400/40 shadow-[0_0_10px_rgba(56,189,248,0.15)]"
+              : "bg-black/60 text-slate-300 border-white/10"
+          }`}
+        >
+          {isHead && <Sparkles size={11} className="text-cyan-300" />}
+          {isViceHead && <Crown size={11} className="text-sky-300" />}
+          <span>{member.role}</span>
+        </span>
 
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/10 via-transparent to-blue-950/25 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
-
-      {/* Role */}
-
-      <div className="absolute inset-x-0 top-0 p-3 sm:p-4">
-        <span className="inline-flex max-w-full rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.14em] text-white/90 backdrop-blur-md sm:text-[10px]">
-          {member.role}
+        {/* Domain indicator pill */}
+        <span className="rounded-full border border-white/10 bg-black/65 px-2.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-slate-300 backdrop-blur-md">
+          {shortDomain}
         </span>
       </div>
 
-      {/* Name and social links */}
-
-      <div className="absolute inset-x-0 bottom-0 p-3.5 sm:p-4">
-        <p className="mb-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-cyan-300 sm:text-[10px]">
+      {/* Bottom info: Domain, Name & Social links */}
+      <div className="absolute inset-x-0 bottom-0 p-4 z-10">
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-cyan-300/90 mb-1">
           {member.domain}
         </p>
 
         <div className="flex items-end justify-between gap-2">
-          <h3 className="min-w-0 break-words text-lg font-semibold leading-tight tracking-tight text-white sm:text-xl">
+          <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">
             {member.name}
           </h3>
 
@@ -155,284 +261,203 @@ function MemberCard({ member, index, priority = false }) {
               href={member.linkedin}
               label={`${member.name} on LinkedIn`}
             >
-              <Linkedin size={15} />
+              <Linkedin size={14} />
             </SocialLink>
 
             <SocialLink href={member.github} label={`${member.name} on GitHub`}>
-              <Github size={15} />
+              <Github size={14} />
             </SocialLink>
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }
 
 export default function TeamSection() {
   const [activeYear, setActiveYear] = useState("2026");
+  const [selectedDomain, setSelectedDomain] = useState("All");
 
-  const [activeDomain, setActiveDomain] = useState("Club Heads");
-
-  // Normalize the three years to one shared format.
-
+  // Normalize members across cohorts
   const membersByYear = useMemo(
     () => ({
-      2026: teamMembers.map((member) => normalizeMember(member, "2026")),
-
-      2025: teamMembersDetails.map((member) => normalizeMember(member, "2025")),
-
-      2024: pastHeads2024.map((member) => normalizeMember(member, "2024")),
+      2026: teamMembers.map((m) => normalizeMember(m, "2026")),
+      2025: teamMembersDetails.map((m) => normalizeMember(m, "2025")),
+      2024: pastHeads2024.map((m) => normalizeMember(m, "2024")),
     }),
-
-    [],
+    []
   );
 
-  // Keep the current-year domains; derive historical domains from their data.
+  const currentYearMembers = membersByYear[activeYear] || [];
 
+  // Extract unique domains for the active year and sort strictly by domain hierarchy
   const domainOptions = useMemo(() => {
-    if (activeYear === "2026") {
-      return currentDomains;
-    }
-
-    const uniqueDomains = [
-      ...new Set(
-        membersByYear[activeYear]
-
-          .map((member) => member.domain)
-
-          .filter(Boolean),
-      ),
-    ];
-
-    // Show club leadership first when it exists in the historical data.
-
-    return uniqueDomains.sort((a, b) => {
-      const aIsClub = /club head/i.test(a);
-
-      const bIsClub = /club head/i.test(b);
-
-      return Number(bIsClub) - Number(aIsClub);
+    const counts = {};
+    currentYearMembers.forEach((m) => {
+      counts[m.domain] = (counts[m.domain] || 0) + 1;
     });
-  }, [activeYear, membersByYear]);
 
-  // Reset the selected domain when switching years.
+    const domains = Object.keys(counts).sort((a, b) => {
+      const diff = getDomainRank(a) - getDomainRank(b);
+      if (diff !== 0) return diff;
+      return a.localeCompare(b);
+    });
 
-  useEffect(() => {
-    setActiveDomain(
-      activeYear === "2026" ? "Club Heads" : domainOptions[0] || "",
-    );
-  }, [activeYear, domainOptions]);
+    return [
+      { name: "All", count: currentYearMembers.length },
+      ...domains.map((d) => ({ name: d, count: counts[d] })),
+    ];
+  }, [currentYearMembers]);
 
-  // Automatically switch domains every 10 seconds.
+  // When switching year, reset filter back to "All"
+  const handleYearChange = (year) => {
+    setActiveYear(year);
+    setSelectedDomain("All");
+  };
 
-  useEffect(() => {
-    if (domainOptions.length < 2) return;
+  // Sort helper: Domain Hierarchy -> Role Hierarchy (Head -> Vice-Head -> Core) -> Name
+  const sortMembers = (list) => {
+    return [...list].sort((a, b) => {
+      const domainDiff = getDomainRank(a.domain) - getDomainRank(b.domain);
+      if (domainDiff !== 0) return domainDiff;
 
-    const interval = setInterval(() => {
-      setActiveDomain((currentDomain) => {
-        const currentIndex = domainOptions.indexOf(currentDomain);
+      const roleDiff = getRoleRank(a.role) - getRoleRank(b.role);
+      if (roleDiff !== 0) return roleDiff;
 
-        return domainOptions[
-          (currentIndex + 1 + domainOptions.length) % domainOptions.length
-        ];
-      });
-    }, 10000);
+      return a.name.localeCompare(b.name);
+    });
+  };
 
-    return () => clearInterval(interval);
-  }, [domainOptions]);
-
-  // Filter the active year's members and put heads before core members.
-
+  // Filtered members list strictly sorted by the hierarchy
   const visibleMembers = useMemo(() => {
-    const members = membersByYear[activeYear] || [];
-
-    const filtered =
-      activeYear === "2026" && activeDomain === "Club Heads"
-        ? members.filter((member) => member.featured)
-        : members.filter((member) => member.domain === activeDomain);
-
-    const isHeadOrLead = (member) =>
-      member.featured || /\b(head|lead)\b/i.test(member.role || "");
-
-    return [...filtered].sort(
-      (a, b) => Number(isHeadOrLead(b)) - Number(isHeadOrLead(a)),
-    );
-  }, [activeYear, activeDomain, membersByYear]);
+    let list = currentYearMembers;
+    if (selectedDomain !== "All") {
+      list = list.filter((m) => m.domain === selectedDomain);
+    }
+    return sortMembers(list);
+  }, [currentYearMembers, selectedDomain]);
 
   return (
     <section
       id="team"
-      className="relative w-full overflow-hidden border-t border-white/[0.06] bg-black px-4 py-14 text-white sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+      className="relative w-full overflow-hidden border-t border-white/[0.06] bg-[#000000] px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
     >
       {/* Ambient lighting */}
-
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/4 top-10 h-64 w-64 rounded-full bg-cyan-500/[0.07] blur-[110px] sm:h-72 sm:w-72"
+        className="pointer-events-none absolute left-1/4 top-10 h-72 w-72 rounded-full bg-cyan-500/[0.07] blur-[120px]"
       />
-
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 rounded-full bg-blue-600/[0.05] blur-[100px]"
+        className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-600/[0.05] blur-[110px]"
       />
 
       <div className="relative mx-auto w-full max-w-6xl">
-        {/* Section heading */}
+        {/* Section Heading */}
+        <div className="mb-10 max-w-3xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-400 backdrop-blur-md">
+            <Users size={13} />
+            <span>The Team · People Behind Embrione</span>
+          </div>
 
-        <div className="mb-8 max-w-3xl sm:mb-10 lg:mb-12">
-          <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-400">
-            <Users size={12} />
-            The people behind the work
-          </p>
-
-          <h2 className="text-3xl font-semibold tracking-[-0.045em] sm:text-5xl lg:text-6xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.08]">
             Meet the{" "}
             <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 bg-clip-text text-transparent">
-              team.
+              Team.
             </span>
           </h2>
 
-          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-400 sm:text-base">
-            Meet the people building, designing, and bringing Embrione
-            initiatives to life.
+          <p className="mt-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-2xl">
+            Meet the students engineering the systems, managing the backend, and
+            bringing Kodikon and Embrione initiatives to life at PES University.
           </p>
         </div>
 
-        {/* Year selector */}
-
-        <div
-          className="mb-7 flex w-full max-w-full items-center gap-1.5 overflow-x-auto rounded-2xl border border-white/[0.08] bg-[#040816]/90 p-1.5 sm:mb-9 sm:inline-flex sm:w-auto"
-          aria-label="Select team year"
-        >
+        {/* Year Selector Tabs */}
+        <div className="mb-6 flex flex-wrap items-center gap-2">
           {years.map((year) => {
             const isActive = activeYear === year;
-
             return (
               <button
                 key={year}
                 type="button"
-                onClick={() => setActiveYear(year)}
+                onClick={() => handleYearChange(year)}
                 aria-pressed={isActive}
-                className={`flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-300 sm:px-6 ${
+                className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? "bg-cyan-400 text-black shadow-[0_0_18px_rgba(6,182,212,0.18)]"
-                    : "text-slate-400 hover:bg-white/[0.05] hover:text-white"
+                    ? "bg-cyan-500 text-black shadow-[0_0_20px_rgba(6,182,212,0.3)]"
+                    : "border border-white/[0.08] bg-[#040816]/70 text-slate-400 hover:border-white/20 hover:text-white"
                 }`}
               >
                 <CalendarDays size={14} />
-
-                {year}
+                <span>{year} {year === "2026" ? "(Current)" : ""}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Domain selector + member grid */}
+        {/* Domain Filter Pills - Ordered strictly by Domain Hierarchy */}
+        <div className="mb-8 flex flex-wrap items-center gap-2">
+          {domainOptions.map((domain) => {
+            const isActive = selectedDomain === domain.name;
+            const DomainIcon =
+              domain.name === "All" ? Users : getDomainIcon(domain.name);
 
-        <div className="grid min-w-0 grid-cols-1 items-start gap-5 lg:grid-cols-[190px_minmax(0,1fr)] lg:gap-6">
-          {/* Left sidebar on desktop; horizontal chips on mobile */}
-
-          <aside className="min-w-0 lg:sticky lg:top-24">
-            <div className="rounded-2xl border border-white/[0.08] bg-[#040816]/90 p-3 backdrop-blur-xl sm:p-4 lg:p-3">
-              <div className="px-1 pb-3 pt-1 sm:px-2">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-slate-500">
-                  Explore domains
-                </p>
-              </div>
-
-              <nav
-                aria-label={`${activeYear} team domains`}
-                className="flex gap-2 overflow-x-auto overscroll-x-contain pb-1 [scrollbar-width:thin] [scrollbar-color:#164e63_transparent] lg:flex-col lg:overflow-x-visible lg:overflow-y-auto lg:pb-0"
+            return (
+              <button
+                key={domain.name}
+                type="button"
+                onClick={() => setSelectedDomain(domain.name)}
+                aria-pressed={isActive}
+                className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "border border-cyan-400/50 bg-cyan-400/15 text-cyan-200 shadow-[0_0_12px_rgba(6,182,212,0.15)]"
+                    : "border border-white/[0.08] bg-white/[0.03] text-slate-400 hover:border-white/20 hover:text-white"
+                }`}
               >
-                {domainOptions.map((domain) => {
-                  const isActive = activeDomain === domain;
-
-                  return (
-                    <button
-                      key={domain}
-                      type="button"
-                      onMouseEnter={() => setActiveDomain(domain)}
-                      onFocus={() => setActiveDomain(domain)}
-                      onClick={() => setActiveDomain(domain)}
-                      aria-pressed={isActive}
-                      className={`flex min-h-10 shrink-0 items-center justify-between gap-3 rounded-xl border px-3 py-2.5 text-left text-xs font-medium transition-colors duration-200 lg:w-full ${
-                        isActive
-                          ? "border-cyan-300/25 bg-cyan-400/[0.09] text-cyan-200"
-                          : "border-transparent bg-transparent text-slate-400 hover:border-white/10 hover:bg-white/[0.04] hover:text-white"
-                      }`}
-                    >
-                      <span className="whitespace-nowrap lg:whitespace-normal">
-                        {domain}
-                      </span>
-
-                      <ArrowUpRight
-                        size={14}
-                        className={`shrink-0 ${
-                          isActive
-                            ? "text-cyan-300"
-                            : "text-slate-500 opacity-60"
-                        }`}
-                      />
-                    </button>
-                  );
-                })}
-              </nav>
-            </div>
-          </aside>
-
-          {/* Member cards */}
-
-          <div className="min-w-0">
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-400">
-                  {activeYear} Team
-                </p>
-
-                <p className="mt-1 text-xs text-slate-500">{activeDomain}</p>
-              </div>
-
-              <span className="shrink-0 rounded-full border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-[10px] text-slate-400">
-                {visibleMembers.length}{" "}
-                {visibleMembers.length === 1 ? "member" : "members"}
-              </span>
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`${activeYear}-${activeDomain}`}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.2 }}
-                className="grid min-w-0 grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3"
-              >
-                {visibleMembers.length > 0 ? (
-                  visibleMembers.map((member, index) => (
-                    <MemberCard
-                      key={`${activeYear}-${member.name}`}
-                      member={member}
-                      index={index}
-                      priority={index < 3 && Boolean(member.photo)}
-                    />
-                  ))
-                ) : (
-                  <div className="flex min-h-56 flex-col items-center justify-center rounded-2xl border border-dashed border-white/10 bg-[#040816]/70 p-6 text-center sm:col-span-2 xl:col-span-3">
-                    <Users className="mb-3 text-cyan-400/70" size={24} />
-
-                    <p className="text-sm text-slate-300">
-                      No profiles available for this domain yet.
-                    </p>
-
-                    <p className="mt-1 text-xs leading-5 text-slate-500">
-                      Try another domain or year.
-                    </p>
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+                <DomainIcon size={12} className={isActive ? "text-cyan-300" : "text-slate-500"} />
+                <span>{domain.name}</span>
+                <span
+                  className={`rounded-full px-1.5 py-0.2 text-[10px] ${
+                    isActive
+                      ? "bg-cyan-400/25 text-cyan-200"
+                      : "bg-white/10 text-slate-400"
+                  }`}
+                >
+                  {domain.count}
+                </span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* Counter Header */}
+        <div className="mb-6 flex items-center justify-between text-xs text-slate-400">
+          <span>
+            Showing <strong className="text-white">{visibleMembers.length}</strong>{" "}
+            {visibleMembers.length === 1 ? "profile" : "profiles"}{" "}
+            {selectedDomain !== "All" ? `in ${selectedDomain}` : "in active team"}
+          </span>
+        </div>
+
+        {/* Unified Profiles Grid with smooth, instantaneous cross-fade transition */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${activeYear}-${selectedDomain}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"
+          >
+            {visibleMembers.map((member) => (
+              <MemberCard
+                key={`${activeYear}-${member.domain}-${member.name}`}
+                member={member}
+              />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

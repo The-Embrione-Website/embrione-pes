@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Orbitron } from "next/font/google";
 import {
   Calendar,
   MapPin,
@@ -11,11 +10,6 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  display: "swap",
-});
 
 const EDICT_SCROLL_ITEMS = [
   {
@@ -463,7 +457,7 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className={`tracking-in-expand relative ${orbitron.className} text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase will-change-transform`}
+              className={`tracking-in-expand relative font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase will-change-transform`}
             >
               KODIKON{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">

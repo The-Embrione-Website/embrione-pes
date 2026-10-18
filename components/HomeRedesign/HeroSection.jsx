@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -14,8 +14,11 @@ import {
 } from "lucide-react";
 import pesLogo from "@/assets/PES_LogoWhite.webp";
 import Image from "next/image";
+import ParticleBackground from "./ParticleBackground";
 
 export default function HeroSection() {
+  const sectionRef = useRef(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,6 +75,7 @@ export default function HeroSection() {
 
   return (
     <section
+      ref={sectionRef}
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
       className="relative min-h-[95vh] flex flex-col items-center justify-center pt-36 pb-28 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden"
@@ -108,6 +112,9 @@ export default function HeroSection() {
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(#ffffff0c_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none [mask-image:radial-gradient(ellipse_70%_50%_at_50%_40%,#000_50%,transparent_100%)]"
       />
+
+      {/* Particle JS background network & interactive hover effect */}
+      <ParticleBackground containerRef={sectionRef} />
 
       <motion.div
         variants={containerVariants}

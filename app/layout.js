@@ -1,18 +1,6 @@
 import "./globals.css";
 import AosInit from "@/components/AosInit";
-import { Orbitron, Poppins } from "next/font/google";
 
-const orbitron = Orbitron({
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
-  variable: "--font-orbitron",
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "600"],
-  variable: "--font-poppins",
-});
 
 export const viewport = {
   width: "device-width",
@@ -103,7 +91,7 @@ import { Analytics } from "@vercel/analytics/react";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${orbitron.variable} ${poppins.variable}`}>
+      <body className="font-sans">
         {children}
         <AosInit />
         <Analytics />

@@ -1,7 +1,7 @@
 const currentTeam2026 = [
   {
     "name": "Trisha",
-    "domain": "Others",
+    "domain": "Club Head",
     "role": "Head",
     "photo": "/team/trisha.jpeg",
     "linkedin": "https://www.linkedin.com/in/trishavp/",
@@ -10,7 +10,7 @@ const currentTeam2026 = [
   },
   {
     "name": "Nuthan",
-    "domain": "Others",
+    "domain": "Club Head",
     "role": "Vice-Head",
     "photo": "/team/nuthan.jpeg",
     "linkedin": "https://www.linkedin.com/in/nuthanbaskar",
