@@ -12,7 +12,7 @@ export const platformPartners = [
     role: "Official Platform Partner",
     badge: "HACKATHON PLATFORM",
     logo: "/Partners/h2s_white_logo.webp",
-    website: "https://hack2skill.com",
+    website: "https://hack2skill.com/event/kodikon6/",
     tagline: "India's Premier Tech Innovation Platform",
     description:
       "Powering seamless hackathon registrations, team formation, automated project submissions, and fair jury evaluation workflows.",

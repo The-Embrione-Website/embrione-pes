@@ -1,6 +1,8 @@
 
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
+
 const tracks = [
   {
     number: "01",
@@ -379,6 +381,18 @@ export default function AboutSection() {
             Bring your ideas, collaborate with fellow engineers, and turn
             emerging technology challenges into tangible solutions.
           </p>
+
+          <div className="relative mt-7 flex justify-center">
+            <a
+              href="https://hack2skill.com/event/kodikon6/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-6 py-3 text-xs font-mono font-bold uppercase tracking-wider text-black transition-all duration-300 hover:from-cyan-300 hover:to-teal-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.45)] hover:-translate-y-0.5"
+            >
+              <span>Register on Hack2Skill</span>
+              <ArrowUpRight size={15} />
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -35,7 +35,6 @@ export default function DesktopTimeline({ enabled }) {
                   </>}
                 </p>
                 {event.dayOffset !== event.endDayOffset && <p className={styles.note}>Crosses midnight into Day 2.</p>}
-                {event.kind === "deadline" && <p className={styles.note}>Start time unspecified.</p>}
                 <span aria-hidden="true" className={styles.corner} />
               </article>
             </li>

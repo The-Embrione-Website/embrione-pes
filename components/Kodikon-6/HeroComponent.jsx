@@ -485,15 +485,17 @@ export default function HeroComponent() {
           {/* Action CTAs */}
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto px-4 sm:px-0">
             <a
-              href="#tracks"
-              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 px-6 sm:px-7 py-3 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_25px_rgba(6,182,212,0.35)]"
+              href="https://hack2skill.com/event/kodikon6/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 hover:from-cyan-300 hover:to-amber-200 px-7 sm:px-8 py-3.5 font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_30px_rgba(34,211,238,0.4)]"
             >
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
+                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
               />
-              <Sparkles size={15} />
-              <span>Explore Tracks</span>
+              <Sparkles size={16} />
+              <span>Register on Hack2Skill</span>
               <ArrowUpRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -501,25 +503,21 @@ export default function HeroComponent() {
             </a>
 
             <a
+              href="#tracks"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/40 hover:border-cyan-400/80 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 sm:px-6 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <span>Explore Tracks</span>
+            </a>
+
+            <a
               href="#timeline"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/30 hover:border-cyan-400/60 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 sm:px-6 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <Calendar
                 size={15}
                 className="text-cyan-400 transition-transform duration-300 group-hover:scale-110"
               />
-              <span>Timeline &amp; Schedule</span>
-            </a>
-
-            <a
-              href="#prizes"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <Compass
-                size={15}
-                className="text-cyan-400 transition-transform duration-500 group-hover:rotate-45"
-              />
-              <span>Prize Vault</span>
+              <span>Timeline</span>
             </a>
           </div>
         </div>

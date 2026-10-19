@@ -138,7 +138,7 @@ export const teamMembersDetails = [
   {
     name: "Ankith Khaitan",
     domain: "Logistics",
-    role: "Head",
+    role: "Core",
     photoUrl: "/2025-domain-heads/Ankith.webp",
     linkedinUrl: "https://www.linkedin.com/in/ankithkhaitan?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     email: "ankithkhaitan11@gmail.com",

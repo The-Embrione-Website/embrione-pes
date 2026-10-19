@@ -1,9 +1,18 @@
 const currentTeam2026 = [
   {
+    "name": "Chinmay",
+    "domain": "Club Head",
+    "role": "Head",
+    "photo": "/team/chinmay.webp",
+    "linkedin": "https://www.linkedin.com/in/chinmay-grandhi/",
+    "github": null,
+    "featured": true
+  },
+  {
     "name": "Trisha",
     "domain": "Club Head",
     "role": "Head",
-    "photo": "/team/trisha.jpeg",
+    "photo": "/team/trisha.webp",
     "linkedin": "https://www.linkedin.com/in/trishavp/",
     "github": "https://github.com/trisha-vallamkonda-prathap",
     "featured": true
@@ -12,7 +21,7 @@ const currentTeam2026 = [
     "name": "Nuthan",
     "domain": "Club Head",
     "role": "Vice-Head",
-    "photo": "/team/nuthan.jpeg",
+    "photo": "/team/nuthan.webp",
     "linkedin": "https://www.linkedin.com/in/nuthanbaskar",
     "github": null,
     "featured": true
@@ -21,8 +30,17 @@ const currentTeam2026 = [
     "name": "Akul",
     "domain": "Campaigning",
     "role": "Core",
-    "photo": "/team/akul.jpg",
+    "photo": "/team/akul.webp",
     "linkedin": "https://www.linkedin.com/in/akul-prashanth-athreya-6b9877370?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    "github": null,
+    "featured": false
+  },
+  {
+    "name": "Chiranthan M J",
+    "domain": "Campaigning",
+    "role": "Head",
+    "photo": "/team/chiranthan.webp",
+    "linkedin": "https://www.linkedin.com/in/chiranthan-m-j-672b1939b",
     "github": null,
     "featured": false
   },
@@ -30,7 +48,7 @@ const currentTeam2026 = [
     "name": "Abhishek",
     "domain": "Design",
     "role": "Head",
-    "photo": "/team/abhishek.jpeg",
+    "photo": "/team/abhishek.webp",
     "linkedin": "https://www.linkedin.com/in/abhishek-raj-das-8aa017375?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     "github": null,
     "featured": false
@@ -39,16 +57,25 @@ const currentTeam2026 = [
     "name": "Anjanaa",
     "domain": "Design",
     "role": "Head",
-    "photo": "/team/anjanaa.jpeg",
+    "photo": "/team/anjanaa.webp",
     "linkedin": "https://linkedin.com/in/anjanaa-vijaysankar1004",
     "github": "https://github.com/anv10",
+    "featured": false
+  },
+  {
+    "name": "Graheem Nayak",
+    "domain": "Hospitality",
+    "role": "Core",
+    "photo": "/team/graheem.webp",
+    "linkedin": null,
+    "github": null,
     "featured": false
   },
   {
     "name": "Kanak",
     "domain": "Hospitality",
     "role": "Head",
-    "photo": "/team/kanak.jpg",
+    "photo": "/team/kanak.webp",
     "linkedin": "https://linkedin.com/in/kanakgautam",
     "github": "https://github.com/kanak-ks",
     "featured": false
@@ -66,16 +93,34 @@ const currentTeam2026 = [
     "name": "Bhavya",
     "domain": "Logistics",
     "role": "Head",
-    "photo": "/team/bhavya.jpeg",
+    "photo": "/team/bhavya.webp",
     "linkedin": "https://www.linkedin.com/in/bhavya-goel-04a77b218",
     "github": "https://github.com/bhavya2607",
+    "featured": false
+  },
+  {
+    "name": "Aamer Khan",
+    "domain": "Operations",
+    "role": "Head",
+    "photo": "/team/aamer.webp",
+    "linkedin": "https://www.linkedin.com/in/aamerkhanrz",
+    "github": "https://github.com/aamer236",
+    "featured": false
+  },
+  {
+    "name": "Sruthi Vejju",
+    "domain": "Operations",
+    "role": "Head",
+    "photo": "/team/sruthi.webp",
+    "linkedin": "https://www.linkedin.com/in/vejjusruthi",
+    "github": "https://github.com/SruthiVejju",
     "featured": false
   },
   {
     "name": "Gaurav",
     "domain": "Social Media & Video Editing",
     "role": "Head",
-    "photo": "/team/gaurav.jpeg",
+    "photo": "/team/gaurav.webp",
     "linkedin": "https://www.linkedin.com/in/gaurav-omprakash/",
     "github": "https://github.com/gaurav-2188",
     "featured": false
@@ -84,7 +129,7 @@ const currentTeam2026 = [
     "name": "Girinanda",
     "domain": "Social Media & Video Editing",
     "role": "Head",
-    "photo": "/team/girinanda.jpg",
+    "photo": "/team/girinanda.webp",
     "linkedin": "https://www.linkedin.com/in/girinanda",
     "github": "https://github.com/girinandadk",
     "featured": false
@@ -93,7 +138,7 @@ const currentTeam2026 = [
     "name": "Smayan",
     "domain": "Sponsorship",
     "role": "Head",
-    "photo": "/team/smayan.jpg",
+    "photo": "/team/smayan.webp",
     "linkedin": "https://www.linkedin.com/in/smayan-g-359011372?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     "github": null,
     "featured": false
@@ -102,7 +147,7 @@ const currentTeam2026 = [
     "name": "Srinidhi",
     "domain": "Sponsorship",
     "role": "Core",
-    "photo": "/team/srinidhi.jpeg",
+    "photo": "/team/srinidhi.webp",
     "linkedin": "https://www.linkedin.com/in/srinidhi-rangarajan-3b4285388",
     "github": "https://github.com/srinidhirangarajan11",
     "featured": false
@@ -111,7 +156,7 @@ const currentTeam2026 = [
     "name": "Sagar",
     "domain": "Web Development",
     "role": "Head",
-    "photo": "/team/sagar.jpg",
+    "photo": "/team/sagar.webp",
     "linkedin": "https://www.linkedin.com/in/sagarhutagi",
     "github": "https://github.com/sagarhutagi",
     "featured": false
@@ -120,7 +165,7 @@ const currentTeam2026 = [
     "name": "Atharv",
     "domain": "Web Development",
     "role": "Core",
-    "photo": "/team/atharv.jpg",
+    "photo": "/team/atharv.webp",
     "linkedin": "https://www.linkedin.com/in/atharv-mittal-422614321",
     "github": "https://github.com/atharvmitt",
     "featured": false
@@ -129,10 +174,91 @@ const currentTeam2026 = [
     "name": "Channabasu Mathad",
     "domain": "Web Development",
     "role": "Core",
-    "photo": "/team/channabasavaswami.jpg",
+    "photo": "/team/channabasavaswami.webp",
     "linkedin": "https://www.linkedin.com/in/channabasumathad",
     "github": "https://github.com/channabasu2007",
     "featured": false
+  },
+  {
+    "name": "Sresha Anantha",
+    "domain": "Event Management",
+    "role": "Head",
+    "photo": "/team/sresha.webp",
+    "linkedin": "https://www.linkedin.com/in/sresha-anantha-4578a2382/",
+    "github": null,
+    "featured": false
+  },
+  {
+    "name": "Kunjal Patwari",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Kunjal.webp",
+    "linkedin": "https://www.linkedin.com/in/kunjal-patwari-967085291",
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Preksha M",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Preksha.webp",
+    "linkedin": "https://www.linkedin.com/in/preksha-m-90b309329/",
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Dhruv Jain",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Dhruv.webp",
+    "linkedin": "https://www.linkedin.com/in/d16r7v-17a8n",
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Taha Hussain",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Taha.webp",
+    "linkedin": "https://www.linkedin.com/in/tahahussain1692502",
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Nishant Hegde",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Nishant.webp",
+    "linkedin": null,
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Shashwat Jha",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Shashwat.webp",
+    "linkedin": "https://www.linkedin.com/in/shashwat-jha-7a726b296",
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Ankith Khaitan",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/2025-domain-heads/Ankith.webp",
+    "linkedin": "https://www.linkedin.com/in/ankithkhaitan",
+    "github": null,
+    "featured": true
+  },
+  {
+    "name": "Angad Bhalla",
+    "domain": "Mentors",
+    "role": "Mentor",
+    "photo": "/team/angad.webp",
+    "linkedin": "https://linkedin.com/in/anga",
+    "github": "https://github.com/Anga205",
+    "featured": true
   }
 ];
 

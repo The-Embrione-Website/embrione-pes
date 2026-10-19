@@ -33,8 +33,9 @@ export default function NavbarHome() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const currentNavLinks = isKodikonPage ? kodikonNavLinks : homeNavLinks;
-  const ctaHref = isKodikonPage ? "#timeline" : "/kodikon-6";
-  const ctaLabel = isKodikonPage ? "Timeline" : "Kodikon 6.0";
+  const ctaHref = isKodikonPage ? "https://hack2skill.com/event/kodikon6/" : "/kodikon-6";
+  const ctaLabel = isKodikonPage ? "Register Now" : "Kodikon 6.0";
+  const isCtaExternal = isKodikonPage;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 15);
@@ -163,7 +164,11 @@ export default function NavbarHome() {
         <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
           <Link
             href={ctaHref}
-            onClick={(event) => handleAnchorClick(event, ctaHref)}
+            target={isCtaExternal ? "_blank" : undefined}
+            rel={isCtaExternal ? "noopener noreferrer" : undefined}
+            onClick={(event) => {
+              if (!isCtaExternal) handleAnchorClick(event, ctaHref);
+            }}
             className={`px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs ${ctaClass}`}
           >
             <span>{ctaLabel}</span>
@@ -211,7 +216,11 @@ export default function NavbarHome() {
           <div className="pt-2.5 border-t border-white/10">
             <Link
               href={ctaHref}
-              onClick={(event) => handleAnchorClick(event, ctaHref)}
+              target={isCtaExternal ? "_blank" : undefined}
+              rel={isCtaExternal ? "noopener noreferrer" : undefined}
+              onClick={(event) => {
+                if (!isCtaExternal) handleAnchorClick(event, ctaHref);
+              }}
               className={`w-full min-h-10 px-4 py-2.5 text-xs ${ctaClass}`}
             >
               <span>{ctaLabel}</span>

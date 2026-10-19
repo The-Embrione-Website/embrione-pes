@@ -47,7 +47,7 @@ export const Kodikon6FAQData = [
   {
     id: "k6-faq-timeline",
     q: "What are the important dates and timeline for Kodikon 6.0?",
-    a: "Registrations and idea submissions open on 19th October and close on 23rd October 2026. The shortlisted Top 35 teams will be announced on 26th October 2026. The 24-hour in-person hackathon will take place on 31st October and 1st November 2026 at PESU 52, PES University.",
+    a: "Registrations and idea submissions open on 19th October and close on 23rd October 2026 on Hack2Skill (https://hack2skill.com/event/kodikon6/). The shortlisted Top 35 teams will be announced on 26th October 2026. The 24-hour in-person hackathon will take place on 31st October and 1st November 2026 at PESU 52, PES University.",
   },
   {
     id: "k6-faq-venue",

@@ -16,14 +16,6 @@ export const pastHeads2024 = [
     linkedinUrl: "https://www.linkedin.com/in/gaganhr",
   },
   {
-    name: "Anvesha Nayak",
-    domain: "Club Head",
-    role: "Head",
-    term: "2024-2025",
-    photoUrl: "/current-domain-heads/IMG-20230809-WA0016.webp",
-    linkedinUrl: "https://www.linkedin.com/in/anveshanayak",
-  },
-  {
     name: "Rahul Baradol",
     domain: "Web Development",
     role: "Head",
@@ -109,14 +101,6 @@ export const pastHeads2024 = [
     role: "Head",
     term: "2024-2025",
     photoUrl: "/current-domain-heads/Kanika.webp",
-    linkedinUrl: "",
-  },
-  {
-    name: "Tanusha Raina",
-    domain: "Hospitality",
-    role: "Head",
-    term: "2024-2025",
-    photoUrl: "/current-domain-heads/Tanusha Raina_.webp",
     linkedinUrl: "",
   },
   {
