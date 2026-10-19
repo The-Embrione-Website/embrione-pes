@@ -9,8 +9,8 @@ export default function StructuredData() {
       "The flagship 24-hour national undergraduate hackathon organized by The Embrione, Department of Computer Science & Engineering, PES University.",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    startDate: "2026-10-31T07:30:00+05:30",
-    endDate: "2026-11-01T16:00:00+05:30",
+    startDate: "2026-10-31T08:00:00+05:30",
+    endDate: "2026-11-01T18:00:00+05:30",
     location: {
       "@type": "Place",
       name: "PESU 52, PES University",
