@@ -13,14 +13,18 @@ import React from "react";
  * - Sōrin sacred spire at apex (Hōju jewel, Suien water flames, 9 Kurin bronze rings)
  * - Cut-stone base podium (Kidan) at bottom with dual symmetrical stone staircases
  */
-export function SingleJapaneseTower({ activeFloor = 0 }) {
+export function SingleJapaneseTower({ x, y, width, height, embedded = false, floors, baseY = 1420 }) {
   return (
-    <div className="relative w-full max-w-[480px] mx-auto select-none pointer-events-none">
       <svg
-        viewBox="0 0 500 1620"
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        aria-hidden="true"
+        viewBox={`0 0 500 ${baseY + 200}`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto overflow-visible"
+        className={embedded ? "overflow-visible" : "relative w-full max-w-[480px] h-auto mx-auto select-none pointer-events-none overflow-visible"}
       >
         <defs>
           <filter id="cyan-glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -32,9 +36,9 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
         {/* Ambient subtle backlight aura */}
         <ellipse
           cx="250"
-          cy="850"
+          cy={(baseY + 200) / 2}
           rx="220"
-          ry="750"
+          ry={(baseY + 200) / 2 - 60}
           fill="none"
           stroke="rgba(6, 182, 212, 0.04)"
           strokeWidth="50"
@@ -98,6 +102,9 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           </text>
         </g>
 
+        {floors ? floors.map((floor) => (
+          <PagodaFloorHollow key={floor.floorNum} {...floor} />
+        )) : <>
         {/* ============================================================== */}
         {/* FLOOR 5 (TOP STORY) — y: 220 to 404                           */}
         {/* ============================================================== */}
@@ -111,7 +118,6 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           roomTopY={290}
           roomBottomY={390}
           balconyBottomY={404}
-          isActive={activeFloor === 0}
         />
 
         {/* ============================================================== */}
@@ -128,7 +134,6 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           roomTopY={492}
           roomBottomY={606}
           balconyBottomY={622}
-          isActive={activeFloor === 1}
         />
 
         {/* ============================================================== */}
@@ -145,7 +150,6 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           roomTopY={722}
           roomBottomY={846}
           balconyBottomY={864}
-          isActive={activeFloor === 2}
         />
 
         {/* ============================================================== */}
@@ -162,7 +166,6 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           roomTopY={976}
           roomBottomY={1110}
           balconyBottomY={1130}
-          isActive={activeFloor === 3}
         />
 
         {/* ============================================================== */}
@@ -179,16 +182,16 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           roomTopY={1254}
           roomBottomY={1400}
           balconyBottomY={1420}
-          isActive={activeFloor === 4}
           isGroundLevel={true}
         />
+        </>}
 
         {/* ============================================================== */}
         {/* 7. ELEVATED STONE BASE PODIUM (KIDAN 基壇) & STAIRS            */}
         {/* Starts DIRECTLY at y: 1420 (ZERO GAP under Floor 1's balcony!) */}
         {/* Matching photo with dual stairs and masonry                    */}
         {/* ============================================================== */}
-        <g id="stone-kidan-base" stroke="#22d3ee" strokeWidth="1.4" fill="none">
+        <g id="stone-kidan-base" transform={`translate(0 ${baseY - 1420})`} stroke="#22d3ee" strokeWidth="1.4" fill="none">
           {/* Main Stone Podium Perimeter */}
           <path d="M 40 1420 L 460 1420 L 485 1600 L 15 1600 Z" strokeWidth="2" />
 
@@ -260,7 +263,6 @@ export function SingleJapaneseTower({ activeFloor = 0 }) {
           <line x1="10" y1="1605" x2="490" y2="1605" stroke="#f59e0b" strokeWidth="1" />
         </g>
       </svg>
-    </div>
   );
 }
 
@@ -284,7 +286,6 @@ function PagodaFloorHollow({
   roomTopY = 290,
   roomBottomY = 390,
   balconyBottomY = 404,
-  isActive = false,
   isGroundLevel = false,
 }) {
   const halfRoof = roofWidth / 2;
