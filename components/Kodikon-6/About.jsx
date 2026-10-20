@@ -299,14 +299,14 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="absolute -bottom-4 right-4 rounded-lg border border-cyan-400/20 bg-[#050d20] px-4 py-3 shadow-xl sm:right-0">
+            {/* <div className="absolute -bottom-4 right-4 rounded-lg border border-cyan-400/20 bg-[#050d20] px-4 py-3 shadow-xl sm:right-0">
               <p className="font-mono text-[9px] tracking-widest text-slate-500">
                 BUILD_WINDOW
               </p>
               <p className="mt-1 text-sm font-bold text-white">
                 24 <span className="text-cyan-300">HOURS</span>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
 
