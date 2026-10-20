@@ -1,7 +1,7 @@
 import "./globals.css";
 import AosInit from "@/components/AosInit";
 import { Analytics } from "@vercel/analytics/react";
-import { Plus_Jakarta_Sans, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne, Unbounded, JetBrains_Mono } from "next/font/google";
 
 const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -10,10 +10,17 @@ const sans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const display = Space_Grotesk({
+const display = Syne({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["500", "600", "700"],
+  weight: ["600", "700", "800"],
+  display: "swap",
+});
+
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-unbounded",
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
@@ -113,7 +120,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} ${mono.variable}`}
+      className={`${sans.variable} ${display.variable} ${unbounded.variable} ${mono.variable}`}
     >
       <body className="font-sans bg-black text-white antialiased">
         {children}
