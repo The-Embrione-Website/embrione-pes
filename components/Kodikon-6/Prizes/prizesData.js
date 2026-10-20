@@ -1,5 +1,5 @@
 export const prizePoolSummary = {
-  totalPool: "₹1,00,000",
+  totalPool: "₹1,50,000",
   poolLabel: "Total Cash Bounty Pool",
   telemetry: "SYS_REWARDS // VERIFIED_ESCROW",
   highlight: "₹1,00,000 cash prize pool for the top 3 winners. Top 10 teams (including the top 3) will be receiving goodies.",

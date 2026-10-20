@@ -43,7 +43,7 @@ export const kodikon6Milestones = [
     title: "Registrations and Submissions Close",
     date: "23rd October 2026",
     description:
-      "The registration and idea submission window officially closes on 23rd October 2026. Make sure to finalize your team members and submit your proposal before the deadline!",
+      "The registration and idea submission window officially closes on 25th October 2026. Make sure to finalize your team members and submit your proposal before the deadline!",
     icon: Calendar,
     accentColor: "purple",
     glowColor: "rgba(168, 85, 247, 0.4)",
