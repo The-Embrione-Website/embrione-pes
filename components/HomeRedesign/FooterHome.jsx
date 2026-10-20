@@ -4,6 +4,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Instagram,
   Linkedin,
@@ -17,7 +18,7 @@ import {
 const exploreLinks = [
   { label: "About Us", href: "#about" },
   { label: "Kodikon 6.0", href: "/kodikon-6" },
-  { label: "Past Events", href: "#past-events" },
+  { label: "Past Events", href: "#events" },
   { label: "Meet The Team", href: "#team" },
   { label: "Previous Partners", href: "#partners" },
   { label: "Contact Us", href: "#contact" },
@@ -47,6 +48,18 @@ const socialLinks = [
 ];
 
 export default function FooterSection() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Match the homepage section routing used by NavbarHome.
+  const getLinkHref = (href) => {
+    if (href.startsWith("#") && !isHome) {
+      return `/${href}`;
+    }
+
+    return href;
+  };
+
   return (
     <footer className="relative w-full overflow-hidden border-t border-white/[0.08] bg-black px-4 text-white sm:px-6 lg:px-8">
       {/* Ambient background glow */}
@@ -60,41 +73,41 @@ export default function FooterSection() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_0.65fr_1fr] lg:gap-14">
           {/* Brand column */}
           <div className="min-w-0">
-            <div className="mb-5 flex justify-evenly items-center gap-5">
-     {/* PES University logo */}
-<div className="relative flex h-16 w-16 shrink-0 items-center justify-center overflow-visible">
-  <Image
-    src="/PES-logos/without-bg-pesu.png"
-    alt="PES University"
-    width={128}
-    height={128}
-    priority
-    className="h-full w-full scale-[3.5] object-contain"
-  />
-</div>
-
-<div className="relative gap-2 flex h-16 w-26  items-center justify-between overflow-visible">
-  {/* Embrione logo */}
-<div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
-  <Image
-    src="/embrionelogo.png"
-    alt="The Embrione"
-    width={128}
-    height={128}
-    priority
-    className="h-full w-full scale-[1.8] object-contain"
-  />
-</div>
-
-
-              <div className="min-w-0 ml-2">
-                <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
-                  The Embrione
-                </h3>
-                
+            <div className="mb-5 flex items-center gap-5">
+              {/* PES University logo */}
+              <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
+                <Image
+                  src="/PES-logos/without-bg-pesu.png"
+                  alt="PES University"
+                  width={128}
+                  height={128}
+                  sizes="64px"
+                  className="h-full w-full scale-[1.8] object-contain"
+                />
               </div>
-  </div>       
 
+              {/* Embrione logo and name */}
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="relative flex h-14 w-14 shrink-0 items-center justify-center">
+                  <Image
+                    src="/embrionelogo.webp"
+                    alt="The Embrione"
+                    width={112}
+                    height={112}
+                    sizes="56px"
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+
+                <div className="min-w-0">
+                  <h3 className="text-base font-bold tracking-tight text-white sm:text-lg">
+                    The Embrione
+                  </h3>
+                  <p className="mt-1 text-xs text-slate-500">
+                    Innovation. Engineering. Community.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <p className="max-w-md text-sm font-light leading-6 text-slate-300">
@@ -109,8 +122,12 @@ export default function FooterSection() {
                 <a
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noreferrer"
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={
+                    href.startsWith("mailto:")
+                      ? undefined
+                      : "noopener noreferrer"
+                  }
                   aria-label={label}
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-white/[0.09] bg-white/[0.035] text-slate-400 transition hover:border-cyan-400/40 hover:bg-cyan-400/10 hover:text-cyan-300"
                 >
@@ -127,21 +144,26 @@ export default function FooterSection() {
             </h4>
 
             <ul className="space-y-3">
-              {exploreLinks.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="inline-flex items-center gap-1 text-sm text-slate-400 transition hover:text-cyan-300"
-                  >
-                    {item.label}
-                    {item.label === "Kodikon 6.0" && (
-                      <span className="ml-1 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
-                        ONGOING
-                      </span>
-                    )}
-                  </Link>
-                </li>
-              ))}
+              {exploreLinks.map((item) => {
+                const href = getLinkHref(item.href);
+
+                return (
+                  <li key={item.label}>
+                    <Link
+                      href={href}
+                      className="inline-flex items-center gap-1 text-sm text-slate-400 transition hover:text-cyan-300"
+                    >
+                      {item.label}
+
+                      {item.label === "Kodikon 6.0" && (
+                        <span className="ml-1 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-2 py-0.5 text-[9px] font-semibold text-emerald-300">
+                          ONGOING
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -164,6 +186,7 @@ export default function FooterSection() {
                 size={16}
                 className="mt-0.5 shrink-0 text-cyan-400"
               />
+
               <p className="text-sm leading-5 text-slate-400">
                 PES University, 100 Feet Ring Road, BSK III Stage, Bengaluru –
                 560085
@@ -173,7 +196,7 @@ export default function FooterSection() {
             <a
               href="https://www.google.com/maps/search/?api=1&query=PES+University+Ring+Road+Campus+Bengaluru"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-400 transition hover:text-cyan-200"
             >
               Open in Google Maps
