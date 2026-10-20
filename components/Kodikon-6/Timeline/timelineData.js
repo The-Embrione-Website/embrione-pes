@@ -41,7 +41,7 @@ export const kodikon6Milestones = [
     phaseName: "The Gate · Submission Deadline",
     japaneseSubtitle: "登録及び企画書提出締切",
     title: "Registrations and Submissions Close",
-    date: "23rd October 2026",
+    date: "25th October 2026",
     description:
       "The registration and idea submission window officially closes on 25th October 2026. Make sure to finalize your team members and submit your proposal before the deadline!",
     icon: Calendar,
