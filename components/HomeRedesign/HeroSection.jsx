@@ -265,7 +265,7 @@ export default function HeroSection() {
                   <span>Prize Pool</span>
                 </div>
                 <span className="text-white font-semibold text-sm">
-                  ₹1,00,000 Cash
+                  ₹1,50,000 Cash
                 </span>
               </div>
 

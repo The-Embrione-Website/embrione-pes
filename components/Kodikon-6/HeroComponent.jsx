@@ -16,7 +16,7 @@ const EDICT_SCROLL_ITEMS = [
     kanji: "日",
     label: "Hackathon Dates",
     value: "31st Oct – 1st Nov",
-    subtext: "Registrations: 19th – 23rd Oct",
+    subtext: "Registrations: 19th – 25th Oct",
     icon: Calendar,
   },
   {
