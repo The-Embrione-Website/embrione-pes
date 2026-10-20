@@ -488,16 +488,11 @@ export default function HeroComponent() {
               href="https://hack2skill.com/event/kodikon6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-gradient-to-r from-cyan-400 via-teal-300 to-amber-300 hover:from-cyan-300 hover:to-amber-200 px-7 sm:px-8 py-3.5 font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-black transition-all duration-300 hover:-translate-y-0.5 shadow-[0_0_30px_rgba(34,211,238,0.4)]"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-brand-accent-cyan hover:bg-brand-accent-cyan-dark px-7 sm:px-8 py-3.5 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-colors"
             >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
-              />
-              <Sparkles size={16} />
               <span>Register on Hack2Skill</span>
               <ArrowUpRight
-                size={16}
+                size={15}
                 className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>

@@ -99,39 +99,27 @@ export default function KodikonSpotlight() {
   return (
     <section
       id="events"
-      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#000000] text-white overflow-hidden border-t border-white/[0.06]"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-12 bg-black text-white overflow-hidden border-b border-zinc-800/80"
     >
-      {/* Subtle Ambient Radial Lighting */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-1/3 right-0 w-[500px] h-[500px] bg-cyan-500/10 blur-[160px] rounded-full -z-10"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-blue-600/10 blur-[160px] rounded-full -z-10"
-      />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-10 sm:mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/[0.1] bg-white/[0.03] text-cyan-400 text-xs uppercase tracking-widest font-semibold mb-5 backdrop-blur-md">
-            <Calendar size={13} />
-            <span>Event Archive · Historical Milestones</span>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="text-xs font-mono font-semibold tracking-widest text-blue-400">02</span>
+            <span className="h-px w-6 bg-blue-500/40" />
+            <span className="text-xs font-mono tracking-widest uppercase text-zinc-400">Historical Event Archive</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] text-white leading-[1.08]">
-            Past{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500">
-              Editions.
-            </span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.035em] text-white leading-[1.05]">
+            Past Editions.
           </h2>
-          <p className="mt-3.5 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+          <p className="mt-3.5 text-base sm:text-lg text-zinc-400 font-normal leading-relaxed">
             From beginner-friendly offline challenges to national research hackathons. Explore the evolution of our flagship series.
           </p>
         </div>
 
-        {/* Apple Capsule Segmented Control Track (All 7 original events preserved) */}
-        <div className="flex items-center gap-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-xl mb-10 overflow-x-auto max-w-full scrollbar-none">
+        {/* Segmented Control Track */}
+        <div className="flex items-center gap-1.5 p-1 rounded-lg bg-zinc-950 border border-zinc-800 mb-10 overflow-x-auto max-w-full scrollbar-none">
           {ClubEvents?.map((event) => {
             const isSelected = selectedEventName === event.eventName;
             return (
@@ -139,10 +127,10 @@ export default function KodikonSpotlight() {
                 key={event.eventName}
                 type="button"
                 onClick={() => setSelectedEventName(event.eventName)}
-                className={`px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                className={`px-4 py-2 rounded-md text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer whitespace-nowrap ${
                   isSelected
-                    ? "bg-cyan-500 text-black shadow-[0_0_18px_rgba(6,182,212,0.35)]"
-                    : "text-slate-400 hover:text-white hover:bg-white/[0.03]"
+                    ? "bg-[#1e3a8a] text-white font-semibold shadow-md shadow-blue-950/60 border border-blue-500/40"
+                    : "text-zinc-400 hover:text-white hover:bg-zinc-900"
                 }`}
               >
                 {event.eventName}
@@ -151,7 +139,7 @@ export default function KodikonSpotlight() {
           })}
         </div>
 
-        {/* Apple Keynote Showcase Card */}
+        {/* Keynote Showcase Card */}
         {currentEvent && (
           <AnimatePresence mode="wait">
             <motion.div
@@ -160,55 +148,52 @@ export default function KodikonSpotlight() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative p-7 sm:p-11 lg:p-12 rounded-3xl bg-[#040816]/90 border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_25px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl overflow-hidden"
+              className="relative p-6 sm:p-8 lg:p-10 rounded-xl bg-zinc-950 border border-zinc-800 overflow-hidden shadow-2xl"
             >
-              {/* Corner Ambient Glow */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-
               <div className="relative z-10 max-w-4xl">
-                <span className="text-xs uppercase tracking-wider text-cyan-400 font-semibold block mb-2">
+                <span className="text-xs uppercase tracking-widest text-blue-400 font-mono block mb-2">
                   Department Milestone
                 </span>
-                <h3 className="text-3xl sm:text-5xl font-bold text-white tracking-tight">
+                <h3 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
                   {currentEvent.eventName}
                 </h3>
-                <p className="mt-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed">
+                <p className="mt-4 text-base sm:text-lg text-zinc-300 font-normal leading-relaxed">
                   {currentEvent.eventDescription}
                 </p>
               </div>
 
-              {/* Event Photo Gallery (Rendered only for events with genuine event photos) */}
+              {/* Event Photo Gallery */}
               {currentPhotos.length > 0 && (
-                <div className="relative z-10 mt-10 pt-8 border-t border-white/[0.08]">
-                  <div className="flex items-center justify-between mb-5">
+                <div className="relative z-10 mt-8 pt-8 border-t border-zinc-800">
+                  <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <Camera size={14} className="text-cyan-400" />
-                      <span className="text-xs uppercase tracking-wider text-slate-300 font-medium">
-                        Event Photographs ({currentPhotos.length})
+                      <Camera size={14} className="text-blue-400" />
+                      <span className="text-xs font-mono uppercase tracking-wider text-zinc-300">
+                        Archive Photographs ({currentPhotos.length})
                       </span>
                     </div>
-                    <span className="text-xs text-slate-500 font-light">
+                    <span className="text-xs font-mono text-zinc-500">
                       Click photo to zoom
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5 sm:gap-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     {currentPhotos.map((imgSrc, i) => (
                       <button
                         key={i}
                         type="button"
                         onClick={() => setLightboxIndex(i)}
-                        className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] hover:border-cyan-400/50 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-left cursor-pointer shadow-lg hover:scale-[1.02]"
+                        className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-black/60 border border-zinc-800 hover:border-blue-500/50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 text-left cursor-pointer"
                         aria-label={`View photo ${i + 1} from ${currentEvent.eventName}`}
                       >
                         <img
                           src={imgSrc}
                           alt=""
-                          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-105"
+                          className="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-90"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
-                          <span className="p-2.5 rounded-full bg-black/60 text-white backdrop-blur-md">
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                          <span className="p-2 rounded-md bg-black/80 text-white">
                             <ZoomIn size={16} />
                           </span>
                         </div>
@@ -219,9 +204,9 @@ export default function KodikonSpotlight() {
               )}
 
               {/* Institutional Footer Tag */}
-              <div className="relative z-10 mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-500">
+              <div className="relative z-10 mt-8 pt-6 border-t border-zinc-800 flex items-center justify-between text-xs font-mono text-zinc-500">
                 <div className="flex items-center gap-2">
-                  <Layers size={13} className="text-cyan-400/80" />
+                  <Layers size={13} className="text-blue-400" />
                   <span>Department of Computer Science &amp; Engineering</span>
                 </div>
                 <span>PES University</span>
@@ -231,13 +216,13 @@ export default function KodikonSpotlight() {
         )}
       </div>
 
-      {/* Lightbox Modal (Clean preview, keyboard arrow navigation, NO text descriptions) */}
+      {/* Lightbox Modal */}
       {lightboxIndex !== null && currentPhotos[lightboxIndex] && (
         <div
           role="dialog"
           aria-modal="true"
           aria-label="Enlarged photo preview"
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 sm:p-6"
           onClick={() => setLightboxIndex(null)}
         >
           <div
@@ -246,9 +231,9 @@ export default function KodikonSpotlight() {
           >
             {/* Top Bar with Title, Counter and Controls */}
             <div className="w-full flex items-center justify-between pb-3 text-white">
-              <div className="text-xs sm:text-sm font-medium text-slate-300">
+              <div className="text-xs sm:text-sm font-medium text-zinc-300">
                 <span>{currentEvent.eventName}</span>
-                <span className="text-slate-500 ml-2">
+                <span className="text-zinc-500 ml-2">
                   ({lightboxIndex + 1} of {currentPhotos.length})
                 </span>
               </div>
@@ -262,7 +247,7 @@ export default function KodikonSpotlight() {
                         currentPhotos.length
                     )
                   }
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-white transition-colors cursor-pointer"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft size={16} />
@@ -272,7 +257,7 @@ export default function KodikonSpotlight() {
                   onClick={() =>
                     setLightboxIndex((lightboxIndex + 1) % currentPhotos.length)
                   }
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-white transition-colors cursor-pointer"
                   aria-label="Next photo"
                 >
                   <ChevronRight size={16} />
@@ -280,7 +265,7 @@ export default function KodikonSpotlight() {
                 <button
                   type="button"
                   onClick={() => setLightboxIndex(null)}
-                  className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer ml-2"
+                  className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-white transition-colors cursor-pointer ml-2"
                   aria-label="Close photo preview"
                 >
                   <X size={16} />
@@ -289,11 +274,11 @@ export default function KodikonSpotlight() {
             </div>
 
             {/* Enlarged Image */}
-            <div className="relative max-h-[75vh] w-full flex items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/80">
+            <div className="relative max-h-[75vh] w-full flex items-center justify-center overflow-hidden rounded-xl border border-zinc-800 bg-black/90">
               <img
                 src={currentPhotos[lightboxIndex]}
                 alt=""
-                className="max-w-full max-h-[75vh] object-contain rounded-2xl"
+                className="max-w-full max-h-[75vh] object-contain rounded-xl"
               />
             </div>
           </div>

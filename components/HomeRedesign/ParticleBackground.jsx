@@ -49,13 +49,13 @@ export default function ParticleBackground({ containerRef }) {
 
     let particles = [];
 
-    // Color definitions tailored to the dark cyan/blue site theme
+    // Color definitions tailored to the navy blue & dark palette
     const colorPalette = [
-      { r: 6, g: 182, b: 212 },   // cyan-500
-      { r: 34, g: 211, b: 238 },  // cyan-400
-      { r: 56, g: 189, b: 248 },  // sky-400
-      { r: 148, g: 163, b: 184 }, // slate-400
-      { r: 255, g: 255, b: 255 }, // white accent
+      { r: 30, g: 58, b: 138 },   // navy blue (#1e3a8a)
+      { r: 96, g: 165, b: 250 },  // bright blue accent (#60a5fa)
+      { r: 161, g: 161, b: 170 }, // zinc-400
+      { r: 113, g: 113, b: 122 }, // zinc-500
+      { r: 255, g: 255, b: 255 }, // pure white
     ];
 
     class Particle {

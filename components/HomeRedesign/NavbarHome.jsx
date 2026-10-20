@@ -101,26 +101,25 @@ export default function NavbarHome() {
 
   const ctaClass =
     "inline-flex shrink-0 items-center justify-center gap-1.5 " +
-    "rounded-full border border-cyan-400/30 bg-white/[0.04] " +
-    "font-semibold uppercase tracking-wider whitespace-nowrap " +
-    "text-cyan-300 transition-all duration-200 " +
-    "hover:border-cyan-300/70 hover:bg-cyan-400/10 " +
-    "hover:text-white hover:-translate-y-0.5";
+    "rounded-md border border-blue-500/40 bg-[#1e3a8a] " +
+    "font-mono font-semibold text-xs uppercase tracking-wider whitespace-nowrap " +
+    "text-white shadow-lg shadow-blue-950/60 transition-colors " +
+    "hover:bg-[#1d4ed8] hover:border-blue-400";
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled || mobileMenuOpen
-          ? "bg-black/85 backdrop-blur-2xl border-b border-white/[0.07] py-3 sm:py-3.5 shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-          : "bg-transparent py-4 sm:py-5"
+          ? "bg-black/95 border-b border-zinc-800 py-3 sm:py-4"
+          : "bg-transparent py-4 sm:py-6"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between gap-2 sm:gap-4">
         {/* Left: Horizontal Embrione logo */}
         <Link
           href="/"
           onClick={() => setMobileMenuOpen(false)}
-          className="flex min-w-0 shrink-0 items-center gap-1.5 sm:gap-2 group"
+          className="flex min-w-0 shrink-0 items-center gap-2 group"
           aria-label="The Embrione homepage"
         >
           <div className="relative w-[52px] h-[36px] sm:w-[96px] sm:h-[46px] lg:w-[112px] lg:h-[52px] shrink-0 overflow-hidden">
@@ -134,7 +133,7 @@ export default function NavbarHome() {
             />
           </div>
 
-          <span className="max-[340px]:hidden text-white font-bold text-sm sm:text-lg lg:text-2xl tracking-tight whitespace-nowrap transition-colors group-hover:text-cyan-300">
+          <span className="max-[340px]:hidden text-white font-semibold text-sm sm:text-base lg:text-xl tracking-tight whitespace-nowrap transition-colors group-hover:text-blue-400">
             The Embrione
           </span>
         </Link>
@@ -142,7 +141,7 @@ export default function NavbarHome() {
         {/* Center: Desktop navigation (1024px and up) */}
         <nav
           aria-label="Main navigation"
-          className="hidden lg:flex items-center gap-5 xl:gap-7"
+          className="hidden lg:flex items-center gap-6 xl:gap-8"
         >
           {currentNavLinks.map((link) => {
             const href = getLinkHref(link.href);
@@ -152,7 +151,7 @@ export default function NavbarHome() {
                 key={link.label}
                 href={href}
                 onClick={(event) => handleAnchorClick(event, href)}
-                className="text-xs uppercase tracking-wider text-slate-300 hover:text-cyan-300 transition-colors font-medium whitespace-nowrap"
+                className="text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-blue-400 transition-colors font-medium whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -161,7 +160,7 @@ export default function NavbarHome() {
         </nav>
 
         {/* Right: Unified CTA + Hamburger Group (Always stays together on the right) */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
             href={ctaHref}
             target={isCtaExternal ? "_blank" : undefined}
@@ -169,7 +168,7 @@ export default function NavbarHome() {
             onClick={(event) => {
               if (!isCtaExternal) handleAnchorClick(event, ctaHref);
             }}
-            className={`px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs ${ctaClass}`}
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 text-xs ${ctaClass}`}
           >
             <span>{ctaLabel}</span>
             <ChevronRight size={14} className="hidden xs:inline-block sm:inline-block" />
@@ -178,7 +177,7 @@ export default function NavbarHome() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="lg:hidden p-2 h-9 w-9 sm:h-10 sm:w-10 flex shrink-0 items-center justify-center rounded-lg text-slate-300 hover:text-cyan-300 bg-white/[0.04] border border-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+            className="lg:hidden p-2 h-9 w-9 sm:h-10 sm:w-10 flex shrink-0 items-center justify-center rounded-md text-zinc-300 hover:text-blue-400 bg-zinc-950 border border-zinc-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             aria-label={
               mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
             }
@@ -194,7 +193,7 @@ export default function NavbarHome() {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="lg:hidden mt-3 bg-[#030712]/95 backdrop-blur-2xl border-t border-b border-white/10 px-4 sm:px-6 py-4 space-y-3 max-h-[calc(100dvh-75px)] overflow-y-auto"
+          className="lg:hidden mt-3 bg-zinc-950 border-t border-b border-zinc-800 px-4 sm:px-6 py-4 space-y-3 max-h-[calc(100dvh-75px)] overflow-y-auto"
         >
           <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
             {currentNavLinks.map((link) => {
@@ -205,7 +204,7 @@ export default function NavbarHome() {
                   key={link.label}
                   href={href}
                   onClick={(event) => handleAnchorClick(event, href)}
-                  className="text-sm font-medium text-slate-300 hover:text-cyan-300 hover:bg-white/[0.05] px-3 py-2.5 rounded-lg transition-colors"
+                  className="text-sm font-medium text-zinc-300 hover:text-blue-400 hover:bg-zinc-900 px-3 py-2.5 rounded-lg transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -213,7 +212,7 @@ export default function NavbarHome() {
             })}
           </nav>
 
-          <div className="pt-2.5 border-t border-white/10">
+          <div className="pt-2.5 border-t border-zinc-800">
             <Link
               href={ctaHref}
               target={isCtaExternal ? "_blank" : undefined}

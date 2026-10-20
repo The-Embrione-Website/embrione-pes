@@ -1,72 +1,215 @@
 "use client";
 
-import React from "react";
-import { Linkedin } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { Linkedin, Github } from "lucide-react";
 
-export default function TeamCard3D({ member }) {
+// Golden Angle (137.508°) algorithmically distributes hues across the full 360° color wheel
+// ensuring maximum chromatic variety with no repetitive adjacent colors
+const GOLDEN_ANGLE = 137.508;
+
+// Physical tilt and dimension variations (ACTIVE ON MOBILE AND DESKTOP)
+const SHAPE_VARIANTS = [
+  { aspect: "aspect-[3/4.4]", tilt: "-rotate-[2.2deg]", offset: "sm:translate-y-0", scale: "scale-[1.02]" },
+  { aspect: "aspect-[3/3.7]", tilt: "rotate-[2.5deg]",  offset: "sm:translate-y-5", scale: "scale-[0.95]" },
+  { aspect: "aspect-[3/4.6]", tilt: "-rotate-[1.8deg]", offset: "sm:-translate-y-2", scale: "scale-[1.03]" },
+  { aspect: "aspect-[3/3.9]", tilt: "rotate-[2.8deg]",  offset: "sm:translate-y-4", scale: "scale-[0.93]" },
+  { aspect: "aspect-[3/4.3]", tilt: "-rotate-[2.4deg]", offset: "sm:-translate-y-1", scale: "scale-[1.01]" },
+  { aspect: "aspect-[3/3.8]", tilt: "rotate-[1.9deg]",  offset: "sm:translate-y-6", scale: "scale-[0.96]" },
+];
+
+export default function TeamCard3D({
+  member,
+  index = 0,
+  isHovered = false,
+  isDimmed = false,
+  onHover,
+  onLeave,
+}) {
+  const shape = SHAPE_VARIANTS[index % SHAPE_VARIANTS.length];
+  const formattedIndex = String(index + 1).padStart(2, "0");
+
+  // SSR-safe random base offset: starts at 0 for matching hydration, shifts randomly on mount
+  const [randomOffset, setRandomOffset] = useState(0);
+
+  useEffect(() => {
+    // Generate a new random starting angle each page load
+    setRandomOffset(Math.floor(Math.random() * 360));
+  }, []);
+
+  // Compute a 100% unique hue (0-360) for every single profile on the page
+  const hue = Math.round((index * GOLDEN_ANGLE + randomOffset) % 360);
+
+  // Dynamic HSL color tokens for this card
+  const tintColor = `hsla(${hue}, 85%, 52%, 0.28)`;
+  const accentColor = `hsl(${hue}, 90%, 65%)`;
+  const defaultBorder = `hsla(${hue}, 50%, 30%, 0.38)`;
+  const activeBorder = `hsl(${hue}, 85%, 60%)`;
+  const glowShadow = isHovered
+    ? `0 24px 60px -10px hsla(${hue}, 85%, 55%, 0.35)`
+    : "0 10px 30px -10px rgba(0,0,0,0.8)";
+
+  // Mobile tap handler: toggle active focus on touch
+  const handleCardClick = () => {
+    if (isHovered) {
+      if (onLeave) onLeave();
+    } else {
+      if (onHover) onHover();
+    }
+  };
+
   return (
-    <div className="group relative rounded-3xl bg-[#040816]/90 border border-white/[0.07] hover:border-cyan-400/40 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_10px_35px_rgba(0,0,0,0.6)] hover:shadow-[0_15px_40px_rgba(6,182,212,0.15)] transition-all duration-400 ease-out flex flex-col justify-between hover:-translate-y-1.5 overflow-hidden backdrop-blur-2xl">
-      
-      {/* Apple-style Specular Border Frame on Hover */}
-      <div className="pointer-events-none absolute inset-0 rounded-3xl border border-transparent group-hover:border-cyan-400/40 transition-colors duration-400 z-30" />
-
-      {/* Portrait Stage */}
-      <div className="relative w-full aspect-[4/5] bg-[#000000] overflow-hidden">
-        {/* Apple-Style Role Pill */}
-        {member.role && (
-          <div className="absolute top-3.5 right-3.5 z-20">
-            <span className="text-[11px] uppercase tracking-wider font-semibold px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-cyan-300 border border-white/10 shadow-sm">
-              {member.role}
-            </span>
-          </div>
-        )}
-
-        <img
-          src={member.photoUrl}
-          alt={member.name}
-          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
-          loading="lazy"
+    <div
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      onClick={handleCardClick}
+      className={`group relative w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu cursor-pointer ${
+        shape.offset
+      } ${
+        isHovered
+          ? "z-40 scale-[1.04] sm:scale-[1.12] rotate-0 -translate-y-2 sm:-translate-y-3 opacity-100"
+          : isDimmed
+          ? "sm:scale-[0.86] sm:opacity-25 opacity-100 sm:filter sm:grayscale sm:contrast-75 sm:brightness-75"
+          : `${shape.scale} ${shape.tilt} opacity-100 hover:z-30`
+      }`}
+    >
+      {/* Outer Card Shell with Chromatic Tint Border */}
+      <article
+        style={{
+          borderColor: isHovered ? activeBorder : defaultBorder,
+          boxShadow: glowShadow,
+        }}
+        className={`relative flex flex-col justify-between overflow-hidden rounded-lg border bg-[#08080a] p-3 transition-all duration-500 ${
+          isHovered ? "bg-zinc-950" : ""
+        }`}
+      >
+        {/* Subtle Ambient Radial Backlight in this card's unique color */}
+        <div
+          style={{
+            background: `radial-gradient(circle at top right, ${accentColor}18 0%, transparent 70%)`,
+          }}
+          className="absolute inset-0 pointer-events-none"
         />
 
-        {/* Subtle Dark Vignette Bottom Blend */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#040816] to-transparent pointer-events-none z-10" />
-      </div>
+        {/* 1. Catalog Header: Index & Dynamic Hue Indicator */}
+        <div className="relative z-10 mb-2 flex items-center justify-between text-xs font-mono">
+          <div className="flex items-center gap-1.5">
+            <span
+              style={{ backgroundColor: accentColor }}
+              className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
+                isHovered ? "animate-ping" : ""
+              }`}
+            />
+            <span className="text-zinc-500">№ {formattedIndex}</span>
+          </div>
 
-      {/* Member Details */}
-      <div className="p-6 flex flex-col justify-between flex-1 relative z-20 bg-[#040816]/95">
-        <div>
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-cyan-400 block mb-1">
-            {member.domain}
+          <span
+            style={{ color: isHovered ? accentColor : "#a1a1aa" }}
+            className="text-[11px] font-sans font-medium tracking-wide uppercase transition-colors duration-300"
+          >
+            {member.domain || "Core"}
           </span>
+        </div>
 
-          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
-            {member.name}
-          </h3>
+        {/* 2. Framed Photographic Window with Individual Chromatic Cast */}
+        <div
+          className={`relative ${shape.aspect} w-full overflow-hidden rounded-md bg-zinc-900 border border-zinc-800/70`}
+        >
+          {/* Member Photo */}
+          {member.photo || member.photoUrl ? (
+            <Image
+              src={member.photo || member.photoUrl}
+              alt={member.name}
+              fill
+              sizes="(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+              className={`object-cover object-top transition-all duration-700 ease-out ${
+                isHovered
+                  ? "scale-105 filter grayscale-0 contrast-100 brightness-100"
+                  : "filter grayscale contrast-125 brightness-95"
+              }`}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center font-serif text-3xl italic text-zinc-700">
+              {member.name?.charAt(0) || "—"}
+            </div>
+          )}
 
-          {member.term && (
-            <span className="text-xs text-slate-400 font-light block mt-0.5">
-              Term: {member.term}
-            </span>
+          {/* Full-Spectrum Chromatic Tint Overlay: Active when NOT hovered */}
+          <div
+            style={{
+              backgroundColor: tintColor,
+              mixBlendMode: "color",
+            }}
+            className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
+              isHovered ? "opacity-0" : "opacity-90 sm:opacity-100"
+            }`}
+          />
+
+          {/* Subtle Contrast Vignette at Bottom of Frame */}
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
+
+          {/* Anchored Role Badge */}
+          {member.role && (
+            <div className="absolute bottom-2 left-2 z-20">
+              <span className="rounded bg-black/90 px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider text-white border border-white/10 backdrop-blur-md">
+                {member.role}
+              </span>
+            </div>
           )}
         </div>
 
-        {/* Bottom Strip: Institution & LinkedIn */}
-        <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs text-slate-400 font-medium">
-          <span>PES University</span>
-
-          {member.linkedinUrl && member.linkedinUrl !== "www" && (
-            <a
-              href={member.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-7 h-7 rounded-full bg-white/[0.04] hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-400/40 text-slate-400 hover:text-cyan-300 flex items-center justify-center transition-all duration-200"
-              aria-label={`${member.name} LinkedIn Profile`}
+        {/* 3. Typography & Mobile-Friendly Social Actions */}
+        <div className="relative z-10 mt-3 flex items-end justify-between gap-2 pt-1">
+          <div className="min-w-0 flex-1">
+            <h3
+              className={`text-sm sm:text-base font-semibold tracking-tight truncate transition-colors duration-300 ${
+                isHovered ? "text-white" : "text-zinc-200"
+              }`}
             >
-              <Linkedin size={13} />
-            </a>
-          )}
+              {member.name}
+            </h3>
+            {member.term && (
+              <p className="text-[11px] text-zinc-400 font-mono mt-0.5">
+                Cohort {member.term}
+              </p>
+            )}
+          </div>
+
+          {/* Touch-Friendly Social Link Buttons */}
+          <div className="flex items-center gap-1.5 shrink-0 opacity-90 sm:opacity-70 sm:group-hover:opacity-100 transition-opacity">
+            {member.linkedin && member.linkedin !== "www" && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`${member.name} on LinkedIn`}
+                style={{
+                  borderColor: isHovered ? defaultBorder : undefined,
+                }}
+                className="flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded border border-zinc-800 bg-zinc-900/80 text-zinc-400 hover:text-white hover:bg-zinc-800 active:scale-95 transition-all"
+              >
+                <Linkedin size={13} />
+              </a>
+            )}
+            {member.github && (
+              <a
+                href={member.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                aria-label={`${member.name} on GitHub`}
+                style={{
+                  borderColor: isHovered ? defaultBorder : undefined,
+                }}
+                className="flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded border border-zinc-800 bg-zinc-900/80 text-zinc-400 hover:text-white hover:bg-zinc-800 active:scale-95 transition-all"
+              >
+                <Github size={13} />
+              </a>
+            )}
+          </div>
         </div>
-      </div>
+      </article>
     </div>
   );
 }

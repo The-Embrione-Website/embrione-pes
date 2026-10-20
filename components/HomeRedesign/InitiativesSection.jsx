@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Terminal, Cpu, Binary, Layers } from "lucide-react";
+import { Terminal, Cpu, Binary } from "lucide-react";
 
 const initiatives = [
   {
@@ -35,16 +35,17 @@ const initiatives = [
 
 export default function InitiativesSection() {
   return (
-    <section id="initiatives" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-[#000514]">
+    <section id="initiatives" className="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto bg-black border-b border-zinc-800/80">
       <div className="max-w-3xl mb-12">
-        <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-cyan-400 mb-3">
-          <Layers size={14} />
-          <span>TECHNICAL PROGRAMS</span>
+        <div className="mb-4 flex items-center gap-3">
+          <span className="text-xs font-mono font-semibold tracking-widest text-blue-400">PROGRAMS</span>
+          <span className="h-px w-6 bg-blue-500/40" />
+          <span className="text-xs font-mono tracking-widest uppercase text-zinc-400">Technical Initiatives</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
           Department Initiatives &amp; Workshops.
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+        <p className="mt-3 text-sm sm:text-base text-zinc-400 font-normal leading-relaxed max-w-[65ch]">
           In addition to annual hackathons, The Embrione conducts academic year technical programs to strengthen engineering fundamentals across batches.
         </p>
       </div>
@@ -55,26 +56,26 @@ export default function InitiativesSection() {
           return (
             <div
               key={item.title}
-              className="p-6 sm:p-7 rounded-lg bg-slate-900/60 border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-colors"
+              className="p-6 sm:p-8 rounded-xl bg-zinc-950 border border-zinc-800 flex flex-col justify-between hover:border-blue-500/50 transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-md bg-slate-800 border border-slate-700 flex items-center justify-center text-cyan-400">
-                    <Icon size={20} />
+                  <div className="w-9 h-9 rounded-md bg-black/60 border border-zinc-800 flex items-center justify-center text-blue-400">
+                    <Icon size={18} />
                   </div>
-                  <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
+                  <span className="text-xs font-mono px-2 py-0.5 rounded bg-black text-zinc-300 border border-zinc-800">
                     {item.tag}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                <div className="flex items-center gap-2 mt-1.5 text-xs font-mono text-cyan-400">
+                <h3 className="text-base sm:text-lg font-semibold text-white">{item.title}</h3>
+                <div className="flex items-center gap-2 mt-1.5 text-xs font-mono text-blue-400">
                   <span>{item.platform}</span>
                   <span>•</span>
                   <span>{item.cohort}</span>
                 </div>
 
-                <p className="mt-3 text-slate-300 text-sm leading-relaxed">
+                <p className="mt-3 text-zinc-400 text-sm font-normal leading-relaxed">
                   {item.description}
                 </p>
               </div>

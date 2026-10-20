@@ -26,13 +26,19 @@ module.exports = {
         brand: {
           canvas: '#000000',            // Pure black main background
           surface: {
-            DEFAULT: '#161617',        // Apple-style dark card surface
-            elevated: '#1d1d1f',       // Hovered/elevated cards
+            DEFAULT: '#09090b',        // Matte zinc-950 architectural surface
+            elevated: '#18181b',       // Elevated zinc-900 surface
+            matte: '#09090b',          // Explicit zinc-950
             navy: '#000514',           // Deep navy headers and navbars
-            input: '#020617',          // Input fields and wells (slate-950)
-            card: '#0f172a',           // Dark slate card surface (slate-900)
+            input: '#09090b',          // Input fields and wells
+            card: '#09090b',           // Architectural card surface (zinc-950)
           },
           accent: {
+            primary: '#1e3a8a',        // Deep Navy Blue
+            navy: '#000514',           // Dark Navy Base
+            'navy-button': '#1e3a8a',  // Navy primary CTA
+            'navy-hover': '#1d4ed8',   // Button hover state
+            'navy-muted': 'rgba(30, 58, 138, 0.25)', // Subtle highlight pill
             blue: '#0071e3',           // Primary interactive link & button color
             'blue-hover': '#0077ed',   // Button hover state
             cyan: '#06b6d4',           // Kodikon vibrant cyan (cyan-500)
@@ -41,13 +47,13 @@ module.exports = {
           },
           text: {
             primary: '#ffffff',        // High-emphasis headlines & titles
-            secondary: '#a1a1a6',      // Body text, subtitles, and descriptions
-            muted: '#6e6e73',          // Timestamps, fine print, and metadata
+            secondary: '#a1a1aa',      // Body text, subtitles, and descriptions (zinc-400)
+            muted: '#71717a',          // Timestamps, fine print, and metadata (zinc-500)
           },
           border: {
-            subtle: 'rgba(255, 255, 255, 0.08)', // Default subtle card borders (white/10)
-            hover: 'rgba(255, 255, 255, 0.20)',  // Card hover borders (white/25)
-            divider: '#1e293b',                  // Section dividers (slate-800)
+            subtle: '#27272a',         // Crisp 1px zinc-800 architectural borders
+            hover: '#3f3f46',          // Card hover borders (zinc-700)
+            divider: '#27272a',        // Section dividers (zinc-800)
           },
         },
 

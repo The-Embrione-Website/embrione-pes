@@ -24,6 +24,7 @@ import {
 import teamMembers from "./teamData";
 import { teamMembersDetails } from "./constants.js";
 import { pastHeads2024, pastHeads2023 } from "./pastHeadsData.js";
+import TeamCard3D from "./TeamCard3D";
 
 const years = ["2026", "2025", "2024", "2023"];
 
@@ -214,26 +215,11 @@ function SocialLink({ href, label, children }) {
 function MemberCard({ member }) {
   const isFounder = member.role === "Founder" || member.domain === "Founder";
   const isMentor = member.role === "Mentor" || member.domain === "Mentors";
-  const isClubHead = member.domain === "Club Head" || isFounder;
   const isHead = member.role === "Head";
   const isViceHead = member.role === "Vice-Head";
 
   return (
-    <article
-      className={`group relative aspect-[3/4] w-full min-w-0 overflow-hidden rounded-2xl border bg-[#040816] shadow-[0_8px_30px_rgba(0,0,0,0.3)] transition-all duration-300 ${
-        isFounder
-          ? "border-purple-400/50 hover:border-purple-300/80 hover:shadow-[0_0_35px_rgba(168,85,247,0.22)]"
-          : isMentor
-          ? "border-amber-400/40 hover:border-amber-300/80 hover:shadow-[0_0_35px_rgba(245,158,11,0.22)]"
-          : isClubHead
-          ? "border-cyan-400/40 hover:border-cyan-300/80 hover:shadow-[0_0_35px_rgba(6,182,212,0.22)]"
-          : isHead
-          ? "border-white/[0.12] hover:border-cyan-400/50 hover:shadow-[0_0_25px_rgba(6,182,212,0.14)]"
-          : isViceHead
-          ? "border-white/[0.1] hover:border-sky-400/50 hover:shadow-[0_0_25px_rgba(56,189,248,0.14)]"
-          : "border-white/[0.08] hover:border-white/25 hover:shadow-[0_0_20px_rgba(255,255,255,0.06)]"
-      }`}
-    >
+    <article className="group relative aspect-[3/4] w-full min-w-0 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 transition-colors hover:border-blue-500/50">
       {/* Photo */}
       {member.photo ? (
         <Image
@@ -244,43 +230,27 @@ function MemberCard({ member }) {
           className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#040816] via-[#0b1830] to-cyan-950/40">
-          <span className="text-5xl font-semibold text-cyan-300/70">
+        <div className="absolute inset-0 flex items-center justify-center bg-zinc-950">
+          <span className="text-4xl font-semibold text-zinc-600">
             {member.name?.charAt(0)?.toUpperCase() || "E"}
           </span>
         </div>
       )}
 
       {/* Dark gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-950/15 via-transparent to-blue-950/25 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
       {/* Top badge: Role */}
-      <div className="absolute inset-x-0 top-0 p-3.5 flex items-center justify-start gap-2 z-10">
-        {/* Role badge adhering to hierarchy: Founder -> Mentor -> Head -> Vice-Head -> Core */}
-        <span
-          className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${
-            isFounder
-              ? "bg-purple-500/25 text-purple-200 border-purple-400/50 shadow-[0_0_12px_rgba(168,85,247,0.25)]"
-              : isMentor
-              ? "bg-amber-500/25 text-amber-200 border-amber-400/50 shadow-[0_0_12px_rgba(245,158,11,0.25)]"
-              : isClubHead
-              ? "bg-cyan-500/25 text-cyan-200 border-cyan-400/50 shadow-[0_0_12px_rgba(6,182,212,0.25)]"
-              : isHead
-              ? "bg-cyan-500/20 text-cyan-300 border-cyan-400/40 shadow-[0_0_10px_rgba(6,182,212,0.15)]"
-              : isViceHead
-              ? "bg-sky-500/20 text-sky-200 border-sky-400/40 shadow-[0_0_10px_rgba(56,189,248,0.15)]"
-              : "bg-black/60 text-slate-300 border-white/10"
-          }`}
-        >
+      <div className="absolute inset-x-0 top-0 p-3 flex items-center justify-start gap-2 z-10">
+        <span className="inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-mono uppercase tracking-wider border border-zinc-800 bg-black/85 text-blue-400">
           {isFounder ? (
-            <Crown size={11} className="text-purple-300" />
+            <Crown size={12} className="text-blue-400" />
           ) : isMentor ? (
-            <GraduationCap size={11} className="text-amber-300" />
+            <GraduationCap size={12} className="text-blue-400" />
           ) : isHead ? (
-            <Sparkles size={11} className="text-cyan-300" />
+            <Sparkles size={12} className="text-blue-400" />
           ) : isViceHead ? (
-            <Crown size={11} className="text-sky-300" />
+            <Crown size={12} className="text-blue-400" />
           ) : null}
           <span>{member.role}</span>
         </span>
@@ -289,13 +259,13 @@ function MemberCard({ member }) {
       {/* Bottom info: Domain, Name & Social links */}
       <div className="absolute inset-x-0 bottom-0 p-4 z-10">
         {!isMentor && (
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-cyan-300/90 mb-1">
+          <p className="text-xs font-mono uppercase tracking-wider text-blue-400 mb-1">
             {member.domain}
           </p>
         )}
 
         <div className="flex items-end justify-between gap-2">
-          <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">
+          <h3 className="text-base sm:text-lg font-semibold tracking-tight text-white leading-tight">
             {member.name}
           </h3>
 
@@ -320,6 +290,7 @@ function MemberCard({ member }) {
 export default function TeamSection() {
   const [activeYear, setActiveYear] = useState("2026");
   const [selectedDomain, setSelectedDomain] = useState("All");
+  const [hoveredMemberId, setHoveredMemberId] = useState(null);
 
   // Normalize members across cohorts
   const membersByYear = useMemo(
@@ -391,34 +362,22 @@ export default function TeamSection() {
   return (
     <section
       id="team"
-      className="relative w-full overflow-hidden border-t border-white/[0.06] bg-[#000000] px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-8"
+      className="relative w-full overflow-hidden border-b border-zinc-800/80 bg-black px-4 py-20 text-white sm:px-6 sm:py-28 lg:px-12"
     >
-      {/* Ambient lighting */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/4 top-10 h-72 w-72 rounded-full bg-cyan-500/[0.07] blur-[120px]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 rounded-full bg-blue-600/[0.05] blur-[110px]"
-      />
-
-      <div className="relative mx-auto w-full max-w-6xl">
+      <div className="relative mx-auto w-full max-w-7xl">
         {/* Section Heading */}
         <div className="mb-10 max-w-3xl">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/[0.1] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-cyan-400 backdrop-blur-md">
-            <Users size={13} />
-            <span>The Team · People Behind Embrione</span>
+          <div className="mb-4 flex items-center gap-3">
+            <span className="text-xs font-mono font-semibold tracking-widest text-blue-400">03</span>
+            <span className="h-px w-6 bg-blue-500/40" />
+            <span className="text-xs font-mono tracking-widest uppercase text-zinc-400">People &amp; Leadership</span>
           </div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.08]">
-            Meet the{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 bg-clip-text text-transparent">
-              Team.
-            </span>
+          <h2 className="text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl leading-[1.05]">
+            Meet the Team.
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-2xl">
+          <p className="mt-4 text-base sm:text-lg text-zinc-400 font-normal leading-relaxed max-w-2xl">
             Meet the students engineering the systems, managing the backend, and
             bringing Kodikon and Embrione initiatives to life at PES University.
           </p>
@@ -434,10 +393,10 @@ export default function TeamSection() {
                 type="button"
                 onClick={() => handleYearChange(year)}
                 aria-pressed={isActive}
-                className={`flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
+                className={`flex items-center gap-2 rounded-md px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
                   isActive
-                    ? "bg-cyan-500 text-black shadow-[0_0_20px_rgba(6,182,212,0.3)]"
-                    : "border border-white/[0.08] bg-[#040816]/70 text-slate-400 hover:border-white/20 hover:text-white"
+                    ? "bg-[#1e3a8a] text-white font-semibold shadow-md shadow-blue-950/60 border border-blue-500/40"
+                    : "border border-zinc-800 bg-zinc-950 text-zinc-400 hover:border-zinc-700 hover:text-white"
                 }`}
               >
                 <CalendarDays size={14} />
@@ -447,7 +406,7 @@ export default function TeamSection() {
           })}
         </div>
 
-        {/* Domain Filter Pills - Ordered strictly by Domain Hierarchy */}
+        {/* Domain Filter Pills */}
         <div className="mb-8 flex flex-wrap items-center gap-2">
           {domainOptions.map((domain) => {
             const isActive = selectedDomain === domain.name;
@@ -460,19 +419,19 @@ export default function TeamSection() {
                 type="button"
                 onClick={() => setSelectedDomain(domain.name)}
                 aria-pressed={isActive}
-                className={`inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 cursor-pointer ${
+                className={`inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
                   isActive
-                    ? "border border-cyan-400/50 bg-cyan-400/15 text-cyan-200 shadow-[0_0_12px_rgba(6,182,212,0.15)]"
-                    : "border border-white/[0.08] bg-white/[0.03] text-slate-400 hover:border-white/20 hover:text-white"
+                    ? "border border-blue-500/80 bg-blue-950/70 text-blue-300"
+                    : "border border-zinc-800 bg-zinc-950 text-zinc-400 hover:border-zinc-700 hover:text-white"
                 }`}
               >
-                <DomainIcon size={12} className={isActive ? "text-cyan-300" : "text-slate-500"} />
+                <DomainIcon size={12} className={isActive ? "text-blue-400" : "text-zinc-500"} />
                 <span>{domain.name}</span>
                 <span
-                  className={`rounded-full px-1.5 py-0.2 text-[10px] ${
+                  className={`rounded px-1.5 py-0.5 text-xs font-mono ${
                     isActive
-                      ? "bg-cyan-400/25 text-cyan-200"
-                      : "bg-white/10 text-slate-400"
+                      ? "bg-blue-900/60 text-blue-200"
+                      : "bg-zinc-800 text-zinc-400"
                   }`}
                 >
                   {domain.count}
@@ -482,7 +441,7 @@ export default function TeamSection() {
           })}
         </div>
 
-        {/* Unified Profiles Grid with smooth, instantaneous cross-fade transition */}
+        {/* Unified Profiles Grid with smooth cross-fade */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeYear}-${selectedDomain}`}
@@ -490,14 +449,25 @@ export default function TeamSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 pt-6 pb-20 items-start px-2 sm:px-0"
           >
-            {visibleMembers.map((member) => (
-              <MemberCard
-                key={`${activeYear}-${member.domain}-${member.name}`}
-                member={member}
-              />
-            ))}
+            {visibleMembers.map((member, index) => {
+              const memberId = `${activeYear}-${member.domain}-${member.name}`;
+              const isHovered = hoveredMemberId === memberId;
+              const isDimmed = hoveredMemberId !== null && !isHovered;
+
+              return (
+                <TeamCard3D
+                  key={memberId}
+                  member={member}
+                  index={index}
+                  isHovered={isHovered}
+                  isDimmed={isDimmed}
+                  onHover={() => setHoveredMemberId(memberId)}
+                  onLeave={() => setHoveredMemberId(null)}
+                />
+              );
+            })}
           </motion.div>
         </AnimatePresence>
       </div>

@@ -260,17 +260,14 @@ export default function AboutSection() {
 
           {/* Skyline illustration panel */}
           <div className="relative mx-auto w-full max-w-[540px]">
-            <div className="absolute inset-10 rounded-full bg-cyan-500/10 blur-[70px]" />
-
-            <div className="relative overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#030b19]/90 p-3 sm:p-5">
-              <div className="flex items-center justify-between border-b border-white/[0.08] px-3 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-red-400/80" />
-                  <span className="h-2 w-2 rounded-full bg-amber-300/80" />
-                  <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
-                </div>
-                <span className="font-mono text-[9px] tracking-[0.15em] text-slate-500">
+            <div className="relative overflow-hidden rounded-xl border border-brand-border-subtle bg-brand-surface p-3 sm:p-5">
+              <div className="flex items-center justify-between border-b border-brand-border-divider px-3 py-3">
+                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
                   PESU_NODE // 12.9344° N
+                </span>
+                <span className="flex items-center gap-2 font-mono text-xs text-brand-accent-cyan-glow">
+                  <span className="h-1.5 w-1.5 rounded-full bg-brand-accent-cyan-glow" />
+                  ONLINE
                 </span>
               </div>
 
@@ -278,35 +275,15 @@ export default function AboutSection() {
                 <SkylineIllustration />
               </div>
 
-              <div className="flex items-center justify-between gap-3 border-t border-white/[0.08] px-3 py-3">
-                <span className="font-mono text-[9px] tracking-[0.12em] text-slate-500 sm:text-[10px]">
-                  SYSTEM STATUS
+              <div className="flex items-center justify-between gap-3 border-t border-brand-border-divider px-3 py-3">
+                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+                  EVENT STATUS
                 </span>
-                <span className="flex items-center gap-2 font-mono text-[9px] text-cyan-300 sm:text-[10px]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                  INNOVATION ONLINE
+                <span className="font-mono text-xs text-brand-accent-cyan">
+                  INNOVATION ACTIVE
                 </span>
               </div>
             </div>
-
-            {/* Floating information labels */}
-            <div className="absolute -left-2 top-1/4 hidden -translate-x-1/4 rounded-lg border border-cyan-400/20 bg-[#050d20] px-4 py-3 shadow-xl sm:block md:-left-5">
-              <p className="font-mono text-[9px] tracking-widest text-slate-500">
-                EVENT_TYPE
-              </p>
-              <p className="mt-1 text-xs font-semibold text-cyan-200">
-                NATIONAL HACKATHON
-              </p>
-            </div>
-
-            {/* <div className="absolute -bottom-4 right-4 rounded-lg border border-cyan-400/20 bg-[#050d20] px-4 py-3 shadow-xl sm:right-0">
-              <p className="font-mono text-[9px] tracking-widest text-slate-500">
-                BUILD_WINDOW
-              </p>
-              <p className="mt-1 text-sm font-bold text-white">
-                24 <span className="text-cyan-300">HOURS</span>
-              </p>
-            </div> */}
           </div>
         </div>
 
