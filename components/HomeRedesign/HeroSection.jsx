@@ -94,14 +94,14 @@ export default function HeroSection() {
 
         {/* 2. Monumental "The Embrione" Title (Big, Bold & Centered) */}
         <motion.div variants={itemVariants} className="w-full">
-          <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.75rem] font-bold tracking-[-0.04em] text-white leading-none drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
+          <h1 className="font-curvy text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.75rem] font-bold tracking-[-0.035em] text-white leading-none drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
             The Embrione
           </h1>
         </motion.div>
 
         {/* 3. Purpose & Positioning Statement */}
         <motion.div variants={itemVariants} className="mt-6 max-w-3xl">
-          <p className="text-xl sm:text-2xl md:text-3xl text-zinc-100 font-light tracking-[-0.02em] leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+          <p className="font-curvy text-xl sm:text-2xl md:text-3xl text-zinc-100 font-medium tracking-tight leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             Computing, Development &amp; Innovation.
           </p>
 
@@ -163,7 +163,7 @@ export default function HeroSection() {
                 <span className="text-xs font-mono uppercase tracking-widest text-blue-400">
                   Flagship National Hackathon
                 </span>
-                <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mt-1 group-hover:text-blue-400 transition-colors">
+                <h2 className="font-curvy text-2xl sm:text-3xl font-semibold text-white tracking-tight mt-1 group-hover:text-blue-400 transition-colors">
                   Kodikon 6.0
                 </h2>
                 <p className="mt-2 text-sm sm:text-base text-zinc-400 font-normal leading-relaxed max-w-2xl">

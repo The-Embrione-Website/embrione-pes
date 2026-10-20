@@ -51,7 +51,7 @@ export default function CTASection() {
 
               <h2
                 aria-label="Let's build something meaningful."
-                className="max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.05] tracking-[-0.035em] text-white"
+                className="font-curvy max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-semibold leading-[1.05] tracking-tight text-white"
               >
                 Let&apos;s build something meaningful.
               </h2>

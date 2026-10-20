@@ -1,7 +1,13 @@
 import "./globals.css";
 import AosInit from "@/components/AosInit";
 import { Analytics } from "@vercel/analytics/react";
-import { Plus_Jakarta_Sans, Syne, Unbounded, JetBrains_Mono } from "next/font/google";
+import {
+  Plus_Jakarta_Sans,
+  Syne,
+  Bricolage_Grotesque,
+  Righteous,
+  JetBrains_Mono,
+} from "next/font/google";
 
 const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -17,10 +23,18 @@ const display = Syne({
   display: "swap",
 });
 
-const unbounded = Unbounded({
+const curvy = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-unbounded",
+  variable: "--font-curvy",
   weight: ["600", "700", "800"],
+  adjustFontFallback: false,
+  display: "swap",
+});
+
+const righteous = Righteous({
+  subsets: ["latin"],
+  variable: "--font-righteous",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -120,7 +134,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} ${unbounded.variable} ${mono.variable}`}
+      className={`${sans.variable} ${display.variable} ${curvy.variable} ${righteous.variable} ${mono.variable}`}
     >
       <body className="font-sans bg-black text-white antialiased">
         {children}

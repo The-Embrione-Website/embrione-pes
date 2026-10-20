@@ -33,7 +33,7 @@ export default function AboutSection() {
             <span className="text-xs font-mono tracking-widest uppercase text-zinc-400">About The Society</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.035em] text-white leading-[1.05]">
+          <h2 className="font-curvy text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.03em] text-white leading-[1.05]">
             Built Around The Hackathon.{" "}
             <span className="block text-zinc-400">
               Run by Students Who Build.

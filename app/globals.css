@@ -25,6 +25,14 @@ code, kbd, samp, pre, .font-mono {
   font-family: var(--font-mono), monospace;
 }
 
+.font-curvy {
+  font-family: var(--font-curvy), var(--font-sans), sans-serif;
+}
+
+.font-righteous {
+  font-family: var(--font-righteous), cursive, sans-serif;
+}
+
 
 /* Smooth in-page scrolling with fixed navbar height offset */
 html {
