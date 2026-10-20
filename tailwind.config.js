@@ -18,6 +18,7 @@ module.exports = {
         cyber: ['var(--font-cyber)', 'var(--font-display)', 'sans-serif'],
         japanese: ['var(--font-japanese)', 'cursive', 'sans-serif'],
         tech: ['var(--font-tech)', 'var(--font-mono)', 'monospace'],
+        anime: ['var(--font-anime)', 'var(--font-display)', 'sans-serif'],
       },
       keyframes: {
         'matrix-rain': {

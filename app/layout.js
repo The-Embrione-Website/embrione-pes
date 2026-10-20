@@ -12,6 +12,7 @@ import {
   Zen_Dots,
   Chakra_Petch,
   Shojumaru,
+  Reggae_One,
 } from "next/font/google";
 
 const sans = Plus_Jakarta_Sans({
@@ -82,6 +83,13 @@ const tech = Chakra_Petch({
   subsets: ["latin"],
   variable: "--font-tech",
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const anime = Reggae_One({
+  subsets: ["latin"],
+  variable: "--font-anime",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -174,7 +182,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} ${curvy.variable} ${cursive.variable} ${handwriting.variable} ${mono.variable} ${tokyo.variable} ${cyber.variable} ${japanese.variable} ${tech.variable}`}
+      className={`${sans.variable} ${display.variable} ${curvy.variable} ${cursive.variable} ${handwriting.variable} ${mono.variable} ${tokyo.variable} ${cyber.variable} ${japanese.variable} ${tech.variable} ${anime.variable}`}
     >
       <body className="font-sans bg-black text-white antialiased">
         {children}

@@ -457,7 +457,7 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className={`tracking-in-expand relative font-tokyo text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase will-change-transform`}
+              className={`tracking-in-expand relative font-japanese text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider text-white uppercase will-change-transform`}
             >
               KODIKON{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">
@@ -470,7 +470,7 @@ export default function HeroComponent() {
           <div className="mt-4 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-4">
             <span className="h-px w-6 sm:w-14 bg-gradient-to-r from-transparent to-cyan-400/70" />
             <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <p className="font-japanese text-xs sm:text-base lg:text-lg uppercase tracking-[0.16em] text-cyan-300">
+            <p className="font-cyber text-[10px] sm:text-xs lg:text-sm uppercase tracking-[0.22em] text-cyan-300">
               24-Hour National Hackathon
             </p>
             <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
