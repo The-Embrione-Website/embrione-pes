@@ -191,14 +191,14 @@ export default function AboutSection() {
         <div className="mb-12 text-center sm:mb-16">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/[0.04] px-4 py-2">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300" />
-            <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-200 sm:text-xs">
+            <span className="font-tech text-[10px] tracking-[0.2em] text-cyan-200 sm:text-xs font-semibold">
               KODIKON_6.0 // EVENT_INTELLIGENCE
             </span>
           </div>
 
-          <h2 className="text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="font-tokyo text-3xl font-black uppercase tracking-wide sm:text-5xl md:text-6xl">
             Beyond the{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">
+            <span className="font-japanese bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">
               Code
             </span>
           </h2>
@@ -215,12 +215,12 @@ export default function AboutSection() {
           <div className="min-w-0">
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-8 bg-cyan-400" />
-              <span className="font-mono text-[10px] tracking-[0.22em] text-cyan-300 sm:text-xs">
+              <span className="font-tech text-[10px] tracking-[0.22em] text-cyan-300 sm:text-xs font-semibold">
                 01 / THE MISSION
               </span>
             </div>
 
-            <h3 className="max-w-xl text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
+            <h3 className="font-display max-w-xl text-2xl font-bold leading-tight sm:text-3xl md:text-4xl">
               Engineering the next generation of{" "}
               <span className="text-cyan-300">intelligent systems.</span>
             </h3>
@@ -250,7 +250,7 @@ export default function AboutSection() {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-md border border-cyan-400/15 bg-cyan-400/[0.04] px-3 py-2 font-mono text-[9px] tracking-[0.12em] text-cyan-100/80 sm:text-[10px]"
+                  className="rounded-md border border-cyan-400/15 bg-cyan-400/[0.04] px-3 py-2 font-tech text-[9px] tracking-[0.14em] text-cyan-100/90 font-medium sm:text-[10px]"
                 >
                   {tag}
                 </span>
@@ -262,10 +262,10 @@ export default function AboutSection() {
           <div className="relative mx-auto w-full max-w-[540px]">
             <div className="relative overflow-hidden rounded-xl border border-brand-border-subtle bg-brand-surface p-3 sm:p-5">
               <div className="flex items-center justify-between border-b border-brand-border-divider px-3 py-3">
-                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+                <span className="font-tech text-xs uppercase tracking-wider text-neutral-400">
                   PESU_NODE // 12.9344° N
                 </span>
-                <span className="flex items-center gap-2 font-mono text-xs text-brand-accent-cyan-glow">
+                <span className="flex items-center gap-2 font-tech text-xs text-brand-accent-cyan-glow">
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-accent-cyan-glow" />
                   ONLINE
                 </span>
@@ -276,10 +276,10 @@ export default function AboutSection() {
               </div>
 
               <div className="flex items-center justify-between gap-3 border-t border-brand-border-divider px-3 py-3">
-                <span className="font-mono text-xs uppercase tracking-wider text-neutral-400">
+                <span className="font-tech text-xs uppercase tracking-wider text-neutral-400">
                   EVENT STATUS
                 </span>
-                <span className="font-mono text-xs text-brand-accent-cyan">
+                <span className="font-tech text-xs text-brand-accent-cyan">
                   INNOVATION ACTIVE
                 </span>
               </div>
@@ -313,20 +313,20 @@ export default function AboutSection() {
               key={stat.title}
               className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#080e1b]/90 p-6 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 sm:p-7"
             >
-              <span className="absolute right-4 top-3 font-mono text-[10px] text-slate-700">
+              <span className="absolute right-4 top-3 font-tech text-[10px] text-slate-700 font-semibold">
                 0{index + 1}
               </span>
 
               <div className="flex items-baseline gap-2">
-                <span className="text-4xl font-black tracking-tight text-cyan-300 sm:text-5xl">
+                <span className="font-tokyo text-4xl font-black tracking-tight text-cyan-300 sm:text-5xl">
                   {stat.value}
                 </span>
-                <span className="font-mono text-[10px] tracking-[0.16em] text-slate-500">
+                <span className="font-tech text-[10px] tracking-[0.16em] text-slate-400 font-semibold uppercase">
                   {stat.unit}
                 </span>
               </div>
 
-              <h4 className="mt-4 text-base font-bold text-white">
+              <h4 className="mt-4 font-cyber text-sm sm:text-base font-bold text-white tracking-wide">
                 {stat.title}
               </h4>
 
@@ -339,17 +339,15 @@ export default function AboutSection() {
           ))}
         </div>
 
-        
-
         {/* Closing statement */}
         <div className="relative mt-16 overflow-hidden rounded-2xl border border-cyan-400/20 bg-gradient-to-r from-cyan-950/40 via-[#071225] to-blue-950/30 px-6 py-8 text-center sm:mt-20 sm:px-10 sm:py-12">
           <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-96 max-w-full -translate-x-1/2 rounded-full bg-cyan-400/[0.08] blur-[60px]" />
 
-          <p className="relative font-mono text-[10px] tracking-[0.2em] text-cyan-300 sm:text-xs">
+          <p className="relative font-tech text-[10px] tracking-[0.2em] text-cyan-300 sm:text-xs font-semibold">
             THE FUTURE IS BUILT, NOT PREDICTED
           </p>
 
-          <h3 className="relative mt-4 text-2xl font-black sm:text-3xl md:text-4xl">
+          <h3 className="relative font-tokyo mt-4 text-2xl font-black uppercase tracking-wide sm:text-3xl md:text-4xl">
             Think beyond limits.{" "}
             <span className="text-cyan-300">Build what&apos;s next.</span>
           </h3>
@@ -364,7 +362,7 @@ export default function AboutSection() {
               href="https://hack2skill.com/event/kodikon6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-6 py-3 text-xs font-mono font-bold uppercase tracking-wider text-black transition-all duration-300 hover:from-cyan-300 hover:to-teal-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.45)] hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 px-6 py-3 font-cyber text-xs font-bold uppercase tracking-wider text-black transition-all duration-300 hover:from-cyan-300 hover:to-teal-300 hover:shadow-[0_0_25px_rgba(6,182,212,0.45)] hover:-translate-y-0.5"
             >
               <span>Register on Hack2Skill</span>
               <ArrowUpRight size={15} />

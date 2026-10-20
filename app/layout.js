@@ -8,6 +8,10 @@ import {
   Alex_Brush,
   Caveat,
   JetBrains_Mono,
+  Dela_Gothic_One,
+  Zen_Dots,
+  Chakra_Petch,
+  Shojumaru,
 } from "next/font/google";
 
 const sans = Plus_Jakarta_Sans({
@@ -50,6 +54,34 @@ const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const tokyo = Dela_Gothic_One({
+  subsets: ["latin"],
+  variable: "--font-tokyo",
+  weight: ["400"],
+  display: "swap",
+});
+
+const cyber = Zen_Dots({
+  subsets: ["latin"],
+  variable: "--font-cyber",
+  weight: ["400"],
+  display: "swap",
+});
+
+const japanese = Shojumaru({
+  subsets: ["latin"],
+  variable: "--font-japanese",
+  weight: ["400"],
+  display: "swap",
+});
+
+const tech = Chakra_Petch({
+  subsets: ["latin"],
+  variable: "--font-tech",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -142,7 +174,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} ${curvy.variable} ${cursive.variable} ${handwriting.variable} ${mono.variable}`}
+      className={`${sans.variable} ${display.variable} ${curvy.variable} ${cursive.variable} ${handwriting.variable} ${mono.variable} ${tokyo.variable} ${cyber.variable} ${japanese.variable} ${tech.variable}`}
     >
       <body className="font-sans bg-black text-white antialiased">
         {children}

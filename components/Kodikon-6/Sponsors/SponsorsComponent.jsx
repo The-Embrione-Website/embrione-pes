@@ -22,12 +22,12 @@ export default function SponsorsComponent() {
         <header className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
           <div className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/5 px-4 py-2">
             <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-cyan-300" />
-            <span className="break-words font-mono text-[10px] tracking-[0.15em] text-cyan-200 sm:text-xs sm:tracking-[0.2em]">
+            <span className="break-words font-tech text-[10px] tracking-[0.18em] text-cyan-200 sm:text-xs sm:tracking-[0.22em] font-semibold uppercase">
               {sponsorsHeader.telemetry}
             </span>
           </div>
 
-          <h2 className="text-3xl font-black tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="font-tokyo text-3xl font-black uppercase tracking-wide sm:text-5xl md:text-6xl">
             Platform &amp;{" "}
             <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent">
               Industry Partners
@@ -42,7 +42,7 @@ export default function SponsorsComponent() {
         {/* Platform Partners Heading */}
         <div className="mb-5 flex items-center gap-3">
           <span className="h-px w-8 shrink-0 bg-cyan-400" />
-          <p className="font-mono text-xs uppercase tracking-[0.22em] text-cyan-300">
+          <p className="font-tech text-xs uppercase tracking-[0.22em] text-cyan-300 font-semibold">
             Platform &amp; Infrastructure Partner
           </p>
         </div>
@@ -72,16 +72,16 @@ export default function SponsorsComponent() {
                   {/* Partner details */}
                   <div className="min-w-0">
                     <div className="mb-3 flex flex-wrap items-center gap-2">
-                      <span className="rounded-full border border-cyan-400/25 bg-cyan-400/5 px-3 py-1 font-mono text-[10px] tracking-wider text-cyan-200">
+                      <span className="rounded-full border border-cyan-400/25 bg-cyan-400/5 px-3 py-1 font-cyber text-[10px] tracking-wider text-cyan-200 uppercase">
                         {partner.role}
                       </span>
 
-                      <span className="rounded-full border border-white/10 px-3 py-1 font-mono text-[10px] tracking-wider text-slate-400">
+                      <span className="rounded-full border border-white/10 px-3 py-1 font-tech text-[10px] tracking-wider text-slate-400 uppercase font-semibold">
                         {partner.badge}
                       </span>
                     </div>
 
-                    <h3 className="break-words text-2xl font-bold text-white transition group-hover:text-cyan-200 sm:text-3xl">
+                    <h3 className="font-tokyo break-words text-xl font-bold uppercase tracking-tight text-white transition group-hover:text-cyan-200 sm:text-2xl">
                       {partner.name}
                     </h3>
 
@@ -114,7 +114,7 @@ export default function SponsorsComponent() {
                         href={partner.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-5 py-3 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10"
+                        className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-5 py-3 font-cyber text-xs uppercase tracking-wider font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10"
                       >
                         Visit Website
                         <span aria-hidden="true">↗</span>
@@ -129,7 +129,7 @@ export default function SponsorsComponent() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Visit ${partner.name} website`}
-                      className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-5 py-3 text-sm font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10"
+                      className="inline-flex items-center gap-2 rounded-xl border border-cyan-400/30 px-5 py-3 font-cyber text-xs uppercase tracking-wider font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10"
                     >
                       Visit Website
                       <span aria-hidden="true">↗</span>

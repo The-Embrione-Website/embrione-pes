@@ -55,14 +55,14 @@ export default function MapComponent() {
       <div className="mx-auto w-full max-w-5xl">
         {/* Header */}
         <div className="mb-12">
-          <div className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-cyan-400">
+          <div className="mb-3 inline-flex items-center gap-2 font-tech text-xs text-cyan-400 font-semibold">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="tracking-[0.25em] uppercase font-bold">CAMPUS VENUE // 「開催会場」</span>
           </div>
 
           <h2
             id="venue-heading"
-            className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase font-display"
+            className="font-tokyo text-3xl sm:text-5xl font-black tracking-wide text-white uppercase"
           >
             Venue &amp;{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
@@ -97,7 +97,7 @@ export default function MapComponent() {
                 key={label}
                 className="rounded-xl border border-brand-border-divider bg-brand-surface-card/70 p-4 backdrop-blur-sm transition-colors duration-200 hover:border-brand-border-hover"
               >
-                <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.08em] text-brand-accent-cyan-glow">
+                <div className="flex items-center gap-2 font-tech text-[10px] tracking-[0.14em] text-brand-accent-cyan-glow font-semibold">
                   <Icon size={14} aria-hidden="true" />
                   <span>{label}</span>
                 </div>
@@ -116,7 +116,7 @@ export default function MapComponent() {
               href={MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-brand-accent-blue px-5 py-3 text-sm font-semibold text-brand-text-primary transition-colors hover:bg-brand-accent-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-blue"
+              className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-brand-accent-blue px-5 py-3 font-cyber text-xs uppercase tracking-wider font-semibold text-brand-text-primary transition-colors hover:bg-brand-accent-blue-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent-blue"
             >
               <MapPin size={15} aria-hidden="true" />
               <span>Get Directions</span>
@@ -130,7 +130,7 @@ export default function MapComponent() {
         </div>
 
         {/* Footer label */}
-        <p className="mt-6 text-center font-mono text-[9px] uppercase tracking-[0.15em] text-brand-text-muted">
+        <p className="mt-6 text-center font-tech text-[10px] uppercase tracking-[0.18em] text-brand-text-muted font-semibold">
           EMBRIONE{" "}
           <span className="mx-1 text-brand-accent-cyan">/</span>
           KODIKON 6.0

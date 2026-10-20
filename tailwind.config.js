@@ -14,6 +14,10 @@ module.exports = {
         cursive: ['var(--font-cursive)', 'cursive'],
         handwriting: ['var(--font-handwriting)', 'cursive'],
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        tokyo: ['var(--font-tokyo)', 'var(--font-display)', 'sans-serif'],
+        cyber: ['var(--font-cyber)', 'var(--font-display)', 'sans-serif'],
+        japanese: ['var(--font-japanese)', 'cursive', 'sans-serif'],
+        tech: ['var(--font-tech)', 'var(--font-mono)', 'monospace'],
       },
       keyframes: {
         'matrix-rain': {

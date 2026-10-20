@@ -29,14 +29,14 @@ export default function FAQComponent() {
       {/* FAQ content */}
       <div className="mx-auto w-full max-w-5xl">
         <div className="mb-12">
-          <div className="mb-3 inline-flex items-center gap-2 font-mono text-xs text-cyan-400">
+          <div className="mb-3 inline-flex items-center gap-2 font-tech text-xs text-cyan-400 font-semibold">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
             <span className="tracking-[0.25em] uppercase font-bold">CLARIFICATIONS // 「質疑応答」</span>
           </div>
 
           <h2
             id="faq-heading"
-            className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase font-display"
+            className="font-tokyo text-3xl sm:text-5xl font-black tracking-wide text-white uppercase"
           >
             System{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-300 to-cyan-500 drop-shadow-[0_0_20px_rgba(6,182,212,0.3)]">
@@ -75,7 +75,7 @@ export default function FAQComponent() {
                   >
                     <span
                       aria-hidden="true"
-                      className="font-mono text-xl font-bold text-brand-accent-cyan/50"
+                      className="font-tokyo text-lg font-bold text-brand-accent-cyan/60"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -116,7 +116,7 @@ export default function FAQComponent() {
           })}
         </div>
 
-        <p className="mt-6 text-center font-mono text-[9px] uppercase tracking-[0.15em] text-brand-text-muted">
+        <p className="mt-6 text-center font-tech text-[10px] uppercase tracking-[0.18em] text-brand-text-muted font-semibold">
           EMBRIONE{" "}
           <span className="mx-1 text-brand-accent-cyan">/</span>
           KODIKON 6.0

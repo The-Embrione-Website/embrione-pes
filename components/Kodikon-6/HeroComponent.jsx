@@ -434,7 +434,7 @@ export default function HeroComponent() {
 
           {/* Institution Pill */}
           <div className="mb-5 sm:mb-6 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-cyan-500/30 bg-[#040816]/80 px-3.5 sm:px-4 py-1.5 backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.15)]">
-            <span className="font-mono text-[9px] sm:text-xs tracking-[0.16em] sm:tracking-[0.2em] text-slate-300 uppercase">
+            <span className="font-tech text-[10px] sm:text-xs tracking-[0.18em] sm:tracking-[0.22em] text-slate-300 uppercase font-medium">
               PES UNIVERSITY | DEPARTMENT OF CSE
             </span>
           </div>
@@ -457,7 +457,7 @@ export default function HeroComponent() {
                 transform: `translate3d(${mouseOffset.x * 7}px, ${mouseOffset.y * 5}px, 0)`,
                 transition: "transform 220ms ease-out",
               }}
-              className={`tracking-in-expand relative font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase will-change-transform`}
+              className={`tracking-in-expand relative font-tokyo text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase will-change-transform`}
             >
               KODIKON{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-cyan-400 to-blue-500 drop-shadow-[0_0_30px_rgba(34,211,238,0.45)]">
@@ -470,7 +470,7 @@ export default function HeroComponent() {
           <div className="mt-4 sm:mt-5 flex items-center justify-center gap-2.5 sm:gap-4">
             <span className="h-px w-6 sm:w-14 bg-gradient-to-r from-transparent to-cyan-400/70" />
             <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
-            <p className="font-mono text-[10px] sm:text-sm lg:text-base uppercase tracking-[0.16em] sm:tracking-[0.2em] text-cyan-300">
+            <p className="font-japanese text-xs sm:text-base lg:text-lg uppercase tracking-[0.16em] text-cyan-300">
               24-Hour National Hackathon
             </p>
             <span className="h-1.5 w-1.5 rotate-45 border border-cyan-400 bg-[#000514]" />
@@ -488,7 +488,7 @@ export default function HeroComponent() {
               href="https://hack2skill.com/event/kodikon6/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-brand-accent-cyan hover:bg-brand-accent-cyan-dark px-7 sm:px-8 py-3.5 font-mono text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-colors"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md bg-brand-accent-cyan hover:bg-brand-accent-cyan-dark px-7 sm:px-8 py-3.5 font-cyber text-xs sm:text-sm font-semibold uppercase tracking-wider text-black transition-colors"
             >
               <span>Register on Hack2Skill</span>
               <ArrowUpRight
@@ -499,14 +499,14 @@ export default function HeroComponent() {
 
             <a
               href="#tracks"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/40 hover:border-cyan-400/80 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 sm:px-6 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-cyan-500/40 hover:border-cyan-400/80 bg-[#070d1e]/80 hover:bg-[#0c1530] px-5 sm:px-6 py-3.5 font-cyber text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <span>Explore Tracks</span>
             </a>
 
             <a
               href="#timeline"
-              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3.5 font-mono text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md border border-slate-800 hover:border-slate-700 bg-black/50 hover:bg-black/70 px-4 sm:px-5 py-3.5 font-cyber text-xs sm:text-sm font-medium uppercase tracking-wider text-slate-400 hover:text-slate-200 transition-all duration-300 hover:-translate-y-0.5"
             >
               <Calendar
                 size={15}
@@ -542,10 +542,10 @@ export default function HeroComponent() {
                     </div>
 
                     <div className="min-w-0 text-left">
-                      <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
+                      <div className="font-tech text-[10px] uppercase tracking-[0.2em] text-cyan-400 font-semibold">
                         {item.label}
                       </div>
-                      <div className="mt-0.5 text-xs sm:text-sm lg:text-base font-bold text-white truncate font-mono">
+                      <div className="mt-0.5 text-xs sm:text-sm lg:text-base font-bold text-white truncate font-cyber tracking-wide">
                         {item.value}
                       </div>
                       <div className="mt-0.5 text-[11px] sm:text-xs font-light text-slate-400 truncate">

@@ -97,12 +97,12 @@ export default function PrizesComponent() {
         <div className="relative mb-16 sm:mb-20">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             {/* Tactical Status Pill - Exactly matches Tracks & Sponsors */}
-            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-cyan-950/40 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest">
+            <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-cyan-950/40 border border-cyan-500/30 text-cyan-400 font-tech text-xs uppercase tracking-widest font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
               <span>BOUNTY PROTOCOL // 「賞金首」</span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-display">
+            <h2 className="font-tokyo text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-wide uppercase">
               Bounties 
             </h2>
 
@@ -115,10 +115,10 @@ export default function PrizesComponent() {
               <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-600 rounded-none blur-[2px] opacity-70 group-hover:opacity-100 transition duration-500 cyber-clip" />
               <div className="relative bg-[#060c1d]/95 border border-cyan-500/40 p-5 sm:p-6 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-4 cyber-clip">
                 {/* Crosshairs */}
-                <span className="absolute top-1.5 left-2 text-[8px] font-mono text-cyan-500/70 select-none">
+                <span className="absolute top-1.5 left-2 text-[8px] font-tech text-cyan-500/70 select-none">
                   ◤ SYS_ESCROW
                 </span>
-                <span className="absolute top-1.5 right-2 text-[8px] font-mono text-cyan-500/70 select-none">
+                <span className="absolute top-1.5 right-2 text-[8px] font-tech text-cyan-500/70 select-none">
                   LOCKED ◥
                 </span>
 
@@ -127,7 +127,7 @@ export default function PrizesComponent() {
                     <Zap size={24} className="animate-pulse" />
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase">
+                    <div className="text-[10px] font-tech tracking-widest text-cyan-400 uppercase font-semibold">
                       {prizePoolSummary.telemetry}
                     </div>
                     <div className="text-sm font-semibold text-slate-200">
@@ -137,10 +137,10 @@ export default function PrizesComponent() {
                 </div>
 
                 <div className="text-center sm:text-right">
-                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
+                  <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-cyber tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-200 to-white drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">
                     {prizePoolSummary.totalPool}
                   </div>
-                  <div className="text-[10px] font-mono text-cyan-400/90 tracking-widest uppercase mt-0.5">
+                  <div className="text-[10px] font-tech text-cyan-400/90 tracking-widest uppercase mt-0.5">
                     ₹50K · ₹30K · ₹20K + TOP 10 GOODIES
                   </div>
                 </div>
@@ -151,11 +151,13 @@ export default function PrizesComponent() {
 
         {/* Podium Subtitle Header */}
         <div className="flex items-center gap-3 mb-10">
-          <span className="text-xs font-mono text-cyan-400 tracking-widest uppercase font-bold">
-            // SECTOR_01 // THE PODIUM STAGE 「表彰台」
+          <span className="text-xs font-tech text-cyan-400 tracking-widest uppercase font-bold flex items-center gap-2">
+            <span>// SECTOR_01 //</span>
+            <span className="font-japanese text-sm tracking-wider text-cyan-300">THE PODIUM STAGE</span>
+            <span>「表彰台」</span>
           </span>
           <div className="h-[1px] flex-1 bg-gradient-to-r from-cyan-500/50 via-slate-800 to-transparent" />
-          <span className="text-[10px] font-mono text-slate-400 hidden sm:inline">
+          <span className="text-[10px] font-tech text-slate-400 hidden sm:inline uppercase">
             RANK 01 · 02 · 03 DIRECT CASH
           </span>
         </div>
@@ -181,13 +183,13 @@ export default function PrizesComponent() {
                   {/* Corner Sci-Fi Tags */}
                   <div className="flex items-center justify-between gap-2 mb-6">
                     <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono font-bold tracking-wider uppercase border ${accent.badge} ${accent.badgeGlow} cyber-clip-sm`}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-cyber font-bold tracking-wider uppercase border ${accent.badge} ${accent.badgeGlow} cyber-clip-sm`}
                     >
                       {isFirst ? <Sparkles size={13} /> : <Zap size={13} />}
                       <span>{prize.badge}</span>
                     </span>
 
-                    <span className="text-xs font-mono text-cyan-400/80 border border-cyan-500/30 px-2 py-0.5 bg-cyan-950/40">
+                    <span className="text-xs font-tech text-cyan-400/80 border border-cyan-500/30 px-2 py-0.5 bg-cyan-950/40 font-semibold">
                       RANK // 0{prize.rank}
                     </span>
                   </div>
@@ -203,7 +205,7 @@ export default function PrizesComponent() {
                     </div>
 
                     {/* Kanji Seal */}
-                    <div className="mt-3 text-xs font-mono tracking-widest text-slate-400 flex items-center gap-1.5">
+                    <div className="mt-3 text-xs font-tech tracking-widest text-slate-400 flex items-center gap-1.5">
                       <span className="text-white font-bold">{prize.subtitle}</span>
                       <span className="text-cyan-400">「{prize.kanji}」</span>
                     </div>
@@ -211,11 +213,11 @@ export default function PrizesComponent() {
 
                   {/* Cash Reward Monolith */}
                   <div className="my-5 py-4 px-4 bg-black/80 border border-cyan-500/30 relative text-center group-hover:border-cyan-400/50 transition-colors cyber-clip-sm">
-                    <div className="text-[10px] font-mono text-cyan-400/70 uppercase tracking-widest mb-1">
+                    <div className="text-[10px] font-tech text-cyan-400/70 uppercase tracking-widest mb-1 font-semibold">
                       DIRECT CASH BOUNTY
                     </div>
                     <div
-                      className={`text-3xl sm:text-4xl font-black font-mono tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${accent.textGradient} drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]`}
+                      className={`text-3xl sm:text-4xl font-black font-cyber tracking-tight text-transparent bg-clip-text bg-gradient-to-r ${accent.textGradient} drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]`}
                     >
                       {prize.amount}
                     </div>
@@ -226,10 +228,10 @@ export default function PrizesComponent() {
                 <div
                   className={`mt-3 w-full ${pedestalHeight} ${accent.pedestalBg} border ${accent.pedestalBorder} flex flex-col items-center justify-center relative cyber-clip-sm transition-all duration-300`}
                 >
-                  <div className="text-2xl sm:text-3xl font-black font-mono tracking-wider text-white">
+                  <div className="text-2xl sm:text-3xl font-black font-tokyo tracking-wider text-white">
                     {podiumRank}
                   </div>
-                  <div className="text-[10px] font-mono text-cyan-400/80 uppercase tracking-widest mt-0.5">
+                  <div className="text-[10px] font-tech text-cyan-400/80 uppercase tracking-widest mt-0.5 font-semibold">
                     {prize.title} · {prize.kanji}
                   </div>
                   <div className="absolute bottom-1.5 inset-x-4 h-[1px] bg-cyan-500/20" />
@@ -241,7 +243,7 @@ export default function PrizesComponent() {
 
         {/* TOP 10 TEAMS GOODIES NOTE */}
         <div className="mt-12 sm:mt-16 text-center">
-          <div className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full bg-[#060c1d]/90 border border-cyan-500/30 text-slate-200 text-xs sm:text-sm font-mono shadow-[0_0_25px_rgba(6,182,212,0.15)] backdrop-blur-xl">
+          <div className="inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 rounded-full bg-[#060c1d]/90 border border-cyan-500/30 text-slate-200 text-xs sm:text-sm font-tech shadow-[0_0_25px_rgba(6,182,212,0.15)] backdrop-blur-xl">
             <Gift size={16} className="text-amber-400 shrink-0" />
             <span>Top 10 teams (including the top 3) will be receiving goodies.</span>
           </div>

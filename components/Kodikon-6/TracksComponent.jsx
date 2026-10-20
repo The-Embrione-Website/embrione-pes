@@ -183,14 +183,14 @@ export default function TracksComponent() {
         <header className="mx-auto mb-12 max-w-4xl text-center sm:mb-16 lg:mb-20">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-[#040816]/80 px-4 py-2">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
-            <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-200">
+            <span className="font-tech text-[10px] tracking-[0.2em] text-cyan-200 font-semibold">
               KODIKON 6.0 // CHALLENGE TRACKS
             </span>
           </div>
 
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-tokyo text-3xl font-black uppercase tracking-wide text-white sm:text-4xl md:text-5xl">
             Explore the{" "}
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+            <span className="font-japanese bg-gradient-to-r from-cyan-300 via-sky-300 to-blue-500 bg-clip-text text-transparent">
               Tracks
             </span>
           </h2>
@@ -254,15 +254,15 @@ export default function TracksComponent() {
                   <div className="relative z-10 flex flex-col">
                     <div className="mb-3 flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="flex h-7 w-7 items-center justify-center rounded-sm border border-amber-400/60 bg-amber-500/10 font-mono text-xs font-bold text-amber-300">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-sm border border-amber-400/60 bg-amber-500/10 font-tokyo text-xs font-bold text-amber-300">
                           {track.number}
                         </span>
-                        <span className="border border-brand-border-hover bg-brand-surface-navy/90 px-2.5 py-0.5 font-mono text-[9px] tracking-[0.16em] text-brand-text-primary">
+                        <span className="border border-brand-border-hover bg-brand-surface-navy/90 px-2.5 py-0.5 font-tech text-[9px] tracking-[0.16em] text-brand-text-primary font-semibold">
                           {track.code}
                         </span>
                       </div>
 
-                      <span className="text-right font-mono text-[9px] uppercase tracking-[0.1em] text-brand-accent-cyan-glow">
+                      <span className="text-right font-cyber text-[9px] uppercase tracking-[0.1em] text-brand-accent-cyan-glow">
                         {meta.subBadge}
                       </span>
                     </div>
@@ -278,7 +278,7 @@ export default function TracksComponent() {
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/90 via-black/65 to-black/35 opacity-0 backdrop-blur-[2px] transition-all duration-300 group-hover:opacity-100">
-                        <span className="flex items-center gap-2 rounded-lg border border-cyan-300/40 bg-gradient-to-r from-brand-accent-cyan to-brand-accent-blue px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-[0_0_20px_rgba(34,211,238,0.5)]">
+                        <span className="flex items-center gap-2 rounded-lg border border-cyan-300/40 bg-gradient-to-r from-brand-accent-cyan to-brand-accent-blue px-6 py-2.5 font-cyber text-xs font-semibold uppercase tracking-wider text-white shadow-[0_0_20px_rgba(34,211,238,0.5)]">
                           Know More
                           <ArrowUpRight size={14} aria-hidden="true" />
                         </span>
@@ -286,13 +286,13 @@ export default function TracksComponent() {
                     </div>
 
                     <div className="flex flex-col items-center px-2 pb-1 pt-2 text-center">
-                      <h3 className="text-lg font-bold leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-brand-accent-cyan-glow sm:text-xl">
+                      <h3 className="font-tokyo text-sm sm:text-base font-bold leading-snug tracking-tight text-white transition-colors duration-300 group-hover:text-brand-accent-cyan-glow">
                         {track.title}
                       </h3>
 
                       <div className="mx-auto mt-3 h-0.5 w-16 rounded-full bg-gradient-to-r from-transparent via-brand-accent-cyan-glow to-transparent opacity-60 shadow-[0_0_10px_rgba(34,211,238,0.6)] transition-all duration-500 group-hover:w-28 group-hover:opacity-100" />
 
-                      <div className="mt-3 flex items-center justify-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-brand-accent-cyan-glow sm:hidden">
+                      <div className="mt-3 flex items-center justify-center gap-1.5 font-cyber text-[9px] uppercase tracking-wider text-brand-accent-cyan-glow sm:hidden">
                         Tap to Know More
                         <ArrowUpRight size={12} aria-hidden="true" />
                       </div>
@@ -357,24 +357,24 @@ export default function TracksComponent() {
               <div className="px-5 pb-6 pt-6 text-brand-text-primary sm:px-8 sm:pb-8 sm:pt-8 md:px-10">
                 <div className="mb-5">
                   <div className="mb-2 flex items-center gap-2">
-                    <span className="flex h-5 w-5 items-center justify-center rounded border border-amber-400/50 bg-amber-500/10 font-mono text-[10px] font-bold text-amber-300">
+                    <span className="flex h-5 w-5 items-center justify-center rounded border border-amber-400/50 bg-amber-500/10 font-tokyo text-[10px] font-bold text-amber-300">
                       {selectedTrack.number}
                     </span>
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-brand-accent-cyan-glow">
+                    <span className="font-tech text-xs uppercase tracking-[0.2em] text-brand-accent-cyan-glow font-semibold">
                       {selectedTrack.code}
                     </span>
                   </div>
 
                   <h2
                     id="track-dialog-title"
-                    className="text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-3xl md:text-4xl"
+                    className="font-tokyo text-2xl font-black uppercase leading-tight tracking-wide text-white sm:text-3xl md:text-4xl"
                   >
                     {selectedTrack.title}
                   </h2>
                 </div>
 
                 <div className="mb-6 rounded-r-lg border-l-2 border-brand-accent-cyan bg-brand-surface/40 p-4 backdrop-blur-sm sm:p-5">
-                  <h3 className="mb-3 text-lg font-semibold text-brand-accent-cyan-glow">
+                  <h3 className="mb-3 font-cyber text-base font-semibold text-brand-accent-cyan-glow uppercase tracking-wider">
                     Description
                   </h3>
                   <p className="whitespace-pre-line text-sm leading-relaxed text-brand-text-secondary sm:text-base">
@@ -387,7 +387,7 @@ export default function TracksComponent() {
                   <button
                     type="button"
                     onClick={closeTrack}
-                    className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#030712]/90 px-4 py-2.5 text-sm font-medium text-cyan-300 shadow-lg backdrop-blur-xl transition hover:border-cyan-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
+                    className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#030712]/90 px-4 py-2.5 font-cyber text-xs uppercase tracking-wider font-medium text-cyan-300 shadow-lg backdrop-blur-xl transition hover:border-cyan-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400"
                   >
                     <span aria-hidden="true">←</span>
                     Back to Tracks

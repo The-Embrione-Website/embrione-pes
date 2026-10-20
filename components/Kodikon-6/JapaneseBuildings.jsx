@@ -893,20 +893,20 @@ export function FullSanctuaryMonument({ track }) {
       {/* 2. Top Blueprint Watermark & Kanji Header */}
       <div className="relative z-10 flex w-full items-center justify-between border-b border-brand-border-subtle pb-3">
         <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-sm border border-amber-400/50 bg-amber-500/10 font-mono text-xs font-bold text-amber-300">
+          <span className="flex h-6 w-6 items-center justify-center rounded-sm border border-amber-400/50 bg-amber-500/10 font-tokyo text-xs font-bold text-amber-300">
             {kanjiNum}
           </span>
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-brand-accent-cyan-glow">
+            <p className="font-tech text-[9px] uppercase tracking-[0.2em] text-brand-accent-cyan-glow font-semibold">
               {track.code} · ARCHITECTURAL BLUEPRINT
             </p>
-            <p className="font-mono text-[10px] text-brand-text-secondary">
+            <p className="font-tech text-[10px] text-brand-text-secondary">
               {buildingLabel}
             </p>
           </div>
         </div>
 
-        <span className="rounded-full border border-brand-accent-cyan/30 bg-brand-accent-cyan/10 px-2.5 py-0.5 font-mono text-[9px] text-brand-accent-cyan-glow">
+        <span className="rounded-full border border-brand-accent-cyan/30 bg-brand-accent-cyan/10 px-2.5 py-0.5 font-cyber text-[8px] sm:text-[9px] uppercase tracking-wider text-brand-accent-cyan-glow">
           LIGHT-BLUE VECTOR
         </span>
       </div>
@@ -923,7 +923,7 @@ export function FullSanctuaryMonument({ track }) {
                 <span className="font-mono text-xs text-amber-200 border border-amber-400/40 rounded px-2 py-0.5 bg-amber-500/10 mb-1">
                   第壱殿 · 監視・外縁視覚
                 </span>
-                <p className="text-xs font-bold text-white tracking-wide">
+                <p className="font-tokyo text-xs font-bold text-white tracking-wide uppercase">
                   {track.title}
                 </p>
               </div>
@@ -941,7 +941,7 @@ export function FullSanctuaryMonument({ track }) {
                 <span className="font-mono text-xs text-amber-200 border border-amber-400/40 rounded px-2 py-0.5 bg-amber-500/10 mb-1">
                   第弐殿 · 支援知能・神経多様性
                 </span>
-                <p className="text-xs font-bold text-white tracking-wide">
+                <p className="font-tokyo text-xs font-bold text-white tracking-wide uppercase">
                   {track.title}
                 </p>
               </div>
@@ -959,7 +959,7 @@ export function FullSanctuaryMonument({ track }) {
                 <span className="font-mono text-xs text-amber-200 border border-amber-400/40 rounded px-2 py-0.5 bg-amber-500/10 mb-1">
                   第参殿 · 分散秘匿・連邦結界
                 </span>
-                <p className="text-xs font-bold text-white tracking-wide">
+                <p className="font-tokyo text-xs font-bold text-white tracking-wide uppercase">
                   {track.title}
                 </p>
               </div>
@@ -971,7 +971,7 @@ export function FullSanctuaryMonument({ track }) {
 
       {/* 4. Bottom Blueprint Footer Specs */}
       <div className="relative z-10 w-full rounded border border-brand-border-subtle bg-brand-surface-navy/90 p-3 backdrop-blur-sm">
-        <div className="grid grid-cols-3 gap-2 text-center font-mono">
+        <div className="grid grid-cols-3 gap-2 text-center font-tech">
           <div className="border-r border-brand-border-subtle pr-2">
             <p className="text-[8px] uppercase tracking-wider text-brand-text-muted">Domain</p>
             <p className="text-[10px] font-bold text-brand-accent-cyan-glow">{track.number} // 03</p>
