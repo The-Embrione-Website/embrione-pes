@@ -89,7 +89,9 @@ export default function GalaxyBackground({ containerRef }) {
       const rect = targetElement.getBoundingClientRect();
       width = rect.width || window.innerWidth;
       height = rect.height || window.innerHeight;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const isMobile = width < 768;
+      // High-performance DPR: 1 on mobile to prevent GPU fill-rate exhaustion; capped to 1.5 on desktop
+      dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
 
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
@@ -102,8 +104,10 @@ export default function GalaxyBackground({ containerRef }) {
       // Galaxy radius scaled to fill the entire hero backdrop majestically
       const maxRadius = Math.max(width, height) * 0.62;
 
-      // 1. Generate 1,900 Spiral Galaxy Stars
-      const starCount = Math.min(2200, Math.max(1200, Math.floor(width * 1.3)));
+      // 1. Generate Spiral Galaxy Stars (Mobile optimized to 280 stars for 60/120fps smoothness)
+      const starCount = isMobile
+        ? 280
+        : Math.min(1800, Math.max(900, Math.floor(width * 1.1)));
       stars = [];
 
       for (let i = 0; i < starCount; i++) {
@@ -167,9 +171,9 @@ export default function GalaxyBackground({ containerRef }) {
         });
       }
 
-      // 2. Generate 70 Interstellar Nebular Gas Puffs along the Spiral Arms
+      // 2. Generate Interstellar Nebular Gas Puffs along Spiral Arms (12 on mobile, 45 on desktop)
       gasClouds = [];
-      const cloudCount = 70;
+      const cloudCount = isMobile ? 12 : 45;
       for (let i = 0; i < cloudCount; i++) {
         const armIndex = i % NUM_ARMS;
         const armBaseAngle = (armIndex * (2 * Math.PI)) / NUM_ARMS;
@@ -198,7 +202,7 @@ export default function GalaxyBackground({ containerRef }) {
       window.addEventListener("resize", initUniverse);
     }
 
-    // Interactive pointer parallax (subtle 3D gyroscope effect)
+    // Interactive pointer parallax (desktop mouse only - disabled on touch devices to avoid scroll lag)
     const handlePointerMove = (e) => {
       const rect = targetElement.getBoundingClientRect();
       const nx = (e.clientX - rect.left) / width - 0.5;
@@ -207,9 +211,15 @@ export default function GalaxyBackground({ containerRef }) {
       mouse.targetY = ny * 0.06; // subtle pitch adjustment
     };
 
-    targetElement.addEventListener("pointermove", handlePointerMove, {
-      passive: true,
-    });
+    const hasFinePointer =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: fine)").matches;
+
+    if (hasFinePointer) {
+      targetElement.addEventListener("pointermove", handlePointerMove, {
+        passive: true,
+      });
+    }
 
     // Shooting star (rare meteoric streak across the cosmos)
     class ShootingStar {
@@ -423,7 +433,9 @@ export default function GalaxyBackground({ containerRef }) {
       if (resizeObserver) resizeObserver.disconnect();
       else window.removeEventListener("resize", initUniverse);
       if (observer) observer.disconnect();
-      targetElement.removeEventListener("pointermove", handlePointerMove);
+      if (hasFinePointer) {
+        targetElement.removeEventListener("pointermove", handlePointerMove);
+      }
     };
   }, [containerRef]);
 
@@ -435,10 +447,10 @@ export default function GalaxyBackground({ containerRef }) {
         className="absolute inset-0 bg-[#000000]"
       />
 
-      {/* 2. Atmospheric Galactic Core Glow (Deep Navy & Indigo Starlight - rich cosmic ambiance, -15%) */}
+      {/* 2. Atmospheric Galactic Core Glow (Optimized blur on mobile for 60fps performance) */}
       <div
         aria-hidden="true"
-        className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] sm:w-[1200px] h-[500px] sm:h-[650px] pointer-events-none opacity-[0.24] blur-[140px] rounded-full"
+        className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[340px] sm:w-[1200px] h-[260px] sm:h-[650px] pointer-events-none opacity-[0.24] blur-[50px] sm:blur-[140px] rounded-full"
         style={{
           background:
             "radial-gradient(ellipse 70% 50% at 50% 35%, rgba(30, 58, 138, 0.35) 0%, rgba(20, 33, 59, 0.20) 45%, rgba(10, 15, 30, 0.06) 70%, transparent 100%)",
