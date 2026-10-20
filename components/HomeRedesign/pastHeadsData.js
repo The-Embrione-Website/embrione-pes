@@ -69,7 +69,7 @@ export const pastHeads2024 = [
     role: "Head",
     term: "2024-2025",
     photoUrl: "/current-domain-heads/Shashwat.webp",
-    linkedinUrl: "https://www.linkedin.com/in/shashwat-jha-7a726b296",
+    linkedinUrl: null,
   },
   {
     name: "Ankith Khaitan",

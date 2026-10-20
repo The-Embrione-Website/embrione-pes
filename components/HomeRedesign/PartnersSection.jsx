@@ -61,7 +61,7 @@ function SponsorCard({ sponsor }) {
           <img
             src={sponsor.logo}
             alt={`${sponsor.name} logo`}
-            className="max-h-9 max-w-[80%] object-contain opacity-80 transition-opacity group-hover:opacity-100 filter grayscale group-hover:grayscale-0"
+            className="max-h-9 max-w-[80%] object-contain"
             loading="lazy"
             onError={() => setImageFailed(true)}
           />

@@ -60,7 +60,7 @@ export const teamMembersDetails = [
     domain: "Sponsorship",
     role: "Head",
     photoUrl: "/2025-domain-heads/Shashwat.webp",
-    linkedinUrl: "https://www.linkedin.com/in/shashwat-jha-7a726b296?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    linkedinUrl: null,
     email: "shashwatjha384@gmail.com",
   },
   {

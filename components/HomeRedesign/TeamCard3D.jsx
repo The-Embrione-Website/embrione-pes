@@ -8,14 +8,14 @@ import { Linkedin, Github } from "lucide-react";
 // ensuring maximum chromatic variety with no repetitive adjacent colors
 const GOLDEN_ANGLE = 137.508;
 
-// Physical tilt and dimension variations for desktop editorial gallery (desktop-only for 60/120fps mobile)
+// Physical tilt and dimension variations for both mobile & desktop editorial gallery
 const SHAPE_VARIANTS = [
-  { aspect: "sm:aspect-[3/4.4]", tilt: "sm:-rotate-[2.2deg]", offset: "sm:translate-y-0", scale: "sm:scale-[1.02]" },
-  { aspect: "sm:aspect-[3/3.7]", tilt: "sm:rotate-[2.5deg]",  offset: "sm:translate-y-5", scale: "sm:scale-[0.95]" },
-  { aspect: "sm:aspect-[3/4.6]", tilt: "sm:-rotate-[1.8deg]", offset: "sm:-translate-y-2", scale: "sm:scale-[1.03]" },
-  { aspect: "sm:aspect-[3/3.9]", tilt: "sm:rotate-[2.8deg]",  offset: "sm:translate-y-4", scale: "sm:scale-[0.93]" },
-  { aspect: "sm:aspect-[3/4.3]", tilt: "sm:-rotate-[2.4deg]", offset: "sm:-translate-y-1", scale: "sm:scale-[1.01]" },
-  { aspect: "sm:aspect-[3/3.8]", tilt: "sm:rotate-[1.9deg]",  offset: "sm:translate-y-6", scale: "scale-[0.96]" },
+  { aspect: "aspect-[3/4.3] sm:aspect-[3/4.4]", tilt: "-rotate-[1.8deg] sm:-rotate-[2.2deg]", offset: "translate-y-0 sm:translate-y-0", scale: "scale-[0.99] sm:scale-[1.02]" },
+  { aspect: "aspect-[3/3.7] sm:aspect-[3/3.7]", tilt: "rotate-[2.0deg] sm:rotate-[2.5deg]",   offset: "translate-y-0.5 sm:translate-y-5", scale: "scale-[0.96] sm:scale-[0.95]" },
+  { aspect: "aspect-[3/4.5] sm:aspect-[3/4.6]", tilt: "-rotate-[1.5deg] sm:-rotate-[1.8deg]", offset: "-translate-y-0.5 sm:-translate-y-2", scale: "scale-[1.01] sm:scale-[1.03]" },
+  { aspect: "aspect-[3/3.8] sm:aspect-[3/3.9]", tilt: "rotate-[2.2deg] sm:rotate-[2.8deg]",   offset: "translate-y-0.5 sm:translate-y-4", scale: "scale-[0.95] sm:scale-[0.93]" },
+  { aspect: "aspect-[3/4.2] sm:aspect-[3/4.3]", tilt: "-rotate-[2.0deg] sm:-rotate-[2.4deg]", offset: "translate-y-0 sm:-translate-y-1", scale: "scale-[0.98] sm:scale-[1.01]" },
+  { aspect: "aspect-[3/3.8] sm:aspect-[3/3.8]", tilt: "rotate-[1.7deg] sm:rotate-[1.9deg]",   offset: "translate-y-0.5 sm:translate-y-6", scale: "scale-[0.97] sm:scale-[0.96]" },
 ];
 
 export default function TeamCard3D({
@@ -51,28 +51,31 @@ export default function TeamCard3D({
     ? `0 24px 60px -10px hsla(${hue}, 85%, 55%, 0.35)`
     : "none";
 
-  // Mobile tap handler: toggle active focus on touch
-  const handleCardClick = () => {
-    if (isHovered) {
-      if (onLeave) onLeave();
-    } else {
+  // Desktop-only hover handler (ignored on touch / phone devices)
+  const handleMouseEnter = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
       if (onHover) onHover();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches) {
+      if (onLeave) onLeave();
     }
   };
 
   return (
     <div
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      onClick={handleCardClick}
-      className={`group relative w-full cursor-pointer transition-colors duration-200 sm:transition-all sm:duration-500 sm:ease-[cubic-bezier(0.16,1,0.3,1)] sm:transform-gpu ${
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`group relative w-full sm:cursor-pointer transition-colors duration-200 sm:transition-all sm:duration-500 sm:ease-[cubic-bezier(0.16,1,0.3,1)] sm:transform-gpu ${
         shape.offset
-      } ${
+      } ${shape.tilt} ${shape.scale} ${
         isHovered
-          ? "z-30 sm:scale-[1.08] sm:rotate-0 sm:-translate-y-3 opacity-100"
+          ? "z-10 sm:z-30 sm:scale-[1.08] sm:rotate-0 sm:-translate-y-3 opacity-100"
           : isDimmed
           ? "sm:scale-[0.86] sm:opacity-25 opacity-100 sm:filter sm:grayscale sm:contrast-75 sm:brightness-75"
-          : `rotate-0 ${shape.tilt} ${shape.scale} opacity-100 sm:hover:z-30`
+          : "opacity-100 sm:hover:z-30"
       }`}
     >
       {/* Outer Card Shell with Chromatic Border */}
@@ -82,7 +85,7 @@ export default function TeamCard3D({
           boxShadow: isHovered ? glowShadow : undefined,
         }}
         className={`relative flex flex-col justify-between overflow-hidden rounded-lg border bg-[#08080a] p-3 transition-colors duration-200 sm:transition-all sm:duration-500 ${
-          isHovered ? "bg-zinc-950 sm:border-transparent" : ""
+          isHovered ? "sm:bg-zinc-950 sm:border-transparent" : ""
         }`}
       >
         {/* Subtle Ambient Radial Backlight in this card's unique color */}
@@ -99,7 +102,7 @@ export default function TeamCard3D({
             <span
               style={{ backgroundColor: accentColor }}
               className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
-                isHovered ? "animate-ping" : ""
+                isHovered ? "sm:animate-ping" : ""
               }`}
             />
             <span className="text-zinc-500">№ {formattedIndex}</span>
@@ -113,9 +116,9 @@ export default function TeamCard3D({
           </span>
         </div>
 
-        {/* 2. Framed Photographic Window (Clean uniform aspect-[3/4] on mobile, editorial variation on desktop) */}
+        {/* 2. Framed Photographic Window with physical tilt & dimension variations */}
         <div
-          className={`relative aspect-[3/4] ${shape.aspect} w-full overflow-hidden rounded-md bg-zinc-900 border border-zinc-800/70`}
+          className={`relative ${shape.aspect} w-full overflow-hidden rounded-md bg-zinc-900 border border-zinc-800/70`}
         >
           {/* Member Photo: Natural full color on mobile; smooth hover focus on desktop */}
           {member.photo || member.photoUrl ? (

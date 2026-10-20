@@ -247,7 +247,7 @@ const currentTeam2026 = [
     "domain": "Mentors",
     "role": "Mentor",
     "photo": "/2025-domain-heads/Shashwat.webp",
-    "linkedin": "https://www.linkedin.com/in/shashwat-jha-7a726b296",
+    "linkedin": null,
     "github": null,
     "featured": true
   },
