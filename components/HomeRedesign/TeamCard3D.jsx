@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Linkedin, Github } from "lucide-react";
 
@@ -8,7 +8,7 @@ import { Linkedin, Github } from "lucide-react";
 // ensuring maximum chromatic variety with no repetitive adjacent colors
 const GOLDEN_ANGLE = 137.508;
 
-// Physical tilt and dimension variations (ACTIVE ON MOBILE AND DESKTOP)
+// Physical tilt and dimension variations for desktop editorial gallery
 const SHAPE_VARIANTS = [
   { aspect: "aspect-[3/4.4]", tilt: "-rotate-[2.2deg]", offset: "sm:translate-y-0", scale: "scale-[1.02]" },
   { aspect: "aspect-[3/3.7]", tilt: "rotate-[2.5deg]",  offset: "sm:translate-y-5", scale: "scale-[0.95]" },
@@ -26,26 +26,81 @@ export default function TeamCard3D({
   onHover,
   onLeave,
 }) {
+  const cardRef = useRef(null);
   const shape = SHAPE_VARIANTS[index % SHAPE_VARIANTS.length];
   const formattedIndex = String(index + 1).padStart(2, "0");
 
   // SSR-safe random base offset: starts at 0 for matching hydration, shifts randomly on mount
   const [randomOffset, setRandomOffset] = useState(0);
+  // Mobile on-screen viewport detection
+  const [isOnScreen, setIsOnScreen] = useState(false);
 
   useEffect(() => {
     // Generate a new random starting angle each page load
     setRandomOffset(Math.floor(Math.random() * 360));
   }, []);
 
+  // Track when card is visible on screen on mobile/touch devices
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setIsOnScreen(true);
+      return;
+    }
+
+    const checkMobile = () =>
+      typeof window !== "undefined" &&
+      (window.innerWidth < 768 ||
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (checkMobile()) {
+            setIsOnScreen(entry.isIntersecting);
+          } else {
+            setIsOnScreen(false);
+          }
+        });
+      },
+      {
+        root: null,
+        // Active when card enters the viewport focal zone
+        rootMargin: "-4% 0px -4% 0px",
+        threshold: 0.12,
+      }
+    );
+
+    observer.observe(el);
+
+    const handleResize = () => {
+      if (!checkMobile()) {
+        setIsOnScreen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // Compute a 100% unique hue (0-360) for every single profile on the page
   const hue = Math.round((index * GOLDEN_ANGLE + randomOffset) % 360);
+
+  // Active state: triggered by mouse hover on desktop OR when scrolled into view on mobile
+  const isCardActive = isHovered || isOnScreen;
 
   // Dynamic HSL color tokens for this card
   const tintColor = `hsla(${hue}, 85%, 52%, 0.28)`;
   const accentColor = `hsl(${hue}, 90%, 65%)`;
   const defaultBorder = `hsla(${hue}, 50%, 30%, 0.38)`;
   const activeBorder = `hsl(${hue}, 85%, 60%)`;
-  const glowShadow = isHovered
+  const glowShadow = isCardActive
     ? `0 24px 60px -10px hsla(${hue}, 85%, 55%, 0.35)`
     : "0 10px 30px -10px rgba(0,0,0,0.8)";
 
@@ -60,15 +115,16 @@ export default function TeamCard3D({
 
   return (
     <div
+      ref={cardRef}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
       onClick={handleCardClick}
       className={`group relative w-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] transform-gpu cursor-pointer ${
         shape.offset
       } ${
-        isHovered
-          ? "z-40 scale-[1.04] sm:scale-[1.12] rotate-0 -translate-y-2 sm:-translate-y-3 opacity-100"
-          : isDimmed
+        isCardActive
+          ? "z-30 scale-100 sm:scale-[1.08] rotate-0 -translate-y-1 sm:-translate-y-3 opacity-100"
+          : isDimmed && !isOnScreen
           ? "sm:scale-[0.86] sm:opacity-25 opacity-100 sm:filter sm:grayscale sm:contrast-75 sm:brightness-75"
           : `${shape.scale} ${shape.tilt} opacity-100 hover:z-30`
       }`}
@@ -76,11 +132,11 @@ export default function TeamCard3D({
       {/* Outer Card Shell with Chromatic Tint Border */}
       <article
         style={{
-          borderColor: isHovered ? activeBorder : defaultBorder,
+          borderColor: isCardActive ? activeBorder : defaultBorder,
           boxShadow: glowShadow,
         }}
         className={`relative flex flex-col justify-between overflow-hidden rounded-lg border bg-[#08080a] p-3 transition-all duration-500 ${
-          isHovered ? "bg-zinc-950" : ""
+          isCardActive ? "bg-zinc-950" : ""
         }`}
       >
         {/* Subtle Ambient Radial Backlight in this card's unique color */}
@@ -97,14 +153,14 @@ export default function TeamCard3D({
             <span
               style={{ backgroundColor: accentColor }}
               className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
-                isHovered ? "animate-ping" : ""
+                isCardActive ? "animate-ping" : ""
               }`}
             />
             <span className="text-zinc-500">№ {formattedIndex}</span>
           </div>
 
           <span
-            style={{ color: isHovered ? accentColor : "#a1a1aa" }}
+            style={{ color: isCardActive ? accentColor : "#a1a1aa" }}
             className="text-[11px] font-sans font-medium tracking-wide uppercase transition-colors duration-300"
           >
             {member.domain || "Core"}
@@ -113,7 +169,7 @@ export default function TeamCard3D({
 
         {/* 2. Framed Photographic Window with Individual Chromatic Cast */}
         <div
-          className={`relative ${shape.aspect} w-full overflow-hidden rounded-md bg-zinc-900 border border-zinc-800/70`}
+          className={`relative aspect-[3/4] sm:${shape.aspect} w-full overflow-hidden rounded-md bg-zinc-900 border border-zinc-800/70`}
         >
           {/* Member Photo */}
           {member.photo || member.photoUrl ? (
@@ -123,7 +179,7 @@ export default function TeamCard3D({
               fill
               sizes="(max-width: 639px) 100vw, (max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
               className={`object-cover object-top transition-all duration-700 ease-out ${
-                isHovered
+                isCardActive
                   ? "scale-105 filter grayscale-0 contrast-100 brightness-100"
                   : "filter grayscale contrast-125 brightness-95"
               }`}
@@ -134,14 +190,14 @@ export default function TeamCard3D({
             </div>
           )}
 
-          {/* Full-Spectrum Chromatic Tint Overlay: Active when NOT hovered */}
+          {/* Full-Spectrum Chromatic Tint Overlay: Active when NOT active */}
           <div
             style={{
               backgroundColor: tintColor,
               mixBlendMode: "color",
             }}
             className={`absolute inset-0 transition-opacity duration-500 pointer-events-none ${
-              isHovered ? "opacity-0" : "opacity-90 sm:opacity-100"
+              isCardActive ? "opacity-0" : "opacity-90 sm:opacity-100"
             }`}
           />
 
@@ -163,7 +219,7 @@ export default function TeamCard3D({
           <div className="min-w-0 flex-1">
             <h3
               className={`text-sm sm:text-base font-semibold tracking-tight truncate transition-colors duration-300 ${
-                isHovered ? "text-white" : "text-zinc-200"
+                isCardActive ? "text-white" : "text-zinc-200"
               }`}
             >
               {member.name}
@@ -176,7 +232,7 @@ export default function TeamCard3D({
           </div>
 
           {/* Touch-Friendly Social Link Buttons */}
-          <div className="flex items-center gap-1.5 shrink-0 opacity-90 sm:opacity-70 sm:group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center gap-1.5 shrink-0 opacity-100 sm:opacity-70 sm:group-hover:opacity-100 transition-opacity">
             {member.linkedin && member.linkedin !== "www" && (
               <a
                 href={member.linkedin}
@@ -185,7 +241,7 @@ export default function TeamCard3D({
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`${member.name} on LinkedIn`}
                 style={{
-                  borderColor: isHovered ? defaultBorder : undefined,
+                  borderColor: isCardActive ? defaultBorder : undefined,
                 }}
                 className="flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded border border-zinc-800 bg-zinc-900/80 text-zinc-400 hover:text-white hover:bg-zinc-800 active:scale-95 transition-all"
               >
@@ -200,7 +256,7 @@ export default function TeamCard3D({
                 onClick={(e) => e.stopPropagation()}
                 aria-label={`${member.name} on GitHub`}
                 style={{
-                  borderColor: isHovered ? defaultBorder : undefined,
+                  borderColor: isCardActive ? defaultBorder : undefined,
                 }}
                 className="flex h-8 w-8 sm:h-6 sm:w-6 items-center justify-center rounded border border-zinc-800 bg-zinc-900/80 text-zinc-400 hover:text-white hover:bg-zinc-800 active:scale-95 transition-all"
               >
