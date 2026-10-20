@@ -374,7 +374,11 @@ export default function TeamSection() {
           </div>
 
           <h2 className="font-curvy text-3xl font-semibold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl leading-[1.05]">
-            Meet the Team.
+            Meet the{" "}
+            <span className="font-cursive font-normal text-blue-400 text-4xl sm:text-6xl lg:text-7xl inline-block px-1">
+              Team
+            </span>
+            .
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-zinc-400 font-normal leading-relaxed max-w-2xl">

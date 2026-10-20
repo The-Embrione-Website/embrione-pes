@@ -94,15 +94,22 @@ export default function HeroSection() {
 
         {/* 2. Monumental "The Embrione" Title (Big, Bold & Centered) */}
         <motion.div variants={itemVariants} className="w-full">
-          <h1 className="font-curvy text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.75rem] font-bold tracking-[-0.035em] text-white leading-none drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
-            The Embrione
+          <h1 className="text-6xl sm:text-8xl md:text-9xl lg:text-[7.5rem] xl:text-[8.75rem] font-bold tracking-tight text-white leading-none drop-shadow-[0_4px_28px_rgba(0,0,0,0.95)]">
+            <span className="font-cursive font-normal text-blue-400 inline-block pr-3 sm:pr-5 select-none align-baseline text-[0.85em]">
+              The
+            </span>
+            <span className="font-curvy">Embrione</span>
           </h1>
         </motion.div>
 
         {/* 3. Purpose & Positioning Statement */}
         <motion.div variants={itemVariants} className="mt-6 max-w-3xl">
           <p className="font-curvy text-xl sm:text-2xl md:text-3xl text-zinc-100 font-medium tracking-tight leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
-            Computing, Development &amp; Innovation.
+            Computing, Development &amp;{" "}
+            <span className="font-cursive font-normal text-blue-400 text-3xl sm:text-4xl md:text-5xl inline-block px-1">
+              Innovation
+            </span>
+            .
           </p>
 
           <p className="mt-4 text-sm sm:text-base md:text-lg text-zinc-300 font-normal leading-relaxed max-w-[62ch] mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">

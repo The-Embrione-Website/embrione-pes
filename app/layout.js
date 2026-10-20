@@ -5,7 +5,8 @@ import {
   Plus_Jakarta_Sans,
   Syne,
   Bricolage_Grotesque,
-  Righteous,
+  Alex_Brush,
+  Caveat,
   JetBrains_Mono,
 } from "next/font/google";
 
@@ -31,10 +32,17 @@ const curvy = Bricolage_Grotesque({
   display: "swap",
 });
 
-const righteous = Righteous({
+const cursive = Alex_Brush({
   subsets: ["latin"],
-  variable: "--font-righteous",
+  variable: "--font-cursive",
   weight: ["400"],
+  display: "swap",
+});
+
+const handwriting = Caveat({
+  subsets: ["latin"],
+  variable: "--font-handwriting",
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -134,7 +142,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${display.variable} ${curvy.variable} ${righteous.variable} ${mono.variable}`}
+      className={`${sans.variable} ${display.variable} ${curvy.variable} ${cursive.variable} ${handwriting.variable} ${mono.variable}`}
     >
       <body className="font-sans bg-black text-white antialiased">
         {children}

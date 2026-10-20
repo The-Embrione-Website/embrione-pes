@@ -35,8 +35,12 @@ export default function AboutSection() {
 
           <h2 className="font-curvy text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.03em] text-white leading-[1.05]">
             Built Around The Hackathon.{" "}
-            <span className="block text-zinc-400">
-              Run by Students Who Build.
+            <span className="block text-zinc-400 mt-1">
+              Run by{" "}
+              <span className="font-cursive font-normal text-blue-400 text-4xl sm:text-6xl lg:text-7xl inline-block px-1">
+                Students
+              </span>{" "}
+              Who Build.
             </span>
           </h2>
         </div>

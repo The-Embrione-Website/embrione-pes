@@ -11,7 +11,8 @@ module.exports = {
         sans: ['var(--font-sans)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         display: ['var(--font-display)', 'var(--font-sans)', 'sans-serif'],
         curvy: ['var(--font-curvy)', 'var(--font-sans)', 'sans-serif'],
-        righteous: ['var(--font-righteous)', 'cursive', 'sans-serif'],
+        cursive: ['var(--font-cursive)', 'cursive'],
+        handwriting: ['var(--font-handwriting)', 'cursive'],
         mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       keyframes: {

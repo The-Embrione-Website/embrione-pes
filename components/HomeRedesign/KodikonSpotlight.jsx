@@ -110,8 +110,12 @@ export default function KodikonSpotlight() {
             <span className="text-xs font-mono tracking-widest uppercase text-zinc-400">Historical Event Archive</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.035em] text-white leading-[1.05]">
-            Past Editions.
+          <h2 className="font-curvy text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-[-0.035em] text-white leading-[1.05]">
+            Past{" "}
+            <span className="font-cursive font-normal text-blue-400 text-4xl sm:text-6xl lg:text-7xl inline-block px-1">
+              Editions
+            </span>
+            .
           </h2>
           <p className="mt-3.5 text-base sm:text-lg text-zinc-400 font-normal leading-relaxed">
             From beginner-friendly offline challenges to national research hackathons. Explore the evolution of our flagship series.

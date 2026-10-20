@@ -29,8 +29,12 @@ code, kbd, samp, pre, .font-mono {
   font-family: var(--font-curvy), var(--font-sans), sans-serif;
 }
 
-.font-righteous {
-  font-family: var(--font-righteous), cursive, sans-serif;
+.font-cursive {
+  font-family: var(--font-cursive), cursive;
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting), cursive;
 }
 
 
