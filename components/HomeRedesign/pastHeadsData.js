@@ -129,12 +129,12 @@ export const pastHeads2024 = [
   },
 ];
 
-export const pastHeads2023 = [
+export const pastHeads2022 = [
   {
     name: "Vijit Kumar",
     domain: "Founder",
     role: "Founder",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/vijit.webp",
     linkedinUrl: "https://www.linkedin.com/in/vijit-kumar/",
   },
@@ -142,7 +142,7 @@ export const pastHeads2023 = [
     name: "Vishal J Lodha",
     domain: "Founder",
     role: "Founder",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/vishal.webp",
     linkedinUrl: "https://www.linkedin.com/in/vishal-j-lodha",
   },
@@ -150,7 +150,7 @@ export const pastHeads2023 = [
     name: "Naresh Srinivas",
     domain: "Logistics",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/naresh.webp",
     linkedinUrl: "https://www.linkedin.com/in/naresh-srinivas-28a608215/",
   },
@@ -158,7 +158,7 @@ export const pastHeads2023 = [
     name: "Chaitra Upadhya",
     domain: "Logistics",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/chaitra.webp",
     linkedinUrl: "https://www.linkedin.com/in/chaitra-upadhya-922426211/",
   },
@@ -166,7 +166,7 @@ export const pastHeads2023 = [
     name: "Punarv Dinakar",
     domain: "Event Management",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/punarv.webp",
     linkedinUrl: "",
   },
@@ -174,7 +174,7 @@ export const pastHeads2023 = [
     name: "Swikrit Laxmishekhar",
     domain: "Sponsorship",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/swikrit.webp",
     linkedinUrl: "https://www.linkedin.com/in/swikrit-laxmishekhar-546878225/",
   },
@@ -182,7 +182,7 @@ export const pastHeads2023 = [
     name: "Rhea Sudheer",
     domain: "Hospitality",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/rhea.webp",
     linkedinUrl: "https://www.linkedin.com/in/rhea-sudheer/",
   },
@@ -190,7 +190,7 @@ export const pastHeads2023 = [
     name: "Yogitha H K",
     domain: "Design",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/yogitha.webp",
     linkedinUrl: "https://www.linkedin.com/in/yogitha-h-k-63bb74222/",
   },
@@ -198,11 +198,13 @@ export const pastHeads2023 = [
     name: "Harsh Verma",
     domain: "Operations",
     role: "Head",
-    term: "2023-2024",
+    term: "2022-2023",
     photoUrl: "/domiainHeadPhotos/harsh.webp",
     linkedinUrl: "https://www.linkedin.com/in/harsh-verma-857b801b9/",
   },
 ];
+
+export const pastHeads2023 = pastHeads2022;
 
 export const upcoming2026Roles = [
   { role: "Club Heads", desc: "Leading general club strategy, university liaison, and department coordination." },

@@ -23,10 +23,10 @@ import {
 } from "lucide-react";
 import teamMembers from "./teamData";
 import { teamMembersDetails } from "./constants.js";
-import { pastHeads2024, pastHeads2023 } from "./pastHeadsData.js";
+import { pastHeads2024, pastHeads2022 } from "./pastHeadsData.js";
 import TeamCard3D from "./TeamCard3D";
 
-const years = ["2026", "2025", "2024", "2023"];
+const years = ["2026", "2025", "2024", "2022"];
 
 // Domain hierarchy ranking:
 // founder -> club head -> web dev -> evm -> operations -> logs -> spons -> design -> hospi -> campaining -> smve -> mentors
@@ -298,7 +298,7 @@ export default function TeamSection() {
       2026: teamMembers.map((m) => normalizeMember(m, "2026")),
       2025: teamMembersDetails.map((m) => normalizeMember(m, "2025")),
       2024: pastHeads2024.map((m) => normalizeMember(m, "2024")),
-      2023: pastHeads2023.map((m) => normalizeMember(m, "2023")),
+      2022: pastHeads2022.map((m) => normalizeMember(m, "2022")),
     }),
     []
   );
@@ -458,7 +458,6 @@ export default function TeamSection() {
             {visibleMembers.map((member, index) => {
               const memberId = `${activeYear}-${member.domain}-${member.name}`;
               const isHovered = hoveredMemberId === memberId;
-              const isDimmed = hoveredMemberId !== null && !isHovered;
 
               return (
                 <TeamCard3D
@@ -466,7 +465,6 @@ export default function TeamSection() {
                   member={member}
                   index={index}
                   isHovered={isHovered}
-                  isDimmed={isDimmed}
                   onHover={() => setHoveredMemberId(memberId)}
                   onLeave={() => setHoveredMemberId(null)}
                 />

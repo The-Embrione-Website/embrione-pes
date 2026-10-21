@@ -73,8 +73,6 @@ export default function TeamCard3D({
       } ${shape.tilt} ${shape.scale} ${
         isHovered
           ? "z-10 sm:z-30 sm:scale-[1.08] sm:rotate-0 sm:-translate-y-3 opacity-100"
-          : isDimmed
-          ? "sm:scale-[0.86] sm:opacity-25 opacity-100 sm:filter sm:grayscale sm:contrast-75 sm:brightness-75"
           : "opacity-100 sm:hover:z-30"
       }`}
     >
