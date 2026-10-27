@@ -21,6 +21,7 @@ import {
   eventDayLabel,
   eventTimeLabel,
   eventDateTime,
+  formatMinute,
   SCHEDULE_STATUS,
 } from "./timelineData";
 import { SingleJapaneseTower } from "./SingleJapaneseTower";
@@ -143,7 +144,7 @@ export function EventTime({ event }) {
       </time>
       {event.kind === "interval" && (
         <>
-          {"–"}
+          {" – "}
           <time dateTime={eventDateTime(event.endDayOffset, event.endMinute)}>
             {eventTimeLabel(event).split("–")[1]}
           </time>
@@ -242,7 +243,7 @@ function MobileTimeline() {
                   )}
                   {event.kind === "deadline" && (
                     <p className="text-neutral-300 text-sm leading-relaxed mt-2">
-                      Finish by 6:00 PM.
+                      Finish by {formatMinute(event.endMinute)}.
                     </p>
                   )}
                 </div>

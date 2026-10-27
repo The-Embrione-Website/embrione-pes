@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { kodikon6TimelineEvents, eventDayLabel, eventTimeLabel, eventDateTime } from "./timelineData";
+import { kodikon6TimelineEvents, eventDayLabel, eventTimeLabel, eventDateTime, formatMinute } from "./timelineData";
 import styles from "./timeline.module.css";
 
 const DesktopDragonScene = dynamic(() => import("./DesktopDragonScene"), { ssr: false });
@@ -29,9 +29,9 @@ export default function DesktopTimeline({ enabled }) {
                 </div>
                 <h3>{event.title}</h3>
                 <p className={styles.time}>
-                  {event.kind === "deadline" ? <>By <time dateTime={eventDateTime(event.dayOffset, event.endMinute)}>6:00 PM</time></> : <>
+                  {event.kind === "deadline" ? <>By <time dateTime={eventDateTime(event.dayOffset, event.endMinute)}>{formatMinute(event.endMinute)}</time></> : <>
                     <time dateTime={eventDateTime(event.dayOffset, event.startMinute)}>{eventTimeLabel(event).split("–")[0]}</time>
-                    {"–"}<time dateTime={eventDateTime(event.endDayOffset, event.endMinute)}>{eventTimeLabel(event).split("–")[1]}</time>
+                    {" – "}<time dateTime={eventDateTime(event.endDayOffset, event.endMinute)}>{eventTimeLabel(event).split("–")[1]}</time>
                   </>}
                 </p>
                 {event.dayOffset !== event.endDayOffset && <p className={styles.note}>Crosses midnight into Day 2.</p>}
@@ -41,7 +41,7 @@ export default function DesktopTimeline({ enabled }) {
           );
         })}
       </ol>
-      <p className={styles.endnote}>End of the provisional program</p>
+      <p className={styles.endnote}>End of the itinerary</p>
     </div>
   );
 }

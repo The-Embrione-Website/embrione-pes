@@ -10,7 +10,7 @@ export default function StructuredData() {
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     startDate: "2026-10-31T08:00:00+05:30",
-    endDate: "2026-11-01T18:00:00+05:30",
+    endDate: "2026-11-01T17:00:00+05:30",
     location: {
       "@type": "Place",
       name: "PESU 52, PES University",
