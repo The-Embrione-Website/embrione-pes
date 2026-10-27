@@ -22,8 +22,8 @@ const tracks = [
   },
   {
     number: "03",
-    code: "CYBER.DEFENSE",
-    title: "Zero-Expertise Cyber Defense",
+    code: "CYBER.SECURITY",
+    title: "Accessible Cybersecurity",
     description:
       "Make cybersecurity accessible through intelligent threat detection, clear explanations, and actionable protection.",
     symbol: "⬡",
@@ -234,7 +234,7 @@ export default function AboutSection() {
 
             <p className="mt-4 text-sm leading-7 text-slate-400 sm:text-base sm:leading-8">
               From intuitive human-machine interfaces and autonomous digital
-              economies to accessible cyber defense and embedded hardware,
+              economies to accessible cybersecurity and embedded hardware,
               participants turn complex problem statements into practical
               prototypes. With industry-informed challenges, mentor guidance,
               and a focus on real-world relevance, Kodikon is where ideas move

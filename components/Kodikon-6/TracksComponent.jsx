@@ -26,7 +26,7 @@ const TRACK_BUILDING_METADATA = {
   },
   "TRACK-03": {
     kanjiNum: "参",
-    subBadge: "CYBER DEFENSE",
+    subBadge: "ACCESSIBLE CYBERSECURITY",
     RoofComponent: ShiroPavilionRoof,
   },
   "TRACK-04": {

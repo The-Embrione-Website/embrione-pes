@@ -479,7 +479,7 @@ export default function HeroComponent() {
 
           {/* Description Copy */}
           <p className="mt-4 sm:mt-5 max-w-xl sm:max-w-2xl text-xs sm:text-sm lg:text-base leading-relaxed font-light text-slate-300 px-2 sm:px-0">
-            Explore four frontier tracks spanning human-machine interfaces, autonomous AI economies, accessible cyber defense, and hardware innovation. Build impactful solutions through intelligent systems, practical engineering, and rapid prototyping.
+            Explore four frontier tracks spanning human-machine interfaces, autonomous AI economies, accessible cybersecurity, and hardware innovation. Build impactful solutions through intelligent systems, practical engineering, and rapid prototyping.
           </p>
 
           {/* Action CTAs */}

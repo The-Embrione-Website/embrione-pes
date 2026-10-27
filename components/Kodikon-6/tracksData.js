@@ -20,10 +20,10 @@ export const tracksData = [
   {
     code: "TRACK-03",
     number: "03",
-    title: "Zero-Expertise Cyber Defense",
+    title: "Accessible Cybersecurity",
     subtitle: "",
     image: "/Kodikon6/Tracks/track-03.jpeg",
-    imageAlt: "Zero-Expertise Cyber Defense",
+    imageAlt: "Accessible Cybersecurity",
     desc: "Build an automated, intuitive security solution that gives small, non-technical organizations (such as community clinics, retail shops, or schools) the threat visibility and decision-making clarity of a dedicated security operations team. The solution should abstract away cryptic technical jargon, filter out noise, translate security events into plain, actionable language, and guide non-technical staff (such as a receptionist or administrator) to take confident defensive action without requiring any cybersecurity expertise.",
   },
   {
